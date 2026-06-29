@@ -99,7 +99,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
           animate={{ opacity: 0.5 }}
           exit={{ opacity: 0 }}
           onClick={() => setIsMobileMenuOpen(false)}
-          className="fixed inset-0 bg-black z-40 md:hidden"
+          className="fixed inset-0 bg-black z-[100] md:hidden"
         />
       )}
       {isMobileMenuOpen && (
@@ -109,7 +109,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-            className="fixed inset-y-0 left-0 w-[280px] bg-now-background border-r border-gray-800 z-50 flex flex-col shadow-2xl md:hidden"
+            className="fixed inset-y-0 left-0 w-[280px] bg-now-background border-r border-gray-800 z-[110] flex flex-col shadow-2xl md:hidden"
           >
             <div className="flex items-center justify-between p-4 border-b border-gray-800">
               <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />

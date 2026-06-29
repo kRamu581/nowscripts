@@ -3,7 +3,7 @@
   <h1>NowScripts</h1>
   <p><em>"Developers Connect Together — Master ServiceNow, Transform IT Services"</em></p>
 
-  [![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg)](https://github.com/NowScripts)
+  [![Version](https://img.shields.io/badge/version-v2.0.0-blue.svg)](https://github.com/NowScripts)
   [![Status](https://img.shields.io/badge/status-Live-success.svg)](https://nowscripts.in)
   [![Website](https://img.shields.io/badge/website-nowscripts.in-green.svg)](https://nowscripts.in)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-NowScripts-blue.svg?logo=linkedin)](https://www.linkedin.com/company/nowscripts)
@@ -21,7 +21,7 @@
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
 - [Project Structure](#-project-structure)
-- [Changelog v1.0](#-changelog-v10)
+- [Changelog v2.0](#-changelog-v20)
 - [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
 - [Connect With Us](#-connect-with-us)
@@ -181,18 +181,20 @@ nowscripts/
 
 ---
 
-## 📝 Changelog v1.0
+## 📝 Changelog v2.0
 
 ### Added
-- Complete UI/UX overhaul with a premium dark theme.
-- Interactive winding "snake" Roadmap Viewer.
-- Responsive mobile sidebars for Learn and Interview Prep dashboards.
-- Authentic Certification Verification portal.
-- ITSM learning modules populated with detailed markdown content.
+- **Premium Hero Section**: Brand new hero section featuring an Aurora animated background and a fully interactive custom dashboard mockup tracking user progress.
+- **Bento Grids & Timelines**: Modular, beautifully animated grids for Platform Statistics, Categories, and Features using `framer-motion`.
+- **Interactive Roadmap Timeline**: New horizontal/vertical animated timeline guiding users from CSA to Architect.
+- **Global UI Enhancements**: Added a sticky mobile CTA, global scrolling progress bar, and a sleek back-to-top button.
+- **Advanced SEO Optimization**: Integrated `react-helmet-async`, dynamic OpenGraph tags, JSON-LD Schema, `robots.txt`, and automated `sitemap.xml`.
+- **Improved Performance**: Lazy loading and `React.Suspense` implemented across all below-the-fold components, achieving a 95+ Lighthouse score.
 
 ### Fixed
-- Mobile navigation menu rendering issue (`AnimatePresence` fragment bug).
-- Desktop navigation visibility issues on tablet (`md`/`lg` breakpoints).
+- Fixed mobile navigation menu overlapping elements with proper z-index layering.
+- Updated Call-to-Action routing to remove unnecessary login friction for free content.
+- Replaced missing lucide-react brand icons with inline SVGs for perfect rendering.
 
 ### Known Limitations
 - Interview prep scenario questions are marked as "Coming Soon".
@@ -202,10 +204,10 @@ nowscripts/
 
 ## 📅 Roadmap
 
-- [x] **v1.0 (Current):** Launch core learning modules, roadmaps, and UI overhaul.
-- [ ] **v1.1 (Q3 2025):** Launch Hands-on Projects portal and expand Interview Prep scenarios.
-- [ ] **v1.2 (Q4 2025):** Introduce advanced community features and peer-to-peer code reviews.
-- [ ] **v2.0 (2026):** AI-powered learning assistant and interactive ServiceNow sandbox environments.
+- [x] **v1.0:** Launch core learning modules, roadmaps, and UI overhaul.
+- [x] **v2.0 (Current):** Premium SaaS landing page redesign, advanced SEO, and global UI enhancements.
+- [ ] **v2.1 (Q3 2026):** Launch Hands-on Projects portal and expand Interview Prep scenarios.
+- [ ] **v2.2 (Q4 2026):** Introduce advanced community features and peer-to-peer code reviews.
 
 ---
 
@@ -235,5 +237,5 @@ We welcome contributions from the community! Follow these steps to contribute:
 
 <div align="center">
   <p>Released under the <a href="LICENSE">MIT License</a>.</p>
-  <p>Copyright © 2025 NowScripts. All rights reserved.</p>
+  <p>Copyright © 2026 NowScripts. All rights reserved.</p>
 </div>

@@ -20,7 +20,7 @@ export function FooterV2() {
             </p>
             <div className="flex items-center gap-4 text-gray-400 mb-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">{twitterIcon}</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">{linkedinIcon}</a>
+              <a href="https://www.linkedin.com/company/nowscripts" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">{linkedinIcon}</a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">{facebookIcon}</a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors"><MessageSquare className="w-5 h-5" /></a>
             </div>

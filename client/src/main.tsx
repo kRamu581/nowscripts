@@ -9,6 +9,7 @@ import en from "javascript-time-ago/locale/en.json";
 import ru from "javascript-time-ago/locale/ru.json";
 import Auth from "./contexts/Auth";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,15 +29,17 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || "missing-client-id"}>
     <ErrorBoundary>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <Auth>
-            <ThemeProvider>
-              <App />
-            </ThemeProvider>
-          </Auth>
-        </QueryClientProvider>
-      </BrowserRouter>
+      <HelmetProvider>
+        <BrowserRouter>
+          <QueryClientProvider client={queryClient}>
+            <Auth>
+              <ThemeProvider>
+                <App />
+              </ThemeProvider>
+            </Auth>
+          </QueryClientProvider>
+        </BrowserRouter>
+      </HelmetProvider>
     </ErrorBoundary>
   </GoogleOAuthProvider>
 );
