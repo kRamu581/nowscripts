@@ -1,7 +1,7 @@
 import React from 'react';
-import { Info, Lightbulb, AlertTriangle, AlertCircle } from 'lucide-react';
+import { Info, Lightbulb, AlertTriangle, AlertCircle, Key } from 'lucide-react';
 
-export const Callout = ({ children, ...props }: any) => {
+export const Callout = ({ children, theme, ...props }: any) => {
   // Extract text from children to check for callout pattern
   let textContent = '';
   let restChildren = children;
@@ -12,12 +12,12 @@ export const Callout = ({ children, ...props }: any) => {
       const pChildren = React.Children.toArray((node as any).props.children);
       if (pChildren.length > 0 && typeof pChildren[0] === 'string') {
         const firstText = pChildren[0];
-        const match = firstText.match(/^\[!(NOTE|TIP|WARNING|IMPORTANT)\]/i);
+        const match = firstText.match(/^\[!(NOTE|TIP|WARNING|IMPORTANT|TAKEAWAY)\]/i);
         
         if (match) {
           const type = match[1].toUpperCase();
           // Remove the matched tag from the first text node
-          const cleanFirstText = firstText.replace(/^\[!(NOTE|TIP|WARNING|IMPORTANT)\]/i, '').trimStart();
+          const cleanFirstText = firstText.replace(/^\[!(NOTE|TIP|WARNING|IMPORTANT|TAKEAWAY)\]/i, '').trimStart();
           
           // Reconstruct paragraph without the tag
           const newPChildren = [cleanFirstText, ...pChildren.slice(1)];
@@ -30,10 +30,10 @@ export const Callout = ({ children, ...props }: any) => {
     
     // Fallback if the structure is just string
     if (typeof node === 'string') {
-       const match = node.match(/^\[!(NOTE|TIP|WARNING|IMPORTANT)\]/i);
+       const match = node.match(/^\[!(NOTE|TIP|WARNING|IMPORTANT|TAKEAWAY)\]/i);
        if (match) {
           const type = match[1].toUpperCase();
-          const cleanChildren = node.replace(/^\[!(NOTE|TIP|WARNING|IMPORTANT)\]/i, '').trimStart();
+          const cleanChildren = node.replace(/^\[!(NOTE|TIP|WARNING|IMPORTANT|TAKEAWAY)\]/i, '').trimStart();
           return { isCallout: true, type, cleanChildren };
        }
     }
@@ -84,6 +84,13 @@ export const Callout = ({ children, ...props }: any) => {
     IMPORTANT: {
       bg: 'bg-red-50 dark:bg-rose-900/20', border: 'border-red-500 dark:border-rose-500', text: 'text-red-800 dark:text-rose-300',
       icon: <AlertCircle className="w-5 h-5 text-red-500 dark:text-rose-400" />, title: 'Important'
+    },
+    TAKEAWAY: {
+      bg: theme ? theme.lightBg : 'bg-now-primary/10',
+      border: theme ? theme.border : 'border-now-primary',
+      text: theme ? theme.text : 'text-now-primary',
+      icon: <Key className={`w-5 h-5 ${theme ? theme.text : 'text-now-primary'}`} />,
+      title: 'Key Takeaway'
     }
   };
 
@@ -95,7 +102,7 @@ export const Callout = ({ children, ...props }: any) => {
         {style.icon}
         <span>{style.title}</span>
       </div>
-      <div className="text-[16px] text-slate-800 dark:text-slate-200 leading-[1.8] [&>p:last-child]:mb-0">
+      <div className="text-[16px] text-now-text dark:text-slate-200 leading-[1.8] [&>p:last-child]:mb-0">
         {cleanChildren}
       </div>
     </div>

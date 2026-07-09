@@ -1,46 +1,110 @@
 import { motion } from "framer-motion";
+import { MessageSquare, Users, Trophy, Mail, Globe, Network, ArrowRight } from "lucide-react";
 
 export function CommunityConnect() {
-  const socials = [
-    { name: "LinkedIn", icon: <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>, desc: "Join our professional network", link: "https://www.linkedin.com/company/nowscripts", bg: "bg-blue-600/10 hover:bg-blue-600/20", text: "text-blue-500" },
-    { name: "Discord", icon: <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>, desc: "Chat with fellow developers", link: "#", bg: "bg-indigo-600/10 hover:bg-indigo-600/20", text: "text-indigo-400" },
-    { name: "Telegram", icon: <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.892-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>, desc: "Get instant notifications", link: "#", bg: "bg-cyan-600/10 hover:bg-cyan-600/20", text: "text-cyan-400" },
-    { name: "GitHub", icon: <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>, desc: "Contribute to open source", link: "#", bg: "bg-slate-600/10 hover:bg-slate-600/20", text: "text-slate-300" },
+  const cards = [
+    {
+      title: "Discord Community",
+      desc: "Join 10,000+ developers for real-time help and networking.",
+      icon: <MessageSquare className="w-8 h-8 text-[#5865F2]" />,
+      link: "Join Discord",
+      bg: "bg-white",
+      border: "border-gray-100",
+      hover: "hover:border-[#5865F2]"
+    },
+    {
+      title: "Open Source GitHub",
+      desc: "Contribute to community projects and build your portfolio.",
+      icon: <Globe className="w-8 h-8 text-gray-900" />,
+      link: "View Repositories",
+      bg: "bg-white",
+      border: "border-gray-100",
+      hover: "hover:border-gray-900"
+    },
+    {
+      title: "LinkedIn Network",
+      desc: "Connect with recruiters, mentors, and peers.",
+      icon: <Network className="w-8 h-8 text-[#0A66C2]" />,
+      link: "Follow Us",
+      bg: "bg-white",
+      border: "border-gray-100",
+      hover: "hover:border-[#0A66C2]"
+    },
+    {
+      title: "Weekly Newsletter",
+      desc: "Get the latest ServiceNow news, tips, and tutorials in your inbox.",
+      icon: <Mail className="w-8 h-8 text-orange-500" />,
+      link: "Subscribe Now",
+      bg: "bg-white",
+      border: "border-gray-100",
+      hover: "hover:border-orange-500"
+    },
+    {
+      title: "Global Leaderboard",
+      desc: "Compete with peers, earn points, and showcase your expertise.",
+      icon: <Trophy className="w-8 h-8 text-yellow-500" />,
+      link: "View Rankings",
+      bg: "bg-white",
+      border: "border-gray-100",
+      hover: "hover:border-yellow-500"
+    },
+    {
+      title: "Community Stats",
+      desc: "Over 50,000 questions answered and 100,000 projects completed.",
+      icon: <Users className="w-8 h-8 text-emerald-500" />,
+      link: "See Impact",
+      bg: "bg-white",
+      border: "border-gray-100",
+      hover: "hover:border-emerald-500"
+    }
   ];
 
   return (
-    <section className="py-24 bg-[#020617] relative">
+    <section className="py-24 bg-gray-50 border-t border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Community</span></h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Connect with thousands of ServiceNow developers, share knowledge, and grow your career together.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {socials.map((social, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="max-w-2xl">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4"
             >
-              <a href={social.link} target="_blank" rel="noopener noreferrer" className={`flex flex-col items-center text-center p-8 rounded-2xl border border-white/5 transition-all ${social.bg} group`}>
-                <div className={`mb-4 ${social.text} transform group-hover:scale-110 transition-transform`}>
-                  {social.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{social.name}</h3>
-                <p className="text-sm text-slate-400">{social.desc}</p>
-              </a>
-            </motion.div>
+              Never code alone.
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-gray-500"
+            >
+              Join the fastest-growing community of ServiceNow professionals. Get help, share knowledge, and grow your career together.
+            </motion.p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {cards.map((card, i) => (
+            <motion.a
+              href="#"
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.1 }}
+              className={`group flex flex-col p-8 rounded-3xl ${card.bg} border ${card.border} ${card.hover} transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1`}
+            >
+              <div className="mb-6 bg-gray-50 w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                {card.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{card.title}</h3>
+              <p className="text-gray-500 mb-8 flex-1">{card.desc}</p>
+              
+              <div className="flex items-center gap-2 text-sm font-bold text-gray-900 group-hover:text-now-primary transition-colors mt-auto">
+                {card.link} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>

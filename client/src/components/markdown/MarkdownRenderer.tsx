@@ -5,6 +5,8 @@ import remarkGfm from 'remark-gfm';
 import { Clock, BookOpen, Settings, Target, Calendar, User } from 'lucide-react';
 import { LessonData } from '../../utils/markdownParser';
 
+import { getModuleTheme } from '../../utils/themeUtils';
+
 import { H1, H2, H3 } from './HeadingRenderer';
 import { UL, OL, LI } from './Lists';
 import { Table, TableHead, TableRow, TableHeader, TableCell } from './TableRenderer';
@@ -23,6 +25,8 @@ interface MarkdownRendererProps {
 
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, lessonData, className }) => {
   
+  const theme = lessonData ? getModuleTheme(lessonData.category) : null;
+
   // Format date helper if needed
   const formatDate = (dateStr?: string) => {
     if (!dateStr) return '';
@@ -38,11 +42,11 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
     <div className={`markdown-body w-full max-w-none mx-auto pb-24 ${className || ''}`}>
       
       {/* Premium Header if lessonData is provided */}
-      {lessonData && (
+      {lessonData && theme && (
         <div className="mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
           <div className="flex flex-wrap gap-2 mb-6">
             {lessonData.category && (
-              <span className="bg-now-primary/10 text-now-primary px-3 py-1 rounded-full text-sm font-semibold tracking-wide">
+              <span className={`${theme.lightBg} ${theme.text} border ${theme.border} px-3 py-1 rounded-full text-sm font-semibold tracking-wide`}>
                 {lessonData.category}
               </span>
             )}
@@ -71,7 +75,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
           <div className="flex flex-wrap items-center gap-y-4 gap-x-8 text-sm text-slate-500 dark:text-slate-400 font-medium">
             {lessonData.author && (
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-now-primary to-blue-500 flex items-center justify-center text-white shadow-sm">
+                <div className={`w-8 h-8 rounded-full ${theme.bg} flex items-center justify-center text-white shadow-sm`}>
                   <User className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
@@ -83,14 +87,14 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
             
             {lessonData.readingTime && (
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-now-primary" />
+                <Clock className={`w-4 h-4 ${theme.text}`} />
                 <span>{lessonData.readingTime}</span>
               </div>
             )}
 
             {lessonData.lastUpdated && (
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-now-primary" />
+                <Calendar className={`w-4 h-4 ${theme.text}`} />
                 <span>Last Updated: {formatDate(lessonData.lastUpdated)}</span>
               </div>
             )}
@@ -193,7 +197,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
                 }
 
                 return (
-                  <p className="text-[17px] sm:text-[18px] leading-[1.8] mb-[24px] text-slate-800 dark:text-slate-200" {...props}>
+                  <p className="text-[17px] sm:text-[18px] leading-[1.8] mb-[24px] text-now-text dark:text-slate-200" {...props}>
                     {children}
                   </p>
                 );
@@ -202,7 +206,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
             ul: { component: UL },
             ol: { component: OL },
             li: { component: LI },
-            blockquote: { component: Callout },
+            blockquote: { 
+              component: (props: any) => <Callout theme={theme} {...props} /> 
+            },
             pre: {
               component: ({ children, ...props }: any) => {
                 // If the pre contains a code block, CodeBlock component handles the extraction

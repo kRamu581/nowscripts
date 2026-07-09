@@ -1,3 +1,6 @@
+import { tracks, TrackItemType } from "../data/sharedModules";
+import matter from 'gray-matter';
+
 // Types for parsed markdown data
 export type Subtopic = {
   id: string;      // The auto-generated hash id for the subtopic heading
@@ -6,6 +9,7 @@ export type Subtopic = {
 };
 
 export type LessonData = {
+  type: TrackItemType;
   id: string;      // Based on slug
   slug: string;    // filename without .md
   categorySlug: string; // folder name
@@ -28,25 +32,19 @@ export type CourseSection = {
   lessons: LessonData[];
 };
 
+export type TrackData = {
+  trackId: string;
+  slug: string;
+  title: string;
+  sections: CourseSection[];
+};
+
 /**
  * Generates an ID from a string, e.g., "What is Cloud Computing" -> "what-is-cloud-computing"
  */
 export function generateSlug(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 }
-
-const LEARN_FOLDER_TO_CATEGORY: Record<string, string> = {
-  'fundamentals': 'Fundamentals',
-  'itsm': 'ITSM Module',
-  'workflow': 'Workflow & Automation',
-  'administration': 'Administration',
-  'advanced-itsm': 'Advanced ITSM',
-  'development': 'Development',
-  'cmdb': 'CMDB & Discovery',
-  'integrations': 'Integrations',
-  'security': 'Security & Governance',
-  'certifications': 'Certifications'
-};
 
 const INTERVIEW_FOLDER_TO_CATEGORY: Record<string, string> = {
   'servicenow-basics': 'ServiceNow Basics',
@@ -65,120 +63,6 @@ const INTERVIEW_FOLDER_TO_CATEGORY: Record<string, string> = {
   'mock-interviews': 'Mock Interviews'
 };
 
-/**
- * Parse a markdown file string to extract frontmatter, content, and headings
- */
-function parseMarkdownFile(rawMd: string, filepath: string, type: 'learn' | 'interview'): LessonData | null {
-  try {
-    // 1. Extract frontmatter using regex
-    const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
-    const match = rawMd.match(frontmatterRegex);
-
-    let frontmatter: Record<string, any> = {};
-    let rawMarkdown = rawMd.trim();
-
-    if (match) {
-      const frontmatterStr = match[1];
-      rawMarkdown = match[2].trim();
-
-      // 2. Parse basic YAML frontmatter (key: value)
-      const lines = frontmatterStr.split('\n');
-      let currentArrayKey: string | null = null;
-
-      for (const line of lines) {
-        const arrayMatch = line.match(/^\s+-\s+(.+)$/);
-        if (arrayMatch && currentArrayKey) {
-          frontmatter[currentArrayKey].push(arrayMatch[1].trim());
-          continue;
-        }
-
-        const keyValMatch = line.match(/^([a-zA-Z0-9_]+):\s*(.+)$/);
-        if (keyValMatch) {
-          const key = keyValMatch[1].trim();
-          const val = keyValMatch[2].trim();
-          if (!val) {
-            currentArrayKey = key;
-            frontmatter[key] = [];
-          } else {
-            frontmatter[key] = isNaN(Number(val)) ? val : Number(val);
-            currentArrayKey = null;
-          }
-        }
-      }
-    }
-
-    // 3. Extract subtopics from ## headings
-    const subtopics: Subtopic[] = [];
-    const headingRegex = /^##\s+(.+)$/gm;
-    let headingMatch;
-
-    while ((headingMatch = headingRegex.exec(rawMarkdown)) !== null) {
-      const rawTitle = headingMatch[1].trim();
-      // Remove common markdown characters for cleaner TOC titles
-      const cleanTitle = rawTitle.replace(/(\*\*|__|[*_`~])/g, '');
-      subtopics.push({
-        id: generateSlug(cleanTitle),
-        title: cleanTitle,
-        content: "" // We will let markdown-to-jsx render the full file
-      });
-    }
-
-    // Extract category slug and file slug from filepath
-    const pathParts = filepath.split('/');
-    const filename = pathParts.pop() || '';
-    const categorySlug = pathParts.pop() || '';
-    const slug = filename.replace('.md', '');
-
-    // Map folder slugs to formal category names
-    let autoCategory = categorySlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    
-    if (type === 'learn') {
-       autoCategory = LEARN_FOLDER_TO_CATEGORY[categorySlug] || autoCategory;
-    } else {
-       autoCategory = INTERVIEW_FOLDER_TO_CATEGORY[categorySlug] || autoCategory;
-    }
-    
-    // Calculate reading time based on 200 words per minute
-    const wordCount = rawMarkdown.split(/\s+/).length;
-    const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
-    const readingTime = `${readingTimeMinutes} min read`;
-
-    return {
-      id: `${categorySlug}-${slug}`,
-      slug,
-      categorySlug,
-      title: frontmatter.title || slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
-      category: autoCategory,
-      duration: readingTime, // Update duration to automatically use reading time
-      readingTime: readingTime,
-      difficulty: frontmatter.difficulty || 'Beginner',
-      order: frontmatter.order || 999,
-      tags: frontmatter.tags || [],
-      description: frontmatter.description,
-      lastUpdated: frontmatter.lastUpdated,
-      author: frontmatter.author,
-      subtopics,
-      rawMarkdown
-    };
-  } catch (err) {
-    console.error(`Failed to parse markdown file ${filepath}`, err);
-    return null;
-  }
-}
-
-const LEARN_ORDER = [
-  "Fundamentals",
-  "ITSM Module",
-  "Workflow & Automation",
-  "Administration",
-  "Advanced ITSM",
-  "Development",
-  "CMDB & Discovery",
-  "Integrations",
-  "Security & Governance",
-  "Certifications"
-];
-
 const INTERVIEW_ORDER = [
   "ServiceNow Basics",
   "ITSM Fundamentals",
@@ -196,30 +80,156 @@ const INTERVIEW_ORDER = [
   "Mock Interviews"
 ];
 
+function extractSubtopics(rawMarkdown: string): Subtopic[] {
+  const subtopics: Subtopic[] = [];
+  const headingRegex = /^##\s+(.+)$/gm;
+  let headingMatch;
+
+  while ((headingMatch = headingRegex.exec(rawMarkdown)) !== null) {
+    const rawTitle = headingMatch[1].trim();
+    const cleanTitle = rawTitle.replace(/(\*\*|__|[*_`~])/g, '');
+    subtopics.push({
+      id: generateSlug(cleanTitle),
+      title: cleanTitle,
+      content: ""
+    });
+  }
+  return subtopics;
+}
+
 /**
- * Loads and parses all markdown files to build the course tree
+ * Loads and parses markdown files to build the course tree
  */
-export function getCourseData(type: 'learn' | 'interview' = 'learn'): CourseSection[] {
-  // Vite feature to load all matching files as strings synchronously
+export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[] | CourseSection[] {
   const modules = import.meta.glob('../content/**/*.md', { as: 'raw', eager: true });
   
+  if (type === 'learn') {
+    const allTracksData: TrackData[] = [];
+    
+    tracks.forEach(track => {
+      const courseSections: CourseSection[] = [];
+      
+      track.modules.forEach(mod => {
+        const lessons: LessonData[] = [];
+        
+        mod.items.forEach((item, index) => {
+          let rawMd = "";
+          let subtopics: Subtopic[] = [];
+          let readingTime = "5 min read";
+          
+          if (item.type === 'topic') {
+            const expectedPath = `../content/learn/${mod.id}/${item.id}.md`;
+            rawMd = modules[expectedPath] as string | undefined || "";
+            
+            if (!rawMd) {
+               const foundKey = Object.keys(modules).find(k => k.toLowerCase() === expectedPath.toLowerCase());
+               if (foundKey) {
+                 rawMd = modules[foundKey] as string;
+               }
+            }
+            
+            if (!rawMd) {
+              console.warn(`Missing markdown file for topic: ${mod.id}/${item.id}`);
+              rawMd = `# ${item.title}\n\nThe lesson you're looking for is currently being updated. Please select another module from the sidebar.`;
+            }
+            
+            rawMd = typeof rawMd === 'string' ? rawMd : (rawMd as any).default;
+            subtopics = extractSubtopics(rawMd);
+            const wordCount = rawMd.split(/\s+/).length;
+            const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
+            readingTime = `${readingTimeMinutes} min read`;
+          } else {
+            // For non-topics (project, mock-interview, milestone), we don't load markdown
+            // The UI will handle rendering them specially based on item.type
+            rawMd = `# ${item.title}\n\n${item.description || ''}`;
+            if (item.type === 'project') readingTime = "2 hours";
+            else if (item.type === 'mock-interview') readingTime = "45 min";
+            else readingTime = "1 hour";
+          }
+
+          lessons.push({
+            type: item.type,
+            id: item.id,
+            slug: item.id,
+            categorySlug: mod.id,
+            title: item.title,
+            category: mod.title,
+            duration: readingTime,
+            readingTime: readingTime,
+            difficulty: mod.level,
+            order: index,
+            tags: [mod.title],
+            description: item.description,
+            subtopics,
+            rawMarkdown: rawMd
+          });
+        });
+        
+        courseSections.push({
+          sectionTitle: mod.title,
+          lessons
+        });
+      });
+      
+      allTracksData.push({
+        trackId: track.id,
+        slug: track.slug,
+        title: track.title,
+        sections: courseSections
+      });
+    });
+    
+    return allTracksData;
+  }
+
+  // INTERVIEW LOGIC REMAINS UNCHANGED
   const allLessons: LessonData[] = [];
 
   for (const [filepath, rawMd] of Object.entries(modules)) {
-    // Filter by type subdirectory
-    const expectedDir = type === 'interview' ? '/interview-prep/' : `/${type}/`;
-    if (!filepath.includes(expectedDir)) continue;
+    if (!filepath.includes('/interview-prep/')) continue;
 
     const content = typeof rawMd === 'string' ? rawMd : (rawMd as any).default;
-    const lesson = parseMarkdownFile(content, filepath, type);
-    if (lesson) {
-      allLessons.push(lesson);
+    
+    try {
+      const { data: frontmatter, content: rawMarkdown } = matter(content);
+      const subtopics = extractSubtopics(rawMarkdown);
+
+      const pathParts = filepath.split('/');
+      const filename = pathParts.pop() || '';
+      const categorySlug = pathParts.pop() || '';
+      const slug = filename.replace('.md', '');
+
+      let autoCategory = categorySlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      autoCategory = INTERVIEW_FOLDER_TO_CATEGORY[categorySlug] || autoCategory;
+      
+      const wordCount = rawMarkdown.split(/\s+/).length;
+      const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
+      const readingTime = `${readingTimeMinutes} min read`;
+
+      allLessons.push({
+        type: 'topic',
+        id: `${categorySlug}-${slug}`,
+        slug,
+        categorySlug,
+        title: frontmatter.title || slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+        category: autoCategory,
+        duration: readingTime,
+        readingTime: readingTime,
+        difficulty: frontmatter.difficulty || 'Beginner',
+        order: frontmatter.order || 999,
+        tags: frontmatter.tags || [],
+        description: frontmatter.description,
+        lastUpdated: frontmatter.lastUpdated,
+        author: frontmatter.author,
+        subtopics,
+        rawMarkdown
+      });
+    } catch (err) {
+      console.error(`Failed to parse interview markdown file ${filepath}`, err);
     }
   }
 
-  // Group by category
   const categoryMap = new Map<string, LessonData[]>();
-  
   allLessons.forEach(lesson => {
     const cat = lesson.category;
     if (!categoryMap.has(cat)) {
@@ -229,30 +239,23 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): CourseSect
   });
 
   const courseSections: CourseSection[] = [];
-  
   categoryMap.forEach((lessons, sectionTitle) => {
-    // Sort lessons within section by order
     lessons.sort((a, b) => a.order - b.order);
-    courseSections.push({
-      sectionTitle,
-      lessons
-    });
+    courseSections.push({ sectionTitle, lessons });
   });
 
-  // Sort sections strictly based on the requested learning/interview path
-  const categoryOrder = type === 'learn' ? LEARN_ORDER : INTERVIEW_ORDER;
-
   courseSections.sort((a, b) => {
-    const idxA = categoryOrder.indexOf(a.sectionTitle);
-    const idxB = categoryOrder.indexOf(b.sectionTitle);
+    const idxA = INTERVIEW_ORDER.indexOf(a.sectionTitle);
+    const idxB = INTERVIEW_ORDER.indexOf(b.sectionTitle);
     if (idxA !== -1 && idxB !== -1) return idxA - idxB;
     if (idxA !== -1) return -1;
     if (idxB !== -1) return 1;
-    return a.sectionTitle.localeCompare(b.sectionTitle); // Fallback to alphabetical for unmapped categories
+    return a.sectionTitle.localeCompare(b.sectionTitle);
   });
 
   return courseSections;
 }
 
-export const courseData = getCourseData('learn');
-export const interviewData = getCourseData('interview');
+export const allTrackData = getCourseData('learn') as TrackData[];
+export const courseData = allTrackData[0].sections; // default to CSA track sections for fallback
+export const interviewData = getCourseData('interview') as CourseSection[];

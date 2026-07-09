@@ -42,6 +42,12 @@ import AdminLayout from "./components/admin/AdminLayout";
 const InterviewExperiences = lazy(() => import("./pages/InterviewExperiences"));
 const InterviewExperienceDetail = lazy(() => import("./pages/InterviewExperienceDetail"));
 const SubmitInterviewExperience = lazy(() => import("./pages/SubmitInterviewExperience"));
+
+// Static Info Pages
+const HelpCenter = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.HelpCenter })));
+const Terms = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Terms })));
+const Privacy = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Privacy })));
+const Careers = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Careers })));
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "./contexts/Auth";
 import ProtectedRoute from "./router/Authentication";
@@ -184,6 +190,12 @@ export default function App() {
               <Route path="/suggestions" element={<Suggestions />} />
               <Route path="/search/:tab/:query" element={<SearchResults />} />
               <Route path="/blog/:id" element={<Post />} />
+              
+              {/* Static Info Pages */}
+              <Route path="/help" element={<HelpCenter />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/careers" element={<Careers />} />
             </Route>
 
             {/* Protected App Layout Routes (Requires Login) */}

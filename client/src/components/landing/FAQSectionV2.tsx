@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MessageCircleQuestion } from "lucide-react";
 
 export function FAQSectionV2() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -33,14 +33,25 @@ export function FAQSectionV2() {
   ];
 
   return (
-    <section className="py-24 bg-[#020617] relative z-10">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+    <section className="py-32 bg-gray-50 relative border-b border-gray-100 overflow-hidden">
+      {/* SaaS subtle grid background */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+      
+      <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700 text-sm font-bold mb-6"
+          >
+            <MessageCircleQuestion className="w-4 h-4 text-now-primary" /> Support Center
+          </motion.div>
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-6">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-gray-400">
-            Got questions? We've got answers.
+          <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            Everything you need to know about starting your ServiceNow journey. Can't find the answer you're looking for? <a href="#" className="text-now-primary hover:underline">Chat with our team</a>.
           </p>
         </div>
 
@@ -53,17 +64,19 @@ export function FAQSectionV2() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-[#0f172a] border border-gray-800 rounded-2xl overflow-hidden"
+                transition={{ delay: idx * 0.05 }}
+                className={`bg-white border rounded-2xl overflow-hidden transition-all duration-200 ${isOpen ? 'border-now-primary/30 shadow-md ring-4 ring-now-primary/5' : 'border-gray-200 shadow-sm hover:border-gray-300'}`}
               >
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#1e293b]/50 transition-colors"
+                  className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-now-primary"
                 >
-                  <span className="font-bold text-white text-lg">{faq.q}</span>
-                  <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
-                    <ChevronDown className="w-5 h-5 text-gray-400" />
-                  </motion.div>
+                  <span className={`font-bold text-lg transition-colors ${isOpen ? 'text-gray-900' : 'text-gray-800'}`}>
+                    {faq.q}
+                  </span>
+                  <div className={`shrink-0 ml-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-now-primary text-white' : 'bg-gray-100 text-gray-500'}`}>
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                  </div>
                 </button>
                 <AnimatePresence>
                   {isOpen && (
@@ -71,9 +84,9 @@ export function FAQSectionV2() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-5 text-gray-400 leading-relaxed">
+                      <div className="px-6 md:px-8 pb-8 text-gray-600 leading-relaxed font-medium border-t border-gray-100 pt-6 mt-2 mx-6 md:mx-8">
                         {faq.a}
                       </div>
                     </motion.div>

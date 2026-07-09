@@ -24,13 +24,13 @@ export function InterviewExperiencesShowcase() {
   }, []);
 
   return (
-    <section className="py-24 bg-[#020617] relative overflow-hidden border-t border-gray-800">
+    <section className="py-24 bg-gray-50 relative overflow-hidden border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900 mb-4">
             Real Interview Experiences
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-medium">
             Learn from the community. Read genuine interview experiences from top companies and prepare yourself for your dream ServiceNow role.
           </p>
         </div>
@@ -38,7 +38,7 @@ export function InterviewExperiencesShowcase() {
         {loading ? (
            <div className="flex justify-center"><div className="animate-spin rounded-full h-10 w-10 border-b-2 border-now-primary"></div></div>
         ) : experiences.length === 0 ? (
-           <div className="text-center text-gray-500 bg-[#080c17] border border-gray-800 rounded-xl p-10">
+           <div className="text-center text-gray-500 font-medium bg-white border border-gray-200 rounded-xl p-10 shadow-sm">
              Experiences coming soon...
            </div>
         ) : (
@@ -50,29 +50,29 @@ export function InterviewExperiencesShowcase() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-[#080c17] border border-gray-800 rounded-xl p-6 hover:border-now-primary/50 transition-colors group flex flex-col"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 transition-all group flex flex-col hover:shadow-sm"
               >
                 <div className="flex items-start justify-between mb-4">
-                   <div className="w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg flex items-center justify-center text-now-primary font-bold text-lg uppercase">
+                   <div className="w-12 h-12 bg-gray-50 border border-gray-100 rounded-lg flex items-center justify-center text-gray-700 font-bold text-lg uppercase group-hover:bg-now-primary/5 group-hover:text-now-primary transition-colors">
                      {exp.company?.substring(0, 2) || "N/A"}
                    </div>
-                   <div className="flex items-center gap-1 text-yellow-500">
+                   <div className="flex items-center gap-1 text-amber-500">
                      <Star className="w-4 h-4 fill-current" />
-                     <span className="text-sm font-medium">{exp.overallRating}</span>
+                     <span className="text-sm font-bold text-gray-700">{exp.overallRating}</span>
                    </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-now-primary transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-now-primary transition-colors">
                    {exp.role} at {exp.company}
                 </h3>
-                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400 mb-4">
+                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 font-medium mb-4">
                    <span className="flex items-center gap-1"><Briefcase className="w-3.5 h-3.5" /> {exp.experienceLevel}</span>
                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" /> {exp.rounds?.length || 0} Rounds</span>
                 </div>
-                <div className="mt-auto pt-4 border-t border-gray-800 flex items-center justify-between">
-                   <span className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded ${exp.difficulty === 'Hard' ? 'bg-red-500/10 text-red-400' : exp.difficulty === 'Medium' ? 'bg-orange-500/10 text-orange-400' : 'bg-green-500/10 text-green-400'}`}>
+                <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+                   <span className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded ${exp.difficulty === 'Hard' ? 'bg-red-50 text-red-600 border border-red-100' : exp.difficulty === 'Medium' ? 'bg-orange-50 text-orange-600 border border-orange-100' : 'bg-green-50 text-green-600 border border-green-100'}`}>
                      {exp.difficulty}
                    </span>
-                   <Link to={`/interviews/${exp._id}`} className="text-now-primary hover:text-now-primary/80 font-medium text-sm flex items-center gap-1">
+                   <Link to={`/interviews/${exp._id}`} className="text-gray-500 hover:text-now-primary font-bold text-sm flex items-center gap-1 transition-colors">
                      Read More <ArrowRight className="w-4 h-4" />
                    </Link>
                 </div>
@@ -82,8 +82,8 @@ export function InterviewExperiencesShowcase() {
         )}
 
         <div className="mt-12 text-center">
-          <Link to="/interviews" className="inline-flex items-center gap-2 bg-now-primary text-black font-bold px-8 py-3 rounded-full hover:bg-now-primary/90 transition-colors">
-            View All Experiences <ArrowRight className="w-5 h-5" />
+          <Link to="/interviews" className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-900 font-bold px-8 py-3 rounded-full hover:bg-gray-50 transition-colors shadow-sm hover:shadow">
+            View All Experiences <ArrowRight className="w-5 h-5 text-gray-500" />
           </Link>
         </div>
       </div>

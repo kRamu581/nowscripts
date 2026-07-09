@@ -25,125 +25,64 @@ export default function Navbar({
 
   return (
     <>
-      <nav
-        style={{
-          height: "56px",
-          borderBottom: "solid 1px #E2E8F0",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          className="left"
-          style={{
-            marginLeft: "23px",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "17px",
-          }}
-        >
-          <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="md:hidden flex items-center justify-center p-1 text-[#64748B] hover:text-[#0F172A]"
-          >
-            <Menu size={24} />
-          </button>
-          <Link to="/" className="hidden md:block"><BrandLogo /></Link>
-          <div className="hidden md:block">
-            <Search />
-          </div>
-        </div>
-        <div
-          className="right"
-          style={{
-            marginRight: "25px",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "16px",
-            height: "100%",
-          }}
-        >
-          <Link to="/learn" className="hidden md:block" style={{ textDecoration: "none", color: "#64748B", fontSize: "14px", whiteSpace: "nowrap" }}>Learn</Link>
-          <Link to="/roadmaps" className="hidden md:block" style={{ textDecoration: "none", color: "#64748B", fontSize: "14px", whiteSpace: "nowrap" }}>Roadmaps</Link>
-          <Link to="/projects" className="hidden md:block" style={{ textDecoration: "none", color: "#64748B", fontSize: "14px", whiteSpace: "nowrap" }}>Projects</Link>
-          <Link to="/interview-prep" className="hidden md:block" style={{ textDecoration: "none", color: "#64748B", fontSize: "14px", whiteSpace: "nowrap" }}>Interview Prep</Link>
-          <Link to="/community" className="hidden md:block" style={{ textDecoration: "none", color: "#64748B", fontSize: "14px", whiteSpace: "nowrap" }}>Community</Link>
-          <Link to="/newsletter" className="hidden md:block" style={{ textDecoration: "none", color: "#64748B", fontSize: "14px", whiteSpace: "nowrap" }}>Newsletter</Link>
-          
-          {isAuthenticated ? (
-            <Link
-              to="/write"
-              className="writeBtn"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                color: "gray",
-                gap: "8px",
-                textDecoration: "none",
-              }}
-            >
-              <span style={{ color: "#64748B" }}>
-                {writeBlogIcon}
-              </span>
-              <p style={{ fontSize: "14.5px", marginTop: "-4px", color: "#64748B" }}>Share Content</p>
-            </Link>
-          ) : (
+      <nav className="w-full h-14 bg-white border-b border-gray-200 sticky top-0 z-50 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-full">
+          <div className="flex items-center gap-4 flex-shrink-0">
             <button
-              onClick={() => openModal('login', () => window.location.href = '/write', 'Please log in to share content.')}
-              className="writeBtn"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                color: "gray",
-                gap: "8px",
-                textDecoration: "none",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-              }}
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="md:hidden flex items-center justify-center p-1 text-gray-500 hover:text-gray-900 transition-colors"
             >
-              <span style={{ color: "#64748B" }}>
-                {writeBlogIcon}
-              </span>
-              <p style={{ fontSize: "14.5px", marginTop: "-4px", color: "#64748B" }}>Share Content</p>
+              <Menu size={24} />
             </button>
-          )}
-
-          <div className="notifactionBtn">
-            <Link
-              to="/notifications"
-              style={{
-                color: "#64748B",
-                textDecoration: "none",
-                position: "relative",
-              }}
-            >
-              {NotificationIcon}
-              {notificationsCount > 0 && (
-                <span
-                  style={{
-                    fontSize: "9.5px",
-                    position: "absolute",
-                    top: "-15px",
-                    right: "-5px",
-                    backgroundColor: "#1a8917",
-                    color: "white",
-                    padding: "3px 3.75px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  {notificationsCount}
-                </span>
-              )}
+            <Link to="/" className="block">
+              <BrandLogo textColor="text-gray-900" hideTextOnMobile={true} />
             </Link>
+            <div className="hidden md:block">
+              <Search />
+            </div>
           </div>
-          <AvatarMenu />
+          
+          <div className="flex items-center gap-6 h-full">
+            <Link to="/learn" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Learn</Link>
+            <Link to="/roadmaps" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Roadmaps</Link>
+            <Link to="/projects" className="hidden lg:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Projects</Link>
+            <Link to="/interview-prep" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Interview Prep</Link>
+            <Link to="/community" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Community</Link>
+            <Link to="/newsletter" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Newsletter</Link>
+            
+            {isAuthenticated ? (
+              <Link
+                to="/write"
+                className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                {writeBlogIcon}
+                <span className="text-sm font-medium hidden lg:block">Share Content</span>
+              </Link>
+            ) : (
+              <button
+                onClick={() => openModal('login', () => window.location.href = '/write', 'Please log in to share content.')}
+                className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                {writeBlogIcon}
+                <span className="text-sm font-medium hidden lg:block">Share Content</span>
+              </button>
+            )}
+
+            <div className="flex items-center">
+              <Link
+                to="/notifications"
+                className="relative text-gray-500 hover:text-gray-900 transition-colors flex items-center"
+              >
+                {NotificationIcon}
+                {notificationsCount > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 bg-now-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                    {notificationsCount}
+                  </span>
+                )}
+              </Link>
+            </div>
+            <AvatarMenu isScrolled={true} />
+          </div>
         </div>
       </nav>
 
@@ -156,7 +95,7 @@ export default function Navbar({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black z-40 md:hidden"
+            className="fixed inset-0 bg-gray-900 z-[100] md:hidden"
           />
         )}
         {isMobileMenuOpen && (
@@ -166,13 +105,13 @@ export default function Navbar({
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-white z-50 flex flex-col shadow-2xl md:hidden"
+              className="fixed inset-y-0 left-0 w-[280px] bg-white border-r border-gray-200 z-[110] flex flex-col shadow-2xl md:hidden"
             >
-              <div className="flex items-center justify-between p-4 border-b border-[#E2E8F0]">
-                <BrandLogo />
+              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+                <BrandLogo textColor="text-gray-900" hideTextOnMobile={false} className="scale-90 origin-left" />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-[#64748B] hover:text-[#0F172A] rounded-md"
+                  className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
                 >
                   <X size={24} />
                 </button>

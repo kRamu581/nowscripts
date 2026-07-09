@@ -1,178 +1,153 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, CheckCircle2, PlayCircle } from "lucide-react";
-import { AuroraBackground } from "../ui/AuroraBackground";
+import { Link } from "react-router-dom";
+import { ArrowRight, CheckCircle2, Play, BookOpen, Award, TrendingUp, Users, FileText } from "lucide-react";
 
 export function PremiumHero() {
+  const floatAnimation = {
+    y: ["-5%", "5%"],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "reverse" as const,
+    },
+  };
+
+  const slowFloatAnimation = {
+    y: ["-3%", "3%"],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      repeatType: "reverse" as const,
+      delay: 1,
+    },
+  };
+
   return (
-    <AuroraBackground className="pt-24 pb-20 md:pt-32 md:pb-32 overflow-hidden h-auto min-h-screen">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 w-full z-10 flex flex-col xl:flex-row items-center justify-between gap-16">
-        
-        {/* Left Content */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex-1 flex flex-col gap-8 max-w-3xl relative z-20 text-center xl:text-left pt-10 xl:pt-0"
-        >
-          <div className="space-y-6 flex flex-col items-center xl:items-start">
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+      {/* Soft Background Gradients */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] opacity-30 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-now-primary/20 via-orange-100 to-transparent blur-[100px] rounded-full mix-blend-multiply" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left: Content */}
+          <div className="max-w-2xl">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2"
-            >
-              <div className="px-4 py-1.5 rounded-full bg-[#111827]/80 backdrop-blur-md border border-[rgba(255,255,255,0.1)] text-now-accent text-sm font-semibold tracking-wide uppercase shadow-[0_0_20px_rgba(20,184,166,0.15)] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-now-accent animate-pulse"></span>
-                Updated for 2025–2026
-              </div>
-            </motion.div>
-            
-            <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-5xl md:text-6xl lg:text-[72px] font-extrabold text-white tracking-tight leading-[1.1]"
+              transition={{ duration: 0.6 }}
             >
-              Master ServiceNow with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Real Interview Questions</span> & Hands-on Practice
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-lg md:text-xl text-[#94A3B8] leading-relaxed max-w-2xl font-medium"
-            >
-              Join thousands of learners. Fast-track your career with structured roadmaps, 250+ real-world interview questions, and 100+ practice labs.
-            </motion.p>
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start"
-          >
-            <Link 
-              to="/learn"
-              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(79,70,229,0.4)]"
-            >
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-              <span className="relative z-10 flex items-center gap-2">
-                Start Learning Free <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
-            
-            <Link
-              to="/interview-prep"
-              className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#111827]/80 backdrop-blur-md text-white font-bold rounded-xl border border-[rgba(255,255,255,0.1)] transition-all hover:bg-[rgba(255,255,255,0.1)] hover:border-[rgba(255,255,255,0.2)]"
-            >
-              <PlayCircle className="w-5 h-5 text-purple-400" />
-              Explore Interview Questions
-            </Link>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="flex items-center justify-center xl:justify-start gap-8 pt-6 text-sm text-[#94A3B8] font-medium"
-          >
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-now-accent" />
-              <span>250+ Interview Questions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-now-accent" />
-              <span>100+ Practice Labs</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Right Content - Custom Dashboard Mockup */}
-        <motion.div
-          initial={{ opacity: 0, x: 50, rotateY: -10 }}
-          animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-          style={{ perspective: "1000px" }}
-          className="flex-1 w-full max-w-[600px] xl:max-w-none relative z-20"
-        >
-          <div className="relative rounded-2xl border border-[rgba(255,255,255,0.1)] bg-[#0B1120]/80 backdrop-blur-xl shadow-2xl overflow-hidden transform-gpu hover:rotate-0 transition-transform duration-700" style={{ transform: "rotateY(-5deg) rotateX(2deg)" }}>
-            
-            {/* Mockup Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(255,255,255,0.05)] bg-[#020617]/50">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-              </div>
-              <div className="text-xs font-semibold text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full">nowscripts.com/dashboard</div>
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 border border-white/20"></div>
-            </div>
-
-            {/* Mockup Body */}
-            <div className="p-6 grid grid-cols-2 gap-4">
-              {/* CSA Progress */}
-              <div className="col-span-2 sm:col-span-1 bg-[#111827] rounded-xl p-5 border border-white/5 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 blur-2xl rounded-full -mr-10 -mt-10 transition-all group-hover:bg-blue-500/20"></div>
-                <h3 className="text-sm font-bold text-slate-300 mb-1">CSA Progress</h3>
-                <p className="text-3xl font-black text-white mb-4">85%</p>
-                <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} animate={{ width: "85%" }} transition={{ duration: 1.5, delay: 1 }} className="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full"></motion.div>
-                </div>
+              <h1 className="text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-8">
+                Master ServiceNow <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-now-primary to-orange-500">
+                  Like a Professional.
+                </span>
+              </h1>
+              
+              <div className="space-y-4 mb-10">
+                {["Learn through real projects.", "Practice interview questions.", "Build enterprise applications.", "Get job-ready."].map((text, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 + (i * 0.1) }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle2 className="w-6 h-6 text-now-primary flex-shrink-0" />
+                    <span className="text-xl text-gray-600 font-medium">{text}</span>
+                  </motion.div>
+                ))}
               </div>
 
-              {/* CAD Progress */}
-              <div className="col-span-2 sm:col-span-1 bg-[#111827] rounded-xl p-5 border border-white/5 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 blur-2xl rounded-full -mr-10 -mt-10 transition-all group-hover:bg-purple-500/20"></div>
-                <h3 className="text-sm font-bold text-slate-300 mb-1">CAD Progress</h3>
-                <p className="text-3xl font-black text-white mb-4">42%</p>
-                <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <motion.div initial={{ width: 0 }} animate={{ width: "42%" }} transition={{ duration: 1.5, delay: 1 }} className="h-full bg-gradient-to-r from-purple-400 to-purple-600 rounded-full"></motion.div>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <Link to="/learn" className="group flex items-center justify-center gap-2 px-8 py-4 bg-now-primary hover:bg-now-accent text-white text-lg font-bold rounded-2xl transition-all shadow-[0_8px_30px_rgb(255,90,60,0.3)] hover:shadow-[0_8px_30px_rgb(255,90,60,0.5)] hover:-translate-y-1">
+                  Start Learning
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to="/roadmaps" className="group flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-100 hover:border-gray-200 text-lg font-bold rounded-2xl transition-all hover:-translate-y-1 shadow-sm">
+                  <Play className="w-5 h-5 text-gray-400 group-hover:text-now-primary transition-colors" />
+                  Explore Roadmaps
+                </Link>
               </div>
 
-              {/* Stats Row */}
-              <div className="col-span-2 grid grid-cols-3 gap-4 mt-2">
-                <div className="bg-[#111827] rounded-xl p-4 border border-white/5 text-center flex flex-col items-center justify-center">
-                  <span className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">Interview Q's</span>
-                  <span className="text-xl font-bold text-emerald-400">253+</span>
-                </div>
-                <div className="bg-[#111827] rounded-xl p-4 border border-white/5 text-center flex flex-col items-center justify-center">
-                  <span className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">Practice Labs</span>
-                  <span className="text-xl font-bold text-blue-400">100+</span>
-                </div>
-                <div className="bg-[#111827] rounded-xl p-4 border border-white/5 text-center flex flex-col items-center justify-center">
-                  <span className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">Mock Tests</span>
-                  <span className="text-xl font-bold text-purple-400">12</span>
-                </div>
-              </div>
-
-              {/* Chart Mockup */}
-              <div className="col-span-2 bg-[#111827] rounded-xl p-5 border border-white/5 mt-2">
-                <h3 className="text-sm font-bold text-slate-300 mb-4 flex justify-between">
-                  <span>Learning Activity</span>
-                  <span className="text-emerald-400 text-xs bg-emerald-400/10 px-2 py-0.5 rounded">+15% this week</span>
-                </h3>
-                <div className="flex items-end gap-2 h-24 pt-2">
-                  {[40, 60, 30, 80, 50, 90, 70].map((height, i) => (
-                    <motion.div 
-                      key={i}
-                      initial={{ height: 0 }}
-                      animate={{ height: `${height}%` }}
-                      transition={{ duration: 0.8, delay: 1 + (i * 0.1) }}
-                      className="flex-1 bg-gradient-to-t from-blue-600/50 to-purple-500 rounded-t-sm"
-                    />
+              {/* Trust Badges */}
+              <div className="pt-8 border-t border-gray-100">
+                <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Aligned with official certifications</p>
+                <div className="flex flex-wrap gap-4">
+                  {['CSA', 'CAD', 'ITSM', 'AI'].map((badge) => (
+                    <div key={badge} className="px-4 py-2 bg-gray-50 border border-gray-100 rounded-lg text-gray-600 font-bold text-sm shadow-sm">
+                      {badge}
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-          
-          {/* Decorative Elements behind mockup */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 opacity-20 blur-2xl -z-10 rounded-3xl animate-pulse"></div>
-        </motion.div>
+
+          {/* Right: Floating Macbook & Cards */}
+          <div className="relative hidden lg:block h-[600px] w-full">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              {/* Main MacBook Mockup Placeholder */}
+              <motion.div animate={slowFloatAnimation} className="relative z-10 w-[800px] max-w-[120%] right-[-10%] drop-shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2000&auto=format&fit=crop" 
+                  alt="Dashboard Preview" 
+                  className="w-full h-auto rounded-2xl border border-gray-200/50 object-cover aspect-[16/10] shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                />
+              </motion.div>
+
+              {/* Floating Cards */}
+              <motion.div animate={floatAnimation} className="absolute top-[10%] left-[-10%] z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center text-green-600">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-medium">Course Progress</p>
+                  <p className="text-lg font-bold text-gray-900">78% Completed</p>
+                </div>
+              </motion.div>
+
+              <motion.div animate={floatAnimation} style={{ animationDelay: '1s' }} className="absolute bottom-[20%] left-[5%] z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600">
+                  <FileText className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-medium">Interview Questions</p>
+                  <p className="text-lg font-bold text-gray-900">12 New Saved</p>
+                </div>
+              </motion.div>
+
+              <motion.div animate={floatAnimation} style={{ animationDelay: '0.5s' }} className="absolute top-[25%] right-[-5%] z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+                  <Award className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-medium">Certificate</p>
+                  <p className="text-lg font-bold text-gray-900">CSA Earned</p>
+                </div>
+              </motion.div>
+
+              <motion.div animate={slowFloatAnimation} style={{ animationDelay: '1.5s' }} className="absolute bottom-[10%] right-[10%] z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600">
+                  <Users className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 font-medium">Community</p>
+                  <p className="text-lg font-bold text-gray-900">Active Now</p>
+                </div>
+              </motion.div>
+              
+            </motion.div>
+          </div>
+        </div>
       </div>
-    </AuroraBackground>
+    </section>
   );
 }

@@ -2,31 +2,31 @@ import { useEffect, lazy, Suspense } from "react";
 import { useAppContext } from "../App";
 import { SEO } from "../components/SEO";
 
-// Above the fold
-import { PremiumHero } from "../components/landing/PremiumHero";
-import { TrustedBy } from "../components/landing/TrustedBy";
-import { PlatformStatistics } from "../components/landing/PlatformStatistics";
-import { LandingEnhancements } from "../components/landing/LandingEnhancements";
+// Above the fold - Amber Redesign (Batch 1)
+import { AmberHero } from "../components/landing/amber/AmberHero";
+import { AmberOfferStrip } from "../components/landing/amber/AmberOfferStrip";
+import { AmberStats } from "../components/landing/amber/AmberStats";
 
-// Lazy-loaded components below the fold for better Lighthouse scores
-const CategoriesBento = lazy(() => import("../components/landing/CategoriesBento").then(module => ({ default: module.CategoriesBento })));
-const FeaturesBento = lazy(() => import("../components/landing/FeaturesBento").then(module => ({ default: module.FeaturesBento })));
-const InteractiveRoadmap = lazy(() => import("../components/landing/InteractiveRoadmap").then(module => ({ default: module.InteractiveRoadmap })));
-const TrendingResources = lazy(() => import("../components/landing/TrendingResources").then(module => ({ default: module.TrendingResources })));
-const LatestUpdatesTimeline = lazy(() => import("../components/landing/LatestUpdatesTimeline").then(module => ({ default: module.LatestUpdatesTimeline })));
-const CommunityConnect = lazy(() => import("../components/landing/CommunityConnect").then(module => ({ default: module.CommunityConnect })));
+// Lazy-loaded components - Amber Redesign (Batch 1)
+const AmberPopularRoles = lazy(() => import("../components/landing/amber/AmberPopularRoles").then(m => ({ default: m.AmberPopularRoles })));
+const AmberResources = lazy(() => import("../components/landing/amber/AmberResources").then(m => ({ default: m.AmberResources })));
 
-const InterviewExperiencesShowcase = lazy(() => import("../components/landing/InterviewExperiencesShowcase").then(module => ({ default: module.InterviewExperiencesShowcase })));
-const ProjectsShowcaseV2 = lazy(() => import("../components/landing/ProjectsShowcaseV2").then(module => ({ default: module.ProjectsShowcaseV2 })));
-const TestimonialsV2 = lazy(() => import("../components/landing/TestimonialsV2").then(module => ({ default: module.TestimonialsV2 })));
-const FAQSectionV2 = lazy(() => import("../components/landing/FAQSectionV2").then(module => ({ default: module.FAQSectionV2 })));
-const FinalCTA = lazy(() => import("../components/landing/FinalCTA").then(module => ({ default: module.FinalCTA })));
-const FooterV2 = lazy(() => import("../components/landing/FooterV2").then(module => ({ default: module.FooterV2 })));
+// Lazy-loaded components - Amber Redesign (Batch 2)
+const AmberSocialProof = lazy(() => import("../components/landing/amber/AmberSocialProof").then(m => ({ default: m.AmberSocialProof })));
+const AmberValueProps = lazy(() => import("../components/landing/amber/AmberValueProps").then(m => ({ default: m.AmberValueProps })));
+const AmberLearningSteps = lazy(() => import("../components/landing/amber/AmberLearningSteps").then(m => ({ default: m.AmberLearningSteps })));
+
+// Lazy-loaded components - Amber Redesign (Batch 3)
+const TrustedBy = lazy(() => import("../components/landing/TrustedBy").then(m => ({ default: m.TrustedBy })));
+const AmberDualCTA = lazy(() => import("../components/landing/amber/AmberDualCTA").then(m => ({ default: m.AmberDualCTA })));
+const AmberTagCloud = lazy(() => import("../components/landing/amber/AmberTagCloud").then(m => ({ default: m.AmberTagCloud })));
+const AmberSupportCards = lazy(() => import("../components/landing/amber/AmberSupportCards").then(m => ({ default: m.AmberSupportCards })));
+const AmberFooter = lazy(() => import("../components/landing/amber/AmberFooter").then(m => ({ default: m.AmberFooter })));
 
 // Loading skeleton for lazy components
 const SectionSkeleton = () => (
-  <div className="w-full h-96 flex items-center justify-center bg-[#020617]">
-    <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
+  <div className="w-full h-96 flex items-center justify-center bg-gray-50">
+    <div className="w-12 h-12 border-4 border-[#FF5A3C]/20 border-t-[#FF5A3C] rounded-full animate-spin"></div>
   </div>
 );
 
@@ -39,30 +39,33 @@ export default function UnAuthHome() {
   }, []);
 
   return (
-    <div className="bg-[#020617] min-h-screen text-white font-sans selection:bg-[#00E5FF] selection:text-black overflow-x-hidden">
+    <div className="bg-white min-h-screen font-sans selection:bg-[#FF5A3C]/20 selection:text-[#FF5A3C] overflow-x-hidden">
       <SEO 
         title="Master ServiceNow with Real Interview Questions & Hands-on Practice"
         description="Join thousands of learners on NowScripts. Fast-track your career with structured roadmaps, 253+ real-world interview questions, and 100+ practice labs."
       />
       
-      <PremiumHero />
-      <TrustedBy />
-      <PlatformStatistics />
-      <LandingEnhancements />
+      {/* Batch 1 */}
+      <AmberHero />
+      <AmberOfferStrip />
+      <AmberStats />
       
       <Suspense fallback={<SectionSkeleton />}>
-        <CategoriesBento />
-        <FeaturesBento />
-        <InteractiveRoadmap />
-        <TrendingResources />
-        <InterviewExperiencesShowcase />
-        <ProjectsShowcaseV2 />
-        <TestimonialsV2 />
-        <LatestUpdatesTimeline />
-        <CommunityConnect />
-        <FAQSectionV2 />
-        <FinalCTA />
-        <FooterV2 />
+        {/* Batch 1 */}
+        <AmberPopularRoles />
+        <AmberResources />
+        
+        {/* Batch 2 */}
+        <AmberSocialProof />
+        <AmberValueProps />
+        <AmberLearningSteps />
+
+        {/* Batch 3 */}
+        <TrustedBy />
+        <AmberDualCTA />
+        <AmberTagCloud />
+        <AmberSupportCards />
+        <AmberFooter />
       </Suspense>
     </div>
   );

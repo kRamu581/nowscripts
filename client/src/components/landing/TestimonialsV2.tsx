@@ -1,44 +1,55 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 export function TestimonialsV2() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "Certified CSA",
-      company: "Deloitte",
-      avatar: "https://i.pravatar.cc/150?u=sarahj",
-      text: "NowScripts helped me understand ServiceNow before I even graduated. The projects I built gave me a massive advantage in my first technical interview."
-    },
-    {
-      name: "Michael Chen",
+      name: "Alex",
       role: "ServiceNow Developer",
-      company: "Accenture",
-      avatar: "https://i.pravatar.cc/150?u=michaelc",
-      text: "I was stuck in a generic IT support role. The CAD roadmap on NowScripts gave me the exact scripting knowledge I needed to transition into a full-time ServiceNow Developer."
+      company: "Enterprise Inc",
+      initials: "AL",
+      color: "bg-blue-100 text-blue-700",
+      text: "[EXAMPLE FORMAT ONLY] NowScripts helped me understand ServiceNow before I even graduated. The projects I built gave me a massive advantage."
     },
     {
-      name: "Priya Sharma",
-      role: "CAD Certified",
-      company: "TCS",
-      avatar: "https://i.pravatar.cc/150?u=priyas",
-      text: "The interview prep section is gold. I faced the exact same GlideRecord scenario questions in my interview. Landed my first job thanks to this platform!"
+      name: "Sarah",
+      role: "System Administrator",
+      company: "Tech Corp",
+      initials: "SA",
+      color: "bg-emerald-100 text-emerald-700",
+      text: "[EXAMPLE FORMAT ONLY] The CAD roadmap on NowScripts gave me the exact scripting knowledge I needed to transition into a full-time ServiceNow Developer."
     },
     {
-      name: "David Rodriguez",
-      role: "ServiceNow Consultant",
-      company: "Infosys",
-      avatar: "https://i.pravatar.cc/150?u=davidr",
-      text: "Even as an experienced developer, I use NowScripts to review advanced integrations and Service Portal widget design. The architecture tracks are incredibly detailed."
+      name: "Michael",
+      role: "Implementation Specialist",
+      company: "Consulting LLC",
+      initials: "MI",
+      color: "bg-purple-100 text-purple-700",
+      text: "[EXAMPLE FORMAT ONLY] The interview prep section is gold. I faced the exact same GlideRecord scenario questions in my interview."
+    },
+    {
+      name: "David",
+      role: "Technical Architect",
+      company: "Global Solutions",
+      initials: "DA",
+      color: "bg-now-primary/20 text-now-primary",
+      text: "[EXAMPLE FORMAT ONLY] Even as an experienced developer, I use NowScripts to review advanced integrations and Service Portal widget design."
+    },
+    {
+      name: "Emily",
+      role: "ITSM Consultant",
+      company: "Advisory Partners",
+      initials: "EM",
+      color: "bg-pink-100 text-pink-700",
+      text: "[EXAMPLE FORMAT ONLY] Highly recommend the practice labs. Setting up a dev instance and following the structured tasks was a game-changer."
     }
   ];
 
   // Duplicate for infinite marquee effect
-  const marqueeItems = [...testimonials, ...testimonials];
+  const marqueeItems = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section className="py-32 bg-[#020617] relative z-10 border-t border-[rgba(255,255,255,0.05)] overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#7C3AED]/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <section className="py-24 bg-white relative z-10 border-t border-gray-100 overflow-hidden">
       
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8 mb-16 relative z-10">
         <div className="text-center">
@@ -46,53 +57,65 @@ export function TestimonialsV2() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4"
+            className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4"
           >
-            Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] to-[#00E5FF]">Professionals</span>
+            Loved by <span className="text-transparent bg-clip-text bg-gradient-to-r from-now-primary to-orange-400">Professionals</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-[#94A3B8] max-w-2xl mx-auto"
+            className="text-lg text-gray-500 max-w-2xl mx-auto mb-6"
           >
             Join developers from top enterprise companies advancing their careers on NowScripts.
           </motion.p>
+          <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ delay: 0.2 }}
+             className="inline-block px-4 py-2 bg-amber-50 text-amber-600 text-sm font-bold rounded-full border border-amber-100 shadow-sm"
+          >
+            Testimonials Coming Soon — Previewing Layout
+          </motion.div>
         </div>
       </div>
 
       {/* Marquee Carousel */}
-      <div className="relative flex overflow-x-hidden w-full group">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none"></div>
+      <div className="relative flex overflow-x-hidden w-full group py-4">
+        <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
         
         <motion.div 
-          animate={{ x: ["0%", "-50%"] }}
+          animate={{ x: ["0%", "-33.33%"] }}
           transition={{ ease: "linear", duration: 40, repeat: Infinity }}
           className="flex flex-nowrap gap-6 py-4 px-3 w-max"
         >
           {marqueeItems.map((test, idx) => (
             <div 
               key={idx}
-              className="w-[380px] flex-shrink-0 bg-[#0F172A]/40 backdrop-blur-xl border border-[rgba(255,255,255,0.08)] rounded-3xl p-8 hover:border-[rgba(255,255,255,0.15)] hover:bg-[#0F172A]/60 transition-all duration-300"
+              className="w-[350px] md:w-[420px] flex-shrink-0 bg-white border border-gray-100 rounded-3xl p-8 relative overflow-hidden hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.03)]"
             >
-              <div className="flex items-center gap-1 mb-6">
+              <Quote className="absolute top-6 right-6 w-12 h-12 text-gray-50 fill-gray-50" />
+              <div className="flex items-center gap-1 mb-6 relative z-10">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
-              <p className="text-[#E2E8F0] leading-relaxed mb-8 text-sm">
+              <p className="text-gray-700 leading-relaxed mb-8 text-base md:text-lg relative z-10 min-h-[120px]">
                 "{test.text}"
               </p>
-              <div className="flex items-center gap-4 mt-auto">
-                <img src={test.avatar} alt={test.name} className="w-12 h-12 rounded-full border border-[rgba(255,255,255,0.1)]" />
+              <div className="flex items-center gap-4 mt-auto border-t border-gray-50 pt-6 relative z-10">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${test.color} shadow-sm`}>
+                  {test.initials}
+                </div>
                 <div>
-                  <h4 className="font-bold text-white text-sm">{test.name}</h4>
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="text-[#00C9A7] font-medium">{test.role}</span>
-                    <span className="text-[#64748B]">•</span>
-                    <span className="text-[#94A3B8] font-medium">{test.company}</span>
+                  <h4 className="font-bold text-gray-900">{test.name}</h4>
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs mt-1">
+                    <span className="text-now-primary font-bold">{test.role}</span>
+                    <span className="text-gray-300">•</span>
+                    <span className="text-gray-500 font-semibold">{test.company}</span>
                   </div>
                 </div>
               </div>

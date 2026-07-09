@@ -1,26 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Circle, ArrowLeft, Play, X, Award } from "lucide-react";
+import { CheckCircle2, ArrowLeft, Play, X, Award, ChevronDown, Hammer, Mic, Flag } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { mockRoadmaps } from "../mockRoadmapData";
-
-const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 1200,
-  });
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize({ width: window.innerWidth });
-    }
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Initial set
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return windowSize;
-};
+import { TrackItemType } from "../data/sharedModules";
 
 const colorMap: Record<string, string> = {
   blue: "#3b82f6",
@@ -33,15 +17,37 @@ const colorMap: Record<string, string> = {
   slate: "#64748b"
 };
 
+const getThemeClasses = (color: string) => {
+  const map: any = {
+    'from-blue-500': { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200', hex: '#3b82f6' },
+    'from-emerald-500': { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-200', hex: '#10b981' },
+    'from-purple-500': { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200', hex: '#a855f7' },
+    'from-orange-500': { bg: 'bg-orange-50', text: 'text-orange-600', border: 'border-orange-200', hex: '#f97316' },
+    'from-cyan-500': { bg: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-200', hex: '#06b6d4' },
+    'from-emerald-600': { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-200', hex: '#10b981' },
+    'from-cyan-600': { bg: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-200', hex: '#06b6d4' },
+    'from-blue-600': { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200', hex: '#3b82f6' },
+  };
+  return map[color] || { bg: 'bg-now-primary/10', text: 'text-now-primary', border: 'border-now-primary/30', hex: '#3b82f6' };
+};
+
 export default function RoadmapViewer() {
   const { slug } = useParams();
-  const roadmap = mockRoadmaps.find(r => r.slug === slug);
+  const navigate = useNavigate();
+  const roadmap = mockRoadmaps.find(r => r.slug === slug) || mockRoadmaps[0];
   
   const [selectedModule, setSelectedModule] = useState<any>(null);
-  const { width } = useWindowSize();
+  const [completedLessons, setCompletedLessons] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('nowscripts_completed_lessons');
+      if (stored) setCompletedLessons(JSON.parse(stored));
+    } catch (e) {}
+  }, []);
 
   if (!roadmap) {
-    return <div className="text-white text-center mt-20">Roadmap not found.</div>;
+    return <div className="text-gray-900 text-center mt-20 font-bold text-2xl">Roadmap not found.</div>;
   }
 
   const getIcon = (iconName: string) => {
@@ -50,159 +56,143 @@ export default function RoadmapViewer() {
     return Icon ? <Icon className="w-12 h-12 text-white" /> : <LucideIcons.BookOpen className="w-12 h-12 text-white" />;
   };
 
-  const themeColorKey = roadmap.color.split('-')[1];
-  const strokeColor = colorMap[themeColorKey] || "#3b82f6";
+  const getItemIcon = (type: TrackItemType) => {
+    switch (type) {
+      case 'project': return <Hammer className="w-5 h-5 text-amber-500" />;
+      case 'mock-interview': return <Mic className="w-5 h-5 text-blue-500" />;
+      case 'milestone': return <Flag className="w-5 h-5 text-purple-500" />;
+      default: return <LucideIcons.BookOpen className="w-5 h-5 text-gray-400" />;
+    }
+  };
 
-  let itemsPerRow = 3;
-  if (width < 768) {
-    itemsPerRow = 1;
-  } else if (width < 1024) {
-    itemsPerRow = 2;
-  }
-
-  const rows = [];
-  for (let i = 0; i < roadmap.modules.length; i += itemsPerRow) {
-    rows.push(roadmap.modules.slice(i, i + itemsPerRow));
-  }
+  const themeColorKey = roadmap.color.split(' ')[0]; // e.g. from-blue-500
+  const theme = getThemeClasses(themeColorKey);
+  const strokeColor = theme.hex;
 
   return (
-    <div className="bg-now-background min-h-screen text-white font-sans selection:bg-now-primary selection:text-black pb-32 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12">
-        <Link to="/roadmaps" className="inline-flex items-center gap-2 text-now-muted hover:text-white transition-colors mb-6">
+    <div className="bg-gray-50 min-h-screen font-sans selection:bg-now-primary/20 selection:text-now-primary pb-32 pt-24 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-now-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/2 pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+        <Link to="/roadmaps" className="inline-flex items-center gap-2 text-gray-500 font-semibold hover:text-gray-900 transition-colors mb-6">
           <ArrowLeft className="w-4 h-4" /> Back to Roadmaps
         </Link>
         
+        {/* Track Switcher */}
+        <div className="flex overflow-x-auto gap-2 mb-8 bg-gray-200/50 p-1.5 rounded-full w-fit">
+          {mockRoadmaps.map(r => (
+            <button
+              key={r.slug}
+              onClick={() => navigate(`/roadmaps/${r.slug}`)}
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
+                roadmap.slug === r.slug 
+                  ? "bg-white text-gray-900 shadow-sm" 
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-200/50"
+              }`}
+            >
+              {r.title}
+            </button>
+          ))}
+        </div>
+        
         {/* Banner Section */}
-        <div className={`w-full rounded-3xl bg-gradient-to-br ${roadmap.color} p-8 md:p-12 mb-16 relative overflow-hidden shadow-2xl`}>
-           <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-10 transform scale-150 pointer-events-none">
-             {getIcon(roadmap.iconName || "BookOpen")}
-           </div>
+        <div className={`w-full rounded-[2rem] bg-gradient-to-br ${roadmap.color} p-8 md:p-14 mb-16 relative overflow-hidden shadow-xl`}>
+          <div className="absolute -right-8 -bottom-8 opacity-10 transform scale-150 pointer-events-none rotate-12">
+            {getIcon(roadmap.iconName || "BookOpen")}
+          </div>
 
-           <div className="relative z-10">
-              <div className="p-4 bg-black/20 rounded-2xl backdrop-blur-sm inline-block mb-6">
-                {getIcon(roadmap.iconName || "BookOpen")}
+          <div className="relative z-10">
+            <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-md inline-block mb-6 shadow-sm border border-white/30">
+              {getIcon(roadmap.iconName || "BookOpen")}
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">{roadmap.title}</h1>
+            <p className="text-xl text-white/90 max-w-2xl mb-10 leading-relaxed">{roadmap.description}</p>
+            
+            <div className="flex flex-wrap items-center gap-3 text-sm font-bold">
+              <div className="bg-white/20 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2 shadow-sm">
+                <span className="text-white/70 font-medium">Modules:</span> {roadmap.modules?.length || 0}
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">{roadmap.title}</h1>
-              <p className="text-xl text-white/80 max-w-2xl mb-8">{roadmap.description}</p>
-              
-              <div className="flex flex-wrap items-center gap-4 text-sm font-semibold">
-                 <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2">
-                    <span className="text-white/60">Modules:</span> {roadmap.modules.length}
-                 </div>
-                 <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2">
-                    <span className="text-white/60">Duration:</span> {roadmap.estimatedDuration}
-                 </div>
-                 <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2">
-                    <span className="text-white/60">Prerequisites:</span> {roadmap.prerequisites}
-                 </div>
-                 <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2">
-                    <span className="text-white/60">Outcome:</span> {roadmap.certification}
-                 </div>
+              <div className="bg-white/20 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2 shadow-sm">
+                <span className="text-white/70 font-medium">Duration:</span> {roadmap.estimatedDuration}
               </div>
-           </div>
+            </div>
+          </div>
         </div>
 
         {/* Learning Objectives Box */}
-        <div className="max-w-4xl mx-auto mb-24 bg-now-card border border-gray-800 p-8 rounded-3xl text-center">
-           <h3 className="text-xl font-bold mb-4 flex items-center justify-center gap-2">
-              <LucideIcons.Target className="w-6 h-6" style={{ color: strokeColor }} /> Learning Objectives
-           </h3>
-           <p className="text-now-muted leading-relaxed">{roadmap.learningObjectives}</p>
+        <div className="mb-24 bg-white border border-gray-200 p-8 md:p-10 rounded-[2rem] text-center shadow-sm">
+          <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center justify-center gap-3 text-gray-900">
+            <LucideIcons.Target className={`w-7 h-7 ${theme.text}`} /> Learning Objectives
+          </h3>
+          <p className="text-gray-600 leading-relaxed text-lg">{roadmap.learningObjectives}</p>
         </div>
 
-        {/* Winding Snake Roadmap */}
-        <div className="relative max-w-4xl mx-auto px-16 lg:px-20 mt-20">
-          {rows.map((row, rowIndex) => {
-            const isEvenRow = rowIndex % 2 === 0;
-            const isLastRow = rowIndex === rows.length - 1;
+        {/* Vertical Roadmap Steps */}
+        <div className="relative max-w-3xl mx-auto mt-20">
+          {/* Connecting Line */}
+          <div className={`absolute top-0 bottom-0 left-6 md:left-12 w-1.5 rounded-full ${theme.bg}`} />
+          <div className="absolute top-0 bottom-0 left-6 md:left-12 w-1.5 rounded-full bg-gradient-to-b from-now-primary via-purple-500 to-transparent" style={{ height: '30%' }} />
 
-            return (
-              <div 
-                className="relative w-full h-[320px] flex items-center justify-around z-10" 
-                key={rowIndex}
-                style={{ flexDirection: isEvenRow ? 'row' : 'row-reverse' }}
-              >
-                {/* Horizontal connecting line */}
-                <div 
-                  className="absolute left-0 right-0 h-[8px] rounded-full z-0" 
-                  style={{ top: 'calc(50% - 4px)', backgroundColor: strokeColor }} 
-                />
-
-                {/* U-Turn Connector */}
-                {!isLastRow && (
+          <div className="space-y-16">
+            {roadmap.modules?.map((mod: any, index: number) => {
+              const isCompleted = mod.items && mod.items.length > 0 && mod.items.every((t: any) => completedLessons[t.id]);
+              
+              return (
+                <motion.div 
+                  key={mod.id} 
+                  className="relative flex items-start gap-6 md:gap-10 group"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                >
+                  {/* Node Circle */}
                   <div 
-                    className={`absolute w-16 h-[328px] border-t-[8px] border-b-[8px] z-0 ${isEvenRow ? 'left-full border-r-[8px]' : 'right-full border-l-[8px]'}`}
-                    style={{ 
-                      top: 'calc(50% - 4px)',
-                      borderColor: strokeColor, 
-                      borderTopRightRadius: isEvenRow ? '999px' : '0', 
-                      borderBottomRightRadius: isEvenRow ? '999px' : '0',
-                      borderTopLeftRadius: !isEvenRow ? '999px' : '0',
-                      borderBottomLeftRadius: !isEvenRow ? '999px' : '0',
-                    }} 
-                  />
-                )}
-
-                {/* Row Items */}
-                {row.map((mod, colIndex) => {
-                  const globalIndex = rowIndex * itemsPerRow + colIndex;
-                  const isTop = globalIndex % 2 === 0;
+                    className={`relative z-10 flex-shrink-0 w-12 h-12 md:w-24 md:h-24 rounded-full border-[4px] md:border-[6px] flex items-center justify-center text-lg md:text-3xl font-black shadow-md bg-white transition-transform duration-300 group-hover:scale-110 cursor-pointer ${isCompleted ? 'border-emerald-500 text-emerald-500' : `${theme.border} ${theme.text}`}`}
+                    onClick={() => setSelectedModule(mod)}
+                  >
+                    {isCompleted ? <CheckCircle2 className="w-6 h-6 md:w-12 md:h-12" /> : index + 1}
+                  </div>
                   
-                  return (
-                    <motion.div 
-                      key={mod.id} 
-                      className="relative flex flex-col items-center flex-1"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                    >
-                       {/* Node Circle */}
-                       <div 
-                         className={`w-14 h-14 md:w-16 md:h-16 rounded-full border-[6px] flex items-center justify-center text-xl font-black z-20 shadow-[0_0_20px_rgba(0,0,0,0.5)] transition-transform duration-300 hover:scale-110 cursor-pointer`}
-                         style={{ 
-                           borderColor: strokeColor, 
-                           color: mod.completed ? '#000' : strokeColor, 
-                           backgroundColor: mod.completed ? strokeColor : '#0f172a' 
-                         }}
-                         onClick={() => setSelectedModule(mod)}
-                       >
-                         {mod.completed ? <CheckCircle2 className="w-8 h-8 text-black" /> : globalIndex + 1}
-                       </div>
-                       
-                       {/* Content Card */}
-                       <div 
-                         className={`absolute w-40 md:w-56 p-4 md:p-5 rounded-2xl border border-gray-800 bg-now-card shadow-2xl cursor-pointer hover:border-gray-600 transition-all z-30 flex flex-col items-center text-center ${isTop ? 'bottom-[80px]' : 'top-[80px]'}`}
-                         onClick={() => setSelectedModule(mod)}
-                       >
-                           <h3 className="text-sm md:text-base font-bold text-white mb-2 leading-tight line-clamp-2">{mod.title}</h3>
-                           <p className="text-xs text-now-muted line-clamp-3 mb-3 hidden md:block">{mod.description}</p>
-                           <div className="flex items-center text-[10px] md:text-xs font-semibold text-gray-400 bg-black/40 px-3 py-1.5 rounded-full">
-                             ⏱ {mod.estimatedTime}
-                           </div>
-                       </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            );
-          })}
+                  {/* Content Card */}
+                  <div 
+                    className="flex-1 bg-white border border-gray-200 rounded-[2rem] p-6 md:p-8 shadow-sm hover:shadow-xl hover:border-gray-300 transition-all cursor-pointer group-hover:-translate-y-1"
+                    onClick={() => setSelectedModule(mod)}
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight group-hover:text-now-primary transition-colors">{mod.title}</h3>
+                      <div className={`inline-flex items-center text-xs md:text-sm font-bold px-3 py-1.5 rounded-full whitespace-nowrap ${theme.bg} ${theme.text}`}>
+                        ⏱ {mod.estimatedTime}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed mb-6">{mod.description}</p>
+                    
+                    <div className="flex items-center gap-2 text-now-primary font-bold text-sm">
+                      View Details <LucideIcons.ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Certification Milestone */}
         {roadmap.certification && (
           <div className="relative flex justify-center mt-32">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-[#080d1e] to-[#0f172a] border-2 border-yellow-500/30 rounded-3xl p-8 text-center max-w-md w-full shadow-[0_0_30px_rgba(234,179,8,0.1)] relative z-10"
+              className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-[2rem] p-10 md:p-14 text-center w-full shadow-lg relative z-10"
             >
-              <Award className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-black text-white mb-2">Milestone Reached</h2>
-              <p className="text-now-muted mb-6">Complete this roadmap to unlock the <strong>{roadmap.certification}</strong> track.</p>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <Award className="w-20 h-20 text-amber-500 mx-auto mb-6 drop-shadow-md" />
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Milestone Reached</h2>
+              <p className="text-gray-600 text-lg mb-8 max-w-xl mx-auto">Complete this roadmap to unlock the <strong className="text-gray-900">{roadmap.certification}</strong> track and prove your expertise.</p>
               <Link to="/certifications">
-                <button className="px-6 py-3 bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20 transition-colors rounded-full font-bold w-full border border-yellow-500/20">
-                  View Certification Details
+                <button className="px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white shadow-md hover:shadow-xl transition-all rounded-full font-bold text-lg inline-flex items-center gap-2">
+                  View Certification Details <LucideIcons.ArrowRight className="w-5 h-5" />
                 </button>
               </Link>
             </motion.div>
@@ -213,45 +203,77 @@ export default function RoadmapViewer() {
       {/* Module Details Modal */}
       <AnimatePresence>
         {selectedModule && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedModule(null)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm"
             />
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-now-card border border-gray-700 rounded-3xl p-8 shadow-2xl z-10"
+              className="relative w-full max-w-2xl bg-white rounded-[2rem] p-8 md:p-10 shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col"
             >
-              <button onClick={() => setSelectedModule(null)} className="absolute top-6 right-6 text-gray-500 hover:text-white">
-                <X className="w-6 h-6" />
+              <div className={`absolute top-0 left-0 w-full h-3 bg-gradient-to-r ${roadmap.color}`} />
+              
+              <button onClick={() => setSelectedModule(null)} className="absolute top-6 right-6 text-gray-400 hover:text-gray-900 transition-colors bg-gray-50 hover:bg-gray-100 p-2 rounded-full">
+                <X className="w-5 h-5" />
               </button>
               
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-black/20 text-white rounded-xl backdrop-blur-sm" style={{ color: strokeColor }}>
-                  <Play className="w-6 h-6 ml-1" fill="currentColor" />
+              <div className="flex flex-col h-full overflow-hidden">
+                <div className="flex items-start gap-4 mb-6 pr-12 shrink-0">
+                  <div className={`p-4 rounded-2xl ${theme.bg} ${theme.text} shrink-0`}>
+                    <Play className="w-8 h-8" fill="currentColor" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-2">{selectedModule.title}</h2>
+                    <span className={`inline-flex items-center text-sm font-bold px-3 py-1 rounded-full ${theme.bg} ${theme.text}`}>
+                      {selectedModule.estimatedTime}
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-white leading-tight">{selectedModule.title}</h2>
-                  <span className="text-sm text-gray-400">{selectedModule.estimatedTime}</span>
+
+                <p className="text-gray-600 leading-relaxed text-lg mb-8 shrink-0">{selectedModule.description}</p>
+                
+                <h4 className="font-bold text-gray-900 mb-4 shrink-0 uppercase text-sm tracking-wider">Module Contents</h4>
+                <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 mb-8 space-y-3">
+                  {selectedModule.items?.map((item: any, idx: number) => (
+                    <div key={item.id} className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                      <div className="mt-0.5">{getItemIcon(item.type)}</div>
+                      <div>
+                        <div className="font-bold text-gray-900 flex items-center gap-2">
+                          {item.title}
+                          {item.type !== 'topic' && (
+                            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-200 text-gray-700">
+                              {item.type.replace('-', ' ')}
+                            </span>
+                          )}
+                        </div>
+                        {item.description && <p className="text-sm text-gray-600 mt-1">{item.description}</p>}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              </div>
 
-              <p className="text-now-muted mb-8 leading-relaxed text-lg">{selectedModule.description}</p>
-
-              <div className="space-y-4">
-                <Link to={`/learn/${roadmap.slug}/${selectedModule.id.replace(/-/g, '')}`}>
-                  <button className="w-full py-4 rounded-full font-bold text-white bg-gray-800 hover:bg-gray-700 transition-colors mb-4 block text-center">
-                    View Study Materials
+                <div className="flex flex-col sm:flex-row gap-4 shrink-0 mt-auto">
+                  <Link to={`/learn/${selectedModule.id}/${selectedModule.items?.[0]?.id || ''}`} className="flex-1">
+                    <button className="w-full py-4 rounded-full font-bold text-white bg-gray-900 hover:bg-now-primary transition-colors text-center shadow-md">
+                      Start Module
+                    </button>
+                  </Link>
+                  <button 
+                    className={`flex-1 py-4 rounded-full font-bold text-center transition-all border-2 ${
+                      (selectedModule.items && selectedModule.items.length > 0 && selectedModule.items.every((t: any) => completedLessons[t.id]))
+                      ? "bg-emerald-50 text-emerald-600 border-emerald-200 cursor-not-allowed" 
+                      : "bg-white text-gray-700 hover:bg-gray-50 border-gray-200"
+                    }`}
+                  >
+                    {(selectedModule.items && selectedModule.items.length > 0 && selectedModule.items.every((t: any) => completedLessons[t.id])) ? "Completed" : "In Progress"}
                   </button>
-                </Link>
-                <button className={`w-full py-4 rounded-full font-bold text-lg transition-all ${selectedModule.completed ? "bg-now-background text-gray-500 cursor-not-allowed border border-gray-800" : "bg-white text-black hover:bg-gray-200"}`}>
-                  {selectedModule.completed ? "Completed" : "Mark as Complete"}
-                </button>
+                </div>
               </div>
             </motion.div>
           </div>

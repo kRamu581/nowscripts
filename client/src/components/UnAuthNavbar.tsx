@@ -108,7 +108,7 @@ export default function UnAuthNavbar() {
             Sign In
           </Link>
         </div>
-        <AvatarMenu />
+        <AvatarMenu isScrolled={true} />
       </div>
     </nav>
   );

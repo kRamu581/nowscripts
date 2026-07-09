@@ -2,30 +2,39 @@ import { motion } from "framer-motion";
 
 export function TrustedBy() {
   const logos = [
-    { name: "ServiceNow", svg: <svg className="h-8 md:h-10 text-white/50" viewBox="0 0 100 100" fill="currentColor"><text x="10" y="60" fontSize="40" fontWeight="bold">ServiceNow</text></svg> },
-    { name: "Microsoft", svg: <svg className="h-8 md:h-10 text-white/50" viewBox="0 0 100 100" fill="currentColor"><text x="10" y="60" fontSize="40" fontWeight="bold">Microsoft</text></svg> },
-    { name: "GitHub", svg: <svg className="h-8 md:h-10 text-white/50" viewBox="0 0 100 100" fill="currentColor"><text x="10" y="60" fontSize="40" fontWeight="bold">GitHub</text></svg> },
-    { name: "AWS", svg: <svg className="h-8 md:h-10 text-white/50" viewBox="0 0 100 100" fill="currentColor"><text x="10" y="60" fontSize="40" fontWeight="bold">AWS</text></svg> },
-    { name: "Salesforce", svg: <svg className="h-8 md:h-10 text-white/50" viewBox="0 0 100 100" fill="currentColor"><text x="10" y="60" fontSize="40" fontWeight="bold">Salesforce</text></svg> }
+    <div key="1" className="text-xl md:text-2xl font-black tracking-tighter hover:text-now-primary transition-colors cursor-default whitespace-nowrap">ServiceNow</div>,
+    <div key="2" className="text-xl md:text-2xl font-bold font-sans hover:text-blue-600 transition-colors cursor-default whitespace-nowrap">Microsoft</div>,
+    <div key="3" className="text-xl md:text-2xl font-mono font-bold hover:text-gray-900 transition-colors cursor-default whitespace-nowrap">GitHub</div>,
+    <div key="4" className="text-xl md:text-2xl font-black font-sans hover:text-orange-500 transition-colors cursor-default whitespace-nowrap">AWS</div>,
+    <div key="5" className="text-xl md:text-2xl font-bold italic hover:text-blue-500 transition-colors cursor-default whitespace-nowrap">Salesforce</div>,
+    <div key="6" className="text-xl md:text-2xl font-bold font-serif hover:text-red-500 transition-colors cursor-default whitespace-nowrap">Oracle</div>,
+    <div key="7" className="text-xl md:text-2xl font-black tracking-widest hover:text-blue-800 transition-colors cursor-default whitespace-nowrap">IBM</div>,
   ];
 
   return (
-    <section className="py-12 bg-[#020617] border-y border-white/5 relative overflow-hidden">
+    <section className="py-12 bg-white border-b border-gray-100 relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <p className="text-center text-sm font-semibold text-slate-400 uppercase tracking-widest mb-8">
+        <p className="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">
           Master technologies trusted by industry leaders
         </p>
         
-        {/* Simple text-based logos for mockup purposes */}
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-          <div className="text-xl md:text-2xl font-black tracking-tighter">ServiceNow</div>
-          <div className="text-xl md:text-2xl font-bold font-sans">Microsoft</div>
-          <div className="text-xl md:text-2xl font-mono font-bold">GitHub</div>
-          <div className="text-xl md:text-2xl font-black font-sans">AWS</div>
-          <div className="text-xl md:text-2xl font-bold italic">Salesforce</div>
+        {/* Infinite Marquee Container */}
+        <div className="relative flex overflow-hidden group">
+          {/* Fading Edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+          
+          <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-500">
+            {/* Duplicate logos for infinite loop */}
+            {[...logos, ...logos, ...logos].map((logo, index) => (
+              <div key={index} className="mx-8 md:mx-16 flex items-center justify-center">
+                {logo}
+              </div>
+            ))}
+          </div>
         </div>
         
-        <p className="text-center text-xs text-slate-600 mt-8 max-w-2xl mx-auto">
+        <p className="text-center text-[10px] text-gray-400 mt-8 max-w-2xl mx-auto">
           *Note: NowScripts is an independent educational platform. These logos represent the technologies our community works with and are not official partnerships.
         </p>
       </div>
