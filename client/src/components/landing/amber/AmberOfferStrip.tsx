@@ -1,17 +1,24 @@
-import { Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Sparkles } from "lucide-react";
 
 export function AmberOfferStrip() {
   return (
-    <div className="w-full bg-[#FFF0ED] border-y border-[#FFE4DE] py-3 px-4">
-      <div className="max-w-[1400px] mx-auto flex items-center justify-center gap-3 text-center">
-        <Sparkles className="w-4 h-4 text-[#FF5A3C] shrink-0" />
-        <p className="text-sm md:text-base font-semibold text-gray-800">
-          <span className="text-[#FF5A3C] font-bold mr-2">New:</span> 
-          50+ Fresh CSA Interview Questions Added This Month
-        </p>
-        <Link to="/interview-prep" className="hidden sm:flex items-center gap-1 text-[#FF5A3C] text-sm font-bold hover:underline ml-2">
-          View Questions <ArrowRight className="w-3 h-3" />
+    <div className="w-full bg-white pt-8 pb-4">
+      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 flex justify-center">
+        <Link 
+          to="/pricing"
+          className="flex items-center justify-between w-full md:w-auto bg-[#FFFBF5] border border-[#F6DEC0] rounded-full px-4 sm:px-8 py-2.5 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <div className="w-6 h-6 rounded-full bg-[#E8B257] text-white flex items-center justify-center shrink-0 shadow-inner">
+            <Sparkles className="w-3.5 h-3.5" />
+          </div>
+          <p className="text-[13px] sm:text-[15px] text-[#374151] mx-4 text-center">
+            <strong className="text-black font-black uppercase tracking-wide mr-2">Exclusive Offer</strong> 
+            Get 50% off on all Premium Roadmaps | Limited Time Only
+          </p>
+          <div className="w-6 h-6 rounded-full bg-[#E8B257] text-white flex items-center justify-center shrink-0 shadow-inner">
+            <Sparkles className="w-3.5 h-3.5" />
+          </div>
         </Link>
       </div>
     </div>

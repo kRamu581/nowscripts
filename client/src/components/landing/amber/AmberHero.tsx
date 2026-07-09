@@ -29,7 +29,7 @@ export function AmberHero() {
             <input 
               type="text" 
               placeholder="Search by CSA, CAD, or specific modules..." 
-              className="w-full bg-transparent border-none outline-none focus:ring-0 text-gray-800 placeholder-gray-500 py-3 px-2 text-[15px] md:text-lg font-medium"
+              className="w-full bg-transparent border-none outline-none focus:outline-none focus-visible:outline-none focus:ring-0 text-gray-800 placeholder-gray-500 py-3 px-2 text-[15px] md:text-lg font-medium"
             />
           </div>
           <button className="w-12 h-12 md:w-auto md:h-auto md:px-8 md:py-3.5 bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center font-bold transition-colors shadow-md text-lg shrink-0">

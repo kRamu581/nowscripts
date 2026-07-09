@@ -55,7 +55,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
               <input 
                 type="text" 
                 placeholder="Search by City University or Property" 
-                className="w-full h-full bg-transparent pl-5 pr-14 text-[14px] text-gray-900 font-medium focus:outline-none placeholder:text-gray-400"
+                className="w-full h-full bg-transparent pl-5 pr-14 text-[14px] text-gray-900 font-medium focus:outline-none focus-visible:outline-none placeholder:text-gray-400"
               />
               <button className="absolute right-1 w-[38px] h-[38px] bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center transition-colors">
                 <Search size={18} strokeWidth={2.5} />
@@ -66,9 +66,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
 
         {/* Right Side: CTA / Icons */}
         <div className="flex items-center gap-5">
-          <Link to="/" className={`hidden xl:flex items-center gap-1.5 text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>
-            <Download size={18} strokeWidth={2} /> Download App
-          </Link>
+
           <Link to="/about" className={`hidden lg:flex items-center gap-1.5 text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>
             <HeadphonesIcon size={18} strokeWidth={2} /> Support
           </Link>

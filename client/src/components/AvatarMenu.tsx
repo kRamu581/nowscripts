@@ -162,14 +162,7 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                       <Heart className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
                       <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Shortlist</span>
                     </Link>
-                    <Link
-                      to="/"
-                      onClick={closeMenu}
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
-                    >
-                      <Download className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
-                      <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Download App</span>
-                    </Link>
+
                   </div>
                 </div>
               ) : (
