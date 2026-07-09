@@ -8,19 +8,20 @@ import { Search, Plus, Filter, Download, X, Check, AlertCircle, FileText } from 
 import { Link } from "react-router-dom";
 
 interface Certificate {
- _id: string;
- certificateId: string;
- verificationNumber: string;
- candidateName: string;
- email: string;
- trackCompleted: string;
- companyName: string;
- issueDate: string;
- startDate: string;
- endDate: string;
- mentorName: string;
- status: "Active" | "Revoked" | "Expired";
- createdAt: string;
+  _id: string;
+  certificateId: string;
+  verificationNumber: string;
+  candidateName: string;
+  email: string;
+  trackCompleted: string;
+  internshipTitle?: string; // Added for backwards compatibility with old records
+  companyName: string;
+  issueDate: string;
+  startDate: string;
+  endDate: string;
+  mentorName: string;
+  status: "Active" | "Revoked" | "Expired";
+  createdAt: string;
 }
 
 const TRACKS_COMPLETED = [
