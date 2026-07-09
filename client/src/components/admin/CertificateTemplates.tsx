@@ -21,22 +21,28 @@ export interface CertificateData {
 }
 
 export const CertificateTemplate = React.forwardRef<HTMLDivElement, { data: CertificateData }>(({ data }, ref) => {
-  const isCompletionLetter = data.templateType === "Internship Completion Letter" || data.templateType === "Offer Letter";
-  
-  // Format dates cleanly (e.g., "June 23, 2026")
+  // Format dates cleanly (e.g., "08, June, 2026")
   const formatDate = (dateStr: string) => {
     if (!dateStr) return "N/A";
     try {
-      return new Date(dateStr).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+      const d = new Date(dateStr);
+      const day = d.getDate().toString().padStart(2, '0');
+      const month = d.toLocaleString('default', { month: 'long' });
+      const year = d.getFullYear();
+      return `${day}, ${month}, ${year}`;
     } catch {
       return dateStr;
     }
   };
 
-  const formatMonthYear = (dateStr: string) => {
+  const formatShortDate = (dateStr: string) => {
     if (!dateStr) return "N/A";
     try {
-      return new Date(dateStr).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+      const d = new Date(dateStr);
+      const day = d.getDate().toString().padStart(2, '0');
+      const month = d.toLocaleString('default', { month: 'short' });
+      const year = d.getFullYear();
+      return `${day}/${month}/${year}`;
     } catch {
       return dateStr;
     }
@@ -54,117 +60,87 @@ export const CertificateTemplate = React.forwardRef<HTMLDivElement, { data: Cert
         overflowWrap: "break-word",
         wordBreak: "break-word",
         whiteSpace: "normal",
-        textRendering: "auto"
+        textRendering: "auto",
+        fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif"
       }}
     >
-      {/* Header with Logo */}
-      <div className="flex justify-end mb-[16px]">
-        <img src="/certificate-logo.jpg" alt="NowScripts Logo" className="h-[45px] object-contain mix-blend-multiply" />
-      </div>
+      {/* Header Block exactly like the reference */}
+      <div className="flex justify-between items-start mb-[80px]">
+        {/* Left Side: Logo and Company Link */}
+        <div className="flex items-center gap-4">
+          <div className="w-[50px] h-[50px] flex items-center justify-center">
+             <img src="/icon-512.png" alt="NowScripts" className="w-full h-full object-contain rounded-xl" />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-[14px]">NowScripts</span>
+            <span className="text-[12px] text-gray-600">www.nowscripts.in</span>
+          </div>
+        </div>
+        
+        {/* Middle Address */}
+        <div className="flex flex-col text-[10px] text-gray-700 max-w-[280px] leading-relaxed">
+          <span>NowScripts Software Development India Pvt. Ltd.</span>
+          <span>Remote-First Team</span>
+          <span>Gurugram, Haryana</span>
+        </div>
 
-      <div className="text-center mb-[40px]">
-        <span className="text-[#1a56db] underline decoration-1 underline-offset-4" style={{ fontSize: "18px", lineHeight: "1.5" }}>
-          {data.companyName}
-        </span>
+        {/* Right Side Info */}
+        <div className="flex flex-col text-[10px] text-gray-700 text-right">
+          <span>Tel +91 (40) 6629 4700</span>
+          <span>CIN {data.certificateId || "[Auto-Generated]"}</span>
+        </div>
       </div>
-
-      <h1 className="font-bold text-center text-black mb-[40px] tracking-tight" style={{ fontSize: "30px", lineHeight: "1.25" }}>
-        {data.templateType}
-      </h1>
 
       {/* Date */}
-      <div className="text-right mb-[24px]">
-        <p className="font-bold text-black" style={{ fontSize: "14px", lineHeight: "1.75" }}>{formatDate(data.issueDate)}</p>
+      <div className="mb-[60px]">
+        <p className="font-bold text-[14px]">{formatDate(data.issueDate)}</p>
       </div>
 
-      {/* Name and ID Block */}
-      <div className="mb-[40px] text-left">
-        <h2 className="font-bold mb-[4px]" style={{ color: "#000000", fontSize: "20px", lineHeight: "1.25" }}>
-          Name: {data.candidateName || "[Candidate Name]"}
-        </h2>
-        <p style={{ color: "#4B5563", fontSize: "14px", lineHeight: "1.75" }}>
-          Certificate ID: <span className="font-semibold" style={{ color: "#1F2937" }}>{data.certificateId || "[Auto-Generated]"}</span> · {data.location || "Full-time Remote"}
+      {/* Title */}
+      <div className="text-center mb-[40px]">
+        <h1 className="font-bold text-[14px] uppercase tracking-wide">
+          TO WHOM IT MAY CONCERN
+        </h1>
+      </div>
+
+      {/* Body Paragraph */}
+      <div className="text-black flex flex-col gap-[24px] text-[13px] leading-[1.8] text-justify mb-[32px]">
+        <p>
+          This is to certify that <strong>{data.candidateName || "[Name]"}{data.certificateId ? ` (${data.certificateId})` : ""}</strong> have completed the internship with us from <strong>{formatShortDate(data.startDate)}</strong> to <strong>{formatShortDate(data.endDate)}</strong>. <strong>{data.candidateName || "[Name]"}</strong>'s role at the time of leaving NowScripts was <strong>{data.internshipTitle || "[Track/Role Name]"}</strong>.
+        </p>
+
+        <p>
+          We wish you all the very best for your future endeavors.
+        </p>
+
+        <p>
+          For any queries concerning the above information, please verify at <span className="text-blue-600 underline">nowscripts.in/verify/{data.certificateId || "[Certificate ID]"}</span> or contact <span className="text-blue-600 underline">support@nowscripts.in</span>.
         </p>
       </div>
 
-      {/* Main Paragraph */}
-      <div className="text-black flex flex-col gap-[24px]" style={{ fontSize: "14px", lineHeight: "1.75" }}>
-        {isCompletionLetter ? (
-          <>
-            {data.templateType === "Offer Letter" ? (
-              <p>
-                We are pleased to offer you the position of an intern at our organization from <strong>{formatMonthYear(data.startDate)}</strong> to <strong>{formatMonthYear(data.endDate)}</strong> as part of the <strong>{data.internshipTitle || "[Internship Program]"}</strong>, under the mentorship of <strong>{data.mentorName || "[Mentor Name]"}</strong>.
-              </p>
-            ) : (
-              <p>
-                This is to certify that <strong>{data.candidateName || "[Candidate Name]"}</strong> was an intern in our organization from <strong>{formatMonthYear(data.startDate)}</strong> to <strong>{formatMonthYear(data.endDate)}</strong> as part of the <strong>{data.internshipTitle || "[Internship Program]"}</strong>, under the mentorship of <strong>{data.mentorName || "[Mentor Name]"}</strong> and has successfully completed the internship.
-              </p>
-            )}
-            
-            {data.projectUndertaken && (
-              <div className="flex flex-col gap-[8px]">
-                <p>Project undertaken:</p>
-                <ol className="list-decimal pl-[40px]">
-                  <li className="font-bold pl-[8px]">{data.projectUndertaken}</li>
-                </ol>
-              </div>
-            )}
-            
-            {data.rolesAndResponsibilities && (
-              <div className="flex flex-col gap-[8px]">
-                <p>Intern Role's and Responsibilities:</p>
-                <ul className="list-disc pl-[40px]">
-                  <li className="pl-[8px]">{data.rolesAndResponsibilities}</li>
-                </ul>
-              </div>
-            )}
-            
-            <p className="mt-[8px]">We wish you all the best for your future endeavors.</p>
-          </>
-        ) : (
-           // General Certificate Text
-           <div className="flex flex-col gap-[32px] items-center my-[32px]">
-            <p className="italic text-gray-600" style={{ fontSize: "18px", lineHeight: "1.5" }}>This certifies that</p>
-            <p className="font-bold text-[#0F172A]" style={{ fontSize: "30px", lineHeight: "1.25", textAlign: "center" }}>{data.candidateName || "[Candidate Name]"}</p>
-            <p style={{ textAlign: "center", fontSize: "14px", lineHeight: "1.75" }}>
-              has successfully completed the <strong>{data.internshipTitle || "[Internship Program]"}</strong> from <strong>{formatMonthYear(data.startDate)}</strong> to <strong>{formatMonthYear(data.endDate)}</strong>.
-            </p>
-            {data.projectUndertaken && (
-              <p style={{ textAlign: "center", fontSize: "14px", lineHeight: "1.75" }}>
-                Outstanding contribution on: <strong>{data.projectUndertaken}</strong>
-              </p>
-            )}
-           </div>
-        )}
-      </div>
-
-      {/* Signatures & Stamp */}
-      <div className="mt-[56px] flex flex-col gap-[4px]">
-        <p className="text-black" style={{ fontSize: "14px", lineHeight: "1.75" }}>Sincere Regards</p>
-        <p className="text-black" style={{ fontSize: "14px", lineHeight: "1.75" }}>For {data.companyName}</p>
+      {/* Sign Off */}
+      <div>
+        <p className="text-[13px] leading-relaxed mb-1">Yours sincerely,</p>
+        <p className="text-[13px] leading-relaxed mb-[32px]">For and on behalf of <strong>NowScripts Software Development LLC</strong></p>
         
-        <div className="mt-[24px] mb-[16px]">
-          <img src="/certificate-stamp.jpg" alt="NowScripts Stamp" className="h-[120px] w-[120px] object-contain mix-blend-multiply" />
+        {/* Signature Placeholder - Using a cursive font to simulate a real signature */}
+        <div className="mb-[16px] ml-[-10px]">
+           <span className="font-['Brush_Script_MT',cursive] text-[36px] text-gray-800 opacity-90 block" style={{ transform: 'rotate(-5deg)' }}>
+             {data.mentorName || "Signature"}
+           </span>
         </div>
 
-        <p className="text-black" style={{ fontSize: "14px", lineHeight: "1.75" }}>HR Department</p>
-        <p className="font-bold text-black" style={{ fontSize: "14px", lineHeight: "1.75" }}>Senior Director – HR Shared Service</p>
+        <div className="w-[180px] h-[1px] bg-gray-400 mb-[8px]"></div>
+        
+        <p className="font-bold text-[13px] uppercase">{data.mentorName || "[Signatory Name]"}</p>
+        <p className="font-bold text-[13px]">{data.department || "[Signatory Title]"}</p>
       </div>
 
-      {/* Footer Branding and Verification */}
-      <div className="mt-auto border-t border-gray-200 pt-[24px] w-full flex justify-between items-center text-gray-500" style={{ fontSize: "10px", lineHeight: "1.5" }}>
-        <span className="flex items-center gap-[8px]">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          https://nowscript.in/
-        </span>
-        <span className="flex items-center gap-[8px]">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          Remote
-        </span>
-        <span className="flex items-center gap-[8px]">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          hr@nowscripts.com
-        </span>
+      {/* Footer Logo */}
+      <div className="mt-auto">
+        <div className="font-bold text-[24px] tracking-tighter flex items-center">
+          nowscripts<span className="text-now-primary">.</span>
+        </div>
       </div>
     </div>
   );

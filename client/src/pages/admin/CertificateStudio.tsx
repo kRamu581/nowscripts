@@ -9,24 +9,10 @@ import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { CertificateTemplate, CertificateData } from "../../components/admin/CertificateTemplates";
 
-const INTERNSHIP_PROGRAMS = [
- "ServiceNow Fundamentals Internship",
- "ServiceNow Administration Internship",
- "ServiceNow Developer Internship",
- "ITSM Internship",
- "ServiceNow CSA Preparation Internship",
- "Technical Content Writing Internship",
- "Community Management Internship",
- "Frontend Development Internship"
-];
+
 
 const TEMPLATE_TYPES = [
- "Offer Letter",
- "Internship Completion Letter",
- "Internship Certificate",
- "Experience Letter",
- "Appreciation Certificate",
- "Training Completion Certificate"
+ "Certificate of Completion"
 ];
 
 export default function CertificateStudio() {
@@ -43,9 +29,9 @@ export default function CertificateStudio() {
  const [formData, setFormData] = useState<CertificateData>({
  candidateName: "",
  email: "",
- internshipTitle: INTERNSHIP_PROGRAMS[0],
+ internshipTitle: "",
  templateType: TEMPLATE_TYPES[0],
- department: "ServiceNow Development",
+ department: "Senior Director - NowScripts Management",
  projectUndertaken: "",
  rolesAndResponsibilities: "",
  location: "Full-time Remote",
@@ -124,12 +110,13 @@ export default function CertificateStudio() {
  const imgData = canvas.toDataURL("image/png", 1.0);
  const pdf = new jsPDF({
  orientation: "portrait",
- unit: "px",
- format: [794, 1123],
+ unit: "mm",
+ format: "a4",
  compress: true
  });
  
- pdf.addImage(imgData, "PNG", 0, 0, 794, 1123);
+ // A4 size in mm is 210 x 297
+ pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
  pdf.save(`NowScripts_Certificate_${formData.candidateName.replace(/\s+/g, '_') || "Draft"}.pdf`);
  handleToast("PDF Downloaded successfully!");
  } catch (error) {
@@ -202,10 +189,8 @@ export default function CertificateStudio() {
  </select>
  </div>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Internship Program</label>
- <select name="internshipTitle" value={formData.internshipTitle} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]">
- {INTERNSHIP_PROGRAMS.map(p => <option key={p} value={p}>{p}</option>)}
- </select>
+ <label className="block text-xs font-semibold text-gray-400 mb-1">Role / Track Completed</label>
+ <input type="text" name="internshipTitle" value={formData.internshipTitle} onChange={handleChange} placeholder="e.g. Intern-Associate Technical Support Engineer" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  </div>
 
@@ -220,8 +205,8 @@ export default function CertificateStudio() {
  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="e.g. name@example.com" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Department</label>
- <input type="text" name="department" value={formData.department} onChange={handleChange} placeholder="e.g. ServiceNow Development" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-400 mb-1">Signatory Title</label>
+ <input type="text" name="department" value={formData.department} onChange={handleChange} placeholder="e.g. Senior Director - NowScripts Management" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  </div>
 
@@ -237,27 +222,17 @@ export default function CertificateStudio() {
  <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
  </div>
  </div>
+
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Project Undertaken</label>
- <textarea name="projectUndertaken" value={formData.projectUndertaken} onChange={handleChange} rows={3} placeholder="e.g. Development of content writing modules and learning materials..." className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm resize-none"></textarea>
- </div>
- <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Intern Role's and Responsibilities</label>
- <textarea name="rolesAndResponsibilities" value={formData.rolesAndResponsibilities} onChange={handleChange} rows={3} placeholder="e.g. Assisting in full-stack development tasks..." className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm resize-none"></textarea>
- </div>
- <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Mentor Name *</label>
- <input type="text" name="mentorName" value={formData.mentorName} onChange={handleChange} placeholder="e.g. NowScripts Private Limited" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-400 mb-1">Signatory Name *</label>
+ <input type="text" name="mentorName" value={formData.mentorName} onChange={handleChange} placeholder="e.g. Kalluri Prathap" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
  <div>
  <label className="block text-xs font-semibold text-gray-400 mb-1">Issue Date</label>
  <input type="date" name="issueDate" value={formData.issueDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
  </div>
- <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Location</label>
- <input type="text" name="location" value={formData.location} onChange={handleChange} placeholder="e.g. Full-time Remote" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
- </div>
+
  </div>
  </div>
 

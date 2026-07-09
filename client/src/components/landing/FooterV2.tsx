@@ -57,7 +57,6 @@ export function FooterV2() {
             <ul className="space-y-4 text-gray-600 text-sm font-medium">
               {isAdmin && <li><Link to="/admin/certificates/studio" className="hover:text-now-primary transition-colors flex items-center gap-2 group">Issue Certificate <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-now-primary" /></Link></li>}
               <li><Link to="/verify" className="hover:text-now-primary transition-colors flex items-center gap-2 group">Verify Certificate <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-now-primary" /></Link></li>
-              <li><Link to="/verify" className="hover:text-now-primary transition-colors flex items-center gap-2 group">Verify Internship <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-now-primary" /></Link></li>
               {isAdmin && <li><a href="mailto:verify@nowscripts.com" className="hover:text-now-primary transition-colors flex items-center gap-2 group">Contact Team <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-now-primary" /></a></li>}
             </ul>
           </div>

@@ -49,7 +49,7 @@ export default function UnAuthNavbar() {
         <Link to="#" className="hidden md:block" style={{ textDecoration: "none", color: "gray", fontSize: "14px", whiteSpace: "nowrap" }}>Roadmaps</Link>
         <Link to="#" className="hidden lg:block" style={{ textDecoration: "none", color: "gray", fontSize: "14px", whiteSpace: "nowrap" }}>Projects</Link>
         <Link to="#" className="hidden lg:block" style={{ textDecoration: "none", color: "gray", fontSize: "14px", whiteSpace: "nowrap" }}>Interview Prep</Link>
-        <Link to="/community" className="hidden md:block" style={{ textDecoration: "none", color: "gray", fontSize: "14px", whiteSpace: "nowrap" }}>Community</Link>
+
         <Link
           to="/signin/write"
           className="writeBtn"

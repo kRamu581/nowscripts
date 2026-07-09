@@ -73,7 +73,7 @@ function PublicLayout({ notificationsCount }: { notificationsCount: number }) {
   const { isAuthenticated } = useAuth();
   return (
     <AuthModalProvider>
-      <div className={`flex flex-col min-h-screen ${isAuthenticated ? "bg-[#F8FAFC] text-[#0F172A]" : "bg-now-background text-now-text"} font-sans relative`}>
+      <div className={`flex flex-col min-h-screen ${isAuthenticated ? "bg-[#0F1014] text-white" : "bg-[#0F1014] text-white"} font-sans relative`}>
         {isAuthenticated ? (
           <Navbar notificationsCount={notificationsCount} />
         ) : (
@@ -90,7 +90,7 @@ function PublicLayout({ notificationsCount }: { notificationsCount: number }) {
 
 function AppLayout({ notificationsCount }: { notificationsCount: number }) {
   return (
-    <div className="flex flex-col h-screen bg-[#F8FAFC] text-[#0F172A] font-sans selection:bg-now-primary selection:text-black">
+    <div className="flex flex-col h-screen bg-[#0F1014] text-white font-sans selection:bg-now-primary selection:text-black">
       <Navbar notificationsCount={notificationsCount} />
       <div className="flex-1 overflow-auto">
         <Outlet />

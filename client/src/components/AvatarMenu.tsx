@@ -227,7 +227,7 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                   {/* Section 2: Community & Growth */}
                   <div className="py-2">
                     <div className="px-5 py-1.5">
-                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Community & Growth</span>
+                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Growth</span>
                     </div>
                     <Link
                       to="/interviews/submit"
@@ -237,14 +237,7 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                       <MessageSquarePlus className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Submit an Interview</span>
                     </Link>
-                    <Link
-                      to="/community"
-                      onClick={closeMenu}
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
-                    >
-                      <Users className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Join Community</span>
-                    </Link>
+
                   </div>
 
                   {isAdmin && (

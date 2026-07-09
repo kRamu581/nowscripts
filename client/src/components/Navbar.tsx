@@ -25,17 +25,17 @@ export default function Navbar({
 
   return (
     <>
-      <nav className="w-full h-14 bg-white border-b border-gray-200 sticky top-0 z-50 transition-all duration-300">
+      <nav className="w-full h-14 bg-[#0F1014] border-b border-white/10 sticky top-0 z-50 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-full">
           <div className="flex items-center gap-4 flex-shrink-0">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden flex items-center justify-center p-1 text-gray-500 hover:text-gray-900 transition-colors"
+              className="md:hidden flex items-center justify-center p-1 text-gray-400 hover:text-white transition-colors"
             >
               <Menu size={24} />
             </button>
             <Link to="/" className="block">
-              <BrandLogo textColor="text-gray-900" hideTextOnMobile={true} />
+              <BrandLogo textColor="text-white" hideTextOnMobile={true} />
             </Link>
             <div className="hidden md:block">
               <Search />
@@ -43,17 +43,17 @@ export default function Navbar({
           </div>
           
           <div className="flex items-center gap-6 h-full">
-            <Link to="/learn" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Learn</Link>
-            <Link to="/roadmaps" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Roadmaps</Link>
-            <Link to="/projects" className="hidden lg:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Projects</Link>
-            <Link to="/interview-prep" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Interview Prep</Link>
-            <Link to="/community" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Community</Link>
-            <Link to="/newsletter" className="hidden md:block text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">Newsletter</Link>
+            <Link to="/learn" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Learn</Link>
+            <Link to="/roadmaps" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Roadmaps</Link>
+            <Link to="/projects" className="hidden lg:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Projects</Link>
+            <Link to="/interview-prep" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Interview Prep</Link>
+
+            <Link to="/newsletter" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Newsletter</Link>
             
             {isAuthenticated ? (
               <Link
                 to="/write"
-                className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
               >
                 {writeBlogIcon}
                 <span className="text-sm font-medium hidden lg:block">Share Content</span>
@@ -61,7 +61,7 @@ export default function Navbar({
             ) : (
               <button
                 onClick={() => openModal('login', () => window.location.href = '/write', 'Please log in to share content.')}
-                className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
               >
                 {writeBlogIcon}
                 <span className="text-sm font-medium hidden lg:block">Share Content</span>
@@ -71,7 +71,7 @@ export default function Navbar({
             <div className="flex items-center">
               <Link
                 to="/notifications"
-                className="relative text-gray-500 hover:text-gray-900 transition-colors flex items-center"
+                className="relative text-gray-400 hover:text-white transition-colors flex items-center"
               >
                 {NotificationIcon}
                 {notificationsCount > 0 && (
@@ -95,7 +95,7 @@ export default function Navbar({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-gray-900 z-[100] md:hidden"
+            className="fixed inset-0 bg-black z-[100] md:hidden"
           />
         )}
         {isMobileMenuOpen && (
@@ -105,26 +105,26 @@ export default function Navbar({
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-white border-r border-gray-200 z-[110] flex flex-col shadow-2xl md:hidden"
+              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[110] flex flex-col shadow-2xl md:hidden"
             >
-              <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <BrandLogo textColor="text-gray-900" hideTextOnMobile={false} className="scale-90 origin-left" />
+              <div className="flex items-center justify-between p-4 border-b border-white/10">
+                <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+                  className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-md transition-colors"
                 >
                   <X size={24} />
                 </button>
               </div>
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="flex flex-col space-y-1 px-4">
-                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Home</Link>
-                  <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Learn</Link>
-                  <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Roadmaps</Link>
-                  <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Projects</Link>
-                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Interview Prep</Link>
-                  <Link to="/community" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Community</Link>
-                  <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-[#0F172A] hover:bg-[#F8FAFC] rounded-md font-medium">Newsletter</Link>
+                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Home</Link>
+                  <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Learn</Link>
+                  <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Roadmaps</Link>
+                  <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
+                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
+                  <Link to="/community" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Community</Link>
+                  <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Newsletter</Link>
                 </nav>
               </div>
             </motion.div>

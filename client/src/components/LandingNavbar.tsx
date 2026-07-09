@@ -124,49 +124,50 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
       </div>
     </div>
 
-    {/* Mobile Drawer */}
-    <AnimatePresence>
-      {isMobileMenuOpen && (
-        <motion.div
-          key="backdrop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          exit={{ opacity: 0 }}
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="fixed inset-0 bg-gray-900 z-[100] md:hidden"
-        />
-      )}
-      {isMobileMenuOpen && (
-        <motion.div
-          key="drawer"
-          initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-            className="fixed inset-y-0 left-0 w-[280px] bg-white border-r border-gray-200 z-[110] flex flex-col shadow-2xl md:hidden"
-          >
-            <div className="flex items-center justify-between p-4 border-b border-gray-100">
-              <BrandLogo textColor="text-gray-900" hideTextOnMobile={false} className="scale-90 origin-left" />
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto py-4">
-              <nav className="flex flex-col space-y-1 px-4">
-                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Home</Link>
-                <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Learn</Link>
-                <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Roadmaps</Link>
-                <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Interview Prep</Link>
-                <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Projects</Link>
-                <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Newsletter</Link>
-                <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">About Us</Link>
-              </nav>
-            </div>
-          </motion.div>
-      )}
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="fixed inset-0 bg-black z-[100] md:hidden"
+          />
+        )}
+        {isMobileMenuOpen && (
+          <motion.div
+            key="drawer"
+            initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[110] flex flex-col shadow-2xl md:hidden"
+            >
+              <div className="flex items-center justify-between p-4 border-b border-white/10">
+                <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-md transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto py-4">
+                <nav className="flex flex-col space-y-1 px-4">
+                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Home</Link>
+                  <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Learn</Link>
+                  <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Roadmaps</Link>
+                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
+                  <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
+                  <Link to="/community" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Community</Link>
+                  <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Newsletter</Link>
+                  <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">About Us</Link>
+                </nav>
+              </div>
+            </motion.div>
+        )}
     </AnimatePresence>
     </>
   );
