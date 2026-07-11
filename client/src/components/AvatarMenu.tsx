@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   UserCircle, 
@@ -27,6 +27,11 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
   const { openModal } = useAuthModal();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -82,27 +87,28 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
       {/* Dropdown Panel */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Mobile overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              exit={{ opacity: 0 }}
-              onClick={closeMenu}
-              className="fixed inset-0 bg-gray-900 z-[110] md:hidden"
-            />
-            
-            <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="fixed md:absolute bottom-0 md:bottom-auto md:top-full left-0 md:left-auto md:right-0 w-full md:w-72 md:mt-4 bg-white rounded-t-3xl md:rounded-2xl shadow-modal z-[120] border border-gray-100 overflow-hidden flex flex-col max-h-[85vh] md:max-h-none"
-            >
-              {/* Drag handle for mobile */}
-              <div className="w-full flex justify-center pt-3 pb-1 md:hidden">
-                <div className="w-12 h-1.5 bg-gray-200 rounded-full"></div>
-              </div>
+          <motion.div
+            key="avatar-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            onClick={closeMenu}
+            className="fixed inset-0 bg-gray-900 z-[110] md:hidden cursor-pointer"
+          />
+        )}
+        {isOpen && (
+          <motion.div
+            key="avatar-dropdown"
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed md:absolute bottom-0 md:bottom-auto md:top-full left-0 md:left-auto md:right-0 w-full md:w-72 md:mt-4 bg-white rounded-t-3xl md:rounded-2xl shadow-modal z-[120] border border-gray-100 overflow-hidden flex flex-col max-h-[85vh] md:max-h-none"
+          >
+            {/* Drag handle for mobile */}
+            <div className="w-full flex justify-center pt-3 pb-1 md:hidden">
+              <div className="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+            </div>
 
               {!isAuthenticated ? (
                 <div className="flex flex-col py-2 overflow-y-auto custom-scrollbar">
@@ -265,8 +271,7 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                   </div>
                 </div>
               )}
-            </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

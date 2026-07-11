@@ -256,7 +256,7 @@ export default function LearnDashboard() {
  const contentToRender = activeLesson.rawMarkdown ? activeLesson.rawMarkdown.replace(/^---[\s\S]+?---/, '').trim() : "";
 
  return (
- <div className="bg-white text-gray-900 font-sans flex flex-col h-full overflow-hidden selection:bg-now-primary selection:text-black relative">
+ <div className="bg-white text-gray-900 font-sans flex flex-col h-[calc(100vh-72px)] overflow-hidden selection:bg-now-primary selection:text-black relative">
  
  <div className="absolute top-0 left-0 w-full h-1 bg-gray-200 z-50">
  <div 
@@ -298,7 +298,7 @@ export default function LearnDashboard() {
           }}
           className={`flex-1 text-xs font-bold py-1.5 rounded-md transition-all ${activeTrack.trackId === t.trackId ? 'bg-white shadow-sm text-now-primary' : 'text-gray-500 hover:text-gray-900'}`}
         >
-          {t.slug.toUpperCase()}
+          {t.slug.toUpperCase() === 'CSA' ? 'ITSM' : t.slug.toUpperCase()}
         </button>
       ))}
     </div>
@@ -328,29 +328,13 @@ export default function LearnDashboard() {
  <div key={sIdx} className={`border-b border-gray-100 ${isExpanded ? theme.lightBg : "bg-white"}`}>
  <button 
  onClick={() => toggleSection(section.sectionTitle)}
- className="w-full px-5 py-5 flex items-start justify-between hover:bg-gray-50/50 transition-colors"
+ className="w-full px-5 py-3 flex items-center justify-between hover:bg-gray-50/50 transition-colors group"
  >
- <div className="flex gap-3 text-left">
- <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-bold text-sm bg-white shadow-sm border border-gray-100 ${theme.text}`}>
- {sIdx + 1}
- </div>
- <div className="flex flex-col">
- <div className="flex items-center gap-2 mb-1">
- <theme.Icon className={`w-4 h-4 ${theme.text}`} />
- <span className="font-bold text-gray-900 leading-tight">{section.sectionTitle}</span>
- </div>
- <div className="flex items-center gap-2 mt-2">
- <div className="w-24 h-1.5 bg-gray-200 rounded-full overflow-hidden">
- <div className={`h-full ${theme.bg}`} style={{ width: `${progressPercent}%` }} />
- </div>
- <span className="text-xs text-gray-500 font-medium">{completedInModule}/{totalInModule}</span>
- </div>
- </div>
- </div>
+ <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors text-left">{section.sectionTitle}</span>
  {isExpanded ? (
- <ChevronDown className="w-5 h-5 text-gray-400 mt-2" />
+ <ChevronDown className="w-4 h-4 text-gray-500" />
  ) : (
- <ChevronRight className="w-5 h-5 text-gray-400 mt-2" />
+ <ChevronRight className="w-4 h-4 text-gray-500" />
  )}
  </button>
 
@@ -372,27 +356,22 @@ export default function LearnDashboard() {
  <div className="flex items-stretch border-b border-gray-50 last:border-b-0">
  <button
  onClick={() => setActiveLesson(lesson)}
- className={`flex-1 px-5 py-3.5 flex items-start gap-3 text-left transition-all ${
+ className={`flex-1 pl-8 pr-4 py-2 flex items-center gap-3 text-left transition-all ${
  isLessonActive 
  ? `${theme.lightBg} ${theme.text}` 
- : "text-gray-600 hover:bg-gray-50"
+ : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
  }`}
  >
- <div className="mt-0.5 shrink-0">
+ <div className="shrink-0">
  {isCompleted ? (
- <CheckCircle className={`w-4 h-4 ${theme.text}`} />
+ <CheckCircle className={`w-3.5 h-3.5 ${theme.text}`} />
  ) : (
- <div className={`w-4 h-4 rounded-full border-2 ${isLessonActive ? theme.border : "border-gray-300"}`} />
+ <div className={`w-3.5 h-3.5 rounded-full border-2 ${isLessonActive ? theme.border : "border-gray-300"}`} />
  )}
  </div>
- <div className="flex flex-col truncate flex-1">
- <span className={`text-[11px] font-bold uppercase tracking-wider mb-0.5 ${isLessonActive ? theme.text : "text-gray-400"}`}>
- {lesson.type === 'topic' ? `Lesson ${index + 1}` : lesson.type.replace('-', ' ')}
- </span>
- <span className={`text-[14px] leading-snug whitespace-normal ${isLessonActive ? "font-bold text-gray-900" : "font-medium"}`}>
+ <span className={`text-[13px] leading-snug whitespace-normal ${isLessonActive ? "font-bold" : "font-medium"}`}>
  {lesson.title.replace(/\*\*/g, '')}
  </span>
- </div>
  </button>
  {lesson.subtopics && lesson.subtopics.length > 0 && (
  <button 
@@ -499,11 +478,7 @@ export default function LearnDashboard() {
     </Link>
  </div>
  
- {currentIndex === 0 && (
- <div className="mb-12">
- <CertificationPath />
- </div>
- )}
+
 
   <div id={activeLesson.id} className="mb-16">
     {activeLesson.type === 'topic' ? (
@@ -555,12 +530,12 @@ export default function LearnDashboard() {
  {currentIndex > 0 ? (
  <button 
  onClick={goToPrevLesson}
- className="group flex flex-col items-start p-6 bg-white border border-gray-200 rounded-2xl hover:border-now-primary :border-now-primary transition-all text-left"
+ className="group flex flex-col items-start p-4 bg-white border border-gray-200 rounded-xl hover:border-now-primary :border-now-primary transition-all text-left"
  >
- <span className="text-sm font-medium text-gray-500 flex items-center gap-2 mb-2">
- <ChevronLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Previous Lesson
+ <span className="text-xs font-medium text-gray-500 flex items-center gap-1.5 mb-1">
+ <ChevronLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" /> Previous Lesson
  </span>
- <span className="text-lg font-bold text-gray-900 group-hover:text-now-primary transition-colors line-clamp-2">
+ <span className="text-sm font-bold text-gray-900 group-hover:text-now-primary transition-colors line-clamp-2">
  {allLessons[currentIndex - 1].title.replace(/\*\*/g, '')}
  </span>
  </button>
@@ -574,12 +549,12 @@ export default function LearnDashboard() {
  }
  goToNextLesson();
  }}
- className="group flex flex-col items-end p-6 bg-white border border-gray-200 rounded-2xl hover:border-now-primary :border-now-primary transition-all text-right shadow-sm hover:shadow-md"
+ className="group flex flex-col items-end p-4 bg-white border border-gray-200 rounded-xl hover:border-now-primary :border-now-primary transition-all text-right shadow-sm hover:shadow-md"
  >
- <span className="text-sm font-bold text-now-primary flex items-center gap-2 mb-2">
- Complete & Continue <IconNext className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+ <span className="text-xs font-bold text-now-primary flex items-center gap-1.5 mb-1">
+ Complete & Continue <IconNext className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
  </span>
- <span className="text-lg font-bold text-gray-900 group-hover:text-now-primary transition-colors line-clamp-2">
+ <span className="text-sm font-bold text-gray-900 group-hover:text-now-primary transition-colors line-clamp-2">
  {allLessons[currentIndex + 1].title.replace(/\*\*/g, '')}
  </span>
  </button>
@@ -601,16 +576,16 @@ export default function LearnDashboard() {
  <div className={`fixed right-0 top-0 xl:relative w-60 flex-shrink-0 border-l border-gray-200 bg-white flex flex-col z-50 h-full overflow-hidden transition-transform duration-300 ${
  tocMenuOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
  }`}>
- <div className="p-6 pb-4 flex items-center justify-between">
- <h3 className="font-bold text-gray-900 uppercase tracking-widest text-xs">On This Page</h3>
- <button onClick={() => setTocMenuOpen(false)} className="xl:hidden p-1 text-gray-500 hover:text-gray-900 "><X size={18} /></button>
+ <div className="p-4 pb-2 flex items-center justify-between border-b border-gray-100">
+ <h3 className="font-bold text-gray-900 uppercase tracking-widest text-[11px]">On This Page</h3>
+ <button onClick={() => setTocMenuOpen(false)} className="xl:hidden p-1 text-gray-500 hover:text-gray-900 "><X size={16} /></button>
  </div>
- <div className="flex-1 overflow-y-auto px-6 pb-24 space-y-2 custom-scrollbar">
+ <div className="flex-1 overflow-y-auto px-4 pt-3 pb-24 space-y-1 custom-scrollbar">
  {activeLesson.subtopics && activeLesson.subtopics.map(sub => (
  <button 
  key={sub.id}
  onClick={() => { scrollToSubtopic(sub.id); setTocMenuOpen(false); }}
- className={`block text-left text-sm transition-all w-full border-l-2 pl-4 py-2 ${
+ className={`block text-left text-[13px] transition-all w-full border-l-2 pl-3 py-1.5 ${
  activeSubtopicId === sub.id 
  ? "border-now-primary text-now-primary font-bold bg-now-primary/5" 
  : "border-gray-200 text-gray-500 hover:text-gray-900 hover:border-[#64748B]"

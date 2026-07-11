@@ -2,7 +2,7 @@ import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Clock, BookOpen, Settings, Target, Calendar, User } from 'lucide-react';
+import { Clock, BookOpen, Settings, Target, Calendar, User, MessageSquare, Edit2, MoreVertical } from 'lucide-react';
 import { LessonData } from '../../utils/markdownParser';
 
 import { getModuleTheme } from '../../utils/themeUtils';
@@ -43,61 +43,20 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
       
       {/* Premium Header if lessonData is provided */}
       {lessonData && theme && (
-        <div className="mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
-          <div className="flex flex-wrap gap-2 mb-6">
-            {lessonData.category && (
-              <span className={`${theme.lightBg} ${theme.text} border ${theme.border} px-3 py-1 rounded-full text-sm font-semibold tracking-wide`}>
-                {lessonData.category}
-              </span>
-            )}
-            {lessonData.difficulty && (
-              <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full text-sm font-semibold">
-                {lessonData.difficulty}
-              </span>
-            )}
-            {lessonData.tags?.slice(0,2).map(tag => (
-              <span key={tag} className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-3 py-1 rounded-full text-sm font-medium">
-                {tag}
-              </span>
-            ))}
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-slate-100 mb-6 leading-[1.15] tracking-tight">
+        <div className="mb-8">
+          <h1 className="text-3xl sm:text-[32px] font-bold text-[#0f2c4c] dark:text-slate-100 mb-3 leading-tight tracking-tight">
             {lessonData.title}
           </h1>
           
-          {lessonData.description && (
-            <p className="text-xl text-slate-500 dark:text-slate-400 mb-8 leading-relaxed max-w-3xl">
-              {lessonData.description}
-            </p>
-          )}
-
-          <div className="flex flex-wrap items-center gap-y-4 gap-x-8 text-sm text-slate-500 dark:text-slate-400 font-medium">
-            {lessonData.author && (
-              <div className="flex items-center gap-2">
-                <div className={`w-8 h-8 rounded-full ${theme.bg} flex items-center justify-center text-white shadow-sm`}>
-                  <User className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-wider">Author</span>
-                  <span className="text-slate-900 dark:text-slate-100">{lessonData.author}</span>
-                </div>
-              </div>
-            )}
-            
-            {lessonData.readingTime && (
-              <div className="flex items-center gap-2">
-                <Clock className={`w-4 h-4 ${theme.text}`} />
-                <span>{lessonData.readingTime}</span>
-              </div>
-            )}
-
-            {lessonData.lastUpdated && (
-              <div className="flex items-center gap-2">
-                <Calendar className={`w-4 h-4 ${theme.text}`} />
-                <span>Last Updated: {formatDate(lessonData.lastUpdated)}</span>
-              </div>
-            )}
+          <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-slate-800 mb-6">
+            <div className="text-[14px] text-[#5b7290] dark:text-gray-400 font-medium">
+              Last Updated : {lessonData.lastUpdated ? formatDate(lessonData.lastUpdated) : "1 Jul, 2026"}
+            </div>
+            <div className="flex items-center gap-4 text-gray-500">
+              <MessageSquare className="w-[18px] h-[18px] cursor-pointer hover:text-gray-700" />
+              <Edit2 className="w-[18px] h-[18px] cursor-pointer hover:text-gray-700" />
+              <MoreVertical className="w-[18px] h-[18px] cursor-pointer hover:text-gray-700" />
+            </div>
           </div>
         </div>
       )}
@@ -197,7 +156,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
                 }
 
                 return (
-                  <p className="text-[17px] sm:text-[18px] leading-[1.8] mb-[24px] text-now-text dark:text-slate-200" {...props}>
+                  <p className="text-[15.5px] sm:text-[16px] leading-[1.7] mb-5 text-[#374151] dark:text-slate-300" {...props}>
                     {children}
                   </p>
                 );

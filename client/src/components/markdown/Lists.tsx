@@ -3,7 +3,7 @@ import React from 'react';
 export const UL = ({ children, ...props }: any) => {
   // We add 'task-list' class if it contains task list items, but CSS handles it globally mostly.
   return (
-    <ul className="list-disc pl-10 space-y-4 mb-8 text-slate-800 dark:text-slate-200 text-[17px] sm:text-[18px] marker:text-slate-400 dark:marker:text-slate-500" {...props}>
+    <ul className="list-disc pl-8 space-y-2 mb-6 text-[#374151] dark:text-slate-300 text-[15.5px] sm:text-[16px] marker:text-slate-400 dark:marker:text-slate-500" {...props}>
       {children}
     </ul>
   );
@@ -11,7 +11,7 @@ export const UL = ({ children, ...props }: any) => {
 
 export const OL = ({ children, ...props }: any) => {
   return (
-    <ol className="list-decimal pl-10 space-y-4 mb-8 text-slate-800 dark:text-slate-200 text-[17px] sm:text-[18px] marker:text-slate-500 dark:marker:text-slate-400 marker:font-semibold" {...props}>
+    <ol className="list-decimal pl-8 space-y-2 mb-6 text-[#374151] dark:text-slate-300 text-[15.5px] sm:text-[16px] marker:text-slate-500 dark:marker:text-slate-400 marker:font-semibold" {...props}>
       {children}
     </ol>
   );
@@ -39,7 +39,7 @@ export const LI = ({ children, ...props }: any) => {
   }
 
   return (
-    <li className="leading-[1.8] pl-2 text-slate-800 dark:text-slate-200" {...props}>
+    <li className="leading-[1.7] pl-1 text-[#374151] dark:text-slate-300" {...props}>
       {children}
     </li>
   );

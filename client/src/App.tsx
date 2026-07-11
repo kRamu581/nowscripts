@@ -42,6 +42,8 @@ import AdminLayout from "./components/admin/AdminLayout";
 const InterviewExperiences = lazy(() => import("./pages/InterviewExperiences"));
 const InterviewExperienceDetail = lazy(() => import("./pages/InterviewExperienceDetail"));
 const SubmitInterviewExperience = lazy(() => import("./pages/SubmitInterviewExperience"));
+const Projects = lazy(() => import("./pages/Projects").then(m => ({ default: m.Projects })));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail").then(m => ({ default: m.ProjectDetail })));
 
 // Static Info Pages
 const HelpCenter = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.HelpCenter })));
@@ -186,7 +188,8 @@ export default function App() {
               <Route path="/interview-prep/:categoryId" element={<InterviewPrepDashboard />} />
               <Route path="/community" element={<CommunityFeed />} />
               <Route path="/tag/:tag" element={<CommunityFeed />} />
-              <Route path="/projects" element={<div className="text-[#0F172A] text-center mt-20 text-2xl font-bold">Projects Coming Soon</div>} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/suggestions" element={<Suggestions />} />
               <Route path="/search/:tab/:query" element={<SearchResults />} />
               <Route path="/blog/:id" element={<Post />} />

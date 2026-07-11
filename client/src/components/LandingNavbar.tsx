@@ -15,6 +15,10 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
   const location = useLocation();
   const isHome = location.pathname === '/';
   
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const [isScrolled, setIsScrolled] = useState(!isHome);
 
   useEffect(() => {
@@ -54,7 +58,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             <div className="relative w-full max-w-[500px] flex items-center h-[46px] bg-[#F8F9FA] border border-gray-200 rounded-full overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <input 
                 type="text" 
-                placeholder="Search by City University or Property" 
+                placeholder="What kind of projects are you looking for?" 
                 className="w-full h-full bg-transparent pl-5 pr-14 text-[14px] text-gray-900 font-medium focus:outline-none focus-visible:outline-none placeholder:text-gray-400"
               />
               <button className="absolute right-1 w-[38px] h-[38px] bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center transition-colors">
@@ -131,7 +135,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black z-[100] md:hidden"
+            className="fixed inset-0 bg-black z-[9998] md:hidden cursor-pointer"
           />
         )}
         {isMobileMenuOpen && (
@@ -141,16 +145,10 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[110] flex flex-col shadow-2xl md:hidden"
+              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[9999] flex flex-col shadow-2xl md:hidden"
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-md transition-colors"
-                >
-                  <X size={24} />
-                </button>
               </div>
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="flex flex-col space-y-1 px-4">

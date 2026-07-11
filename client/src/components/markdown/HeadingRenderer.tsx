@@ -30,7 +30,7 @@ export const H2 = ({ children, ...props }: any) => {
   const id = generateSlug(text);
 
   return (
-    <section id={id} className="scroll-mt-24 group relative mt-16 mb-6">
+    <section id={id} className="scroll-mt-24 group relative mt-10 mb-4">
       <div className="flex items-center -ml-8">
         <button
           onClick={() => copyToClipboard(id)}
@@ -39,7 +39,7 @@ export const H2 = ({ children, ...props }: any) => {
         >
           <Link2 className="w-6 h-6" />
         </button>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 leading-tight pb-2 border-b border-slate-200 dark:border-slate-800 w-full" {...props}>
+        <h2 className="text-2xl font-bold text-[#1e293b] dark:text-slate-100 leading-tight w-full" {...props}>
           {children}
         </h2>
       </div>

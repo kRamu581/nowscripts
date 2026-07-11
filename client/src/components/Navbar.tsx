@@ -95,7 +95,7 @@ export default function Navbar({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black z-[100] md:hidden"
+            className="fixed inset-0 bg-black z-[9998] md:hidden cursor-pointer"
           />
         )}
         {isMobileMenuOpen && (
@@ -105,16 +105,10 @@ export default function Navbar({
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[110] flex flex-col shadow-2xl md:hidden"
+              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[9999] flex flex-col shadow-2xl md:hidden"
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-md transition-colors"
-                >
-                  <X size={24} />
-                </button>
               </div>
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="flex flex-col space-y-1 px-4">
