@@ -3,7 +3,7 @@
   <h1>NowScripts</h1>
   <p><em>"Developers Connect Together — Master ServiceNow, Transform IT Services"</em></p>
 
-  [![Version](https://img.shields.io/badge/version-v2.0.0-blue.svg)](https://github.com/NowScripts)
+  [![Version](https://img.shields.io/badge/version-v2.1.0-blue.svg)](https://github.com/NowScripts)
   [![Status](https://img.shields.io/badge/status-Live-success.svg)](https://nowscripts.in)
   [![Website](https://img.shields.io/badge/website-nowscripts.in-green.svg)](https://nowscripts.in)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-NowScripts-blue.svg?logo=linkedin)](https://www.linkedin.com/company/nowscripts)
@@ -21,7 +21,7 @@
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
 - [Project Structure](#-project-structure)
-- [Changelog v2.0](#-changelog-v20)
+- [Changelog v2.1](#-changelog-v21)
 - [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
 - [Connect With Us](#-connect-with-us)
@@ -55,7 +55,7 @@
 - **Home:** The main landing portal showcasing features and community highlights.
 - **Learn:** Centralized dashboard for accessing all educational modules.
 - **Roadmaps:** Interactive, winding visual learning paths.
-- **Projects:** Hand-on scenarios to build real-world experience.
+- **Projects:** Hands-on scenarios to build real-world experience.
 - **Interview Prep:** Curated questions to help you land your next ServiceNow role.
 - **Certifications:** Study materials and guides for platform certifications.
 
@@ -171,7 +171,8 @@ nowscripts/
 │   │   │   ├── AboutUs.tsx               # About Us Page
 │   │   │   ├── Post.tsx                  # Blog Post Page
 │   │   │   ├── SignIn.tsx                # Auth Page
-│   │   │   └── ...                       # (Projects, Help Center, Verify Internship, Contact Us, Privacy, TOS placeholders/routes)
+│   │   │   ├── Projects.tsx              # Projects Page
+│   │   │   └── ProjectDetail.tsx         # Project Details Page
 │   │   ├── components/
 │   │   ├── assets/
 │   │   └── App.tsx                       # App Routing
@@ -181,32 +182,25 @@ nowscripts/
 
 ---
 
-## 📝 Changelog v2.0
+## 📝 Changelog v2.1
 
-### Added
-- **Premium Hero Section**: Brand new hero section featuring an Aurora animated background and a fully interactive custom dashboard mockup tracking user progress.
-- **Bento Grids & Timelines**: Modular, beautifully animated grids for Platform Statistics, Categories, and Features using `framer-motion`.
-- **Interactive Roadmap Timeline**: New horizontal/vertical animated timeline guiding users from CSA to Architect.
-- **Global UI Enhancements**: Added a sticky mobile CTA, global scrolling progress bar, and a sleek back-to-top button.
-- **Advanced SEO Optimization**: Integrated `react-helmet-async`, dynamic OpenGraph tags, JSON-LD Schema, `robots.txt`, and automated `sitemap.xml`.
-- **Improved Performance**: Lazy loading and `React.Suspense` implemented across all below-the-fold components, achieving a 95+ Lighthouse score.
-
-### Fixed
-- Fixed mobile navigation menu overlapping elements with proper z-index layering.
-- Updated Call-to-Action routing to remove unnecessary login friction for free content.
-- Replaced missing lucide-react brand icons with inline SVGs for perfect rendering.
+### Added & Improved
+- **Projects Portal Launched**: Introduced hands-on projects page (`Projects.tsx`) and project details viewing with dynamic mockups, difficulty filters, and interactive grids.
+- **Interview Prep Dashboard Overhaul**: Fully redesigned sidebar with collapsible accordion modules, compact UI for top stats, optimized markdown question viewing, and fixed content loading logic for smoother transitions.
+- **Learn Dashboard Enhancements**: Fixed scroll-locking issues by constraining main layout height under the navbar, keeping the sidebars permanently fixed while reading content. Upgraded markdown renderers for a sleeker typography setup.
+- **Performance & Navigation Fixes**: Enhanced internal component routing, updated links to `csa` (replacing `ITSM`), and resolved state management bugs during loading.
 
 ### Known Limitations
 - Interview prep scenario questions are marked as "Coming Soon".
-- Projects portal is currently under development.
+- Real Interview Experiences platform features pending launch.
 
 ---
 
 ## 📅 Roadmap
 
 - [x] **v1.0:** Launch core learning modules, roadmaps, and UI overhaul.
-- [x] **v2.0 (Current):** Premium SaaS landing page redesign, advanced SEO, and global UI enhancements.
-- [ ] **v2.1 (Q3 2026):** Launch Hands-on Projects portal and expand Interview Prep scenarios.
+- [x] **v2.0:** Premium SaaS landing page redesign, advanced SEO, and global UI enhancements.
+- [x] **v2.1 (Current):** Launch Hands-on Projects portal and expand Interview Prep scenarios with completely overhauled dashboards.
 - [ ] **v2.2 (Q4 2026):** Introduce advanced community features and peer-to-peer code reviews.
 
 ---
