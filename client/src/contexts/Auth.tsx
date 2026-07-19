@@ -12,6 +12,18 @@ export type User = {
   _id: string;
   role?: string;
   list: Array<any>;
+  careerProfile?: {
+    setupCompleted: boolean;
+    studentOrProfessional?: 'Student' | 'Fresher' | 'Professional';
+    currentRole?: string;
+    yearsOfExperience?: string;
+    currentSkills?: string[];
+    existingCertifications?: string[];
+    targetCertification?: string;
+    targetRole?: string;
+    careerGoal?: string;
+    weeklyLearningTime?: string;
+  };
 };
 
 type ContextType = {

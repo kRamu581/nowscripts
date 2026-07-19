@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import LandingNavbar from "./components/LandingNavbar";
+import CareerProfileWizard from "./components/CareerProfileWizard";
 import {
   useState,
   createContext,
@@ -49,7 +50,9 @@ const ProjectDetail = lazy(() => import("./pages/ProjectDetail").then(m => ({ de
 const HelpCenter = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.HelpCenter })));
 const Terms = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Terms })));
 const Privacy = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Privacy })));
-const Careers = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Careers })));
+const Careers = lazy(() => import("./pages/Careers"));
+const CareerDetail = lazy(() => import("./pages/CareerDetail"));
+const ApplyJob = lazy(() => import("./pages/ApplyJob"));
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "./contexts/Auth";
 import ProtectedRoute from "./router/Authentication";
@@ -102,7 +105,7 @@ function AppLayout({ notificationsCount }: { notificationsCount: number }) {
 }
 
 export default function App() {
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, isAuthenticated } = useAuth();
   const [notificationsCount, setNotificationsCount] = useState(0);
   const socket = useMemo(() => io(url), []);
 
@@ -199,6 +202,8 @@ export default function App() {
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/careers" element={<Careers />} />
+              <Route path="/careers/:id" element={<CareerDetail />} />
+              <Route path="/careers/:id/apply" element={<ApplyJob />} />
             </Route>
 
             {/* Protected App Layout Routes (Requires Login) */}
@@ -226,6 +231,7 @@ export default function App() {
             <Route path="/signin/:tab" element={<SignIn />} />
             {/* Other standalone protected routes */}
             <Route path="/authredirect" element={<AuthRedirect />} />
+            <Route path="/setup-profile" element={<CareerProfileWizard isOpen={true} onClose={() => {}} onSuccess={() => { window.location.href = '/' }} />} />
           </Routes>
         </Suspense>
       </div>

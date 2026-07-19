@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, FileText, HelpCircle, Briefcase } from 'lucide-react';
+import { AmberFooter } from '../components/landing/amber/AmberFooter';
 
 function PageLayout({ title, icon, lastUpdated, children }: { title: string, icon: React.ReactNode, lastUpdated: string, children: React.ReactNode }) {
   React.useEffect(() => {
@@ -21,11 +22,13 @@ function PageLayout({ title, icon, lastUpdated, children }: { title: string, ico
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-6 mb-20">
         <div className="bg-white p-8 md:p-12 rounded-2xl border border-gray-200 shadow-sm prose prose-gray max-w-none prose-headings:text-[#333333] prose-headings:font-bold prose-a:text-[#FF5A5F] prose-a:no-underline hover:prose-a:underline">
           {children}
         </div>
       </div>
+      
+      <AmberFooter />
     </div>
   );
 }
@@ -97,45 +100,6 @@ export function Privacy() {
       
       <h2>Data Security</h2>
       <p>We implement industry-standard security measures to protect your data from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet is 100% secure.</p>
-    </PageLayout>
-  );
-}
-
-export function Careers() {
-  return (
-    <PageLayout title="Careers" icon={<Briefcase size={32} strokeWidth={2.5} />} lastUpdated="July 1, 2026">
-      <h2>Join the NowScripts Team</h2>
-      <p>We're on a mission to democratize ServiceNow education and help thousands of professionals advance their careers. If you're passionate about tech education and building amazing products, we'd love to hear from you!</p>
-      
-      <h3>Open Positions</h3>
-      
-      <div className="border border-gray-200 rounded-xl p-6 my-6 hover:shadow-md transition-shadow">
-        <div className="flex justify-between items-start mb-2">
-          <h4 className="m-0 text-xl text-[#333333]">Senior Frontend Engineer</h4>
-          <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">Remote</span>
-        </div>
-        <p className="text-gray-500 m-0 mb-4 text-sm">React, TypeScript, TailwindCSS</p>
-        <p className="text-sm">Help us build the next generation of our interactive learning platform and certification simulators.</p>
-        <button className="mt-4 text-[#FF5A5F] font-bold text-sm hover:underline">Apply Now &rarr;</button>
-      </div>
-      
-      <div className="border border-gray-200 rounded-xl p-6 my-6 hover:shadow-md transition-shadow">
-        <div className="flex justify-between items-start mb-2">
-          <h4 className="m-0 text-xl text-[#333333]">ServiceNow Content Creator</h4>
-          <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">Hybrid</span>
-        </div>
-        <p className="text-gray-500 m-0 mb-4 text-sm">ITSM, CMDB, Technical Writing</p>
-        <p className="text-sm">Design engaging curriculum, realistic lab scenarios, and up-to-date interview questions for our students.</p>
-        <button className="mt-4 text-[#FF5A5F] font-bold text-sm hover:underline">Apply Now &rarr;</button>
-      </div>
-      
-      <h3>Why NowScripts?</h3>
-      <ul>
-        <li>Competitive salary and equity options</li>
-        <li>Flexible remote work policy</li>
-        <li>Comprehensive health, dental, and vision insurance</li>
-        <li>Continuous learning budget and free access to all platform resources</li>
-      </ul>
     </PageLayout>
   );
 }
