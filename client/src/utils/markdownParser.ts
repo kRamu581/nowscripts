@@ -82,7 +82,7 @@ const INTERVIEW_ORDER = [
 
 function extractSubtopics(rawMarkdown: string): Subtopic[] {
   const subtopics: Subtopic[] = [];
-  const headingRegex = /^##\s+(.+)$/gm;
+  const headingRegex = /^#{2,3}\s+(.+)$/gm;
   let headingMatch;
 
   while ((headingMatch = headingRegex.exec(rawMarkdown)) !== null) {
@@ -259,3 +259,4 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
 export const allTrackData = getCourseData('learn') as TrackData[];
 export const courseData = allTrackData[0].sections; // default to CSA track sections for fallback
 export const interviewData = getCourseData('interview') as CourseSection[];
+ 

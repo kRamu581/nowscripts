@@ -145,14 +145,25 @@ const csaModules: Module[] = [
     color: "from-pink-600 to-pink-900",
     icon: "Globe",
     items: [
-      { type: "topic", id: "rest-api", title: "REST API" },
-      { type: "topic", id: "soap-api", title: "SOAP API" },
-      { type: "topic", id: "ldap-integration", title: "LDAP Integration" },
-      { type: "topic", id: "azure-ad-integration", title: "Azure AD Integration" },
-      { type: "topic", id: "sccm-integration", title: "SCCM Integration" },
-      { type: "topic", id: "monitoring-tool-integrations", title: "Monitoring Tool Integrations" },
-      { type: "topic", id: "outbound-inbound-integrations", title: "Outbound & Inbound Integrations" },
-      { type: "topic", id: "event-management", title: "Event Management" }
+      { type: "topic", id: "what-is-integration", title: "What is integration?" },
+      { type: "topic", id: "type-of-integration", title: "Type of Integration" },
+      { type: "topic", id: "basic-requirements", title: "Basic Requirements for Integrate any system" },
+      { type: "topic", id: "integration-testing-tools", title: "Integration Testing Tools" },
+      { type: "topic", id: "integration-module", title: "Integration Module" },
+      { type: "topic", id: "inbound-integration", title: "Inbound Integration" },
+      { type: "topic", id: "soap-vs-rest", title: "SOAP VS REST API" },
+      { type: "topic", id: "table-api-rest", title: "Table API Web Service – REST" },
+      { type: "topic", id: "direct-web-services-soap", title: "Direct web services – SOAP" },
+      { type: "topic", id: "import-set-soap", title: "Import Set Web Service – SOAP" },
+      { type: "topic", id: "import-set-rest", title: "Import Set API – REST" },
+      { type: "topic", id: "scripted-web-services-soap", title: "Scripted Web Services – SOAP" },
+      { type: "topic", id: "scripted-web-services-rest", title: "Scripted Web Services – REST" },
+      { type: "topic", id: "soap-message-outbound", title: "SOAP Message – Outbound" },
+      { type: "topic", id: "rest-message-outbound", title: "REST Message – Outbound" },
+      { type: "topic", id: "sn-to-sn-incident", title: "ServiceNow to ServiceNow Incident Integration" },
+      { type: "topic", id: "oauth-2-authentication", title: "OAuth 2.0 Authentication" },
+      { type: "topic", id: "sn-oauth-connect", title: "ServiceNow – OAuth application connect" },
+      { type: "topic", id: "access-vs-refresh-token", title: "Access Token VS Refresh Token" }
     ]
   },
   {

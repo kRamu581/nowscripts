@@ -6,27 +6,27 @@ export function AmberSocialProof() {
 
   const testimonials = [
     { 
-      name: "Priya Andrade", 
-      role: "University Of Leeds", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya&backgroundColor=ffdfbf", 
+      name: "Rahul Sharma", 
+      role: "Pune Institute of Computer Technology", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul&backgroundColor=ffdfbf", 
       text: "Guided through NowScripts. They are really amazing. Helped me and my friend finds rooms so quickly and efficiently." 
     },
     { 
-      name: "sakshi", 
-      role: "Queen Mary University of London(Mile ...", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=sakshi&backgroundColor=ffdfbf", 
+      name: "Sneha Desai", 
+      role: "BMS College of Engineering, Bangalore", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha&backgroundColor=ffdfbf", 
       text: "NowScripts has been really sweet and supportive really liked the service." 
     },
     { 
-      name: "karmanya jain", 
-      role: "University of Exeter", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=karmanya&backgroundColor=ffdfbf", 
+      name: "Ananya Singh", 
+      role: "KJ Somaiya College, Mumbai", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya&backgroundColor=ffdfbf", 
       text: "The process was easy and the people involved were responsive and helpful." 
     },
     { 
-      name: "Yash Jaiswal", 
-      role: "University Of Westmin...", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Yash&backgroundColor=ffdfbf", 
+      name: "Rohan Patel", 
+      role: "Amity University", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rohan&backgroundColor=ffdfbf", 
       text: "Man literally they did every perfect accommodation. Very friendly, would highly recommend." 
     }
   ];
@@ -41,7 +41,7 @@ export function AmberSocialProof() {
     <section className="py-16 bg-[#CEEFE0] relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-black text-[#0B2538]">Trust of 2k+ students</h2>
+          <h2 className="text-3xl font-black text-[#0B2538]">Trust of 2k+ members</h2>
           
           <div className="hidden sm:flex items-center text-sm shadow-sm rounded overflow-hidden">
             <div className="bg-[#0A66C2] text-white flex items-center px-2.5 py-1.5 font-bold">

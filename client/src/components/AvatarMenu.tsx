@@ -45,11 +45,13 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
     }
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside, { capture: true });
+      document.addEventListener("touchstart", handleClickOutside, { capture: true });
       document.addEventListener("keydown", handleEscape);
     }
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside, { capture: true });
+      document.removeEventListener("touchstart", handleClickOutside, { capture: true });
       document.removeEventListener("keydown", handleEscape);
     };
   }, [isOpen]);

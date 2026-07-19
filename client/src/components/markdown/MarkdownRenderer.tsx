@@ -44,12 +44,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
       {/* Premium Header if lessonData is provided */}
       {lessonData && theme && (
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-[32px] font-bold text-[#0f2c4c] dark:text-slate-100 mb-3 leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-[32px] font-bold text-[#0f2c4c] mb-3 leading-tight tracking-tight">
             {lessonData.title}
           </h1>
           
-          <div className="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-slate-800 mb-6">
-            <div className="text-[14px] text-[#5b7290] dark:text-gray-400 font-medium">
+          <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
+            <div className="text-[14px] text-[#5b7290] font-medium">
               Last Updated : {lessonData.lastUpdated ? formatDate(lessonData.lastUpdated) : "1 Jul, 2026"}
             </div>
             <div className="flex items-center gap-4 text-gray-500">
@@ -156,7 +156,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
                 }
 
                 return (
-                  <p className="text-[15.5px] sm:text-[16px] leading-[1.7] mb-5 text-[#374151] dark:text-slate-300" {...props}>
+                  <p className="text-[17px] leading-[1.8] mb-5 text-[#1e293b]" {...props}>
                     {children}
                   </p>
                 );

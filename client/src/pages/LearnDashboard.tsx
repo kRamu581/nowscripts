@@ -184,10 +184,12 @@ export default function LearnDashboard() {
  });
 
  if (activeLesson.subtopics) {
- activeLesson.subtopics.forEach(sub => {
- const el = document.getElementById(sub.id);
- if (el) observer.observe(el);
- });
+ setTimeout(() => {
+   activeLesson.subtopics.forEach(sub => {
+     const el = document.getElementById(sub.id);
+     if (el) observer.observe(el);
+   });
+ }, 300); // Wait for markdown to parse and render
  }
 
  return () => {
@@ -373,60 +375,7 @@ export default function LearnDashboard() {
  {lesson.title.replace(/\*\*/g, '')}
  </span>
  </button>
- {lesson.subtopics && lesson.subtopics.length > 0 && (
- <button 
- onClick={(e) => toggleLesson(lesson.id, e)}
- className={`px-4 flex items-center justify-center transition-colors border-l border-transparent ${isLessonActive ? `hover:${theme.lightBg}` : "hover:bg-gray-100"}`}
- >
- {isLessonExpanded ? (
- <ChevronDown className={`w-4 h-4 ${isLessonActive ? theme.text : "text-gray-400"}`} />
- ) : (
- <ChevronRight className={`w-4 h-4 ${isLessonActive ? theme.text : "text-gray-400"}`} />
- )}
- </button>
- )}
  </div>
-
-
- <AnimatePresence>
- {isLessonExpanded && lesson.subtopics && (
- <motion.div
- initial={{ height: 0, opacity: 0 }}
- animate={{ height: "auto", opacity: 1 }}
- exit={{ height: 0, opacity: 0 }}
- className="overflow-hidden bg-white "
- >
- <div className="py-2">
- {lesson.subtopics.map(sub => {
- const isSubActive = isLessonActive && activeSubtopicId === sub.id;
- return (
- <button
- key={sub.id}
- onClick={() => {
- if (!isLessonActive) {
- setActiveLesson(lesson);
- setMobileMenuOpen(false);
- setTimeout(() => scrollToSubtopic(sub.id), 100);
- } else {
- scrollToSubtopic(sub.id);
- setMobileMenuOpen(false);
- }
- }}
- className={`w-full px-6 py-2 pl-12 flex items-center text-left text-sm transition-colors ${
- isSubActive
- ? `${theme.text} font-bold ${theme.lightBg} border-r-2 ${theme.border}`
- : "text-gray-500 hover:text-gray-900 hover:bg-gray-50 "
- }`}
- >
- <div className={`w-1.5 h-1.5 rounded-full mr-3 shrink-0 transition-colors ${isSubActive ? theme.bg : "bg-gray-200"}`} />
- <span className="truncate">{sub.title}</span>
- </button>
- );
- })}
- </div>
- </motion.div>
- )}
- </AnimatePresence>
 
  </div>
  );
