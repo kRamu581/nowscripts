@@ -34,7 +34,7 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
   }, [location.pathname]);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
