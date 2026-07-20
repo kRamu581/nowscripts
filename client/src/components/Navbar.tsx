@@ -112,6 +112,7 @@ export default function Navbar({
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
               className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[9999] flex flex-col shadow-2xl md:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />

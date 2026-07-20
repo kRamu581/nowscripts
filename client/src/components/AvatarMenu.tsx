@@ -106,6 +106,7 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
             className="fixed md:absolute bottom-0 md:bottom-auto md:top-full left-0 md:left-auto md:right-0 w-full md:w-72 md:mt-4 bg-white rounded-t-3xl md:rounded-2xl shadow-modal z-[120] border border-gray-100 overflow-hidden flex flex-col max-h-[85vh] md:max-h-none"
+            onClick={closeMenu}
           >
             {/* Drag handle for mobile */}
             <div className="w-full flex justify-center pt-3 pb-1 md:hidden">
