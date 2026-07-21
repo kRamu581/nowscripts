@@ -47,11 +47,13 @@ export function ProjectDetail() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-now-primary to-orange-500 flex items-center justify-center text-white font-bold text-xl">
-                N
+              <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shrink-0">
+                <img src={project.author?.avatarUrl || "https://api.dicebear.com/7.x/avataaars/svg?seed=fallback"} alt={project.author?.name || "Author"} className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
-                <h3 className="font-bold text-[#0D0C22] text-base leading-tight hover:text-now-primary cursor-pointer transition-colors">NowScripts</h3>
+                <h3 className="font-bold text-[#0D0C22] text-base leading-tight hover:text-now-primary cursor-pointer transition-colors">
+                  {project.author?.name || "NowScripts"}
+                </h3>
                 <div className="flex items-center gap-2 mt-0.5">
                   <span className="text-[#3E8B5E] text-[13px] font-medium hover:underline cursor-pointer">Available for work</span>
                   <span className="text-gray-400 hover:text-gray-600 text-[13px] font-medium cursor-pointer">Follow</span>
@@ -130,16 +132,16 @@ export function ProjectDetail() {
             </div>
             <div className="relative flex justify-center">
               <span className="bg-white px-4">
-                <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-now-primary to-orange-500 flex items-center justify-center text-white font-bold text-3xl shadow-sm border-4 border-white">
-                  N
+                <div className="w-[72px] h-[72px] rounded-full overflow-hidden flex items-center justify-center shadow-sm border-4 border-white">
+                  <img src={project.author?.avatarUrl || "https://api.dicebear.com/7.x/avataaars/svg?seed=fallback"} alt={project.author?.name || "Author"} className="w-full h-full object-cover" />
                 </div>
               </span>
             </div>
           </div>
           
           <div className="text-center mt-6">
-            <h3 className="text-xl font-bold text-[#0D0C22] mb-1">NowScripts</h3>
-            <p className="text-gray-500 text-[14px] mb-6 font-medium">ServiceNow Development & Training Platform.</p>
+            <h3 className="text-xl font-bold text-[#0D0C22] mb-1">{project.author?.name || "NowScripts"}</h3>
+            <p className="text-gray-500 text-[14px] mb-6 font-medium">ServiceNow Developer & Platform Architect.</p>
             <button className="bg-[#0D0C22] hover:bg-gray-800 text-white px-6 py-2.5 rounded-full font-bold text-[14px] transition-colors">
               Get in touch
             </button>
@@ -150,7 +152,7 @@ export function ProjectDetail() {
         {relatedProjects.length > 0 && (
           <div className="border-t-0 pt-4">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-bold text-[#0D0C22]">More by NowScripts</h3>
+              <h3 className="text-lg font-bold text-[#0D0C22]">More by {project.author?.name || "NowScripts"}</h3>
               <Link to="/projects" className="text-gray-500 hover:text-gray-900 transition-colors font-medium text-[14px]">
                 View profile
               </Link>

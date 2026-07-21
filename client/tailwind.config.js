@@ -9,12 +9,12 @@ export default {
     extend: {
       colors: {
         now: {
-          primary: '#D9381E', // Amber Red
+          primary: '#FF5A5F', // Logo dot color (Amber/Pink-Red)
           background: '#F8F9FB', // Light gray background
           surface: '#FFFFFF',
           card: '#FFFFFF',
           border: '#E5E7EB',
-          accent: '#DC2626', // slightly darker red for hover/accents
+          accent: '#E82C45', // slightly darker for hover/accents
           text: '#1F2937', // Slate 800
           muted: '#6B7280' // Gray 500
         }

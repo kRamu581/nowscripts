@@ -149,6 +149,9 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
+                <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-400 hover:text-white rounded-md hover:bg-white/10 transition-colors">
+                  <X size={24} />
+                </button>
               </div>
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="flex flex-col space-y-1 px-4">

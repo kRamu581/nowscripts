@@ -5,14 +5,14 @@ import { projectsData, projectTags, ProjectDifficulty } from "../data/projectsDa
 import { BrandIconOnly, BrandLogo } from "../components/BrandLogo";
 
 const marqueeCategories = [
-  { title: "Service Portal", image: "/mockups/project_1.jpg" },
-  { title: "App Engine Studio", image: "/mockups/project_2.jpg" },
-  { title: "CSM", image: "/mockups/project_3.jpg" },
-  { title: "HR Service Delivery", image: "/mockups/project_4.jpg" },
-  { title: "Security Operations", image: "/mockups/project_5.jpg" },
-  { title: "IT Service Management", image: "/mockups/project_6.jpg" },
-  { title: "Flow Designer", image: "/mockups/project_7.jpg" },
-  { title: "UI Builder", image: "/mockups/project_8.jpg" },
+  { title: "Service Portal", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" },
+  { title: "App Engine Studio", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" },
+  { title: "CSM", image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800" },
+  { title: "HR Service Delivery", image: "https://images.unsplash.com/photo-1507238692062-5441cc1b29a3?q=80&w=800" },
+  { title: "Security Operations", image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=800" },
+  { title: "IT Service Management", image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800" },
+  { title: "Flow Designer", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" },
+  { title: "UI Builder", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" },
 ];
 const repeatedMarquee = [...marqueeCategories, ...marqueeCategories];
 
@@ -41,8 +41,8 @@ export function Projects() {
   return (
     <div className="min-h-screen bg-white pt-6 pb-24">
       {/* Header Block (2-column layout like Dribbble) */}
-      <section className="max-w-[1400px] mx-auto px-6 lg:px-8 py-6 lg:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-8 pt-8 lg:pt-12 pb-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div className="max-w-xl">
             {/* Pill Tabs in Header (Like "Hire Talent / Get Hired") */}
             <div className="inline-flex items-center bg-gray-50 rounded-full p-1 mb-8 border border-gray-100">
@@ -54,7 +54,7 @@ export function Projects() {
               Build real ServiceNow <span className="text-now-primary">projects</span>, not tutorials.
             </h1>
             
-            <div className="flex flex-col gap-4 mb-10 text-[#0D0C22] font-medium text-[15px] lg:text-[16px]">
+            <div className="flex flex-col gap-4 mb-10 text-gray-600 font-medium text-[15px] lg:text-[16px]">
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-pink-100/50 flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5 text-now-primary stroke-[3]" />
@@ -83,34 +83,23 @@ export function Projects() {
             </button>
           </div>
           
-          <div className="hidden lg:block relative pl-8">
-            {/* Video Container */}
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-gray-100 border-[8px] border-white/50 relative aspect-[4/3]">
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="w-full h-full object-cover scale-105"
-                poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80"
-              >
-                <source src="https://cdn.dribbble.com/uploads/39417/original/49dbf46eae15d227fc95a69cee31251e.mp4" type="video/mp4" />
-              </video>
+          <div className="hidden lg:flex relative w-full">
+            {/* Image Container */}
+            <div className="relative w-full flex justify-center lg:justify-end mt-2">
+              <img 
+                src="/team-star-generated.png" 
+                alt="Students collaborating on ServiceNow projects"
+                className="w-full max-w-[450px] h-auto object-contain hover:scale-[1.02] transition-transform duration-500"
+              />
               
-              {/* Floating Author Badge */}
-              <div className="absolute bottom-6 right-6 bg-white rounded-full pl-2.5 pr-5 py-2.5 flex items-center gap-3 shadow-lg z-10 cursor-pointer hover:scale-105 transition-transform">
-                <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200">
-                  <img src="https://i.pravatar.cc/150?img=11" alt="Arek Dvornechuck" className="w-full h-full object-cover" />
-                </div>
-                <span className="font-semibold text-sm text-[#0D0C22]">Arek Dvornechuck</span>
-              </div>
+              {/* Floating Author Badge - Optional, can keep it if desired or remove it */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Filter Bar */}
-      <section id="project-grid" className="max-w-[1400px] mx-auto px-6 lg:px-8 pt-6 pb-6 bg-white z-20">
+      <section id="project-grid" className="max-w-[1400px] mx-auto px-6 lg:px-8 pt-2 pb-6 bg-white z-20">
         
         {/* Top Tabs */}
         <div className="flex items-center gap-4 lg:gap-6 mb-8 overflow-x-auto hide-scrollbar pb-1">
@@ -191,25 +180,28 @@ export function Projects() {
                 {/* Author / Details Row */}
                 <div className="flex items-center justify-between px-1">
                   <div className="flex items-center gap-2 overflow-hidden">
-                    {/* Fake Avatar */}
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-now-primary to-orange-500 flex items-center justify-center shrink-0">
-                      <span className="text-[10px] font-bold text-white">N</span>
-                    </div>
+                    <img 
+                      src={project.author?.avatarUrl || "https://api.dicebear.com/7.x/avataaars/svg?seed=fallback"} 
+                      alt={project.author?.name || "Author"} 
+                      className="w-6 h-6 rounded-full shrink-0" 
+                    />
                     
                     <span className="font-semibold text-gray-900 hover:text-now-primary cursor-pointer transition-colors text-[13px] truncate">
-                      NowScripts
+                      {project.author?.name || "NowScripts"}
                     </span>
-                    <span className="bg-gray-100 text-gray-500 text-[9px] uppercase font-bold px-1.5 py-0.5 rounded ml-1">PRO</span>
+                    <span className={`text-[9px] uppercase font-bold px-1.5 py-0.5 rounded ml-1 ${project.author?.badge === 'PRO+' ? 'bg-[#0D0C22] text-white' : 'bg-gray-100 text-gray-500'}`}>
+                      {project.author?.badge || "PRO"}
+                    </span>
                   </div>
                   
                   <div className="flex items-center gap-3 text-gray-400 shrink-0">
                     <div className="flex items-center gap-1 hover:text-pink-500 cursor-pointer transition-colors">
                       <Heart className="w-3.5 h-3.5 fill-current" /> 
-                      <span className="text-xs font-medium">{Math.floor(Math.random() * 200) + 15}</span>
+                      <span className="text-xs font-medium">{project.stats?.likes || 142}</span>
                     </div>
                     <div className="flex items-center gap-1 hover:text-gray-900 cursor-pointer transition-colors">
                       <Eye className="w-3.5 h-3.5 fill-current" /> 
-                      <span className="text-xs font-medium">{Math.floor(Math.random() * 5000) + 100}</span>
+                      <span className="text-xs font-medium">{project.stats?.views || "3.5k"}</span>
                     </div>
                   </div>
                 </div>
