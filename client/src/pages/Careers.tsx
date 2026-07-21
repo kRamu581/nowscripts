@@ -12,11 +12,36 @@ const JOBS = [
     flag: '🇮🇳',
   },
   {
-    id: 'senior-frontend-engineer',
-    title: 'Senior Frontend Engineer',
+    id: 'ai-llm-engineer',
+    title: 'AI/LLM Engineer',
     team: 'Engineering',
     location: 'Remote in India',
     flag: '🇮🇳',
+    description: 'Build AI agents, recommendations, and personalized learning.'
+  },
+  {
+    id: 'full-stack-developer',
+    title: 'Full-Stack Developer',
+    team: 'Engineering',
+    location: 'Remote in India',
+    flag: '🇮🇳',
+    description: 'Develop end-to-end platform features (React + Backend).'
+  },
+  {
+    id: 'ui-ux-designer',
+    title: 'UI/UX Designer',
+    team: 'Product',
+    location: 'Remote in India',
+    flag: '🇮🇳',
+    description: 'Design intuitive AI-powered user experiences.'
+  },
+  {
+    id: 'technical-content-creator',
+    title: 'Technical Content Creator',
+    team: 'Content',
+    location: 'Remote in India',
+    flag: '🇮🇳',
+    description: 'Create high-quality ServiceNow learning content and AI prompts.'
   }
 ];
 

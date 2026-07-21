@@ -50,6 +50,8 @@ const ProjectDetail = lazy(() => import("./pages/ProjectDetail").then(m => ({ de
 const HelpCenter = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.HelpCenter })));
 const Terms = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Terms })));
 const Privacy = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Privacy })));
+const HowItWorks = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.HowItWorks })));
+const Contact = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.Contact })));
 const Careers = lazy(() => import("./pages/Careers"));
 const CareerDetail = lazy(() => import("./pages/CareerDetail"));
 const ApplyJob = lazy(() => import("./pages/ApplyJob"));
@@ -201,6 +203,8 @@ export default function App() {
               <Route path="/help" element={<HelpCenter />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/careers" element={<Careers />} />
               <Route path="/careers/:id" element={<CareerDetail />} />
               <Route path="/careers/:id/apply" element={<ApplyJob />} />
