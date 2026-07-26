@@ -70,11 +70,11 @@ export default function RoadmapViewer() {
   const strokeColor = theme.hex;
 
   return (
-    <div className="bg-gray-50 min-h-screen font-sans selection:bg-now-primary/20 selection:text-now-primary pb-32 pt-24 overflow-hidden relative">
+    <div className="bg-gray-50 min-h-screen font-sans selection:bg-now-primary/20 selection:text-now-primary pb-32 pt-24 md:pt-28 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-now-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/2 pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 -mt-8">
         <Link to="/roadmaps" className="inline-flex items-center gap-2 text-gray-500 font-semibold hover:text-gray-900 transition-colors mb-6">
           <ArrowLeft className="w-4 h-4" /> Back to Roadmaps
         </Link>
@@ -97,39 +97,43 @@ export default function RoadmapViewer() {
         </div>
         
         {/* Banner Section */}
-        <div className={`w-full rounded-[2rem] bg-gradient-to-br ${roadmap.color} p-8 md:p-14 mb-16 relative overflow-hidden shadow-xl`}>
-          <div className="absolute -right-8 -bottom-8 opacity-10 transform scale-150 pointer-events-none rotate-12">
+        <div className={`w-full rounded-3xl bg-gradient-to-br ${roadmap.color} p-6 md:p-8 mb-8 relative overflow-hidden shadow-lg`}>
+          <div className="absolute right-0 bottom-0 opacity-10 transform scale-110 pointer-events-none translate-x-1/4 translate-y-1/4">
             {getIcon(roadmap.iconName || "BookOpen")}
           </div>
 
-          <div className="relative z-10">
-            <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-md inline-block mb-6 shadow-sm border border-white/30">
-              {getIcon(roadmap.iconName || "BookOpen")}
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">{roadmap.title}</h1>
-            <p className="text-xl text-white/90 max-w-2xl mb-10 leading-relaxed">{roadmap.description}</p>
-            
-            <div className="flex flex-wrap items-center gap-3 text-sm font-bold">
-              <div className="bg-white/20 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2 shadow-sm">
-                <span className="text-white/70 font-medium">Modules:</span> {roadmap.modules?.length || 0}
+          <div className="relative z-10 flex flex-col md:flex-row gap-6 md:items-center justify-between">
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="p-2.5 bg-white/20 rounded-xl backdrop-blur-sm inline-flex shadow-sm border border-white/20 text-white">
+                  {getIcon(roadmap.iconName || "BookOpen")}
+                </div>
+                <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">{roadmap.title}</h1>
               </div>
-              <div className="bg-white/20 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white flex items-center gap-2 shadow-sm">
-                <span className="text-white/70 font-medium">Duration:</span> {roadmap.estimatedDuration}
+              <p className="text-base text-white/90 max-w-3xl mb-5 leading-relaxed">{roadmap.description}</p>
+              
+              <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm font-bold">
+                <div className="bg-white/10 border border-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-white flex items-center gap-1.5 shadow-sm">
+                  <span className="text-white/70 font-medium">Modules:</span> {roadmap.modules?.length || 0}
+                </div>
+                <div className="bg-white/10 border border-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full text-white flex items-center gap-1.5 shadow-sm">
+                  <span className="text-white/70 font-medium">Duration:</span> {roadmap.estimatedDuration}
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Learning Objectives Box */}
-        <div className="mb-24 bg-white border border-gray-200 p-8 md:p-10 rounded-[2rem] text-center shadow-sm">
-          <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center justify-center gap-3 text-gray-900">
-            <LucideIcons.Target className={`w-7 h-7 ${theme.text}`} /> Learning Objectives
+        <div className="mb-16 bg-white border border-gray-200 p-6 md:p-8 rounded-3xl text-center shadow-sm max-w-4xl mx-auto">
+          <h3 className="text-lg md:text-xl font-bold mb-3 flex items-center justify-center gap-2 text-gray-900">
+            <LucideIcons.Target className={`w-5 h-5 ${theme.text}`} /> Learning Objectives
           </h3>
-          <p className="text-gray-600 leading-relaxed text-lg">{roadmap.learningObjectives}</p>
+          <p className="text-gray-600 leading-relaxed text-sm md:text-base">{roadmap.learningObjectives}</p>
         </div>
 
         {/* Vertical Roadmap Steps */}
-        <div className="relative max-w-3xl mx-auto mt-20">
+        <div className="relative max-w-5xl mx-auto mt-20">
           {/* Connecting Line */}
           <div className={`absolute top-0 bottom-0 left-6 md:left-12 w-1.5 rounded-full ${theme.bg}`} />
           <div className="absolute top-0 bottom-0 left-6 md:left-12 w-1.5 rounded-full bg-gradient-to-b from-now-primary via-purple-500 to-transparent" style={{ height: '30%' }} />

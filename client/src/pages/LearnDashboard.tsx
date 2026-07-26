@@ -266,8 +266,25 @@ export default function LearnDashboard() {
  style={{ width: `${readingProgress}%` }}
  />
  </div>
+ 
+  <div className="border-b border-gray-200 bg-white flex-shrink-0">
+    <div className="flex gap-8 overflow-x-auto custom-scrollbar px-6 lg:px-8 w-full pt-3">
+      {allTrackData.map(t => (
+        <button 
+          key={t.trackId}
+          onClick={() => {
+            setActiveTrack(t);
+            setActiveLesson(t.sections[0].lessons[0]);
+          }}
+          className={`text-sm font-semibold pb-3 whitespace-nowrap transition-colors border-b-2 ${activeTrack.trackId === t.trackId ? 'border-now-primary text-now-primary' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
+        >
+          {t.slug.toUpperCase() === 'CSA' ? 'ITSM' : t.slug.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  </div>
 
- <div className="flex flex-1 overflow-hidden h-full mt-1 relative">
+ <div className="flex flex-1 overflow-hidden h-full relative">
  
  {mobileMenuOpen && (
  <div 
@@ -279,43 +296,10 @@ export default function LearnDashboard() {
  <div className={`absolute lg:relative w-72 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col z-50 h-full overflow-hidden transition-transform duration-300 ${
  mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
  }`}>
- <div className="p-6 border-b border-gray-200 ">
- <div className="flex items-center justify-between mb-4">
- <h2 className="text-xl font-bold flex items-center gap-2 text-gray-900 ">
- <BookOpen className="text-now-primary w-5 h-5" /> Course Contents
- </h2>
- <button className="lg:hidden p-2 text-gray-500 hover:text-gray-900 :text-white" onClick={() => setMobileMenuOpen(false)}>
+ <div className="lg:hidden p-4 border-b border-gray-200 flex justify-end">
+ <button className="p-2 text-gray-500 hover:text-gray-900" onClick={() => setMobileMenuOpen(false)}>
  <X className="w-5 h-5" />
  </button>
- </div>
- 
- <div className="mb-4">
-    <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
-      {allTrackData.map(t => (
-        <button 
-          key={t.trackId}
-          onClick={() => {
-            setActiveTrack(t);
-            setActiveLesson(t.sections[0].lessons[0]);
-          }}
-          className={`flex-1 text-xs font-bold py-1.5 rounded-md transition-all ${activeTrack.trackId === t.trackId ? 'bg-white shadow-sm text-now-primary' : 'text-gray-500 hover:text-gray-900'}`}
-        >
-          {t.slug.toUpperCase() === 'CSA' ? 'ITSM' : t.slug.toUpperCase()}
-        </button>
-      ))}
-    </div>
-  </div>
-
- <div className="relative">
- <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 " />
- <input 
- type="text" 
- placeholder="Search lessons..." 
- value={searchQuery}
- onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-now-primary transition-colors text-gray-900 placeholder-gray-500 "
- />
- </div>
  </div>
 
  <div className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar pb-24">
@@ -418,18 +402,9 @@ export default function LearnDashboard() {
  </button>
  )}
  </div>
- 
- <div className="mb-6 flex items-center gap-2 text-sm text-gray-500 font-medium bg-gray-50 border border-gray-100 py-2 px-4 rounded-full w-fit">
-    <span>Part of <strong className="text-gray-900">{activeLesson.category}</strong></span>
-    <span>&middot;</span>
-    <Link to={`/roadmaps/${activeTrack.slug}`} className="text-now-primary hover:underline flex items-center gap-1">
-      View on Roadmap <Target className="w-3.5 h-3.5" />
-    </Link>
- </div>
- 
 
 
-  <div id={activeLesson.id} className="mb-16">
+  <div id={activeLesson.id} className="mb-8">
     {activeLesson.type === 'topic' ? (
       <MarkdownRenderer content={contentToRender} lessonData={activeLesson} />
     ) : activeLesson.type === 'project' ? (
@@ -475,7 +450,7 @@ export default function LearnDashboard() {
   </div>
 
  {/* Bottom Navigation Cards */}
- <div className="mt-20 lg:mt-32 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="mt-8 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-4">
  {currentIndex > 0 ? (
  <button 
  onClick={goToPrevLesson}

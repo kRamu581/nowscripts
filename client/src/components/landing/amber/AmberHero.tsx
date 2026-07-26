@@ -7,10 +7,10 @@ export function AmberHero() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://prod-static-assets.amberstudent.com/images/bg_amber_sale.jpg')",
+          backgroundImage: "url('/hero-bg.png')",
         }}
       >
-        <div className="absolute inset-0 bg-gray-900/60" /> {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40" /> {/* Adjusted overlay for readability */}
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 w-full text-center flex flex-col items-center mt-12 md:mt-0">
@@ -27,15 +27,15 @@ export function AmberHero() {
         <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 text-white text-[13px] md:text-base font-medium px-2 mb-8 md:mb-12 max-w-[360px] md:max-w-none mx-auto">
           <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-2 md:px-4 md:py-2.5 rounded-lg border border-white/20 shadow-sm">
             <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            <span>Verified Properties</span>
+            <span>100% Free Learning</span>
           </div>
           <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-2 md:px-4 md:py-2.5 rounded-lg border border-white/20 shadow-sm">
             <Shield className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            <span>24x7 Assistance</span>
+            <span>Real-world Practice</span>
           </div>
           <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-3 py-2 md:px-4 md:py-2.5 rounded-lg border border-white/20 shadow-sm w-full sm:w-auto justify-center mt-1 sm:mt-0">
             <Clock className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            <span>Lowest Price Guarantee</span>
+            <span>Interview Preparation</span>
           </div>
         </div>
 

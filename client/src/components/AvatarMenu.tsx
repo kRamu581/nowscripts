@@ -106,7 +106,6 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
             className="fixed md:absolute bottom-0 md:bottom-auto md:top-full left-0 md:left-auto md:right-0 w-full md:w-72 md:mt-4 bg-white rounded-t-3xl md:rounded-2xl shadow-modal z-[120] border border-gray-100 overflow-hidden flex flex-col max-h-[85vh] md:max-h-none"
-            onClick={closeMenu}
           >
             {/* Drag handle for mobile */}
             <div className="w-full flex justify-center pt-3 pb-1 md:hidden">
@@ -126,51 +125,46 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                   </div>
                   
                   <div className="py-2">
-                    <Link
-                      to="/learn"
-                      onClick={closeMenu}
+                    <a
+                      href="/learn"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <GraduationCap className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
                       <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Learn</span>
-                    </Link>
-                    <Link
-                      to="/roadmaps"
-                      onClick={closeMenu}
+                    </a>
+                    <a
+                      href="/roadmaps"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <Map className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
                       <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Roadmaps</span>
-                    </Link>
-                    <Link
-                      to="/interview-prep"
-                      onClick={closeMenu}
+                    </a>
+                    <a
+                      href="/interview-prep"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
                       <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Interview Prep</span>
-                    </Link>
-                    <Link
-                      to="/projects"
-                      onClick={closeMenu}
+                    </a>
+                    <a
+                      href="/projects"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <Briefcase className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
                       <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Projects</span>
-                    </Link>
+                    </a>
                   </div>
 
                   <div className="h-px bg-gray-100 mx-5 my-1" />
 
                   <div className="py-2">
-                    <Link
-                      to="/"
-                      onClick={closeMenu}
+                    <a
+                      href="/"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <Heart className="w-5 h-5 text-gray-400 group-hover:text-[#FF5A5F]" />
                       <span className="text-[14px] font-medium text-gray-700 group-hover:text-gray-900">Shortlist</span>
-                    </Link>
+                    </a>
 
                   </div>
                 </div>
@@ -198,30 +192,27 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                     <div className="px-5 py-1.5">
                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Account</span>
                     </div>
-                    <Link
-                      to={`/user/${user?._id}`}
-                      onClick={closeMenu}
+                    <a
+                      href={`/user/${user?._id}`}
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <User className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Profile</span>
-                    </Link>
-                    <Link
-                      to="/roadmaps"
-                      onClick={closeMenu}
+                    </a>
+                    <a
+                      href="/roadmaps"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <LayoutDashboard className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Dashboard</span>
-                    </Link>
-                    <Link
-                      to="/learn"
-                      onClick={closeMenu}
+                    </a>
+                    <a
+                      href="/learn"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <Bookmark className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Bookmarked Resources</span>
-                    </Link>
+                    </a>
                   </div>
 
                   <div className="h-px bg-gray-100 mx-5 my-1" />
@@ -231,14 +222,13 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                     <div className="px-5 py-1.5">
                       <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Growth</span>
                     </div>
-                    <Link
-                      to="/interviews/submit"
-                      onClick={closeMenu}
+                    <a
+                      href="/interviews/submit"
                       className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
                     >
                       <MessageSquarePlus className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Submit an Interview</span>
-                    </Link>
+                    </a>
 
                   </div>
 
@@ -249,14 +239,13 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                         <div className="px-5 py-1.5">
                           <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Admin</span>
                         </div>
-                        <Link
-                          to="/admin/dashboard"
-                          onClick={closeMenu}
-                          className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
-                        >
-                          <Award className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                          <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Admin Dashboard</span>
-                        </Link>
+                          <a
+                            href="/admin"
+                            className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                          >
+                            <UserCircle className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
+                            <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Admin Panel</span>
+                          </a>
                       </div>
                     </>
                   )}

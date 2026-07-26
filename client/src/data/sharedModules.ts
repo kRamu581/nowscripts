@@ -258,6 +258,221 @@ const itomModules: Module[] = [
   }
 ];
 
+const sdkModules: Module[] = [
+  {
+    id: "getting-started",
+    title: "Getting Started with SDK",
+    level: "Beginner",
+    description: "Learn about the new code-first tooling ecosystem, ServiceNow Studio vs SDK, and environment setup.",
+    keyTakeaway: "Set up the ServiceNow SDK and Claude Code environment successfully.",
+    color: "from-purple-600 to-purple-900",
+    icon: "Rocket",
+    items: [
+      { type: "topic", id: "tooling-ecosystem", title: "The New Tooling Ecosystem" },
+      { type: "topic", id: "environment-setup", title: "Development Environment Setup" },
+      { type: "topic", id: "project-creation", title: "Project Creation and Credentials" }
+    ]
+  },
+  {
+    id: "core-workflow",
+    title: "Core Workflow & Context",
+    level: "Intermediate",
+    description: "Understand the Fluent metadata language, providing context to AI agents, and debugging issues.",
+    keyTakeaway: "Master prompting patterns and write Fluent code efficiently.",
+    color: "from-blue-600 to-blue-900",
+    icon: "BrainCircuit",
+    items: [
+      { type: "topic", id: "project-structure", title: "Project Structure & Fluent" },
+      { type: "topic", id: "providing-context", title: "Providing Context to AI (PRD/GDD)" },
+      { type: "topic", id: "prompting-patterns", title: "Prompting Patterns & Execution" },
+      { type: "topic", id: "debugging-runtime", title: "Debugging Runtime Issues" }
+    ]
+  },
+  {
+    id: "version-control",
+    title: "Version Control & Deployment",
+    level: "Advanced",
+    description: "Use GitHub natively with ServiceNow, handle Pull Requests, rollback code, and manage deployments.",
+    keyTakeaway: "Implement robust CI/CD practices with the ServiceNow SDK.",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "GitBranch",
+    items: [
+      { type: "topic", id: "git-workflow", title: "Git Workflow & Branching" },
+      { type: "topic", id: "pull-requests", title: "Pull Requests & Rollbacks" },
+      { type: "topic", id: "building-deploying", title: "Building and Deploying" }
+    ]
+  },
+  {
+    id: "custom-tooling",
+    title: "Custom Tooling & Orchestration",
+    level: "Expert",
+    description: "Move beyond simple vibe coding to creating autonomous pipelines with custom workflow commands.",
+    keyTakeaway: "Orchestrate AI agents for complex, parallel ServiceNow development tasks.",
+    color: "from-rose-600 to-rose-900",
+    icon: "Workflow",
+    items: [
+      { type: "topic", id: "vibe-coding", title: "Vibe Coding vs. Orchestration" },
+      { type: "topic", id: "workflow-commands", title: "Workflow Commands (Skills)" },
+      { type: "topic", id: "automated-pipeline", title: "Automated Pipeline Example" }
+    ]
+  },
+  {
+    id: "leveling-up",
+    title: "Leveling Up",
+    level: "Expert",
+    description: "Apply SDK concepts to brownfield development and use agents for automated stakeholder communication.",
+    keyTakeaway: "Scale AI development across large, legacy applications.",
+    color: "from-amber-600 to-amber-900",
+    icon: "TrendingUp",
+    items: [
+      { type: "topic", id: "brownfield-development", title: "Brownfield Development" },
+      { type: "topic", id: "automated-communication", title: "Automated Communication" },
+    ]
+  }
+];
+
+const javascriptModules: Module[] = [
+  {
+    id: "js-getting-started",
+    title: "Getting Started & Syntax",
+    level: "Beginner",
+    description: "Learn the basics of JavaScript syntax, variables, operators, and debugging.",
+    keyTakeaway: "Write and debug basic scripts in the Now Platform.",
+    color: "from-yellow-500 to-yellow-700",
+    icon: "Rocket",
+    items: [
+      { type: "topic", id: "lesson-1-getting-started", title: "Getting Started" },
+      { type: "topic", id: "lesson-2-statements-and-syntax", title: "Statements and Syntax" },
+      { type: "topic", id: "lesson-3-variables", title: "Variables" },
+      { type: "topic", id: "lesson-4-arithmetic", title: "Simple Arithmetic Operators" },
+      { type: "topic", id: "lesson-5-error-messages", title: "Common Error Messages" },
+      { type: "project", id: "lab-2", title: "Arithmetic" },
+      { type: "topic", id: "lesson-9-commenting", title: "Commenting" }
+    ]
+  },
+  {
+    id: "js-data-types",
+    title: "Data Types & Strings",
+    level: "Beginner",
+    description: "Understand strings, special characters, data type conversions, and string methods.",
+    keyTakeaway: "Manipulate strings and handle data type conversions.",
+    color: "from-yellow-600 to-yellow-800",
+    icon: "FileText",
+    items: [
+      { type: "topic", id: "lesson-6-strings", title: "Strings" },
+      { type: "topic", id: "lesson-7-special-characters", title: "Special Characters" },
+      { type: "topic", id: "lesson-8-data-type-conversions", title: "Data Type Conversions" },
+      { type: "project", id: "lab-3", title: "Strings" },
+      { type: "topic", id: "lesson-31-more-string-methods", title: "More String Methods" }
+    ]
+  },
+  {
+    id: "js-logic",
+    title: "Logic & Flow Control",
+    level: "Intermediate",
+    description: "Control script flow using conditions and loops.",
+    keyTakeaway: "Use if/else, switch, and loops to build logic.",
+    color: "from-yellow-500 to-yellow-700",
+    icon: "Workflow",
+    items: [
+      { type: "topic", id: "lesson-10-comparisons", title: "Comparisons" },
+      { type: "topic", id: "lesson-11-if-statements", title: "The If Statement and Boolean Logic" },
+      { type: "topic", id: "lesson-12-ternary", title: "The Ternary Operator" },
+      { type: "topic", id: "lesson-13-switch", title: "The Switch Statement" },
+      { type: "topic", id: "lesson-14-truthy-falsy", title: "Truthy/Falsy" },
+      { type: "project", id: "lab-4", title: "Translation" },
+      { type: "topic", id: "lesson-15-while-loop", title: "The While Loop" },
+      { type: "topic", id: "lesson-16-for-loop", title: "The For Loop" },
+      { type: "topic", id: "lesson-17-do-while", title: "The Do-While Loop" },
+      { type: "topic", id: "lesson-18-nested-loops", title: "Nested Loops" },
+      { type: "project", id: "lab-5", title: "Nested Loops" }
+    ]
+  },
+  {
+    id: "js-functions",
+    title: "Functions & Scope",
+    level: "Intermediate",
+    description: "Write reusable functions, understand scope, and handle errors.",
+    keyTakeaway: "Build modular code and catch runtime errors.",
+    color: "from-yellow-600 to-yellow-800",
+    icon: "Code",
+    items: [
+      { type: "topic", id: "lesson-19-functions", title: "Functions" },
+      { type: "topic", id: "lesson-20-try-catch", title: "Try/Catch/Finally Statements" },
+      { type: "topic", id: "lesson-32-recursion", title: "Recursion" }
+    ]
+  },
+  {
+    id: "js-arrays-objects",
+    title: "Arrays & Objects",
+    level: "Advanced",
+    description: "Manage collections of data using arrays and objects.",
+    keyTakeaway: "Utilize arrays, objects, and JSON in ServiceNow.",
+    color: "from-yellow-500 to-yellow-700",
+    icon: "Box",
+    items: [
+      { type: "topic", id: "lesson-21-simple-db-query", title: "Simple Database Query" },
+      { type: "topic", id: "lesson-22-intro-arrays", title: "Introduction to Arrays" },
+      { type: "topic", id: "lesson-23-array-foreach", title: "Array forEach" },
+      { type: "topic", id: "lesson-24-common-array-methods", title: "Common Array Methods" },
+      { type: "topic", id: "lesson-25-servicenow-arrayutil", title: "ServiceNow ArrayUtil" },
+      { type: "project", id: "lab-6", title: "Arrays" },
+      { type: "topic", id: "lesson-26-intro-objects", title: "Introduction to Objects" },
+      { type: "topic", id: "lesson-27-checking-properties", title: "Checking if an Object has a Property" },
+      { type: "topic", id: "lesson-28-finding-properties", title: "Finding All Properties in an Object" },
+      { type: "topic", id: "lesson-29-arrays-of-objects", title: "Arrays of Objects" },
+      { type: "topic", id: "lesson-30-json-stringify-parse", title: "JSON Stringify and Parse" },
+      { type: "project", id: "lab-7", title: "JSON" }
+    ]
+  },
+  {
+    id: "js-advanced",
+    title: "Advanced Concepts",
+    level: "Expert",
+    description: "Build custom classes and scripted REST APIs.",
+    keyTakeaway: "Architect scalable code using OOP and APIs.",
+    color: "from-yellow-600 to-yellow-800",
+    icon: "Cloud",
+    items: [
+      { type: "topic", id: "lesson-33-classes", title: "Classes" },
+      { type: "topic", id: "lesson-34-passing-objects", title: "Passing objects to functions" },
+      { type: "topic", id: "lesson-35-class-inheritance", title: "Class Inheritance" },
+      { type: "topic", id: "lesson-36-scripted-rest-apis", title: "Scripted REST APIs" },
+      { type: "project", id: "lab-8", title: "REST APIs" }
+    ]
+  }
+];
+
+const aesModules: Module[] = [
+  {
+    id: "aes-intro",
+    title: "App Engine Studio (AES)",
+    level: "Intermediate",
+    description: "Build custom applications rapidly using App Engine Studio.",
+    keyTakeaway: "Learn low-code app development in ServiceNow.",
+    color: "from-blue-500 to-blue-700",
+    icon: "Layout",
+    items: [
+      { type: "topic", id: "introduction", title: "Getting Started with AES" }
+    ]
+  }
+];
+
+const vaModules: Module[] = [
+  {
+    id: "va-intro",
+    title: "Virtual Agent (VA)",
+    level: "Intermediate",
+    description: "Design conversational interfaces to automate support.",
+    keyTakeaway: "Create powerful chatbot flows to deflect common incidents.",
+    color: "from-purple-500 to-purple-700",
+    icon: "Mic",
+    items: [
+      { type: "topic", id: "introduction", title: "Virtual Agent Basics" }
+    ]
+  }
+];
+
 export const tracks: Track[] = [
   {
     id: "csa-track",
@@ -270,6 +485,30 @@ export const tracks: Track[] = [
     slug: "itom",
     title: "ITOM Specialist",
     modules: itomModules
+  },
+  {
+    id: "sdk-track",
+    slug: "sdk",
+    title: "ServiceNow SDK Developer",
+    modules: sdkModules
+  },
+  {
+    id: "javascript-track",
+    slug: "javascript",
+    title: "Javascript Developer",
+    modules: javascriptModules
+  },
+  {
+    id: "aes-track",
+    slug: "app engine studio",
+    title: "App Engine Studio",
+    modules: aesModules
+  },
+  {
+    id: "va-track",
+    slug: "virtual agent",
+    title: "Virtual Agent",
+    modules: vaModules
   }
 ];
 

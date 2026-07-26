@@ -1,31 +1,27 @@
-import { HeartHandshake, ThumbsUp, Heart, ShieldCheck } from "lucide-react";
+import { BookOpen, Code, Briefcase, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function AmberValueProps() {
   const props = [
     {
-      icon: <HeartHandshake className="w-[42px] h-[42px] relative z-10 text-gray-800" strokeWidth={1.2} />,
-      title: "Instant & Easy Enrollments",
-      description: "Time is money. Save both when you enroll with us.."
+      icon: <BookOpen className="w-[42px] h-[42px] relative z-10 text-gray-800" strokeWidth={1.2} />,
+      title: "100% Free Learning",
+      description: "Access high-quality ServiceNow courses, notes, and roadmaps at no cost."
     },
     {
-      icon: <ThumbsUp className="w-[42px] h-[42px] relative z-10 text-gray-800" strokeWidth={1.2} />,
-      title: "Best Value Guarantee",
-      description: (
-        <>
-          Find a lower price and we'll match it. No questions asked.. <Link to="#" className="font-semibold underline text-gray-900 hover:text-now-primary">Learn More</Link>
-        </>
-      )
+      icon: <Code className="w-[42px] h-[42px] relative z-10 text-gray-800" strokeWidth={1.2} />,
+      title: "Hands-on Projects",
+      description: "Build real-world applications and strengthen your portfolio with practical experience."
     },
     {
-      icon: <Heart className="w-[42px] h-[42px] relative z-10 text-gray-800" strokeWidth={1.2} />,
-      title: "24x7 Assistance",
-      description: "If you have a doubt or a query, we're always a call away.."
+      icon: <Briefcase className="w-[42px] h-[42px] relative z-10 text-gray-800" strokeWidth={1.2} />,
+      title: "Interview Preparation",
+      description: "Practice scenario-based questions, mock interviews, and certification-focused content."
     },
     {
-      icon: <ShieldCheck className="w-[42px] h-[42px] relative z-10 text-[#00B67A]" strokeWidth={1.2} />,
-      title: "100% Verified Internships",
-      description: "We promise to deliver what you see on the website.."
+      icon: <Users className="w-[42px] h-[42px] relative z-10 text-[#00B67A]" strokeWidth={1.2} />,
+      title: "Developer Community",
+      description: "Learn, collaborate, share knowledge, and grow with fellow ServiceNow developers."
     }
   ];
 
@@ -34,7 +30,7 @@ export function AmberValueProps() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <h2 className="text-3xl font-black text-[#0B2538] mb-3">Why Choose NowScripts</h2>
         <p className="text-gray-500 mb-14 text-[17px]">
-          Take the hassle out of securing your internship for the best years of your life
+          Everything you need to learn ServiceNow for free, build real-world skills, and launch your tech career.
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">

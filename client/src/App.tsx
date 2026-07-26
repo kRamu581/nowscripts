@@ -45,6 +45,7 @@ const InterviewExperienceDetail = lazy(() => import("./pages/InterviewExperience
 const SubmitInterviewExperience = lazy(() => import("./pages/SubmitInterviewExperience"));
 const Projects = lazy(() => import("./pages/Projects").then(m => ({ default: m.Projects })));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail").then(m => ({ default: m.ProjectDetail })));
+const AIInterviewWizard = lazy(() => import("./pages/ai-interview/AIInterviewWizard").then(m => ({ default: m.AIInterviewWizard })));
 
 // Static Info Pages
 const HelpCenter = lazy(() => import("./pages/StaticInfoPages").then(m => ({ default: m.HelpCenter })));
@@ -195,6 +196,7 @@ export default function App() {
               <Route path="/tag/:tag" element={<CommunityFeed />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:id" element={<ProjectDetail />} />
+              <Route path="/ai-interview" element={<AIInterviewWizard />} />
               <Route path="/suggestions" element={<Suggestions />} />
               <Route path="/search/:tab/:query" element={<SearchResults />} />
               <Route path="/blog/:id" element={<Post />} />

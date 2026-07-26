@@ -53,6 +53,10 @@ export default function Navbar({
             <Link to="/roadmaps" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Roadmaps</Link>
             <Link to="/projects" className="hidden lg:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Projects</Link>
             <Link to="/interview-prep" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Interview Prep</Link>
+            <Link to="/ai-interview" className="hidden md:flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors bg-blue-500/10 px-2 py-1 rounded-md border border-blue-500/20">
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+              AI Interview
+            </Link>
 
             <Link to="/newsletter" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Newsletter</Link>
             
@@ -112,7 +116,6 @@ export default function Navbar({
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
               className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[9999] flex flex-col shadow-2xl md:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
@@ -127,6 +130,10 @@ export default function Navbar({
                   <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Roadmaps</Link>
                   <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
                   <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
+                  <Link to="/ai-interview" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-blue-400 hover:bg-blue-500/10 rounded-md font-medium transition-colors flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    AI Interview
+                  </Link>
                   <Link to="/community" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Community</Link>
                   <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Newsletter</Link>
                 </nav>
