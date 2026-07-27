@@ -118,6 +118,11 @@ export default function LearnDashboard() {
   }).filter(section => section.lessons.length > 0);
 
  useEffect(() => {
+ document.body.style.backgroundColor = '#FFFFFF';
+ return () => { document.body.style.backgroundColor = ''; };
+ }, []);
+
+ useEffect(() => {
  if (!activeLesson) return;
  setExpandedLessons(prev => ({ ...prev, [activeLesson.id]: true }));
  setExpandedSections(prev => ({ ...prev, [activeLesson.category]: true }));
@@ -128,10 +133,8 @@ export default function LearnDashboard() {
  }
  }
  
- if (scrollContainerRef.current) {
- scrollContainerRef.current.scrollTop = 0;
+ window.scrollTo({ top: 0, behavior: 'smooth' });
  setReadingProgress(0);
- }
  }, [activeLesson]);
 
  // Jump to hash on mount or when activeLesson changes
@@ -139,32 +142,30 @@ export default function LearnDashboard() {
  if (!activeLesson) return;
  const hash = window.location.hash.replace('#', '');
  if (hash && activeLesson.subtopics && activeLesson.subtopics.some(s => s.id === hash)) {
- setTimeout(() => {
- const el = document.getElementById(hash);
- if (el && scrollContainerRef.current) {
- el.scrollIntoView({ behavior: 'smooth', block: 'start' });
- }
- }, 100);
+  setTimeout(() => {
+  const el = document.getElementById(hash);
+  if (el) {
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  }, 100);
  }
  }, [activeLesson]);
 
  // Intersection Observer
  useEffect(() => {
  if (!activeLesson) return;
- const container = scrollContainerRef.current;
- if (!container) return;
 
- const handleScroll = () => {
- const totalScroll = container.scrollHeight - container.clientHeight;
- const currentScroll = container.scrollTop;
- if (totalScroll > 0) {
- setReadingProgress(Math.min(100, Math.max(0, (currentScroll / totalScroll) * 100)));
- } else {
- setReadingProgress(100);
- }
- };
+  const handleScroll = () => {
+    const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const currentScroll = window.scrollY;
+    if (totalScroll > 0) {
+      setReadingProgress(Math.min(100, Math.max(0, (currentScroll / totalScroll) * 100)));
+    } else {
+      setReadingProgress(100);
+    }
+  };
 
- container.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll);
 
  const observer = new IntersectionObserver((entries) => {
  const visibleEntries = entries.filter(e => e.isIntersecting);
@@ -179,7 +180,7 @@ export default function LearnDashboard() {
  setCompletedSubtopics(prev => ({ ...prev, [topMost]: true }));
  }
  }, { 
- root: container, 
+ root: null, 
  rootMargin: '0px 0px -80% 0px' 
  });
 
@@ -193,8 +194,8 @@ export default function LearnDashboard() {
  }
 
  return () => {
- container.removeEventListener('scroll', handleScroll);
- observer.disconnect();
+  window.removeEventListener('scroll', handleScroll);
+  observer.disconnect();
  };
  }, [activeLesson]);
 
@@ -258,49 +259,53 @@ export default function LearnDashboard() {
  const contentToRender = activeLesson.rawMarkdown ? activeLesson.rawMarkdown.replace(/^---[\s\S]+?---/, '').trim() : "";
 
  return (
- <div className="bg-white text-gray-900 font-sans flex flex-col h-[calc(100vh-72px)] overflow-hidden selection:bg-now-primary selection:text-black relative">
+ <div className="bg-white text-gray-900 font-sans flex flex-col w-full min-h-screen selection:bg-now-primary selection:text-black relative">
  
- <div className="absolute top-0 left-0 w-full h-1 bg-gray-200 z-50">
+ <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-[70]">
  <div 
  className="h-full bg-now-primary transition-all duration-300 ease-out" 
  style={{ width: `${readingProgress}%` }}
  />
  </div>
  
-  <div className="border-b border-gray-200 bg-white flex-shrink-0">
-    <div className="flex gap-8 overflow-x-auto custom-scrollbar px-6 lg:px-8 w-full pt-3">
-      {allTrackData.map(t => (
+  <div className="sticky top-0 z-[60] border-b border-gray-200 bg-white flex-shrink-0 shadow-sm">
+    <div className="flex gap-8 overflow-x-auto px-6 lg:px-8 w-full pt-3 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      {allTrackData.map(t => {
+        const title = t.slug.toUpperCase() === 'CSA' ? 'ITSM' : 
+                      ['itom', 'sdk'].includes(t.slug.toLowerCase()) ? t.slug.toUpperCase() :
+                      t.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        return (
         <button 
           key={t.trackId}
           onClick={() => {
             setActiveTrack(t);
             setActiveLesson(t.sections[0].lessons[0]);
           }}
-          className={`text-sm font-semibold pb-3 whitespace-nowrap transition-colors border-b-2 ${activeTrack.trackId === t.trackId ? 'border-now-primary text-now-primary' : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'}`}
+          className={`text-[16px] pb-3 whitespace-nowrap transition-colors text-[#006699] hover:text-[#004d73] ${activeTrack.trackId === t.trackId ? 'font-medium' : 'font-normal'}`}
         >
-          {t.slug.toUpperCase() === 'CSA' ? 'ITSM' : t.slug.toUpperCase()}
+          {title}
         </button>
-      ))}
+      )})}
     </div>
   </div>
 
- <div className="flex flex-1 overflow-hidden h-full relative">
+  <div className="flex flex-1 relative max-w-full">
  
- {mobileMenuOpen && (
- <div 
- className="fixed inset-0 bg-gray-900/20 z-40 lg:hidden"
- onClick={() => setMobileMenuOpen(false)}
- />
- )}
+  {mobileMenuOpen && (
+  <div 
+  className="fixed inset-0 bg-gray-900/20 z-[70] lg:hidden"
+  onClick={() => setMobileMenuOpen(false)}
+  />
+  )}
 
- <div className={`absolute lg:relative w-72 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col z-50 h-full overflow-hidden transition-transform duration-300 ${
- mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
- }`}>
- <div className="lg:hidden p-4 border-b border-gray-200 flex justify-end">
- <button className="p-2 text-gray-500 hover:text-gray-900" onClick={() => setMobileMenuOpen(false)}>
- <X className="w-5 h-5" />
- </button>
- </div>
+  <div className={`fixed lg:sticky lg:top-[48px] w-72 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col z-[80] lg:z-[50] h-[100dvh] lg:h-[calc(100vh-48px)] transition-transform duration-300 ${
+  mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+  }`}>
+  <div className="lg:hidden p-4 border-b border-gray-200 flex justify-end">
+  <button className="p-2 text-gray-500 hover:text-gray-900" onClick={() => setMobileMenuOpen(false)}>
+  <X className="w-5 h-5" />
+  </button>
+  </div>
 
  <div className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar pb-24">
  {filteredData.map((section, sIdx) => {
@@ -373,10 +378,10 @@ export default function LearnDashboard() {
  </div>
  </div>
 
- <div 
- ref={scrollContainerRef}
- className="flex-1 overflow-y-auto bg-white custom-scrollbar relative h-full flex justify-center w-full min-w-0"
- >
+  <div 
+  ref={scrollContainerRef}
+  className="flex-1 bg-white relative w-full min-w-0"
+  >
  <div className="w-full max-w-[960px] px-4 lg:px-8 xl:px-12 py-8 xl:py-12 pb-48 overflow-x-hidden">
  <AnimatePresence mode="wait">
  <motion.div 
@@ -386,23 +391,6 @@ export default function LearnDashboard() {
  exit={{ opacity: 0, y: -10 }}
  transition={{ duration: 0.3 }}
  >
- <div className="mb-4 flex items-center justify-between">
- <button 
- onClick={() => setMobileMenuOpen(true)}
- className="lg:hidden p-2 -ml-2 rounded-lg hover:bg-gray-50 text-gray-900 flex items-center gap-2 font-medium"
- >
- <List className="w-5 h-5" /> Menu
- </button>
- {activeLesson.subtopics && activeLesson.subtopics.length > 0 && (
- <button 
- onClick={() => setTocMenuOpen(true)}
- className="xl:hidden p-2 -mr-2 rounded-lg hover:bg-gray-50 text-gray-900 flex items-center gap-2 font-medium"
- >
- <List className="w-5 h-5" /> TOC
- </button>
- )}
- </div>
-
 
   <div id={activeLesson.id} className="mb-8">
     {activeLesson.type === 'topic' ? (
@@ -493,11 +481,11 @@ export default function LearnDashboard() {
  {/* Mobile TOC Overlay */}
  {tocMenuOpen && (
  <div 
- className="fixed inset-0 bg-gray-900/20 z-40 xl:hidden"
+ className="fixed inset-0 bg-gray-900/20 z-[70] xl:hidden"
  onClick={() => setTocMenuOpen(false)}
  />
  )}
- <div className={`fixed right-0 top-0 xl:relative w-60 flex-shrink-0 border-l border-gray-200 bg-white flex flex-col z-50 h-full overflow-hidden transition-transform duration-300 ${
+ <div className={`fixed right-0 top-0 xl:sticky xl:top-[48px] w-60 flex-shrink-0 border-l border-gray-200 bg-white flex flex-col z-[80] xl:z-[50] h-[100dvh] xl:h-[calc(100vh-48px)] overflow-hidden transition-transform duration-300 ${
  tocMenuOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
  }`}>
  <div className="p-4 pb-2 flex items-center justify-between border-b border-gray-100">

@@ -43,13 +43,13 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
       
       {/* Premium Header if lessonData is provided */}
       {lessonData && theme && (
-        <div className="mb-8">
-          <h1 className="text-3xl sm:text-[32px] font-bold text-[#0f2c4c] mb-3 leading-tight tracking-tight">
+        <div className="mb-6">
+          <h1 className="text-2xl sm:text-[28px] font-semibold text-[#0f2c4c] mb-2 leading-snug">
             {lessonData.title}
           </h1>
           
           <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
-            <div className="text-[14px] text-[#5b7290] font-medium">
+            <div className="text-[14px] text-gray-500 font-medium">
               Last Updated : {lessonData.lastUpdated ? formatDate(lessonData.lastUpdated) : "1 Jul, 2026"}
             </div>
             <div className="flex items-center gap-4 text-gray-500">

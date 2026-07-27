@@ -38,14 +38,22 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
   const hoverColor = isScrolled ? "hover:text-[#FF5A5F]" : "hover:text-gray-200";
   const borderColor = isScrolled ? "border-gray-200" : "border-white/20";
   const bgColor = isScrolled ? "bg-white shadow-sm border-b border-gray-200" : "bg-transparent";
-  const positionClass = isHome ? "fixed" : "sticky";
+  const positionClass = isHome ? "fixed" : "relative";
 
   return (
     <>
-    <div className={`w-full ${positionClass} top-0 z-[100] transition-all duration-300 ${bgColor}`}>
+    <nav className={`w-full ${positionClass} top-0 z-[100] transition-all duration-300 ${bgColor}`}>
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 flex items-center justify-between h-[72px]">
         {/* Left Side: Logo */}
-        <div className="flex items-center gap-4 flex-shrink-0">
+        <div className="flex items-center gap-3 flex-shrink-0">
+          {/* Mobile Hamburger on Left */}
+          <button
+            onClick={() => setIsMobileMenuOpen(true)}
+            className={`md:hidden flex items-center justify-center p-1 ${textColor} transition-colors mr-1`}
+          >
+            <Menu size={26} strokeWidth={1.5} />
+          </button>
+          
           <Link to="/" className={`${textColor} ${hoverColor} transition-colors flex items-center gap-1`}>
             <BrandLogo textColor={`text-current`} hideTextOnMobile={false} />
             <span className={`w-2 h-2 rounded-full mb-1 ${isScrolled ? 'bg-[#FF5A5F]' : 'bg-white'}`}></span>
@@ -115,16 +123,23 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             )}
           </div>
           
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className={`md:hidden flex items-center justify-center p-1 ${textColor} transition-colors`}
-          >
-            <Menu size={28} strokeWidth={1.5} />
-          </button>
+          {/* Mobile Right Side: Search and Notifications */}
+          <div className="md:hidden flex items-center gap-3">
+            <button className={`w-9 h-9 flex items-center justify-center rounded-full bg-gray-100/50 ${textColor}`}>
+              <Search size={20} strokeWidth={1.5} />
+            </button>
+            <Link to="/notifications" className={`w-9 h-9 flex items-center justify-center rounded-full bg-gray-100/50 ${textColor} relative`}>
+              <div className="flex items-center justify-center w-[20px] h-[20px]">{NotificationIcon}</div>
+              {notificationsCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#FF5A5F] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                  {notificationsCount}
+                </span>
+              )}
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
