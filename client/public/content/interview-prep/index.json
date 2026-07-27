@@ -32,6 +32,12 @@
       "title": "Mock Interviews",
       "status": "active",
       "dataFile": "/content/interview-prep/mock/data.json"
+    },
+    {
+      "id": "ai-interview",
+      "title": "AI Interview",
+      "status": "active",
+      "url": "/ai-interview"
     }
   ]
 }

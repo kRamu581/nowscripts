@@ -38,30 +38,27 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
 
   return (
     <div className="w-full max-w-4xl mx-auto py-12 px-6">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-600/20 text-blue-500 mb-6 border border-blue-500/30">
-          <MonitorPlay className="w-8 h-8" />
-        </div>
-        <h1 className="text-4xl font-bold mb-4 text-white">AI Interview Setup</h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+      <div className="text-center mb-10">
+        <h1 className="text-3xl font-bold mb-3 text-gray-900">AI Interview Setup</h1>
+        <p className="text-gray-500">
           Configure your mock ServiceNow technical interview. Our AI will dynamically generate a scenario-based interview tailored exactly to your selections.
         </p>
       </div>
 
-      <div className="bg-[#1A1C23] border border-gray-800 rounded-2xl p-8 mb-8 shadow-2xl">
-        <h2 className="text-2xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Interview Configuration</h2>
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 mb-8 shadow-sm">
+        <h2 className="text-2xl font-bold text-gray-900 mb-8 border-b border-gray-200 pb-4">Interview Configuration</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Target Role */}
           <div className="space-y-3">
-            <label className="flex items-center text-sm font-semibold text-gray-300">
-              <Briefcase className="w-4 h-4 mr-2 text-blue-400" />
+            <label className="flex items-center text-sm font-semibold text-gray-700">
+              <Briefcase className="w-4 h-4 mr-2 text-blue-500" />
               Target Role
             </label>
             <select 
               value={targetRole}
               onChange={(e) => setTargetRole(e.target.value)}
-              className="w-full bg-[#0F1014] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:ring-2 focus:ring-now-primary focus:border-transparent outline-none transition-all"
             >
               {roles.map(r => <option key={r} value={r}>{r}</option>)}
             </select>
@@ -69,14 +66,14 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
 
           {/* Module */}
           <div className="space-y-3">
-            <label className="flex items-center text-sm font-semibold text-gray-300">
-              <Settings className="w-4 h-4 mr-2 text-purple-400" />
+            <label className="flex items-center text-sm font-semibold text-gray-700">
+              <Settings className="w-4 h-4 mr-2 text-purple-500" />
               Primary Module
             </label>
             <select 
               value={module}
               onChange={(e) => setModule(e.target.value)}
-              className="w-full bg-[#0F1014] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:ring-2 focus:ring-now-primary focus:border-transparent outline-none transition-all"
             >
               {modules.map(m => <option key={m} value={m}>{m}</option>)}
             </select>
@@ -84,14 +81,14 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
 
           {/* Experience */}
           <div className="space-y-3">
-            <label className="flex items-center text-sm font-semibold text-gray-300">
-              <Shield className="w-4 h-4 mr-2 text-green-400" />
+            <label className="flex items-center text-sm font-semibold text-gray-700">
+              <Shield className="w-4 h-4 mr-2 text-green-500" />
               Experience Level
             </label>
             <select 
               value={experience}
               onChange={(e) => setExperience(e.target.value)}
-              className="w-full bg-[#0F1014] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:ring-2 focus:ring-now-primary focus:border-transparent outline-none transition-all"
             >
               <option value="Beginner">Beginner (0-1 Years)</option>
               <option value="Intermediate">Intermediate (1-3 Years)</option>
@@ -102,14 +99,14 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
 
           {/* Difficulty */}
           <div className="space-y-3">
-            <label className="flex items-center text-sm font-semibold text-gray-300">
-              <BarChart className="w-4 h-4 mr-2 text-red-400" />
+            <label className="flex items-center text-sm font-semibold text-gray-700">
+              <BarChart className="w-4 h-4 mr-2 text-red-500" />
               Difficulty
             </label>
             <select 
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value)}
-              className="w-full bg-[#0F1014] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:ring-2 focus:ring-now-primary focus:border-transparent outline-none transition-all"
             >
               <option value="Easy">Easy (Standard Concepts)</option>
               <option value="Medium">Medium (Scenario Based)</option>
@@ -120,14 +117,14 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
 
           {/* Duration */}
           <div className="space-y-3">
-            <label className="flex items-center text-sm font-semibold text-gray-300">
-              <Clock className="w-4 h-4 mr-2 text-yellow-400" />
+            <label className="flex items-center text-sm font-semibold text-gray-700">
+              <Clock className="w-4 h-4 mr-2 text-yellow-500" />
               Duration
             </label>
             <select 
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="w-full bg-[#0F1014] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:ring-2 focus:ring-now-primary focus:border-transparent outline-none transition-all"
             >
               <option value="15 mins">15 mins (Quick Screen)</option>
               <option value="30 mins">30 mins (Standard)</option>
@@ -138,14 +135,14 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
 
           {/* Language */}
           <div className="space-y-3">
-            <label className="flex items-center text-sm font-semibold text-gray-300">
-              <Globe className="w-4 h-4 mr-2 text-cyan-400" />
+            <label className="flex items-center text-sm font-semibold text-gray-700">
+              <Globe className="w-4 h-4 mr-2 text-cyan-500" />
               Voice Language
             </label>
             <select 
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
-              className="w-full bg-[#0F1014] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-gray-900 focus:ring-2 focus:ring-now-primary focus:border-transparent outline-none transition-all"
             >
               <option value="English">English</option>
               <option value="Spanish">Spanish</option>
@@ -159,7 +156,7 @@ export function InterviewSetup({ onNext }: InterviewSetupProps) {
       <div className="flex justify-end">
         <button 
           onClick={handleStart}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-blue-500/25"
+          className="flex items-center gap-2 bg-now-primary hover:bg-now-accent text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md hover:shadow-now-primary/25"
         >
           Continue to Tech Check
           <ChevronRight className="w-5 h-5" />

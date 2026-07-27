@@ -473,6 +473,136 @@ const vaModules: Module[] = [
   }
 ];
 
+const aiModules: Module[] = [
+  {
+    id: "servicenow-ai",
+    title: "ServiceNow AI",
+    level: "Beginner",
+    description: "Learn the fundamentals of Artificial Intelligence and how it powers intelligent automation in ServiceNow.",
+    keyTakeaway: "Understand AI concepts and explore ServiceNow's AI capabilities.",
+    color: "from-pink-500 to-pink-700",
+    icon: "Monitor",
+    items: [
+      { type: "topic", id: "ai-essentials", title: "AI Essentials" },
+      { type: "topic", id: "ai-essentials-for-it-professionals", title: "AI Essentials for IT Professionals" },
+      { type: "topic", id: "ai-agents-and-automation", title: "AI Agents and Automation in Workflows" },
+      { type: "topic", id: "enterprise-ai-governance", title: "How do I Build an Enterprise AI Governance Plan" },
+      { type: "topic", id: "future-of-agentic-ai", title: "The Future of Agentic AI" },
+      { type: "topic", id: "gen-ai-power-intelligent-automation", title: "How does Generative AI Power Intelligent Automation" },
+      { type: "topic", id: "what-is-machine-learning", title: "What is Machine Learning" },
+      { type: "topic", id: "nlu-fundamentals", title: "Natural Language Understanding Fundamentals" },
+      { type: "topic", id: "what-is-ai", title: "What is Artificial Intelligence" },
+      { type: "topic", id: "what-is-servicenow-instance", title: "What is a ServiceNow Instance" },
+      { type: "topic", id: "what-is-servicenow-platform-workspace", title: "What is a ServiceNow Platform Workspace" },
+      { type: "topic", id: "what-is-servicenow-ai-platform-dashboard", title: "What is ServiceNow AI Platform Dashboard" },
+      { type: "topic", id: "what-is-a-chatbot", title: "What is a Chatbot" },
+      { type: "topic", id: "what-is-a-help-desk", title: "What is a Help Desk" },
+      { type: "topic", id: "servicenow-user-interface-overview", title: "ServiceNow User Interface Overview" },
+      { type: "topic", id: "platform-analytics-overview", title: "Platform Analytics Overview" },
+      { type: "topic", id: "get-started-with-predictive-intelligence", title: "Get Started with Predictive Intelligence" },
+      { type: "topic", id: "creator-studio-fundamentals", title: "Creator Studio Fundamentals" }
+    ]
+  }
+];
+
+const uiBuilderModules: Module[] = [
+  {
+    id: "uib-intro",
+    title: "1. Introduction to UI Builder",
+    level: "Beginner",
+    description: "Learn what UI Builder is and how it compares to Service Portal and App Engine Studio.",
+    keyTakeaway: "Understand UI Builder use cases.",
+    color: "from-teal-500 to-teal-700",
+    icon: "Layout",
+    items: [
+      { type: "topic", id: "what-is-ui-builder", title: "What is UI Builder" },
+      { type: "topic", id: "uib-vs-sp-vs-aes", title: "UI Builder vs Service Portal vs App Engine Studio" }
+    ]
+  },
+  {
+    id: "uib-core-concepts",
+    title: "2. Core Concepts",
+    level: "Beginner",
+    description: "Understand the fundamental building blocks of UI Builder.",
+    keyTakeaway: "Master Pages, Components, and Data Brokers.",
+    color: "from-cyan-500 to-cyan-700",
+    icon: "Box",
+    items: [
+      { type: "topic", id: "pages-components-data", title: "Pages, Components, and Data" },
+      { type: "topic", id: "component-config-panel", title: "Component Configuration Panel" },
+      { type: "topic", id: "data-brokers", title: "Data Brokers (fetching/binding data)" }
+    ]
+  },
+  {
+    id: "uib-building-pages",
+    title: "3. Building Pages",
+    level: "Intermediate",
+    description: "Get hands-on with creating and organizing pages in UI Builder.",
+    keyTakeaway: "Create robust pages with mobile variants.",
+    color: "from-blue-500 to-blue-700",
+    icon: "Layout",
+    items: [
+      { type: "topic", id: "creating-page", title: "Creating a Page" },
+      { type: "topic", id: "adding-arranging-components", title: "Adding & Arranging Components" },
+      { type: "topic", id: "page-variants", title: "Page Variants (Desktop/Mobile)" }
+    ]
+  },
+  {
+    id: "uib-data-logic",
+    title: "4. Data & Logic",
+    level: "Advanced",
+    description: "Implement dynamic behavior using data resources and client-side scripting.",
+    keyTakeaway: "Bind data and create interactive UI behaviors.",
+    color: "from-indigo-500 to-indigo-700",
+    icon: "Code",
+    items: [
+      { type: "topic", id: "client-scripting-uib", title: "Client-side Scripting in UI Builder" },
+      { type: "topic", id: "events-actions", title: "Events and Actions" },
+      { type: "topic", id: "data-resources", title: "Data Resources (REST/Table)" }
+    ]
+  },
+  {
+    id: "uib-experiences",
+    title: "5. Experiences",
+    level: "Intermediate",
+    description: "Explore built-in and custom workspace experiences.",
+    keyTakeaway: "Understand how UI Builder powers Employee Center and custom portals.",
+    color: "from-violet-500 to-violet-700",
+    icon: "Layout",
+    items: [
+      { type: "topic", id: "employee-center", title: "Employee Center" },
+      { type: "topic", id: "custom-portals-workspaces", title: "Custom Portals/Workspaces built with UI Builder" }
+    ]
+  },
+  {
+    id: "uib-advanced",
+    title: "6. Advanced Topics",
+    level: "Expert",
+    description: "Dive deep into Now Experience framework customization.",
+    keyTakeaway: "Build custom components and apply branding.",
+    color: "from-purple-500 to-purple-700",
+    icon: "Settings",
+    items: [
+      { type: "topic", id: "custom-components-now", title: "Custom Components (Now Experience Framework)" },
+      { type: "topic", id: "reusable-fragments", title: "Reusable Fragments" },
+      { type: "topic", id: "theming-branding", title: "Theming & Branding" }
+    ]
+  },
+  {
+    id: "uib-best-practices",
+    title: "7. Best Practices",
+    level: "Advanced",
+    description: "Learn how to optimize your UI Builder applications.",
+    keyTakeaway: "Ensure performance and accessibility compliance.",
+    color: "from-emerald-500 to-emerald-700",
+    icon: "Shield",
+    items: [
+      { type: "topic", id: "performance-optimization", title: "Performance optimization" },
+      { type: "topic", id: "accessibility-considerations", title: "Accessibility considerations" }
+    ]
+  }
+];
+
 export const tracks: Track[] = [
   {
     id: "csa-track",
@@ -509,6 +639,18 @@ export const tracks: Track[] = [
     slug: "virtual agent",
     title: "Virtual Agent",
     modules: vaModules
+  },
+  {
+    id: "ai-track",
+    slug: "servicenow-ai",
+    title: "ServiceNow AI",
+    modules: aiModules
+  },
+  {
+    id: "uibuilder-track",
+    slug: "ui-builder",
+    title: "UI Builder",
+    modules: uiBuilderModules
   }
 ];
 
