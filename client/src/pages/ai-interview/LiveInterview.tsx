@@ -107,7 +107,7 @@ export function LiveInterview({ config, onEnd }: LiveInterviewProps) {
       return;
     }
 
-    const SpeechRecognition = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
       setTimeout(() => processUserAnswer("I would check the system logs and API payload."), 4000);
       return;
