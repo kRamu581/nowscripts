@@ -73,7 +73,7 @@ export function AuthModal() {
             onSuccessCallback();
             clearCallback();
           } else {
-            const redirectPath = localStorage.getItem("redirect_after_login") || "/";
+            const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
             localStorage.removeItem("redirect_after_login");
             if (window.location.pathname !== redirectPath) {
               navigate(redirectPath);
@@ -120,6 +120,12 @@ export function AuthModal() {
         if (onSuccessCallback) {
           onSuccessCallback();
           clearCallback();
+        } else {
+          const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
+          localStorage.removeItem("redirect_after_login");
+          if (window.location.pathname !== redirectPath) {
+            navigate(redirectPath);
+          }
         }
       } else if (view === "signup") {
         if (!name || !email || !password) return;
@@ -136,6 +142,12 @@ export function AuthModal() {
         if (onSuccessCallback) {
           onSuccessCallback();
           clearCallback();
+        } else {
+          const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
+          localStorage.removeItem("redirect_after_login");
+          if (window.location.pathname !== redirectPath) {
+            navigate(redirectPath);
+          }
         }
       } else if (view === "forgot_password") {
         if (!email) return;

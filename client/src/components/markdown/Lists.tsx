@@ -31,14 +31,14 @@ export const LI = ({ children, ...props }: any) => {
 
   if (isTaskListItem) {
     return (
-      <li className="task-list-item text-[#1e293b] leading-[1.8]" {...props}>
+      <li className="task-list-item text-[#1e293b] leading-relaxed" {...props}>
         {children}
       </li>
     );
   }
 
   return (
-    <li className="leading-[1.8] pl-1 text-[#1e293b]" {...props}>
+    <li className="leading-relaxed pl-1 text-[#1e293b]" {...props}>
       {children}
     </li>
   );

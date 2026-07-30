@@ -26,6 +26,7 @@ const User = lazy(() => import("./pages/User"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Write = lazy(() => import("./pages/Write"));
 const SignIn = lazy(() => import("./pages/SignIn"));
+const LearnCatalog = lazy(() => import("./pages/LearnCatalog"));
 const LearnDashboard = lazy(() => import("./pages/LearnDashboard"));
 const InterviewPrepDashboard = lazy(() => import("./pages/InterviewPrepDashboard"));
 const RoadmapDashboard = lazy(() => import("./pages/RoadmapDashboard"));
@@ -188,7 +189,7 @@ export default function App() {
               <Route path="/verify/:certificateId" element={<VerifyCertificate />} />
               <Route path="/interviews" element={<InterviewExperiences />} />
               <Route path="/interviews/:id" element={<InterviewExperienceDetail />} />
-              <Route path="/learn" element={<LearnDashboard />} />
+              <Route path="/learn" element={<LearnCatalog />} />
               <Route path="/learn/:categorySlug/:lessonSlug" element={<LearnDashboard />} />
               <Route path="/interview-prep" element={<InterviewPrepDashboard />} />
               <Route path="/interview-prep/:categoryId" element={<InterviewPrepDashboard />} />

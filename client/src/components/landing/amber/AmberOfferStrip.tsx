@@ -13,8 +13,8 @@ export function AmberOfferStrip() {
             <Sparkles className="w-3.5 h-3.5" />
           </div>
           <p className="text-[13px] sm:text-[15px] text-[#374151] mx-4 text-center">
-            <strong className="text-black font-black uppercase tracking-wide mr-2">Exclusive Offer</strong> 
-            Get 50% off on all Premium Roadmaps | Limited Time Only
+            <strong className="text-black font-black uppercase tracking-wide mr-2">Exclusive Offer:</strong> 
+            100% Free
           </p>
           <div className="w-6 h-6 rounded-full bg-[#E8B257] text-white flex items-center justify-center shrink-0 shadow-inner">
             <Sparkles className="w-3.5 h-3.5" />

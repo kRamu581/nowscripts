@@ -53,9 +53,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
               Last Updated : {lessonData.lastUpdated ? formatDate(lessonData.lastUpdated) : "1 Jul, 2026"}
             </div>
             <div className="flex items-center gap-4 text-gray-500">
-              <MessageSquare className="w-[18px] h-[18px] cursor-pointer hover:text-gray-700" />
-              <Edit2 className="w-[18px] h-[18px] cursor-pointer hover:text-gray-700" />
-              <MoreVertical className="w-[18px] h-[18px] cursor-pointer hover:text-gray-700" />
+              <span className="text-sm font-medium text-gray-700">By Ramu</span>
             </div>
           </div>
         </div>

@@ -437,8 +437,20 @@ export default function LearnDashboard() {
     )}
   </div>
 
- {/* Bottom Navigation Cards */}
- <div className="mt-8 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-4">
+  {/* View Counter Badge */}
+  <div className="mt-8 flex justify-end">
+    <div className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-md px-3 py-1.5 shadow-sm">
+      <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Page Views</span>
+      <img 
+        src={`https://api.visitorbadge.io/api/visitors?path=nowscripts.learn.${activeLesson.id}&countColor=%23FF5A5F`} 
+        alt="Views" 
+        className="h-[20px]" 
+      />
+    </div>
+  </div>
+
+  {/* Bottom Navigation Cards */}
+  <div className="mt-6 pt-6 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-4">
  {currentIndex > 0 ? (
  <button 
  onClick={goToPrevLesson}

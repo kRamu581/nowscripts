@@ -33,7 +33,7 @@ export default function AuthRedirect() {
         setUser(res.data);
         handleUser(res.data);
         
-        const redirectPath = localStorage.getItem("redirect_after_login") || "/";
+        const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
         localStorage.removeItem("redirect_after_login");
         navigate(redirectPath);
       })

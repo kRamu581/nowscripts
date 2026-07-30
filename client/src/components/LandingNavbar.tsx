@@ -125,17 +125,6 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
           
           {/* Mobile Right Side: Search and Notifications */}
           <div className="md:hidden flex items-center gap-3">
-            <button className={`w-9 h-9 flex items-center justify-center rounded-full bg-gray-100/50 ${textColor}`}>
-              <Search size={20} strokeWidth={1.5} />
-            </button>
-            <Link to="/notifications" className={`w-9 h-9 flex items-center justify-center rounded-full bg-gray-100/50 ${textColor} relative`}>
-              <div className="flex items-center justify-center w-[20px] h-[20px]">{NotificationIcon}</div>
-              {notificationsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#FF5A5F] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">
-                  {notificationsCount}
-                </span>
-              )}
-            </Link>
           </div>
         </div>
       </div>
@@ -172,11 +161,8 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
                 <nav className="flex flex-col space-y-1 px-4">
                   <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Home</Link>
                   <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Learn</Link>
-                  <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Roadmaps</Link>
                   <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
                   <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
-
-                  <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Newsletter</Link>
                   <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">About Us</Link>
                 </nav>
               </div>

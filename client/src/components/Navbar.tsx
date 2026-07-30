@@ -50,33 +50,8 @@ export default function Navbar({
           
           <div className="flex items-center gap-6 h-full">
             <Link to="/learn" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Learn</Link>
-            <Link to="/roadmaps" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Roadmaps</Link>
             <Link to="/projects" className="hidden lg:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Projects</Link>
             <Link to="/interview-prep" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Interview Prep</Link>
-            <Link to="/ai-interview" className="hidden md:flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors bg-blue-500/10 px-2 py-1 rounded-md border border-blue-500/20">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-              AI Interview
-            </Link>
-
-            <Link to="/newsletter" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Newsletter</Link>
-            
-            {isAuthenticated ? (
-              <Link
-                to="/write"
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-              >
-                {writeBlogIcon}
-                <span className="text-sm font-medium hidden lg:block">Share Content</span>
-              </Link>
-            ) : (
-              <button
-                onClick={() => openModal('login', () => window.location.href = '/write', 'Please log in to share content.')}
-                className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-              >
-                {writeBlogIcon}
-                <span className="text-sm font-medium hidden lg:block">Share Content</span>
-              </button>
-            )}
 
             <div className="flex items-center">
               <Link
@@ -127,11 +102,8 @@ export default function Navbar({
                 <nav className="flex flex-col space-y-1 px-4">
                   <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Home</Link>
                   <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Learn</Link>
-                  <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Roadmaps</Link>
                   <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
                   <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
-
-                  <Link to="/newsletter" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Newsletter</Link>
                 </nav>
               </div>
             </motion.div>
