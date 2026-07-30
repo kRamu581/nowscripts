@@ -15,8 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/kRamu81/nowscripts">
-    <!-- Replace with your actual logo -->
-    <img src="https://via.placeholder.com/340x100?text=NowScripts+Logo" alt="NowScripts Logo" width="340">
+    <img src="client/public/logo.png" alt="NowScripts Logo" width="120">
   </a>
 
   <p align="center">
