@@ -97,9 +97,8 @@ export default function LearnCatalog() {
               const linkUrl = `/learn/${firstCategory}/${firstLesson}`;
 
               // Resolve icon component dynamically
-              const IconComponent = {
-                Code, Server, Settings, Cpu, Layout, Cloud
-              }[visual.icon as keyof typeof IconComponent] || BookOpen;
+              const iconMap = { Code, Server, Settings, Cpu, Layout, Cloud };
+              const IconComponent = iconMap[visual.icon as keyof typeof iconMap] || BookOpen;
 
               return (
                 <Link 
