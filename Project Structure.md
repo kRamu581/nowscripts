@@ -83,7 +83,130 @@ Mapping the 9 modules to specific engineering and content roles to parallelize d
 ## 3. Technology Allocation
 
 The technology stack supporting Phase 1, categorized by domain.
-<img width="641" height="643" alt="image" src="https://github.com/user-attachments/assets/63c5ad88-28ea-4457-8bc5-fbf62d6452da" />
+<img width="645" height="640" alt="download" src="https://github.com/user-attachments/assets/66f3082a-aee0-41c6-a718-86978527780e" /><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 645.344 640.3000000000001" width="645.344" height="640.3000000000001" style="--bg:#1F1F1F;--fg:#CCCCCC;--line:#CCCCCC;--accent:#0078D4;--muted:#CCCCCCCC;--surface:#181818;--border:#CCCCCC;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+    <polygon points="0 0, 8 2.5, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.5, 8 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="0.75" stroke-linejoin="round" />
+  </marker>
+</defs>
+<g class="subgraph" data-id="Frontend" data-label="Frontend">
+  <rect x="40" y="154.62500000000003" width="159.906" height="356.5" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="154.62500000000003" width="159.906" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="52" y="168.62500000000003" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Frontend</text>
+</g>
+<g class="subgraph" data-id="Backend" data-label="Backend">
+  <rect x="247.906" y="180.07500000000002" width="132.489" height="305.6" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="247.906" y="180.07500000000002" width="132.489" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="259.906" y="194.07500000000002" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Backend</text>
+</g>
+<g class="subgraph" data-id="AI" data-label="Artificial Intelligence">
+  <rect x="428.3950000000001" y="40" width="176.949" height="291.6" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="428.3950000000001" y="40" width="176.949" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="440.3950000000001" y="54" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">Artificial Intelligence</text>
+</g>
+<g class="subgraph" data-id="DevOps" data-label="DevOps &amp; Infra">
+  <rect x="428.395" y="359.6" width="159.165" height="240.70000000000002" rx="0" ry="0" fill="var(--_group-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="428.395" y="359.6" width="159.165" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="440.395" y="373.6" font-size="12" font-weight="600" fill="var(--_text-sec)" dy="4.199999999999999">DevOps &amp; Infra</text>
+</g>
+<polyline class="edge" data-from="Frontend" data-to="Backend" data-style="dotted" data-arrow-start="false" data-arrow-end="true" points="199.906,332.875 247.906,332.875" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Backend" data-to="AI" data-style="dotted" data-arrow-start="false" data-arrow-end="true" points="380.395,281.9416666666667 416.3950000000001,281.9416666666667 416.3950000000001,185.8 428.3950000000001,185.8" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<polyline class="edge" data-from="Backend" data-to="DevOps" data-style="dotted" data-arrow-start="false" data-arrow-end="true" points="380.395,383.8083333333334 416.395,383.8083333333334 416.395,479.95000000000005 428.395,479.95000000000005" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arrowhead)" />
+<g class="node" data-id="React" data-label="React" data-shape="rectangle">
+  <rect x="68.9675" y="263.52500000000003" width="76.036" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="106.9855" y="281.975" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">React</text>
+</g>
+<g class="node" data-id="TS" data-label="TypeScript" data-shape="rectangle">
+  <rect x="68.9675" y="328.42500000000007" width="108.64000000000001" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="123.28750000000001" y="346.87500000000006" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">TypeScript</text>
+</g>
+<g class="node" data-id="TW" data-label="Tailwind CSS" data-shape="rectangle">
+  <rect x="68.9675" y="198.62500000000003" width="119.75499999999998" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="128.845" y="217.07500000000005" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Tailwind CSS</text>
+</g>
+<g class="node" data-id="UI" data-label="ShadCN UI" data-shape="rectangle">
+  <rect x="68.9675" y="393.32500000000005" width="104.93499999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="121.435" y="411.77500000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">ShadCN UI</text>
+</g>
+<g class="node" data-id="FM" data-label="Framer Motion" data-shape="rectangle">
+  <rect x="68.9675" y="458.225" width="127.906" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="132.9205" y="476.675" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Framer Motion</text>
+</g>
+<g class="node" data-id="Node" data-label="Node.js" data-shape="rectangle">
+  <rect x="267.42575" y="302.975" width="86.41" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="310.63075" y="321.425" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Node.js</text>
+</g>
+<g class="node" data-id="Exp" data-label="Express" data-shape="rectangle">
+  <rect x="267.2405" y="367.875" width="93.82" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="314.15049999999997" y="386.325" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Express</text>
+</g>
+<g class="node" data-id="DB" data-label="MongoDB" data-shape="cylinder">
+  <rect x="267.42575" y="231.07500000000002" width="100.489" height="36.900000000000006" fill="var(--_node-fill)" stroke="none" />
+  <line x1="267.42575" y1="231.07500000000002" x2="267.42575" y2="267.975" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="367.91475" y1="231.07500000000002" x2="367.91475" y2="267.975" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="317.67025" cy="267.975" rx="50.2445" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="317.67025" cy="231.07500000000002" rx="50.2445" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="317.67025" y="249.52500000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">MongoDB</text>
+</g>
+<g class="node" data-id="JWT" data-label="JWT Auth" data-shape="rectangle">
+  <rect x="267.42575" y="432.77500000000003" width="99.748" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="317.29975" y="451.225" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">JWT Auth</text>
+</g>
+<g class="node" data-id="Sarvam" data-label="Sarvam APIs" data-shape="rectangle">
+  <rect x="457.7330000000001" y="148.9" width="118.273" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="516.8695000000001" y="167.35000000000002" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Sarvam APIs</text>
+</g>
+<g class="node" data-id="LLM" data-label="OpenAI / LLMs" data-shape="rectangle">
+  <rect x="458.10350000000005" y="213.8" width="129.38799999999998" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="522.7975" y="232.25" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">OpenAI / LLMs</text>
+</g>
+<g class="node" data-id="RAG" data-label="RAG Architecture" data-shape="rectangle">
+  <rect x="458.10350000000005" y="84" width="144.949" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="530.5780000000001" y="102.45" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">RAG Architecture</text>
+</g>
+<g class="node" data-id="Voice" data-label="Voice AI" data-shape="rectangle">
+  <rect x="458.10350000000005" y="278.70000000000005" width="90.11500000000001" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="503.16100000000006" y="297.15000000000003" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Voice AI</text>
+</g>
+<g class="node" data-id="Render" data-label="Render Cloud" data-shape="rectangle">
+  <rect x="458.10350000000005" y="482.5" width="122.71900000000001" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="519.4630000000001" y="500.95" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Render Cloud</text>
+</g>
+<g class="node" data-id="CICD" data-label="GitHub Actions" data-shape="rectangle">
+  <rect x="458.10350000000005" y="547.4000000000001" width="127.16499999999999" height="36.900000000000006" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="521.686" y="565.8500000000001" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">GitHub Actions</text>
+</g>
+<g class="node" data-id="Storage" data-label="Cloud Storage" data-shape="cylinder">
+  <rect x="458.10350000000005" y="410.6" width="125.68299999999999" height="36.900000000000006" fill="var(--_node-fill)" stroke="none" />
+  <line x1="458.10350000000005" y1="410.6" x2="458.10350000000005" y2="447.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="583.7865" y1="410.6" x2="583.7865" y2="447.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="520.945" cy="447.5" rx="62.841499999999996" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <ellipse cx="520.945" cy="410.6" rx="62.841499999999996" ry="7" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="520.945" y="429.05" text-anchor="middle" font-size="13" font-weight="500" fill="var(--_text)" dy="4.55">Cloud Storage</text>
+</g>
+</svg>
 
 ---
 
