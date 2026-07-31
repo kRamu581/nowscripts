@@ -63,9 +63,50 @@ NowScripts is an **EdTech and Freelance platform** dedicated exclusively to **Se
 
 We are currently in **Phase 1** of the project, which focuses heavily on the educational side of the platform, bringing structured learning and career readiness to the forefront.
 
-### Phase 1 Features
+### Phase 1 Target (August MVP)
+
 * 📚 **Structured Roadmaps / Learn Section**: Step-by-step, organized guides and modules (like App Engine Studio, ITSM) to help you learn ServiceNow in a practical, real-world way.
-* 🎯 **Interview Preparation**: A massive database of real-world interview questions and scenarios designed to help you easily land a job in the ServiceNow ecosystem.
+* 🎯 **Interview Preparation**: A massive database of real-world interview questions and scenarios designed to help you easily land a job.
+
+#### Project Progress
+We are currently building towards our August MVP target. Here is our completion checklist:
+
+**Core & Learning Platform**
+- [x] Login & Authentication
+- [x] Mobile View / Responsive Design
+- [x] Add 3–4 complete learning modules
+- [x] Course Content
+- [x] Tasks & Assignments
+- [x] Sprint Projects
+- [x] Progress Tracking
+- [x] Modular Task Assignment
+
+**User & Admin Features**
+- [x] User Dashboard
+- [x] User Profile Dashboard
+- [x] Skill Badges
+- [x] Admin Panel
+- [x] Course Management
+
+**AI & Community**
+- [x] AI Tutor / AI Learning Companion (Bot)
+- [x] Community Platform
+- [x] Feedback System
+
+#### Priority Implementation Order
+To successfully launch our MVP, we prioritized the development of these systems in the following order:
+1. Login & Authentication
+2. Learning Modules (3–4)
+3. User Dashboard
+4. Progress Tracking
+5. Sprint Projects
+6. AI Tutor
+7. Community
+8. Admin Panel
+9. Feedback & Skill Badges
+10. Mobile Responsiveness
+
+> **Next Steps (Phase 2):** After completing the August MVP, Phase 2 will focus on advanced AI personalization, Voice AI, AI interview preparation, job matching, and the freelance marketplace.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
