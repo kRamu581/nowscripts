@@ -101,22 +101,22 @@ graph LR
         JWT[JWT Auth]
     end
 
-    subgraph Artificial Intelligence
+    subgraph AI [Artificial Intelligence]
         Sarvam[Sarvam APIs]
         LLM[OpenAI / LLMs]
         RAG[RAG Architecture]
         Voice[Voice AI]
     end
 
-    subgraph DevOps & Infra
+    subgraph DevOps [DevOps & Infra]
         Render[Render Cloud]
         CICD[GitHub Actions]
         Storage[(Cloud Storage)]
     end
 
     Frontend -.-> Backend
-    Backend -.-> Artificial Intelligence
-    Backend -.-> DevOps & Infra
+    Backend -.-> AI
+    Backend -.-> DevOps
 ```
 
 ---
