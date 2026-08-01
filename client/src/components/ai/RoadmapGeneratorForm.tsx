@@ -31,16 +31,7 @@ export default function RoadmapGeneratorForm({ onSuccess }: RoadmapGeneratorForm
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 max-w-2xl mx-auto">
-      <div className="flex items-center gap-4 mb-8">
-        <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center">
-          <Route size={24} />
-        </div>
-        <div>
-          <h2 className="text-xl font-bold text-gray-900">AI Roadmap Generator</h2>
-          <p className="text-sm text-gray-500">Create a highly personalized learning path.</p>
-        </div>
-      </div>
+    <div className="bg-white rounded-2xl shadow-sm p-8 max-w-3xl mx-auto">
 
       {error && (
         <div className="mb-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm border border-red-100">

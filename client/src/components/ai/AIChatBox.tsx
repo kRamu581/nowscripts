@@ -2,24 +2,32 @@ import React, { useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Message } from "../../hooks/useAI";
-import { Send, Loader2, Bot, User as UserIcon } from "lucide-react";
-import PromptSuggester from "./PromptSuggester";
+import { Loader2, Square, Sparkles } from "lucide-react";
+import { useAuth } from "../../contexts/Auth";
 
 interface AIChatBoxProps {
   messages: Message[];
   isLoading: boolean;
   onSendMessage: (msg: string) => void;
   placeholder?: string;
-  hideSuggestions?: boolean;
+  initialQuery?: string;
 }
 
-export default function AIChatBox({ messages, isLoading, onSendMessage, placeholder = "Ask me anything about ServiceNow...", hideSuggestions = false }: AIChatBoxProps) {
+export default function AIChatBox({ messages, isLoading, onSendMessage, placeholder = "Ask me anything...", initialQuery }: AIChatBoxProps) {
   const [input, setInput] = React.useState("");
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
+
+  useEffect(() => {
+    // Auto send initial query if there are no messages
+    if (initialQuery && messages.length === 0 && !isLoading) {
+      onSendMessage(initialQuery);
+    }
+  }, [initialQuery]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,36 +38,38 @@ export default function AIChatBox({ messages, isLoading, onSendMessage, placehol
   };
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
-      <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
-        {messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
-            <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center">
-              <Bot size={32} />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-2">How can I help you today?</h2>
-              <p className="text-gray-500 max-w-md mx-auto">
-                I'm your personalized AI Learning Companion. Ask me a question, or choose a suggestion below to get started.
-              </p>
-            </div>
-            {!hideSuggestions && (
-              <div className="w-full max-w-2xl mt-4">
-                <PromptSuggester onSelect={onSendMessage} />
-              </div>
-            )}
-          </div>
-        ) : (
-          messages.map((msg, idx) => (
-            <div key={idx} className={`flex gap-4 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${msg.role === "user" ? "bg-gray-900 text-white" : "bg-blue-600 text-white"}`}>
-                {msg.role === "user" ? <UserIcon size={16} /> : <Bot size={16} />}
-              </div>
-              <div className={`max-w-[80%] rounded-2xl px-5 py-3.5 ${msg.role === "user" ? "bg-gray-100 text-gray-900 rounded-tr-sm" : "bg-blue-50 text-gray-900 rounded-tl-sm border border-blue-100/50"}`}>
-                {msg.role === "user" ? (
-                  <p className="whitespace-pre-wrap text-[15px]">{msg.content}</p>
+    <div className="flex flex-col h-full w-full max-w-4xl mx-auto relative pb-8">
+      
+      {/* Messages Area */}
+      <div className="flex-1 overflow-y-auto px-8 py-4 space-y-10 scrollbar-hide">
+        {messages.map((msg, idx) => (
+          <div key={idx} className="flex gap-5">
+            {/* Avatar Column */}
+            <div className="flex-shrink-0 mt-1">
+              {msg.role === "user" ? (
+                user?.avatar ? (
+                  <img src={user.avatar} alt="User" className="w-8 h-8 rounded-full object-cover shadow-sm" />
                 ) : (
-                  <div className="prose prose-sm prose-blue max-w-none prose-p:leading-relaxed prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:rounded-xl">
+                  <div className="w-8 h-8 rounded-full bg-gray-300"></div>
+                )
+              ) : (
+                <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                  <span className="text-xl">✦</span>
+                </div>
+              )}
+            </div>
+
+            {/* Content Column */}
+            <div className="flex-1 max-w-[85%]">
+              <div className="text-[14px] font-semibold text-gray-800 mb-1.5">
+                {msg.role === "user" ? (user?.name || "Amy Lokey") : "Otto"}
+              </div>
+              
+              <div className="text-[15px] text-gray-700 leading-relaxed">
+                {msg.role === "user" ? (
+                  <p className="whitespace-pre-wrap">{msg.content}</p>
+                ) : (
+                  <div className="prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:bg-gray-100 prose-pre:text-gray-800 prose-pre:rounded-xl prose-a:text-blue-600">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                       {msg.content}
                     </ReactMarkdown>
@@ -67,51 +77,73 @@ export default function AIChatBox({ messages, isLoading, onSendMessage, placehol
                 )}
               </div>
             </div>
-          ))
-        )}
+          </div>
+        ))}
+        
+        {/* Loading State */}
         {isLoading && (
-          <div className="flex gap-4">
-            <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">
-              <Bot size={16} />
+          <div className="flex gap-5">
+            <div className="flex-shrink-0 mt-1">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                <span className="text-xl animate-pulse">✦</span>
+              </div>
             </div>
-            <div className="bg-blue-50 rounded-2xl rounded-tl-sm px-5 py-3.5 border border-blue-100/50 flex items-center gap-2">
-              <Loader2 size={16} className="animate-spin text-blue-600" />
-              <span className="text-sm text-blue-600 font-medium">Thinking...</span>
+            <div className="flex-1">
+              <div className="text-[14px] font-semibold text-gray-800 mb-1.5">Otto</div>
+              <div className="flex flex-col gap-2 mt-3">
+                <div className="flex items-center gap-3 text-gray-800">
+                  <div className="w-4 h-4 rounded-full border-[3px] border-black animate-spin border-t-transparent"></div>
+                  <span className="text-[14px] font-medium">Reviewing information...</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-400 pl-[3px]">
+                  <div className="w-2.5 h-2.5 rounded-full border-[1.5px] border-dashed border-gray-400"></div>
+                  <span className="text-[14px]">Generating response...</span>
+                </div>
+              </div>
             </div>
           </div>
         )}
-        <div ref={endOfMessagesRef} />
+        <div ref={endOfMessagesRef} className="h-20" />
       </div>
 
-      <div className="p-4 bg-white border-t border-gray-100">
-        <form onSubmit={handleSubmit} className="relative flex items-end gap-2 max-w-4xl mx-auto">
-          <div className="relative flex-1 bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all">
-            <textarea
+      {/* Floating Pill Input */}
+      <div className="absolute bottom-6 left-0 right-0 px-8 flex flex-col items-center pointer-events-none">
+        <form onSubmit={handleSubmit} className="w-full max-w-3xl relative pointer-events-auto shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full">
+          <div className="relative flex items-center bg-white rounded-full overflow-hidden transition-all">
+            <div className="pl-6 text-gray-400">
+              <span className="text-xl leading-none">+</span>
+            </div>
+            <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSubmit(e);
-                }
-              }}
-              placeholder={placeholder}
-              className="w-full max-h-32 bg-transparent border-0 focus:ring-0 resize-none py-3.5 pl-4 pr-12 text-gray-900 text-[15px] placeholder-gray-400"
-              rows={input.split("\n").length > 1 ? Math.min(input.split("\n").length, 4) : 1}
+              placeholder={isLoading ? "Processing..." : placeholder}
+              disabled={isLoading}
+              className="w-full bg-transparent border-0 focus:ring-0 py-4 pl-4 pr-16 text-gray-800 text-[15px] placeholder-gray-400 font-medium disabled:opacity-70 disabled:bg-white"
             />
-            <button
-              type="submit"
-              disabled={!input.trim() || isLoading}
-              className="absolute right-2 bottom-2 p-2 bg-gray-900 text-white rounded-xl disabled:bg-gray-300 disabled:text-gray-500 hover:bg-gray-800 transition-colors"
-            >
-              <Send size={16} />
-            </button>
+            {isLoading ? (
+              <button
+                type="button"
+                className="absolute right-3 w-9 h-9 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+                onClick={() => {/* Cancel action if supported */}}
+              >
+                <Square className="w-4 h-4 fill-white" />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                disabled={!input.trim()}
+                className="absolute right-3 w-9 h-9 bg-black text-white rounded-full flex items-center justify-center disabled:opacity-50 hover:bg-gray-800 transition-colors"
+              >
+                <span className="text-lg leading-none transform -translate-y-[1px]">↑</span>
+              </button>
+            )}
           </div>
         </form>
-        <p className="text-center text-xs text-gray-400 mt-3">
-          AI can make mistakes. Consider verifying critical information.
+        <p className="text-[10px] text-gray-400 mt-2">
+          Be sure to check AI-generated content for accuracy
         </p>
       </div>
+
     </div>
   );
 }

@@ -292,6 +292,15 @@ export function Projects() {
           </div>
         </div>
       </footer>
+      {/* Floating AI Bot Button */}
+      <Link
+        to="/ai"
+        className="fixed bottom-6 right-6 z-50 hover:scale-110 transition-transform duration-300 drop-shadow-lg"
+      >
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-14 h-14 text-[#4CD964]">
+          <path fillRule="evenodd" clipRule="evenodd" d="M50 0 C50 30 70 50 100 50 C70 50 50 70 50 100 C50 70 30 50 0 50 C30 50 50 30 50 0 Z M50 68 C59.9411 68 68 59.9411 68 50 C68 40.0589 59.9411 32 50 32 C40.0589 32 32 40.0589 32 50 C32 59.9411 40.0589 68 50 68 Z" fill="currentColor" />
+        </svg>
+      </Link>
 
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {

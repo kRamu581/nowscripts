@@ -124,6 +124,16 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
           
           {/* Mobile Right Side: Search and Notifications */}
           <div className="md:hidden flex items-center gap-3">
+            {isAuthenticated ? (
+              <AvatarMenu isScrolled={isScrolled} />
+            ) : (
+              <button 
+                onClick={() => openModal('login')}
+                className={`flex items-center justify-center text-[13px] font-bold ${textColor} ${hoverColor} border ${borderColor} rounded-md px-2.5 py-1 transition-colors`}
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,85 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import AIChatBox from "../../components/ai/AIChatBox";
 import { useAIChat } from "../../hooks/useAI";
-import { MessageSquare, ArrowLeft } from "lucide-react";
-import { aiService } from "../../services/ai.service";
+import { useAuth } from "../../contexts/Auth";
+import AISidebar from "../../components/ai/AISidebar";
+import { BrandLogo } from "../../components/BrandLogo";
+import { X } from "lucide-react";
 
 export default function AILearningCompanion() {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("id");
+  const query = searchParams.get("q") || "";
+  const navigate = useNavigate();
 
   const { messages, isLoading, sendMessage, loadSession, error } = useAIChat();
-  const [recentChats, setRecentChats] = useState<any[]>([]);
 
-  // Load recent chat sessions for sidebar
-  useEffect(() => {
-    aiService.getChatHistory().then((data) => {
-      if (data.success) {
-        setRecentChats(data.sessions.slice(0, 20)); // limit to 20 recent chats
-      }
-    });
-  }, []);
 
   // Load specific session if id present
   useEffect(() => {
     if (sessionId) {
       loadSession(sessionId);
+    } else if (query) {
+      // If there's a query but no session, we might want to auto-send it
+      // But useAIChat might already handle initial prompts if implemented
     }
-  }, [sessionId, loadSession]);
+  }, [sessionId, loadSession, query]);
 
   return (
-    <div className="h-[calc(100vh-64px)] flex bg-[#F4F2EE]">
-      {/* Sidebar with recent chats */}
-      <aside className="w-64 border-r border-gray-200 bg-white overflow-y-auto hidden md:block">
-        <div className="p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-            <MessageSquare className="w-5 h-5 text-now-primary" /> Recent Chats
-          </h2>
-          <ul className="space-y-1">
-            {recentChats.length === 0 ? (
-              <li className="text-sm text-gray-500">No recent chats.</li>
-            ) : (
-              recentChats.map((chat) => (
-                <li key={chat._id}>
-                  <Link
-                    to={`/ai/companion?id=${chat._id}`}
-                    className={`block px-3 py-2 rounded-md text-sm ${chat._id === sessionId ? "bg-now-primary text-white" : "text-gray-700 hover:bg-gray-100"}`}
-                  >
-                    {chat.title || "Untitled Chat"}
-                  </Link>
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
-      </aside>
+    <div className="h-screen flex bg-[#F4F2EE] font-sans overflow-hidden">
+      <AISidebar />
 
       {/* Main chat area */}
-      <div className="flex-1 flex flex-col max-w-5xl mx-auto px-4 md:px-6 py-6 overflow-hidden">
-        <div className="flex items-center gap-4 mb-6 shrink-0">
-          <Link to="/ai" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-            <ArrowLeft size={20} className="text-gray-600" />
-          </Link>
-          <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
-            <MessageSquare size={20} />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900 leading-tight">Learning Companion</h1>
-            <p className="text-sm text-gray-500">Your intelligent guide to ServiceNow</p>
-          </div>
+      <main className="flex-1 flex flex-col relative overflow-hidden bg-[#F4F2EE]">
+        {/* Mobile Header */}
+        <div className="md:hidden flex items-center justify-between p-4 border-b border-gray-200/50 bg-[#F4F2EE] shrink-0 sticky top-0 z-50">
+          <BrandLogo textColor="text-slate-900" hideTextOnMobile={false} className="scale-90 origin-left" />
+          <button onClick={() => navigate(-1)} className="p-2 text-gray-500 hover:text-gray-900 rounded-md hover:bg-gray-200/50 transition-colors">
+            <X size={24} />
+          </button>
+        </div>
+        
+        {/* Header */}
+        <header className="hidden md:flex px-8 py-6 items-center justify-between shrink-0">
+          <h1 className="text-[20px] font-medium text-gray-800 tracking-tight">
+            {query || "ServiceNow Learning Path Overview"}
+          </h1>
+          <button onClick={() => navigate(-1)} className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500 hover:text-gray-900">
+            <X size={24} />
+          </button>
+        </header>
+
+        {/* Chat Area */}
+        <div className="flex-1 min-h-0 relative overflow-hidden flex flex-col">
+          {error && (
+            <div className="mx-8 mb-4 p-4 bg-red-50 text-red-600 rounded-xl text-sm border border-red-100 shrink-0">
+              {error}
+            </div>
+          )}
+          
+          <AIChatBox messages={messages} isLoading={isLoading} onSendMessage={sendMessage} initialQuery={query} />
         </div>
 
-        {error && (
-          <div className="mb-4 p-4 bg-red-50 text-red-600 rounded-xl text-sm border border-red-100 shrink-0">
-            {error}
-          </div>
-        )}
-
-        <div className="flex-1 min-h-0 overflow-y-auto">
-          <AIChatBox messages={messages} isLoading={isLoading} onSendMessage={sendMessage} />
-        </div>
-      </div>
+      </main>
     </div>
   );
 }

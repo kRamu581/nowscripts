@@ -28,25 +28,38 @@ export const NowScriptsCopilot = () => {
     { icon: <MessageSquare className="w-4 h-4 text-[#0B2538]" />, text: "I need interview prep help" }
   ];
 
-  const handleSend = (text: string) => {
+  const handleSend = async (text: string) => {
     if (!text.trim()) return;
     
     // Add user message
     setMessages(prev => [...prev, { role: "user", content: text }]);
     setInputValue("");
     
-    // Simulate bot response since API keys will be provided later
     setTimeout(() => {
-      setMessages(prev => [...prev, { 
-        role: "bot", 
-        content: "I'm currently in demo mode. The team is integrating my API to assist you with ServiceNow learning very soon!" 
-      }]);
-    }, 1000);
+      const msg = text.toLowerCase();
+      let response = "I'm NowScripts Copilot. How can I help you with ServiceNow today?";
+      
+      if (msg.includes("course") || msg.includes("learn") || msg.includes("study")) {
+        response = "We have several great courses on ServiceNow! Check out our platform to get started and master the ecosystem.";
+      } else if (msg.includes("interview") || msg.includes("prep")) {
+        response = "For interview preparation, we have mock interviews, common questions, and a Doubt Solver ready for you!";
+      } else if (msg.includes("project")) {
+        response = "Projects are the best way to learn. You can find real-world ServiceNow scenarios in our Projects section to build your portfolio.";
+      } else if (msg.includes("roadmap") || msg.includes("path")) {
+        response = "I can help you build a personalized learning path! Just go to the Roadmap Builder and tell me your goals.";
+      } else {
+        response = "That's an interesting question! While I'm currently in demo mode, our team is integrating my full brain soon to answer all your ServiceNow questions.";
+      }
+      
+      setMessages(prev => [...prev, { role: "bot", content: response }]);
+    }, 800);
   };
 
   // Scroll to bottom when messages change
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length > 1) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages, isOpen]);
 
   // Reset chat when window closes
@@ -98,7 +111,7 @@ export const NowScriptsCopilot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[380px] h-[100dvh] sm:h-[600px] sm:max-h-[calc(100vh-120px)] w-full max-w-[100vw] sm:max-w-[calc(100vw-32px)] bg-white rounded-none sm:rounded-2xl shadow-none sm:shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex flex-col z-[100] overflow-hidden"
+            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[420px] h-[100dvh] sm:h-[650px] sm:max-h-[calc(100vh-80px)] w-full max-w-[100vw] sm:max-w-[calc(100vw-32px)] bg-white rounded-none sm:rounded-2xl shadow-none sm:shadow-[0_12px_40px_rgb(0,0,0,0.12)] flex flex-col z-[100] overflow-hidden"
           >
             {/* Header */}
             <div className="relative px-4 py-3 border-b border-gray-100 flex items-center justify-between bg-white">

@@ -17,7 +17,8 @@ import {
   Heart,
   Download,
   Bot,
-  Briefcase
+  Briefcase,
+  X
 } from "lucide-react";
 import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
@@ -108,9 +109,12 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
             transition={{ duration: 0.2 }}
             className="fixed md:absolute bottom-0 md:bottom-auto md:top-full left-0 md:left-auto md:right-0 w-full md:w-72 md:mt-4 bg-white rounded-t-3xl md:rounded-2xl shadow-modal z-[120] border border-gray-100 overflow-hidden flex flex-col max-h-[85vh] md:max-h-none"
           >
-            {/* Drag handle for mobile */}
-            <div className="w-full flex justify-center pt-3 pb-1 md:hidden">
-              <div className="w-12 h-1.5 bg-gray-200 rounded-full"></div>
+            {/* Mobile Header & Close Button */}
+            <div className="w-full flex justify-between items-center px-5 pt-4 pb-2 md:hidden border-b border-gray-100">
+              <span className="font-bold text-gray-900">User Menu</span>
+              <button onClick={closeMenu} className="p-2 -mr-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors">
+                <X size={20} />
+              </button>
             </div>
 
               {!isAuthenticated ? (

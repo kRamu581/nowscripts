@@ -86,10 +86,14 @@ type AppContextType = {
   socket: any;
 };
 
-const Context = createContext<AppContextType | undefined>(undefined);
+const Context = createContext<AppContextType>({
+  hideNavbar: () => {},
+  handleToast: () => {},
+  socket: null,
+});
 
 export function useAppContext() {
-  return useContext(Context) as AppContextType;
+  return useContext(Context);
 }
 
 function PublicLayout({ notificationsCount }: { notificationsCount: number }) {
@@ -200,10 +204,7 @@ export default function App() {
               <Route path="certification-center" element={<CertificationCenter />} />
               <Route path="verify-certificate/:certificateId" element={<VerifyCertificate />} />
               
-              {/* AI Module Routes */}
-              <Route path="ai" element={<AIDashboard />} />
-              <Route path="ai/companion" element={<AILearningCompanion />} />
-              <Route path="ai/roadmap" element={<AIRoadmapBuilder />} />
+              {/* AI Module Routes moved to standalone */}
               <Route path="/interviews" element={<InterviewExperiences />} />
               <Route path="/interviews/:id" element={<InterviewExperienceDetail />} />
               <Route path="/learn" element={<LearnCatalog />} />
@@ -263,6 +264,9 @@ export default function App() {
 
             {/* Auth Pages (No layout) */}
             <Route path="/signin/:tab" element={<SignIn />} />
+            <Route path="ai" element={<AIDashboard />} />
+            <Route path="ai/companion" element={<AILearningCompanion />} />
+            <Route path="ai/roadmap" element={<AIRoadmapBuilder />} />
             {/* Other standalone protected routes */}
             <Route path="/authredirect" element={<AuthRedirect />} />
             <Route path="/setup-profile" element={<CareerProfileWizard isOpen={true} onClose={() => {}} onSuccess={() => { window.location.href = '/' }} />} />
