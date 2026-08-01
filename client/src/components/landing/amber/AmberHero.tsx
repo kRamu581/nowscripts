@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function AmberHero() {
   return (
-    <section className="relative w-full min-h-[550px] md:min-h-[520px] flex items-center justify-center overflow-hidden pt-24 md:pt-16 pb-12 md:pb-0">
+    <section className="relative w-full min-h-[400px] md:min-h-[460px] flex items-center justify-center overflow-hidden pt-20 md:pt-16 pb-12 md:pb-0">
       {/* Background Image with Dark Overlay */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-[70%_center] md:bg-center bg-no-repeat"
