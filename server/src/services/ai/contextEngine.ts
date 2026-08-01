@@ -1,4 +1,4 @@
-import User from "../../models/User";
+import User from "../../models/user";
 // import LearningProgress from "../../models/LearningProgress"; // Hypothetical depending on the db schema
 
 export class ContextEngine {

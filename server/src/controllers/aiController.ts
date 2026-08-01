@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { llmProvider } from "../../services/ai/llmProvider";
-import { contextEngine } from "../../services/ai/contextEngine";
-import { PROMPT_TEMPLATES } from "../../services/ai/promptTemplates";
-import AIChatSession from "../../models/AIChatSession";
-import AIGeneratedRoadmap from "../../models/AIGeneratedRoadmap";
+import { llmProvider } from "../services/ai/llmProvider";
+import { contextEngine } from "../services/ai/contextEngine";
+import { PROMPT_TEMPLATES } from "../services/ai/promptTemplates";
+import AIChatSession from "../models/AIChatSession";
+import AIGeneratedRoadmap from "../models/AIGeneratedRoadmap";
 
 export const chatWithAI = async (req: Request, res: Response) => {
   try {
@@ -33,7 +33,7 @@ export const chatWithAI = async (req: Request, res: Response) => {
     }
 
     // Append user message
-    session.messages.push({ role: "user", content: message, timestamp: new Date() });
+    session.messages.push({ role: "user", content: message, timestamp: new Date(), isSavedNote: false });
 
     // Build LLM input
     const userProfileContext = await contextEngine.buildUserContext(userId);
@@ -62,7 +62,7 @@ export const chatWithAI = async (req: Request, res: Response) => {
     }
 
     // Append AI response
-    session.messages.push({ role: "model", content: aiResponse.content, timestamp: new Date() });
+    session.messages.push({ role: "model", content: aiResponse.content, timestamp: new Date(), isSavedNote: false });
     
     // Auto-generate title for new sessions
     if (!sessionId && session.messages.length <= 2) {
