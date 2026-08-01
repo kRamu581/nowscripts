@@ -9,10 +9,12 @@ import adminRouter from "./routers/admin";
 import searchRouter from "./routers/search";
 import learnRouter from "./routers/learn";
 import roadmapRouter from "./routes/roadmapRoutes";
+import aiRoutes from "./routes/aiRoutes";
 import newsletterRouter from "./routes/newsletterRoutes";
 import certificateRouter from "./routes/certificateRoutes";
 import interviewPrepProgressRouter from "./routes/interviewPrepProgressRoutes";
 import interviewRouter from "./routers/interview";
+import feedbackRouter from "./routers/feedback";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
@@ -247,12 +249,14 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/search", searchRouter);
+app.use("/api/ai", aiRoutes);
 app.use("/learn", learnRouter);
 app.use("/roadmap", roadmapRouter);
 app.use("/newsletter", newsletterRouter);
 app.use("/certificate", certificateRouter);
 app.use("/progress/interview-prep", interviewPrepProgressRouter);
 app.use("/interviews", interviewRouter);
+app.use("/api/feedback", feedbackRouter);
 
 app.use(errorHandler);
 

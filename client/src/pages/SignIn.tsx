@@ -7,8 +7,8 @@ const MESSAGE_MAP = new Map([
  ["in", { message: "Welcome again", typeOfLogin: "Sign in" }],
  ["new", { message: "Join NowScripts", typeOfLogin: "Sign up" }],
  [
- "write",
- { message: "Create an account to start writing.", typeOfLogin: "Sign in" },
+  "write",
+  { message: "Create an account to start writing.", typeOfLogin: "Sign in" },
  ],
 ]);
 

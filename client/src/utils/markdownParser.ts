@@ -47,37 +47,21 @@ export function generateSlug(text: string): string {
 }
 
 const INTERVIEW_FOLDER_TO_CATEGORY: Record<string, string> = {
-  'servicenow-basics': 'ServiceNow Basics',
-  'itsm-fundamentals': 'ITSM Fundamentals',
-  'administration': 'Administration',
-  'development': 'Development',
-  'service-portal': 'Service Portal',
-  'integrations': 'Integrations',
-  'flow-designer': 'Flow Designer',
-  'cmdb-discovery': 'CMDB & Discovery',
-  'scenario-questions': 'Scenario-Based Questions',
   'csa': 'CSA Questions',
   'cad': 'CAD Questions',
-  'hr': 'HR Questions',
-  'interview-experiences': 'Real Interview Experiences',
-  'mock-interviews': 'Mock Interviews'
+  'mock-interviews': 'Mock Interviews',
+  'mock-tests': 'Mock Tests',
+  'scenarios': 'Scenarios',
+  'ai-interview': 'Ai interview'
 };
 
 const INTERVIEW_ORDER = [
-  "ServiceNow Basics",
-  "ITSM Fundamentals",
-  "Administration",
-  "Development",
-  "Service Portal",
-  "Integrations",
-  "Flow Designer",
-  "CMDB & Discovery",
-  "Scenario-Based Questions",
   "CSA Questions",
   "CAD Questions",
-  "HR Questions",
-  "Real Interview Experiences",
-  "Mock Interviews"
+  "Mock Interviews",
+  "Mock Tests",
+  "Scenarios",
+  "Ai interview"
 ];
 
 function extractSubtopics(rawMarkdown: string): Subtopic[] {

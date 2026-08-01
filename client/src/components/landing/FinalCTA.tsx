@@ -29,7 +29,7 @@ export function FinalCTA() {
               <button 
                 onClick={() => {
                   if (isAuthenticated) {
-                    navigate("/learn");
+                    navigate("/roadmaps");
                   } else {
                     openModal('signup');
                   }

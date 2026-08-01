@@ -21,27 +21,50 @@ export default function Navbar({
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  const [isScrolled, setIsScrolled] = useState(!isHome);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isHome) {
+      setIsScrolled(true);
+      return;
+    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHome]);
+
   const { isAuthenticated } = useAuth();
   const { openModal } = useAuthModal();
 
+  const bgColor = isScrolled ? "bg-white border-b border-gray-200" : "bg-transparent border-b border-transparent";
+  const textColor = isScrolled ? "text-gray-600" : "text-white/90";
+  const hoverColor = isScrolled ? "hover:text-gray-900" : "hover:text-white";
+  const positionClass = isHome ? "fixed top-0" : "relative";
+  const logoColor = isScrolled ? "text-slate-900" : "text-white";
+  const dotColor = isScrolled ? "bg-[#FF5A5F]" : "bg-white";
+
   return (
     <>
-      <nav className="w-full h-14 bg-[#0F1014] border-b border-white/10 relative z-50 transition-all duration-300">
+      <nav className={`w-full h-14 ${positionClass} z-50 transition-all duration-300 ${bgColor}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-full">
           <div className="flex items-center gap-4 flex-shrink-0">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="md:hidden flex items-center justify-center p-1 text-gray-400 hover:text-white transition-colors"
+              className={`md:hidden flex items-center justify-center p-1 ${isScrolled ? 'text-gray-600 hover:text-gray-900' : 'text-white/90 hover:text-white'} transition-colors`}
             >
               <Menu size={24} />
             </button>
             <Link to="/" className="block">
-              <BrandLogo textColor="text-white" hideTextOnMobile={true} />
+              <BrandLogo textColor={logoColor} dotColor={dotColor} hideTextOnMobile={true} />
             </Link>
             <div className="hidden md:block">
               <Search />
@@ -49,14 +72,14 @@ export default function Navbar({
           </div>
           
           <div className="flex items-center gap-6 h-full">
-            <Link to="/learn" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Learn</Link>
-            <Link to="/projects" className="hidden lg:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Projects</Link>
-            <Link to="/interview-prep" className="hidden md:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Interview Prep</Link>
+            <Link to="/learn" className={`hidden md:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Learn</Link>
+            <Link to="/projects" className={`hidden lg:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Projects</Link>
+            <Link to="/interview-prep" className={`hidden md:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Interview Prep</Link>
 
             <div className="flex items-center">
               <Link
                 to="/notifications"
-                className="relative text-gray-400 hover:text-white transition-colors flex items-center"
+                className={`relative ${textColor} ${hoverColor} transition-colors flex items-center`}
               >
                 {NotificationIcon}
                 {notificationsCount > 0 && (
@@ -66,7 +89,7 @@ export default function Navbar({
                 )}
               </Link>
             </div>
-            <AvatarMenu isScrolled={true} />
+            <AvatarMenu isScrolled={isScrolled} />
           </div>
         </div>
       </nav>
@@ -87,26 +110,26 @@ export default function Navbar({
           <motion.div
             key="drawer"
             initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[9999] flex flex-col shadow-2xl md:hidden"
-            >
-              <div className="flex items-center justify-between p-4 border-b border-white/10">
-                <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
-                <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-400 hover:text-white rounded-md hover:bg-white/10 transition-colors">
-                  <X size={24} />
-                </button>
-              </div>
-              <div className="flex-1 overflow-y-auto py-4">
-                <nav className="flex flex-col space-y-1 px-4">
-                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Home</Link>
-                  <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Learn</Link>
-                  <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
-                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
-                </nav>
-              </div>
-            </motion.div>
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+            className="fixed inset-y-0 left-0 w-[280px] bg-white border-r border-gray-200 z-[9999] flex flex-col shadow-2xl md:hidden"
+          >
+            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+              <BrandLogo textColor="text-slate-900" hideTextOnMobile={false} className="scale-90 origin-left" />
+              <button type="button" onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">
+                <X size={24} />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto py-4">
+              <nav className="flex flex-col space-y-1 px-4">
+                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Home</Link>
+                <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Learn</Link>
+                <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Projects</Link>
+                <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Interview Prep</Link>
+              </nav>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

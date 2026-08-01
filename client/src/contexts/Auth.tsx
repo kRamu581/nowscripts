@@ -42,8 +42,12 @@ type AuthProps = {
 
 export default function Auth({ children }: AuthProps) {
   const [user, setUser] = useLocalStorage<User | undefined>("user", undefined);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    return !!localStorage.getItem("access_token") && !!localStorage.getItem("user");
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(() => {
+    return !(!!localStorage.getItem("access_token") && !!localStorage.getItem("user"));
+  });
 
   useEffect(() => {
     async function verifyAuth() {

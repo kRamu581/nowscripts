@@ -6,7 +6,8 @@ import { url } from "../baseUrl";
 import { useAuth } from "../contexts/Auth";
 import { motion } from "framer-motion";
 import { 
- Target, Edit3, MapPin, Briefcase, ExternalLink, GraduationCap, Link as LinkIcon
+ Target, Edit3, MapPin, Briefcase, ExternalLink, GraduationCap, Link as LinkIcon,
+ User, TrendingUp, Shield, Clock
 } from "lucide-react";
 import EditProfileModal from "../components/profile/EditProfileModal";
 import SavedSection from "../components/SavedSection";
@@ -21,7 +22,23 @@ export default function Profile() {
  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
  const { data, refetch, isLoading } = useQuery({
- queryFn: () => httpRequest.get(`${url}/user/${username}`),
+ queryFn: () => {
+    if ((username === "nowadmin" || username === "local_admin_123") && window.location.hostname === "localhost") {
+      return Promise.resolve({
+        data: {
+          _id: "nowadmin",
+          name: "Now Admin",
+          username: "nowadmin",
+          avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Admin",
+          bio: "Super Admin of NowScripts platform.",
+          email: "nowadmin@gmail.com",
+          location: "Localhost",
+          currentLearningTrack: "Fullstack Development"
+        }
+      });
+    }
+    return httpRequest.get(`${url}/user/${username}`);
+ },
  queryKey: ["userProfile", username],
  retry: 1,
  onSuccess: (data) => {
@@ -65,10 +82,41 @@ export default function Profile() {
  return (
  <div className="min-h-screen bg-white text-gray-900 transition-colors">
  <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
- <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
- 
- {/* LEFT COLUMN: Main Content (70%) */}
- <div className="lg:w-[70%]">
+  <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+  
+  {/* LEFT COLUMN: Sidebar Navigation (20%) */}
+  <div className="hidden lg:block lg:w-[20%] border-r border-gray-100 pr-4">
+    <div className="sticky top-24 flex flex-col gap-1.5">
+      <NavLink
+        to={`/profile/${username}`}
+        end
+        className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium text-[15px] ${isActive || (currentTab === 'home' && !location.pathname.includes('/progress') && !location.pathname.includes('/badges') && !location.pathname.includes('/activity-history')) ? 'bg-gray-50 text-gray-900' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'}`}
+      >
+        <User className="w-5 h-5" /> Profile
+      </NavLink>
+      <NavLink
+        to={`/profile/${username}/progress`}
+        className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium text-[15px] ${isActive ? 'bg-gray-50 text-gray-900' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'}`}
+      >
+        <TrendingUp className="w-5 h-5" /> Learning Progress
+      </NavLink>
+      <NavLink
+        to={`/profile/${username}/badges`}
+        className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium text-[15px] ${isActive ? 'bg-gray-50 text-gray-900' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'}`}
+      >
+        <Shield className="w-5 h-5" /> Skill Badges
+      </NavLink>
+      <NavLink
+        to={`/profile/${username}/activity-history`}
+        className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors font-medium text-[15px] ${isActive ? 'bg-gray-50 text-gray-900' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'}`}
+      >
+        <Clock className="w-5 h-5" /> Activity History
+      </NavLink>
+    </div>
+  </div>
+
+  {/* CENTER COLUMN: Main Content (55%) */}
+  <div className="lg:w-[55%]">
  
  {/* Mobile Sidebar Content (Visible only on mobile/tablet) */}
  <div className="lg:hidden mb-10 flex flex-col items-center text-center">
@@ -150,12 +198,35 @@ export default function Profile() {
  { currentTab === 'bookmarks' && <ProfileBookmarksTab profile={profile} /> }
  { currentTab === 'interviews' && <ProfileInterviewsTab profile={profile} /> }
  { currentTab === 'about' && <ProfileAboutTab profile={profile} /> }
+ 
+ {/* New Left Sidebar Tabs */}
+ {currentTab === 'progress' && (
+   <div className="p-12 text-center text-gray-500 border border-dashed border-gray-200 rounded-xl bg-gray-50/50 flex flex-col items-center justify-center">
+     <TrendingUp className="w-12 h-12 text-gray-300 mb-4" />
+     <h3 className="text-lg font-bold text-gray-900 mb-2">Learning Progress</h3>
+     <p>Your learning metrics and milestones will appear here.</p>
+   </div>
+ )}
+ {currentTab === 'badges' && (
+   <div className="p-12 text-center text-gray-500 border border-dashed border-gray-200 rounded-xl bg-gray-50/50 flex flex-col items-center justify-center">
+     <Shield className="w-12 h-12 text-gray-300 mb-4" />
+     <h3 className="text-lg font-bold text-gray-900 mb-2">Skill Badges</h3>
+     <p>Badges earned from courses and challenges will be showcased here.</p>
+   </div>
+ )}
+ {currentTab === 'activity-history' && (
+   <div className="p-12 text-center text-gray-500 border border-dashed border-gray-200 rounded-xl bg-gray-50/50 flex flex-col items-center justify-center">
+     <Clock className="w-12 h-12 text-gray-300 mb-4" />
+     <h3 className="text-lg font-bold text-gray-900 mb-2">Activity History</h3>
+     <p>Your detailed platform activity timeline will be displayed here.</p>
+   </div>
+ )}
  </div>
 
  </div>
 
- {/* RIGHT COLUMN: Sticky Sidebar (30%) */}
- <div className="hidden lg:block lg:w-[30%]">
+  {/* RIGHT COLUMN: Sticky Sidebar (25%) */}
+  <div className="hidden lg:block lg:w-[25%] pl-4 border-l border-gray-100">
  <div className="sticky top-24 space-y-8">
  
  {/* User Profile Card */}

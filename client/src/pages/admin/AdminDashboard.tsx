@@ -154,8 +154,8 @@ export default function AdminDashboard() {
  return (
  <div className="space-y-6 pb-20">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-white">Dashboard Overview</h1>
-        <div className="text-sm text-gray-400 flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+        <h1 className="text-2xl font-bold text-slate-900">Dashboard Overview</h1>
+        <div className="text-sm text-gray-500 flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-gray-200">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
@@ -198,8 +198,8 @@ export default function AdminDashboard() {
 
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Growth Chart */}
-      <div className="col-span-1 lg:col-span-2 bg-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-sm">
-        <h2 className="text-lg font-semibold text-white mb-6">User Growth (Last 30 Days)</h2>
+      <div className="col-span-1 lg:col-span-2 bg-white backdrop-blur-md p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h2 className="text-lg font-semibold text-slate-900 mb-6">User Growth (Last 30 Days)</h2>
         <div className="h-[300px] w-full">
  <ResponsiveContainer width="100%" height="100%">
  <BarChart data={growth}>
@@ -230,9 +230,9 @@ export default function AdminDashboard() {
  </div>
 
       {/* System Health */}
-      <div className="col-span-1 bg-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-sm">
-        <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-          <Server className="w-5 h-5 text-gray-400" />
+      <div className="col-span-1 bg-white backdrop-blur-md p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h2 className="text-lg font-semibold text-slate-900 mb-6 flex items-center gap-2">
+          <Server className="w-5 h-5 text-gray-500" />
           System Health
         </h2>
  
@@ -253,12 +253,12 @@ export default function AdminDashboard() {
  status="good" 
  />
  
- <div className="pt-4 border-t border-white/10 ">
+ <div className="pt-4 border-t border-gray-200 ">
  <div className="flex justify-between items-center mb-2">
- <span className="text-sm text-gray-400">Memory Usage</span>
+ <span className="text-sm text-gray-500">Memory Usage</span>
  <span className="text-sm font-medium text-gray-200 ">{health?.memoryUsage}%</span>
  </div>
- <div className="w-full bg-white/10 rounded-full h-2">
+ <div className="w-full bg-gray-100 rounded-full h-2">
  <div 
  className={`h-2 rounded-full ${parseFloat(health?.memoryUsage || "0") > 80 ? "bg-red-500" : "bg-now-primary"}`} 
  style={{ width: `${health?.memoryUsage || 0}%` }}
@@ -268,7 +268,7 @@ export default function AdminDashboard() {
 
  <div className="pt-2">
  <div className="flex justify-between items-center">
- <span className="text-sm text-gray-400">Uptime</span>
+ <span className="text-sm text-gray-500">Uptime</span>
  <span className="text-sm font-medium text-gray-200 ">
  {health ? Math.floor(health.serverUptime / 3600) : 0}h {health ? Math.floor((health.serverUptime % 3600) / 60) : 0}m
  </span>
@@ -280,16 +280,16 @@ export default function AdminDashboard() {
 
  <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
       {/* Live Users Table */}
-      <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-sm overflow-hidden">
-        <div className="p-6 border-b border-white/10">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+      <div className="bg-white backdrop-blur-md rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
             <MonitorPlay className="w-5 h-5 text-emerald-500" />
             Live Users ({liveUsers.length})
           </h2>
         </div>
  <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 text-gray-400">
+            <thead className="bg-white text-gray-500">
               <tr>
                 <th className="px-6 py-3 font-medium">User</th>
                 <th className="px-6 py-3 font-medium">Current Page</th>
@@ -304,13 +304,13 @@ export default function AdminDashboard() {
  </tr>
  ) : (
  liveUsers.slice(0, 5).map((u) => (
- <tr key={u.socketId} className="hover:bg-white/5 transition-colors">
+ <tr key={u.socketId} className="hover:bg-white transition-colors">
  <td className="px-6 py-4">
  <div className="flex items-center gap-3">
  <img src={u.avatar} alt="" className="w-8 h-8 rounded-full bg-gray-200" />
  <div>
- <div className="font-medium text-white">{u.name}</div>
- <div className="text-xs text-gray-400">{u.role}</div>
+ <div className="font-medium text-slate-900">{u.name}</div>
+ <div className="text-xs text-gray-500">{u.role}</div>
  </div>
  </div>
  </td>
@@ -326,16 +326,16 @@ export default function AdminDashboard() {
  </div>
 
       {/* Recent Registrations Table */}
-      <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-sm overflow-hidden">
-        <div className="p-6 border-b border-white/10">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+      <div className="bg-white backdrop-blur-md rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2">
             <UserPlus className="w-5 h-5 text-blue-500" />
             Recent Registrations
           </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
-            <thead className="bg-white/5 text-gray-400">
+            <thead className="bg-white text-gray-500">
               <tr>
                 <th className="px-6 py-3 font-medium">User</th>
                 <th className="px-6 py-3 font-medium">Email</th>
@@ -345,11 +345,11 @@ export default function AdminDashboard() {
             </thead>
             <tbody className="divide-y divide-white/10 text-gray-300">
               {recentUsers.map((u) => (
-                <tr key={u._id} className="hover:bg-white/5 transition-colors">
+                <tr key={u._id} className="hover:bg-white transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <img src={u.avatar} alt="" className="w-8 h-8 rounded-full bg-gray-200" />
-                      <span className="font-medium text-white">{u.name}</span>
+                      <span className="font-medium text-slate-900">{u.name}</span>
  </div>
  </td>
  <td className="px-6 py-4 text-xs">{u.email}</td>
@@ -369,8 +369,8 @@ export default function AdminDashboard() {
 
       {/* Analytics Breakdown & Revenue (Disabled) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-sm p-6">
-          <h2 className="text-lg font-semibold text-white mb-6">Content Overview</h2>
+        <div className="bg-white backdrop-blur-md rounded-xl border border-gray-200 shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-slate-900 mb-6">Content Overview</h2>
           <div className="space-y-4">
             <ContentStatRow icon={<FileText />} label="Community Posts" value={content?.community.totalPosts || 0} />
             <ContentStatRow icon={<Award />} label="Certificates Issued" value={content?.certificates.issued || 0} />
@@ -379,24 +379,24 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-sm p-6 opacity-75 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-[#0F1014]/50 backdrop-blur-[1px] z-10 flex items-center justify-center transition-opacity">
-            <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg shadow-sm border border-white/10 text-sm font-medium text-white">
+        <div className="bg-white backdrop-blur-md rounded-xl border border-gray-200 shadow-sm p-6 opacity-75 relative overflow-hidden group">
+          <div className="absolute inset-0 bg-slate-50/50 backdrop-blur-[1px] z-10 flex items-center justify-center transition-opacity">
+            <div className="bg-gray-100 backdrop-blur-md px-4 py-2 rounded-lg shadow-sm border border-gray-200 text-sm font-medium text-slate-900">
               Coming Soon
             </div>
           </div>
-          <h2 className="text-lg font-semibold text-white mb-6 flex items-center justify-between">
+          <h2 className="text-lg font-semibold text-slate-900 mb-6 flex items-center justify-between">
             Revenue Analytics
             <span className="text-xs bg-now-primary/10 text-now-primary px-2 py-1 rounded">Beta</span>
           </h2>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-white/5 rounded-lg border border-white/5">
-              <div className="text-gray-400 text-sm mb-1">Total Revenue</div>
-              <div className="text-2xl font-bold text-white">₹0.00</div>
+            <div className="p-4 bg-white rounded-lg border border-gray-100">
+              <div className="text-gray-500 text-sm mb-1">Total Revenue</div>
+              <div className="text-2xl font-bold text-slate-900">₹0.00</div>
             </div>
-            <div className="p-4 bg-white/5 rounded-lg border border-white/5">
-              <div className="text-gray-400 text-sm mb-1">Premium Members</div>
-              <div className="text-2xl font-bold text-white">0</div>
+            <div className="p-4 bg-white rounded-lg border border-gray-100">
+              <div className="text-gray-500 text-sm mb-1">Premium Members</div>
+              <div className="text-2xl font-bold text-slate-900">0</div>
             </div>
           </div>
         </div>
@@ -407,15 +407,15 @@ export default function AdminDashboard() {
 
 function StatsCard({ title, value, icon, trend, trendUp }: any) {
   return (
-    <div className="bg-white/5 backdrop-blur-md p-5 rounded-xl border border-white/10 shadow-sm hover:border-now-primary/30 hover:shadow-[0_0_15px_rgba(217,56,30,0.1)] transition-all group">
+    <div className="bg-white backdrop-blur-md p-5 rounded-xl border border-gray-200 shadow-sm hover:border-now-primary/30 hover:shadow-[0_0_15px_rgba(217,56,30,0.1)] transition-all group">
       <div className="flex justify-between items-start mb-4">
-        <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+        <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center group-hover:scale-110 transition-transform">
           {icon}
         </div>
       </div>
       <div>
-        <h3 className="text-sm font-medium text-gray-400 mb-1">{title}</h3>
-        <div className="text-2xl font-bold text-white mb-2">{value}</div>
+        <h3 className="text-sm font-medium text-gray-500 mb-1">{title}</h3>
+        <div className="text-2xl font-bold text-slate-900 mb-2">{value}</div>
         <div className={`text-xs font-medium flex items-center gap-1 ${trendUp ? 'text-emerald-400' : 'text-now-primary'}`}>
           {trendUp ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
           {trend}
@@ -441,14 +441,14 @@ function HealthMetric({ label, value, status }: any) {
 
 function ContentStatRow({ icon, label, value }: any) {
   return (
-    <div className="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/10">
+    <div className="flex items-center justify-between p-3 rounded-lg hover:bg-white transition-colors border border-transparent hover:border-gray-200">
       <div className="flex items-center gap-3">
-        <div className="text-gray-400">
+        <div className="text-gray-500">
           {React.cloneElement(icon, { className: "w-5 h-5" })}
         </div>
         <span className="text-sm font-medium text-gray-300 ">{label}</span>
       </div>
-      <span className="text-sm font-bold text-white">{value}</span>
+      <span className="text-sm font-bold text-slate-900">{value}</span>
     </div>
   );
 }

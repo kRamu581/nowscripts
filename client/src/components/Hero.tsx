@@ -101,7 +101,7 @@ export default function Hero() {
             <button
               onClick={() => {
                 if (isAuthenticated) {
-                  navigate("/learn");
+                  navigate("/roadmaps");
                 } else {
                   openModal('signup');
                 }

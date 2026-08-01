@@ -14,9 +14,10 @@ import {
   GraduationCap,
   Map,
   FileText,
-  Briefcase,
   Heart,
-  Download
+  Download,
+  Bot,
+  Briefcase
 } from "lucide-react";
 import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
@@ -229,7 +230,13 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                       <MessageSquarePlus className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
                       <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Submit an Interview</span>
                     </a>
-
+                    <a
+                      href="/ai"
+                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                    >
+                      <Bot className="w-5 h-5 text-purple-400 group-hover:text-purple-600" />
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-purple-600">🤖 AI Assistant</span>
+                    </a>
                   </div>
 
                   {isAdmin && (

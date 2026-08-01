@@ -49,7 +49,7 @@ export function LandingEnhancements() {
         className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-xl border-t border-gray-200 z-40 md:hidden flex justify-center shadow-[0_-4px_10px_rgba(0,0,0,0.05)]"
       >
         <Link 
-          to="/learn"
+          to="/roadmaps"
           className="w-full max-w-sm py-3 rounded-xl bg-now-primary text-white font-bold text-center shadow-sm"
         >
           Start Learning Free

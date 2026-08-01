@@ -140,11 +140,11 @@ export default function CertificateStudio() {
  <div className="flex items-center gap-4">
  <button 
  onClick={() => navigate('/admin/certificates')}
- className="text-gray-400 hover:text-white transition-colors"
+ className="text-gray-500 hover:text-slate-900 transition-colors"
  >
  <ArrowLeft className="w-5 h-5" />
  </button>
- <div className="flex items-center gap-2 text-white font-bold text-lg">
+ <div className="flex items-center gap-2 text-slate-900 font-bold text-lg">
  <FileText className="w-5 h-5 text-now-primary" />
  Certificate Studio
  </div>
@@ -157,7 +157,7 @@ export default function CertificateStudio() {
  className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors ${
  savedCertId 
  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 cursor-default"
- : "bg-[#334155] text-white hover:bg-[#475569]"
+ : "bg-[#334155] text-slate-900 hover:bg-[#475569]"
  }`}
  >
  {savedCertId ? <><CheckCircle className="w-4 h-4" /> Saved</> : <><Save className="w-4 h-4" /> Save to Database</>}
@@ -181,56 +181,56 @@ export default function CertificateStudio() {
  <form className="space-y-6">
  
  <div className="space-y-4">
- <h3 className="text-white font-bold uppercase tracking-wider text-sm border-b border-[rgba(255,255,255,0.1)] pb-2">Document Settings</h3>
+ <h3 className="text-slate-900 font-bold uppercase tracking-wider text-sm border-b border-[rgba(255,255,255,0.1)] pb-2">Document Settings</h3>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Template Type</label>
- <select name="templateType" value={formData.templateType} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]">
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Template Type</label>
+ <select name="templateType" value={formData.templateType} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm min-h-[44px]">
  {TEMPLATE_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
  </select>
  </div>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Role / Track Completed</label>
- <input type="text" name="internshipTitle" value={formData.internshipTitle} onChange={handleChange} placeholder="e.g. Intern-Associate Technical Support Engineer" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Role / Track Completed</label>
+ <input type="text" name="internshipTitle" value={formData.internshipTitle} onChange={handleChange} placeholder="e.g. Intern-Associate Technical Support Engineer" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  </div>
 
  <div className="space-y-4">
- <h3 className="text-white font-bold uppercase tracking-wider text-sm border-b border-[rgba(255,255,255,0.1)] pb-2">Candidate Details</h3>
+ <h3 className="text-slate-900 font-bold uppercase tracking-wider text-sm border-b border-[rgba(255,255,255,0.1)] pb-2">Candidate Details</h3>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Candidate Name *</label>
- <input type="text" name="candidateName" value={formData.candidateName} onChange={handleChange} placeholder="e.g. Kalluri Prathap" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Candidate Name *</label>
+ <input type="text" name="candidateName" value={formData.candidateName} onChange={handleChange} placeholder="e.g. Kalluri Prathap" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Email Address *</label>
- <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="e.g. name@example.com" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Email Address *</label>
+ <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="e.g. name@example.com" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Signatory Title</label>
- <input type="text" name="department" value={formData.department} onChange={handleChange} placeholder="e.g. Senior Director - NowScripts Management" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Signatory Title</label>
+ <input type="text" name="department" value={formData.department} onChange={handleChange} placeholder="e.g. Senior Director - NowScripts Management" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  </div>
 
  <div className="space-y-4">
- <h3 className="text-white font-bold uppercase tracking-wider text-sm border-b border-[rgba(255,255,255,0.1)] pb-2">Timeline & Execution</h3>
+ <h3 className="text-slate-900 font-bold uppercase tracking-wider text-sm border-b border-[rgba(255,255,255,0.1)] pb-2">Timeline & Execution</h3>
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Start Date *</label>
- <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Start Date *</label>
+ <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
  </div>
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">End Date *</label>
- <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">End Date *</label>
+ <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
  </div>
  </div>
 
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Signatory Name *</label>
- <input type="text" name="mentorName" value={formData.mentorName} onChange={handleChange} placeholder="e.g. Kalluri Prathap" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Signatory Name *</label>
+ <input type="text" name="mentorName" value={formData.mentorName} onChange={handleChange} placeholder="e.g. Kalluri Prathap" className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm min-h-[44px]" />
  </div>
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
  <div>
- <label className="block text-xs font-semibold text-gray-400 mb-1">Issue Date</label>
- <input type="date" name="issueDate" value={formData.issueDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-white focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
+ <label className="block text-xs font-semibold text-gray-500 mb-1">Issue Date</label>
+ <input type="date" name="issueDate" value={formData.issueDate} onChange={handleChange} className="w-full px-3 py-3 lg:py-2 bg-gray-900 border border-[rgba(255,255,255,0.1)] rounded text-slate-900 focus:outline-none focus:border-now-primary text-sm [color-scheme:dark] min-h-[44px]" />
  </div>
 
  </div>

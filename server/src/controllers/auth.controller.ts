@@ -329,18 +329,35 @@ export const googleAuth = asyncHandler(async (req, res, next) => {
 });
 
 export const googleAuthDirect = asyncHandler(async (req, res, next) => {
-  const { access_token } = req.body;
-  if (!access_token) {
-    return next(new ServerError(400, "Access token missing"));
+  const { access_token, credential } = req.body;
+  
+  if (!access_token && !credential) {
+    return next(new ServerError(400, "Access token or credential missing"));
   }
 
-  const user = await axios
-    .get(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`)
-    .then((res) => res.data)
-    .catch((error) => {
-      console.error(`Failed to fetch user`, error);
-      throw new ServerError(401, "Invalid access token");
-    });
+  let user: any = null;
+
+  if (credential) {
+    // Decode the Google ID token (JWT)
+    const decoded = jwt.decode(credential) as any;
+    if (!decoded || !decoded.email) {
+      return next(new ServerError(401, "Invalid Google credential"));
+    }
+    user = {
+      email: decoded.email,
+      name: decoded.name,
+      picture: decoded.picture
+    };
+  } else {
+    // Fetch using access_token
+    user = await axios
+      .get(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`)
+      .then((res) => res.data)
+      .catch((error) => {
+        console.error(`Failed to fetch user`, error);
+        throw new ServerError(401, "Invalid access token");
+      });
+  }
 
   let isUser: any = await User.findOne({ email: user.email });
   if (!isUser) {

@@ -4,8 +4,8 @@ import { SEO } from "../components/SEO";
 
 // Above the fold - Amber Redesign (Batch 1)
 import { AmberHero } from "../components/landing/amber/AmberHero";
-import { AmberOfferStrip } from "../components/landing/amber/AmberOfferStrip";
 import { AmberStats } from "../components/landing/amber/AmberStats";
+import { NowScriptsCopilot } from "../components/landing/NowScriptsCopilot";
 
 // Lazy-loaded components - Amber Redesign (Batch 1)
 const AmberPopularRoles = lazy(() => import("../components/landing/amber/AmberPopularRoles").then(m => ({ default: m.AmberPopularRoles })));
@@ -18,9 +18,9 @@ const AmberLearningSteps = lazy(() => import("../components/landing/amber/AmberL
 
 // Lazy-loaded components - Amber Redesign (Batch 3)
 const TrustedBy = lazy(() => import("../components/landing/TrustedBy").then(m => ({ default: m.TrustedBy })));
-const AmberDualCTA = lazy(() => import("../components/landing/amber/AmberDualCTA").then(m => ({ default: m.AmberDualCTA })));
 const AmberTagCloud = lazy(() => import("../components/landing/amber/AmberTagCloud").then(m => ({ default: m.AmberTagCloud })));
 const AmberSupportCards = lazy(() => import("../components/landing/amber/AmberSupportCards").then(m => ({ default: m.AmberSupportCards })));
+const AmberCommunityFeedback = lazy(() => import("../components/landing/amber/AmberCommunityFeedback").then(m => ({ default: m.AmberCommunityFeedback })));
 const AmberFooter = lazy(() => import("../components/landing/amber/AmberFooter").then(m => ({ default: m.AmberFooter })));
 
 // Loading skeleton for lazy components
@@ -47,7 +47,6 @@ export default function UnAuthHome() {
       
       {/* Batch 1 */}
       <AmberHero />
-      <AmberOfferStrip />
       <AmberStats />
       
       <Suspense fallback={<SectionSkeleton />}>
@@ -62,11 +61,11 @@ export default function UnAuthHome() {
 
         {/* Batch 3 */}
         <TrustedBy />
-        <AmberDualCTA />
         <AmberTagCloud />
-        <AmberSupportCards />
+        <AmberCommunityFeedback />
         <AmberFooter />
       </Suspense>
+      <NowScriptsCopilot />
     </div>
   );
 }

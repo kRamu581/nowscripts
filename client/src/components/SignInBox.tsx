@@ -22,46 +22,52 @@ const SIGNIN_OPTIONS = [
   },
 ];
 
-import { useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { url } from '../baseUrl';
 import { useAuth } from '../contexts/Auth';
 import useLocalStorage from '../hooks/useLocalStorage';
+import { useAuthModal } from '../contexts/AuthModalContext';
 
 export default function SignInBox({ message, typeOfLogin }: SignInBoxType) {
   const navigate = useNavigate();
   const { handleUser } = useAuth();
+  const { openModal } = useAuthModal();
   const [, setRefreshToken] = useLocalStorage<string | undefined>("refresh_token", undefined);
   const [, setAccessToken] = useLocalStorage<string | undefined>("access_token", undefined);
   const [, setUser] = useLocalStorage<any>("user", undefined);
 
-  const handleGoogleAuth = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      try {
-        const res = await axios.post(`${url}/auth/google/direct`, {
-          access_token: tokenResponse.access_token
-        });
+  const handleGoogleAuth = async (credentialResponse: any) => {
+    try {
+      const res = await axios.post(`${url}/auth/google/direct`, {
+        credential: credentialResponse.credential
+      });
+      
+      if (res.data.access_token) {
+        setAccessToken(res.data.access_token);
+        setRefreshToken(res.data.refresh_token);
+        setUser(res.data);
+        handleUser(res.data);
         
-        if (res.data.access_token) {
-          setAccessToken(res.data.access_token);
-          setRefreshToken(res.data.refresh_token);
-          setUser(res.data);
-          handleUser(res.data);
-          
-          const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
-          localStorage.removeItem("redirect_after_login");
-          navigate(redirectPath);
-        }
-      } catch (error) {
-        console.error("Google authentication failed", error);
+        const isAdminUser = res.data.role === "admin" || res.data.role === "Admin" || res.data.role === "Super Admin";
+        const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+        const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
+        localStorage.removeItem("redirect_after_login");
+        navigate(redirectPath);
       }
-    },
-    onError: () => {
-      console.error("Google Login Failed");
+    } catch (error) {
+      console.error("Google authentication failed", error);
     }
-  });
+  };
 
-  function handleEmailLogin() {}
+  function handleEmailLogin() {
+    if (typeOfLogin === "Sign in") {
+      openModal("login");
+    } else {
+      openModal("signup");
+    }
+  }
+
   return (
     <div className="w-[95%] sm:w-full max-w-[420px] mx-auto flex flex-col items-center gap-4 py-12 md:py-16 bg-white rounded-2xl px-6" style={{
         boxShadow: "0px 4px 24px rgba(0,0,0,0.06)"
@@ -71,13 +77,28 @@ export default function SignInBox({ message, typeOfLogin }: SignInBoxType) {
         {message}
       </p>
       {SIGNIN_OPTIONS.map((item) => {
+        if (item.handler === "Google") {
+          return (
+            <div key={item.id} className="w-full flex justify-center mb-1">
+              <GoogleLogin
+                onSuccess={handleGoogleAuth}
+                onError={() => {
+                  console.error("Google Login Failed");
+                }}
+                useOneTap
+                theme="outline"
+                size="large"
+                width="280"
+                text="continue_with"
+              />
+            </div>
+          );
+        }
         return (
           <ButtonLoginWith
             image={item.image}
             key={item.id}
-            onClick={
-              item.handler == "Google" ? handleGoogleAuth : handleEmailLogin
-            }
+            onClick={handleEmailLogin}
             text={typeOfLogin + " " + item.title}
           />
         );

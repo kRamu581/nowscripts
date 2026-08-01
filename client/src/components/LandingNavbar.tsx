@@ -54,9 +54,8 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             <Menu size={26} strokeWidth={1.5} />
           </button>
           
-          <Link to="/" className={`${textColor} ${hoverColor} transition-colors flex items-center gap-1`}>
-            <BrandLogo textColor={`text-current`} hideTextOnMobile={false} />
-            <span className={`w-2 h-2 rounded-full mb-1 ${isScrolled ? 'bg-[#FF5A5F]' : 'bg-white'}`}></span>
+          <Link to="/" className={`${textColor} ${hoverColor} transition-colors flex items-center`}>
+            <BrandLogo textColor={`text-current`} dotColor={isScrolled ? 'bg-[#FF5A5F]' : 'bg-white'} hideTextOnMobile={false} />
           </Link>
         </div>
 
@@ -149,21 +148,21 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-y-0 left-0 w-[280px] bg-[#0F1014] border-r border-white/10 z-[9999] flex flex-col shadow-2xl md:hidden"
+              className="fixed inset-y-0 left-0 w-[280px] bg-white border-r border-gray-200 z-[9999] flex flex-col shadow-2xl md:hidden"
             >
-              <div className="flex items-center justify-between p-4 border-b border-white/10">
-                <BrandLogo textColor="text-white" hideTextOnMobile={false} className="scale-90 origin-left" />
-                <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-400 hover:text-white rounded-md hover:bg-white/10 transition-colors">
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                <BrandLogo textColor="text-slate-900" hideTextOnMobile={false} className="scale-90 origin-left" />
+                <button type="button" onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">
                   <X size={24} />
                 </button>
               </div>
               <div className="flex-1 overflow-y-auto py-4">
                 <nav className="flex flex-col space-y-1 px-4">
-                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Home</Link>
-                  <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Learn</Link>
-                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Interview Prep</Link>
-                  <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">Projects</Link>
-                  <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white rounded-md font-medium transition-colors">About Us</Link>
+                  <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Home</Link>
+                  <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Learn</Link>
+                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Interview Prep</Link>
+                  <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Projects</Link>
+                  <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">About Us</Link>
                 </nav>
               </div>
             </motion.div>

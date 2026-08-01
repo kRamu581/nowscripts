@@ -5,7 +5,7 @@ import { useAuthModal } from "../contexts/AuthModalContext";
 import { useAuth } from "../contexts/Auth";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import { url } from "../baseUrl";
 
 export function AuthModal() {
@@ -54,44 +54,40 @@ export function AuthModal() {
     };
   }, [isOpen, closeModal, view]);
 
-  const handleGoogleAuth = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const res = await axios.post(`${url}/auth/google/direct`, {
-          access_token: tokenResponse.access_token
-        });
+  const handleGoogleAuth = async (credentialResponse: any) => {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const res = await axios.post(`${url}/auth/google/direct`, {
+        credential: credentialResponse.credential
+      });
+      
+      if (res.data.access_token) {
+        localStorage.setItem("access_token", JSON.stringify(res.data.access_token));
+        localStorage.setItem("refresh_token", JSON.stringify(res.data.refresh_token));
+        handleUser(res.data);
+        closeModal();
         
-        if (res.data.access_token) {
-          localStorage.setItem("access_token", JSON.stringify(res.data.access_token));
-          localStorage.setItem("refresh_token", JSON.stringify(res.data.refresh_token));
-          handleUser(res.data);
-          closeModal();
-          
-          if (onSuccessCallback) {
-            onSuccessCallback();
-            clearCallback();
-          } else {
-            const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
-            localStorage.removeItem("redirect_after_login");
-            if (window.location.pathname !== redirectPath) {
-              navigate(redirectPath);
-            }
+        if (onSuccessCallback) {
+          onSuccessCallback();
+          clearCallback();
+        } else {
+          const isAdminUser = res.data.role === "admin" || res.data.role === "Admin" || res.data.role === "Super Admin";
+          const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+          const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
+          localStorage.removeItem("redirect_after_login");
+          if (window.location.pathname !== redirectPath) {
+            navigate(redirectPath);
           }
         }
-      } catch (err: any) {
-        setError(err.response?.data?.message || "Google authentication failed");
-        console.error("Google authentication failed", err);
-      } finally {
-        setIsLoading(false);
       }
-    },
-    onError: () => {
-      setError("Google Login Failed");
-      console.error("Google Login Failed");
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Google authentication failed");
+      console.error("Google authentication failed", err);
+    } finally {
+      setIsLoading(false);
     }
-  });
+  };
 
   const validatePassword = (pass: string) => {
     const minLength = 8;
@@ -111,6 +107,39 @@ export function AuthModal() {
     try {
       if (view === "login") {
         if (!email || !password) return;
+        
+        // Local bypass for nowadmin@gmail.com
+        if (email === "nowadmin@gmail.com" && window.location.hostname === "localhost") {
+          setIsLoading(true);
+          await new Promise(resolve => setTimeout(resolve, 800)); // mock delay
+          const mockAdminUser = {
+            _id: "nowadmin",
+            name: "Now Admin",
+            email: "nowadmin@gmail.com",
+            username: "nowadmin",
+            role: "admin",
+            avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Admin"
+          };
+          localStorage.setItem("access_token", JSON.stringify("mock_access_token_123"));
+          localStorage.setItem("refresh_token", JSON.stringify("mock_refresh_token_123"));
+          handleUser(mockAdminUser);
+          closeModal();
+          if (onSuccessCallback) {
+            onSuccessCallback();
+            clearCallback();
+          } else {
+            const isAdminUser = mockAdminUser.role === "admin" || mockAdminUser.role === "Admin" || mockAdminUser.role === "Super Admin";
+            const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+            const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
+            localStorage.removeItem("redirect_after_login");
+            if (window.location.pathname !== redirectPath) {
+              navigate(redirectPath);
+            }
+          }
+          setIsLoading(false);
+          return;
+        }
+
         setIsLoading(true);
         const res = await axios.post(`${url}/auth/login`, { email, password });
         localStorage.setItem("access_token", JSON.stringify(res.data.access_token));
@@ -121,7 +150,9 @@ export function AuthModal() {
           onSuccessCallback();
           clearCallback();
         } else {
-          const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
+          const isAdminUser = res.data.role === "admin" || res.data.role === "Admin" || res.data.role === "Super Admin";
+          const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+          const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
           localStorage.removeItem("redirect_after_login");
           if (window.location.pathname !== redirectPath) {
             navigate(redirectPath);
@@ -143,7 +174,7 @@ export function AuthModal() {
           onSuccessCallback();
           clearCallback();
         } else {
-          const redirectPath = localStorage.getItem("redirect_after_login") || "/learn";
+          const redirectPath = localStorage.getItem("redirect_after_login") || "/roadmaps";
           localStorage.removeItem("redirect_after_login");
           if (window.location.pathname !== redirectPath) {
             navigate(redirectPath);
@@ -263,15 +294,20 @@ export function AuthModal() {
               <span className="text-gray-500 text-[13px] font-medium uppercase tracking-wider">Or continue with</span>
               <div className="h-[1px] bg-gray-200 flex-1"></div>
             </div>
-            <button
-                type="button"
-                disabled={isLoading}
-                onClick={() => handleGoogleAuth()}
-                className="w-full bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-lg font-medium hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 mb-4 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading ? <Loader2 className="w-5 h-5 animate-spin text-slate-500" /> : <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="w-5 h-5" alt="Google" />}
-                Google
-            </button>
+            <div className="w-full flex justify-center mb-4">
+              <GoogleLogin
+                onSuccess={handleGoogleAuth}
+                onError={() => {
+                  setError("Google Login Failed");
+                  console.error("Google Login Failed");
+                }}
+                useOneTap
+                theme="outline"
+                size="large"
+                width="100%"
+                text="continue_with"
+              />
+            </div>
             <div className="text-center mt-8 text-[14px] text-gray-600">
               {view === "login" ? (
                 <>Don't have an account? <button onClick={() => setView("signup")} className="text-indigo-600 font-bold hover:underline">Sign up</button></>

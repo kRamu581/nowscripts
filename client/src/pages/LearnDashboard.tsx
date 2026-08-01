@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Search, ChevronDown, ChevronRight, PlayCircle, FileText, 
   CheckSquare, Award, Clock, Target, List, Video, BookOpen, ChevronLeft, ChevronRight as IconNext, CheckCircle, X,
-  Laptop, Cloud, Settings, Code, Server, Workflow, Shield, Layout, Box, Hammer, Mic, Flag
+  Laptop, Cloud, Settings, Code, Server, Workflow, Shield, Layout, Box, Hammer, Mic, Flag, Bot
 } from "lucide-react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { MarkdownRenderer } from "../components/markdown/MarkdownRenderer";
@@ -13,6 +13,7 @@ import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
 import { getModuleTheme } from "../utils/themeUtils";
 import { CertificationPath } from "../components/learn/CertificationPath";
+import AskAIContextButton from "../components/ai/AskAIContextButton";
 
 const REDIRECT_MAP: Record<string, { categorySlug: string, lessonSlug: string }> = {
   'administration/user-interface': { categorySlug: 'fundamentals', lessonSlug: 'navigation-user-interface' },
@@ -548,6 +549,19 @@ export default function LearnDashboard() {
  >
  <ChevronLeft className="w-5 h-5 rotate-90" />
  </button>
+
+ <AskAIContextButton 
+    lessonId={activeLesson.id || activeLesson.slug}
+    lessonTitle={activeLesson.title}
+  />
+
+  {/* Floating AI Bot Button */}
+  <Link
+    to="/ai"
+    className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-now-primary text-white flex items-center justify-center hover:scale-105 transition-transform duration-300 shadow-lg"
+  >
+    <Bot className="w-8 h-8" />
+  </Link>
 
  <style>{`
  .custom-scrollbar::-webkit-scrollbar {

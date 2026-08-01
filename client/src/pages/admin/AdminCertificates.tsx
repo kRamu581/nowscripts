@@ -119,26 +119,26 @@ export default function AdminCertificates() {
  };
 
  return (
-    <div className="min-h-screen bg-transparent text-white p-6 lg:p-10 font-sans">
+    <div className="min-h-screen bg-transparent text-slate-900 p-6 lg:p-10 font-sans">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
+            <h1 className="text-3xl font-bold text-slate-900 mb-2 flex items-center gap-2">
               <FileText className="w-8 h-8 text-now-primary" />
               Certificate Management
             </h1>
-            <p className="text-gray-400">Issue, verify, and manage completion certificates.</p>
+            <p className="text-gray-500">Issue, verify, and manage completion certificates.</p>
           </div>
           <div className="flex items-center gap-3">
             <button 
               onClick={handleExportCSV}
-              className="px-4 py-2 bg-white/5 border border-white/10 text-white font-semibold rounded-lg shadow-sm hover:bg-white/10 hover:border-white/20 transition flex items-center gap-2"
+              className="px-4 py-2 bg-white border border-gray-200 text-slate-900 font-semibold rounded-lg shadow-sm hover:bg-gray-100 hover:border-white/20 transition flex items-center gap-2"
             >
               <Download className="w-4 h-4" /> Export CSV
             </button>
  <Link 
  to="/admin/certificates/studio"
- className="px-5 py-2 bg-now-primary text-white font-semibold rounded-lg shadow-sm hover:bg-now-accent transition flex items-center gap-2"
+ className="px-5 py-2 bg-now-primary text-slate-900 font-semibold rounded-lg shadow-sm hover:bg-now-accent transition flex items-center gap-2"
  >
  <Plus className="w-5 h-5" /> Issue Certificate
  </Link>
@@ -146,7 +146,7 @@ export default function AdminCertificates() {
  </div>
 
         {/* Controls */}
-        <div className="bg-white/5 backdrop-blur-md p-4 rounded-xl shadow-sm border border-white/10 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
+        <div className="bg-white backdrop-blur-md p-4 rounded-xl shadow-sm border border-gray-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
           <div className="relative w-full md:w-96">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
             <input 
@@ -154,7 +154,7 @@ export default function AdminCertificates() {
               placeholder="Search by ID, Name, or Email..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-now-primary/50 text-white placeholder-gray-500"
+              className="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-now-primary/50 text-slate-900 placeholder-gray-500"
             />
           </div>
           <div className="flex items-center gap-3 w-full md:w-auto">
@@ -162,7 +162,7 @@ export default function AdminCertificates() {
             <select 
               value={statusFilter}
               onChange={(e) => { setStatusFilter(e.target.value); setCurrentPage(1); }}
-              className="px-4 py-2 border border-white/10 bg-[#0F1014] rounded-lg focus:outline-none focus:ring-2 focus:ring-now-primary/50 text-white"
+              className="px-4 py-2 border border-gray-200 bg-slate-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-now-primary/50 text-slate-900"
             >
               <option value="All">All Status</option>
               <option value="Active">Active</option>
@@ -173,11 +173,11 @@ export default function AdminCertificates() {
  </div>
 
         {/* Table */}
-        <div className="bg-white/5 backdrop-blur-md rounded-xl shadow-sm border border-white/10 overflow-hidden">
+        <div className="bg-white backdrop-blur-md rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-white/5 border-b border-white/10 text-gray-400 text-sm uppercase tracking-wider">
+                <tr className="bg-white border-b border-gray-200 text-gray-500 text-sm uppercase tracking-wider">
                   <th className="px-6 py-4 font-bold">Certificate ID</th>
                   <th className="px-6 py-4 font-bold">Candidate</th>
                   <th className="px-6 py-4 font-bold">Track Completed</th>
@@ -197,14 +197,14 @@ export default function AdminCertificates() {
  </tr>
  ) : (
  certificates.map((cert: Certificate) => (
- <tr key={cert._id} className="hover:bg-white/5 transition-colors">
+ <tr key={cert._id} className="hover:bg-white transition-colors">
  <td className="px-6 py-4">
- <div className="font-semibold text-white">{cert.certificateId}</div>
- <div className="text-xs text-gray-400 font-mono">{cert.verificationNumber}</div>
+ <div className="font-semibold text-slate-900">{cert.certificateId}</div>
+ <div className="text-xs text-gray-500 font-mono">{cert.verificationNumber}</div>
  </td>
  <td className="px-6 py-4">
- <div className="font-semibold text-white">{cert.candidateName}</div>
- <div className="text-sm text-gray-400">{cert.email}</div>
+ <div className="font-semibold text-slate-900">{cert.candidateName}</div>
+ <div className="text-sm text-gray-500">{cert.email}</div>
  </td>
  <td className="px-6 py-4">
  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
@@ -260,22 +260,22 @@ export default function AdminCertificates() {
  
  {/* Pagination */}
  {pagination && pagination.pages > 1 && (
-          <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between bg-white/5">
-            <p className="text-sm text-gray-400">
-              Showing page <span className="font-semibold text-white">{pagination.page}</span> of <span className="font-semibold text-white">{pagination.pages}</span>
+          <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-white">
+            <p className="text-sm text-gray-500">
+              Showing page <span className="font-semibold text-slate-900">{pagination.page}</span> of <span className="font-semibold text-slate-900">{pagination.pages}</span>
             </p>
             <div className="flex gap-2">
               <button 
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1 border border-white/10 rounded-md text-sm font-medium text-gray-300 disabled:opacity-50 hover:bg-white/10 transition-colors"
+                className="px-3 py-1 border border-gray-200 rounded-md text-sm font-medium text-gray-300 disabled:opacity-50 hover:bg-gray-100 transition-colors"
               >
                 Previous
               </button>
               <button 
                 onClick={() => setCurrentPage(p => Math.min(pagination.pages, p + 1))}
                 disabled={currentPage === pagination.pages}
-                className="px-3 py-1 border border-white/10 rounded-md text-sm font-medium text-gray-300 disabled:opacity-50 hover:bg-white/10 transition-colors"
+                className="px-3 py-1 border border-gray-200 rounded-md text-sm font-medium text-gray-300 disabled:opacity-50 hover:bg-gray-100 transition-colors"
               >
                 Next
               </button>
