@@ -15,7 +15,7 @@ export function AmberHero() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-8 w-full flex flex-col items-center mt-12 md:mt-0 text-center">
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-3 drop-shadow-sm pb-1">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-3 drop-shadow-sm pb-1">
           Master ServiceNow
         </h1>
         <p className="text-base md:text-xl text-white font-medium mb-8 md:mb-10 drop-shadow-md">
@@ -43,10 +43,10 @@ export function AmberHero() {
           <input
             type="text"
             placeholder="Search for ServiceNow courses, projects, or interview questions..."
-            className="w-full h-16 md:h-20 pl-6 pr-20 md:pr-24 rounded-full bg-white text-gray-800 text-base md:text-lg focus:outline-none shadow-2xl placeholder-gray-400"
+            className="w-full h-14 md:h-16 pl-6 pr-16 md:pr-20 rounded-full bg-white text-gray-800 text-sm md:text-base focus:outline-none shadow-2xl placeholder-gray-400"
           />
-          <button className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 bg-[#FF5A5F] hover:bg-[#E82C45] transition-colors text-white rounded-full w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
-            <Search className="w-6 h-6 md:w-7 md:h-7" />
+          <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#FF5A5F] hover:bg-[#E82C45] transition-colors text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+            <Search className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
       </div>

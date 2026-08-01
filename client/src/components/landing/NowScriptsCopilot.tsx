@@ -98,7 +98,7 @@ export const NowScriptsCopilot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 md:inset-auto md:bottom-6 md:right-6 md:w-[400px] h-[100dvh] md:h-[650px] max-w-[100vw] md:max-w-[calc(100vw-32px)] bg-white rounded-none md:rounded-2xl shadow-none md:shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex flex-col z-[100] overflow-hidden"
+            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[380px] h-[100dvh] sm:h-[600px] sm:max-h-[calc(100vh-120px)] w-full max-w-[100vw] sm:max-w-[calc(100vw-32px)] bg-white rounded-none sm:rounded-2xl shadow-none sm:shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex flex-col z-[100] overflow-hidden"
           >
             {/* Header */}
             <div className="relative px-4 py-3 border-b border-gray-100 flex items-center justify-between bg-white">
