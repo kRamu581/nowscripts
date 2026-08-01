@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Send, Search, BookOpen, MessageSquare, MoreHorizontal, Plus, Clock } from "lucide-react";
-import { BrandLogo } from "../../BrandLogo";
+import { BrandLogo } from "../BrandLogo";
 
 export const NowScriptsCopilot = () => {
   const [isOpen, setIsOpen] = useState(false);

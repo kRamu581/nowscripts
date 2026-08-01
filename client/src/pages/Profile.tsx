@@ -21,8 +21,9 @@ export default function Profile() {
 
  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
- const { data, refetch, isLoading } = useQuery({
- queryFn: () => {
+ const { data, refetch, isLoading } = useQuery(
+ ["userProfile", username],
+ () => {
     if ((username === "nowadmin" || username === "local_admin_123") && window.location.hostname === "localhost") {
       return Promise.resolve({
         data: {
@@ -35,23 +36,24 @@ export default function Profile() {
           location: "Localhost",
           currentLearningTrack: "Fullstack Development"
         }
-      });
+      } as any);
     }
     return httpRequest.get(`${url}/user/${username}`);
  },
- queryKey: ["userProfile", username],
- retry: 1,
- onSuccess: (data) => {
- document.title = `${data.data.name} (@${data.data.username || username}) - NowScripts`;
- // If user navigated via /user/:id and it has a username, redirect
- if (location.pathname.startsWith('/user/')) {
- navigate(`/profile/${data.data.username || data.data._id}`, { replace: true });
+ {
+   retry: 1,
+   onSuccess: (data: any) => {
+     document.title = `${data.data.name} (@${data.data.username || username}) - NowScripts`;
+     // If user navigated via /user/:id and it has a username, redirect
+     if (location.pathname.startsWith('/user/')) {
+       navigate(`/profile/${data.data.username || data.data._id}`, { replace: true });
+     }
+   },
+   onError: (error: any) => {
+     navigate('/404', { replace: true });
+   }
  }
- },
- onError: () => {
- navigate('/404', { replace: true });
- }
- });
+ );
 
  useEffect(() => {
  refetch();

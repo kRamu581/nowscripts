@@ -118,7 +118,9 @@ export function AuthModal() {
             email: "nowadmin@gmail.com",
             username: "nowadmin",
             role: "admin",
-            avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Admin"
+            avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Admin",
+            bio: "Super Admin of NowScripts platform.",
+            list: []
           };
           localStorage.setItem("access_token", JSON.stringify("mock_access_token_123"));
           localStorage.setItem("refresh_token", JSON.stringify("mock_refresh_token_123"));
