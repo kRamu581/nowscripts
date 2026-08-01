@@ -11,9 +11,10 @@ interface AIChatBoxProps {
   onSendMessage: (msg: string) => void;
   placeholder?: string;
   initialQuery?: string;
+  hideSuggestions?: boolean;
 }
 
-export default function AIChatBox({ messages, isLoading, onSendMessage, placeholder = "Ask me anything...", initialQuery }: AIChatBoxProps) {
+export default function AIChatBox({ messages, isLoading, onSendMessage, placeholder = "Ask me anything...", initialQuery, hideSuggestions }: AIChatBoxProps) {
   const [input, setInput] = React.useState("");
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();

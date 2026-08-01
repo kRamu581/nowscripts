@@ -22,7 +22,7 @@ export function useAIChat(initialSessionId?: string, context?: any) {
     setError(null);
 
     try {
-      const data = await aiService.chat(content, sessionId, context);
+      const data: any = await aiService.chat(content, sessionId, context);
       if (data.success) {
         if (!sessionId && data.sessionId) {
           setSessionId(data.sessionId);
@@ -44,7 +44,7 @@ export function useAIChat(initialSessionId?: string, context?: any) {
   const loadSession = useCallback(async (id: string) => {
     setIsLoading(true);
     try {
-      const data = await aiService.getChatSession(id);
+      const data: any = await aiService.getChatSession(id);
       if (data.success) {
         setSessionId(id);
         setMessages(data.session.messages.filter((m: any) => m.role !== "system"));
@@ -76,7 +76,7 @@ export function useAIRoadmap() {
     setIsGenerating(true);
     setError(null);
     try {
-      const data = await aiService.generateRoadmap(params);
+      const data: any = await aiService.generateRoadmap(params);
       if (data.success) {
         return data.roadmap;
       }
