@@ -6,7 +6,6 @@ import {
   login,
   forgotPassword,
   verifyOTP,
-  signup,
   logout,
   resetPassword,
   me,
