@@ -1,13 +1,13 @@
 import express from "express";
 import {
-  googleAuth,
   googleAuthDirect,
-  logout,
   tokenRefresh,
   register,
   login,
   forgotPassword,
   verifyOTP,
+  signup,
+  logout,
   resetPassword,
   me,
 } from "../controllers/auth.controller";
@@ -24,7 +24,6 @@ router.post("/forgot-password", forgotPasswordLimiter, forgotPassword);
 router.post("/verify-otp", otpVerifyLimiter, verifyOTP);
 router.post("/reset-password", resetPassword);
 
-router.route("/google/oauth").get(googleAuth);
 router.post("/google/direct", googleAuthDirect);
 router.route("/logout").post(logout);
 router.route("/token").post(tokenRefresh);
