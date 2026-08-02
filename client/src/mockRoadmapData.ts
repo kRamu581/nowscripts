@@ -18,14 +18,14 @@ export const mockRoadmaps = [
     color: "from-blue-600 to-blue-900",
     iconName: "Map",
     order: 1,
-    modules: tracks.find(t => t.slug === 'csa')?.modules.map((mod, i) => ({
+    modules: tracks.find(t => t.slug === 'csa-certification')?.modules?.map((mod, i) => ({
       id: mod.id,
       title: mod.title,
       description: mod.description,
       estimatedTime: mod.level,
       completed: false,
       items: mod.items
-    }))
+    })) || []
   },
   {
     id: "2",
@@ -44,14 +44,14 @@ export const mockRoadmaps = [
     color: "from-cyan-600 to-cyan-900",
     iconName: "Database",
     order: 2,
-    modules: tracks.find(t => t.slug === 'itom')?.modules.map((mod, i) => ({
+    modules: tracks.find(t => t.slug === 'itom')?.modules?.map((mod, i) => ({
       id: mod.id,
       title: mod.title,
       description: mod.description,
       estimatedTime: mod.level,
       completed: false,
       items: mod.items
-    }))
+    })) || []
   },
   {
     id: "3",
@@ -70,14 +70,14 @@ export const mockRoadmaps = [
     color: "from-yellow-500 to-yellow-700",
     iconName: "FileText",
     order: 3,
-    modules: tracks.find(t => t.slug === 'javascript')?.modules.map((mod, i) => ({
+    modules: tracks.find(t => t.slug === 'javascript')?.modules?.map((mod, i) => ({
       id: mod.id,
       title: mod.title,
       description: mod.description,
       estimatedTime: mod.level,
       completed: false,
       items: mod.items
-    }))
+    })) || []
   },
   {
     id: "4",
@@ -96,19 +96,19 @@ export const mockRoadmaps = [
     color: "from-indigo-600 to-indigo-900",
     iconName: "Code",
     order: 4,
-    modules: tracks.find(t => t.slug === 'sdk')?.modules.map((mod, i) => ({
+    modules: tracks.find(t => t.slug === 'sdk')?.modules?.map((mod, i) => ({
       id: mod.id,
       title: mod.title,
       description: mod.description,
       estimatedTime: mod.level,
       completed: false,
       items: mod.items
-    }))
+    })) || []
   },
   {
     id: "5",
     title: "App Engine Studio",
-    slug: "app engine studio",
+    slug: "app-engine-studio",
     description: "Rapidly build custom applications in ServiceNow using low-code tools in App Engine Studio.",
     difficulty: "Intermediate",
     estimatedDuration: "3 Weeks",
@@ -122,19 +122,19 @@ export const mockRoadmaps = [
     color: "from-blue-500 to-blue-700",
     iconName: "Layout",
     order: 5,
-    modules: tracks.find(t => t.slug === 'app engine studio')?.modules.map((mod, i) => ({
+    modules: tracks.find(t => t.slug === 'app-engine-studio')?.modules?.map((mod, i) => ({
       id: mod.id,
       title: mod.title,
       description: mod.description,
       estimatedTime: mod.level,
       completed: false,
       items: mod.items
-    }))
+    })) || []
   },
   {
     id: "6",
     title: "Virtual Agent",
-    slug: "virtual agent",
+    slug: "virtual-agent",
     description: "Build conversational interfaces and integrate NLU to deflect incidents and automate requests.",
     difficulty: "Intermediate",
     estimatedDuration: "3 Weeks",
@@ -148,13 +148,13 @@ export const mockRoadmaps = [
     color: "from-purple-500 to-purple-700",
     iconName: "Mic",
     order: 6,
-    modules: tracks.find(t => t.slug === 'virtual agent')?.modules.map((mod, i) => ({
+    modules: tracks.find(t => t.slug === 'virtual-agent')?.modules?.map((mod, i) => ({
       id: mod.id,
       title: mod.title,
       description: mod.description,
       estimatedTime: mod.level,
       completed: false,
       items: mod.items
-    }))
+    })) || []
   }
 ];

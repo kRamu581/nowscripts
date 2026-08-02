@@ -20,7 +20,7 @@ const extractText = (node: any): string => {
 };
 
 export const H1 = ({ children, ...props }: any) => (
-  <h1 className="font-serif text-3xl sm:text-[38px] font-bold mb-6 mt-4 tracking-tight text-[#1c2858] leading-[1.3] border-b border-gray-200 pb-4" {...props}>
+  <h1 className="text-3xl sm:text-[38px] font-extrabold mb-6 mt-4 tracking-tight text-[#0f2c4c] leading-[1.3] border-b border-gray-200 pb-4" style={{ fontWeight: 800 }} {...props}>
     {children}
   </h1>
 );
@@ -39,7 +39,7 @@ export const H2 = ({ children, ...props }: any) => {
         >
           <Link2 className="w-6 h-6" />
         </button>
-        <h2 className="font-serif text-[26px] sm:text-[30px] font-bold text-[#1c2858] leading-tight w-full" {...props}>
+        <h2 className="text-[26px] sm:text-[30px] font-extrabold text-[#0f2c4c] leading-tight w-full" style={{ fontWeight: 800 }} {...props}>
           {children}
         </h2>
       </div>
@@ -61,7 +61,7 @@ export const H3 = ({ children, ...props }: any) => {
         >
           <Link2 className="w-5 h-5" />
         </button>
-        <h3 className="font-serif text-[22px] sm:text-[24px] font-bold text-[#1c2858] leading-tight w-full" {...props}>
+        <h3 className="text-[22px] sm:text-[24px] font-extrabold text-[#0f2c4c] leading-tight w-full" style={{ fontWeight: 800 }} {...props}>
           {children}
         </h3>
       </div>

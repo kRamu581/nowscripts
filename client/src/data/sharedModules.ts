@@ -603,24 +603,230 @@ const uiBuilderModules: Module[] = [
   }
 ];
 
+const csaCertificationModules: Module[] = [
+  {
+    id: "csa-intro-setup",
+    title: "1. Introduction & Setup",
+    level: "Beginner",
+    description: "Learn what ServiceNow is, how to get a Personal Developer Instance, and navigate the UI.",
+    keyTakeaway: "Get started with the ServiceNow platform.",
+    color: "from-blue-600 to-blue-900",
+    icon: "Rocket",
+    items: [
+      { type: "topic", id: "ch1-servicenow-intro", title: "Chapter 1: ServiceNow Introduction" },
+      { type: "topic", id: "ch2-creating-pdi", title: "Chapter 2: Creating PDI (Personal Developer Instance)" },
+      { type: "topic", id: "ch3-user-interface", title: "Chapter 3: User Interface" }
+    ]
+  },
+  {
+    id: "csa-forms-lists",
+    title: "2. Forms & Lists",
+    level: "Beginner",
+    description: "Master the design and layout of forms, formatters, and list views.",
+    keyTakeaway: "Configure how data is displayed and interacted with.",
+    color: "from-teal-600 to-teal-900",
+    icon: "Layout",
+    items: [
+      { type: "topic", id: "ch4-form-design", title: "Chapter 4: Form Design, Form Layout, Form Builder" },
+      { type: "topic", id: "ch5-formatters", title: "Chapter 5: Formatters" },
+      { type: "topic", id: "ch6-list-view", title: "Chapter 6: List View" }
+    ]
+  },
+  {
+    id: "csa-database-architecture",
+    title: "3. Database & Architecture",
+    level: "Intermediate",
+    description: "Understand the underlying tables and how to extend functionality with plugins.",
+    keyTakeaway: "Manage plugins and database tables.",
+    color: "from-purple-600 to-purple-900",
+    icon: "Database",
+    items: [
+      { type: "topic", id: "ch7-plugins", title: "Chapter 7: Plugins" },
+      { type: "topic", id: "ch8-tables", title: "Chapter 8: Tables" }
+    ]
+  },
+  {
+    id: "csa-admin-policies",
+    title: "4. Administration & Policies",
+    level: "Intermediate",
+    description: "Manage users and enforce data integrity and UI behavior through policies.",
+    keyTakeaway: "Control user access and enforce field-level policies.",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Users",
+    items: [
+      { type: "topic", id: "ch9-user-admin", title: "Chapter 9: User Administration" },
+      { type: "topic", id: "ch10-ui-policies", title: "Chapter 10: UI Policies" },
+      { type: "topic", id: "ch11-data-policies", title: "Chapter 11: Data Policies" }
+    ]
+  },
+  {
+    id: "csa-task-mgmt",
+    title: "5. Task Management",
+    level: "Intermediate",
+    description: "Handle assignment rules, related lists, and service level management.",
+    keyTakeaway: "Automate task routing and track service levels.",
+    color: "from-amber-600 to-amber-900",
+    icon: "CheckSquare",
+    items: [
+      { type: "topic", id: "ch12-assignment-rules", title: "Chapter 12: Assignment Rules" },
+      { type: "topic", id: "ch13-metrics", title: "Chapter 13: Metrics" },
+      { type: "topic", id: "ch14-related-lists", title: "Chapter 14: Related Lists" },
+      { type: "topic", id: "ch15-slm-sla", title: "Chapter 15: SLM and SLA" }
+    ]
+  },
+  {
+    id: "csa-service-catalog-automation",
+    title: "6. Service Catalog & Automation",
+    level: "Advanced",
+    description: "Build catalog items and automate business processes with Workflows and Flow Designer.",
+    keyTakeaway: "Automate service requests and repetitive tasks.",
+    color: "from-indigo-600 to-indigo-900",
+    icon: "Workflow",
+    items: [
+      { type: "topic", id: "ch16-service-catalog", title: "Chapter 16: Service Catalog" },
+      { type: "topic", id: "ch17-workflow", title: "Chapter 17: Workflow and Workflow Editor" },
+      { type: "topic", id: "ch18-flow-designer", title: "Chapter 18: Flow Designer and Flows" }
+    ]
+  },
+  {
+    id: "csa-communications-security",
+    title: "7. Communications & Security",
+    level: "Advanced",
+    description: "Configure email notifications, inbound actions, and secure records using ACLs.",
+    keyTakeaway: "Secure the platform and automate email communication.",
+    color: "from-rose-600 to-rose-900",
+    icon: "Shield",
+    items: [
+      { type: "topic", id: "ch19-email-notifications", title: "Chapter 19: Email Notifications" },
+      { type: "topic", id: "ch20-inbound-email", title: "Chapter 20: Inbound Email Actions" },
+      { type: "topic", id: "ch21-access-control-list", title: "Chapter 21: Access Control List" }
+    ]
+  },
+  {
+    id: "csa-data-analytics",
+    title: "8. Data Management & Analytics",
+    level: "Advanced",
+    description: "Import data, migrate configurations with update sets, and build reports.",
+    keyTakeaway: "Manage platform data and visualize metrics.",
+    color: "from-cyan-600 to-cyan-900",
+    icon: "BarChart",
+    items: [
+      { type: "topic", id: "ch22-import-sets", title: "Chapter 22: Import Sets" },
+      { type: "topic", id: "ch23-update-sets", title: "Chapter 23: Update Sets" },
+      { type: "topic", id: "ch24-reports-dash-boards", title: "Chapter 24: Reports & Dash Boards" }
+    ]
+  }
+];
+
+const cadCertificationModules: Module[] = [
+  {
+    id: "cad-glide-apis-1",
+    title: "1. Glide APIs - Part 1",
+    level: "Beginner",
+    description: "Learn the core Glide APIs including GlideRecord, GlideForm, GlideUser, GlideSystem, and GlideSession.",
+    keyTakeaway: "Master the fundamental ServiceNow APIs.",
+    color: "from-blue-600 to-blue-900",
+    icon: "Code",
+    items: [
+      { type: "topic", id: "topic-1-glide-api-gliderecord", title: "1. Glide API and Glide Record" },
+      { type: "topic", id: "topic-2-glide-form", title: "2. Glide Form" },
+      { type: "topic", id: "topic-3-glide-user", title: "3. Glide User" },
+      { type: "topic", id: "topic-4-glide-system", title: "4. Glide System" },
+      { type: "topic", id: "topic-5-glide-session", title: "5. Glide Session" }
+    ]
+  },
+  {
+    id: "cad-glide-apis-2",
+    title: "2. Glide APIs - Part 2",
+    level: "Intermediate",
+    description: "Deep dive into Date, Time, and Aggregation APIs.",
+    keyTakeaway: "Handle dates, times, and complex data aggregations.",
+    color: "from-teal-600 to-teal-900",
+    icon: "Database",
+    items: [
+      { type: "topic", id: "topic-6-glide-date", title: "6. Glide Date" },
+      { type: "topic", id: "topic-7-glide-date-time", title: "7. Glide Date and Time" },
+      { type: "topic", id: "topic-8-glide-aggregation", title: "8. Glide Aggregation" }
+    ]
+  },
+  {
+    id: "cad-client-scripts-ui",
+    title: "3. Client Scripts & UI Actions",
+    level: "Intermediate",
+    description: "Implement client-side logic, UI Actions, and Scheduled Jobs.",
+    keyTakeaway: "Control user interface behavior and schedule background tasks.",
+    color: "from-purple-600 to-purple-900",
+    icon: "Layout",
+    items: [
+      { type: "topic", id: "topic-9-client-scripts", title: "9. Client Scripts" },
+      { type: "topic", id: "topic-10-ui-actions", title: "10. UI Actions" },
+      { type: "topic", id: "topic-11-scheduled-jobs", title: "11. Scheduled Jobs" }
+    ]
+  },
+  {
+    id: "cad-business-rules-1",
+    title: "4. Business Rules - Core",
+    level: "Intermediate",
+    description: "Understand the fundamentals of Business Rules, including Before and After rules.",
+    keyTakeaway: "Execute server-side logic based on database operations.",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Settings",
+    items: [
+      { type: "topic", id: "topic-12-business-rules", title: "12. Business Rules" },
+      { type: "topic", id: "topic-13-before-business-rules", title: "13. Before Business Rules" },
+      { type: "topic", id: "topic-14-after-business-rules", title: "14. After Business Rules" }
+    ]
+  },
+  {
+    id: "cad-business-rules-2",
+    title: "5. Business Rules - Advanced",
+    level: "Advanced",
+    description: "Master Async and Display Business Rules, and learn to transfer data from server to client.",
+    keyTakeaway: "Optimize performance with async logic and display rules.",
+    color: "from-amber-600 to-amber-900",
+    icon: "Workflow",
+    items: [
+      { type: "topic", id: "topic-15-async-business-rules", title: "15. Async Business Rules" },
+      { type: "topic", id: "topic-16-display-business-rules", title: "16. Display Business Rules" },
+      { type: "topic", id: "topic-17-data-transferring", title: "17. Data Transferring Server to Client" }
+    ]
+  },
+  {
+    id: "cad-script-include-ajax",
+    title: "6. Script Includes & GlideAjax",
+    level: "Advanced",
+    description: "Build reusable server-side code with Script Includes and call them asynchronously using GlideAjax.",
+    keyTakeaway: "Create modular code and improve client-server communication.",
+    color: "from-indigo-600 to-indigo-900",
+    icon: "Server",
+    items: [
+      { type: "topic", id: "topic-18-script-include", title: "18. Script Include" },
+      { type: "topic", id: "topic-19-glide-ajax", title: "19. Glide Ajax" },
+      { type: "topic", id: "topic-20-interview-questions-br", title: "20. Interview Questions on BR" }
+    ]
+  },
+  {
+    id: "cad-flow-designer-knowledge",
+    title: "7. Flow Designer & Knowledge",
+    level: "Advanced",
+    description: "Automate processes using Flow Designer and manage articles with Knowledge Management.",
+    keyTakeaway: "Design flows without code and structure organizational knowledge.",
+    color: "from-rose-600 to-rose-900",
+    icon: "BookOpen",
+    items: [
+      { type: "topic", id: "topic-21-flow-designer", title: "21. Flow Designer" },
+      { type: "topic", id: "topic-22-interview-questions-flow", title: "22. Interview Questions on Flow Designer" },
+      { type: "topic", id: "topic-23-knowledge-management", title: "23. Knowledge Management" }
+    ]
+  }
+];
+
 export const tracks: Track[] = [
   {
-    id: "csa-track",
-    slug: "csa",
-    title: "ServiceNow Developer (CSA/CAD)",
-    modules: csaModules
-  },
-  {
-    id: "itom-track",
-    slug: "itom",
-    title: "ITOM Specialist",
-    modules: itomModules
-  },
-  {
-    id: "sdk-track",
-    slug: "sdk",
-    title: "ServiceNow SDK Developer",
-    modules: sdkModules
+    id: "csa-certification-track",
+    slug: "csa-certification",
+    title: "Certified System Administrator (CSA)",
+    modules: csaCertificationModules
   },
   {
     id: "javascript-track",
@@ -629,14 +835,26 @@ export const tracks: Track[] = [
     modules: javascriptModules
   },
   {
+    id: "itsm-track",
+    slug: "itsm",
+    title: "ITSM",
+    modules: csaModules
+  },
+  {
     id: "aes-track",
-    slug: "app engine studio",
+    slug: "app-engine-studio",
     title: "App Engine Studio",
     modules: aesModules
   },
   {
+    id: "uibuilder-track",
+    slug: "ui-builder",
+    title: "UI Builder",
+    modules: uiBuilderModules
+  },
+  {
     id: "va-track",
-    slug: "virtual agent",
+    slug: "virtual-agent",
     title: "Virtual Agent",
     modules: vaModules
   },
@@ -647,10 +865,22 @@ export const tracks: Track[] = [
     modules: aiModules
   },
   {
-    id: "uibuilder-track",
-    slug: "ui-builder",
-    title: "UI Builder",
-    modules: uiBuilderModules
+    id: "sdk-track",
+    slug: "sdk",
+    title: "ServiceNow SDK Developer",
+    modules: sdkModules
+  },
+  {
+    id: "itom-track",
+    slug: "itom",
+    title: "ITOM Specialist",
+    modules: itomModules
+  },
+  {
+    id: "cad-certification-track",
+    slug: "cad-certification",
+    title: "Certified Application Developer (CAD)",
+    modules: cadCertificationModules
   }
 ];
 

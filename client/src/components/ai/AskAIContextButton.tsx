@@ -24,7 +24,7 @@ export default function AskAIContextButton({ lessonId, lessonTitle, contextSnipp
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-24 z-40 flex items-center gap-2 bg-gray-900 text-white px-4 py-3 rounded-full shadow-lg hover:bg-gray-800 hover:shadow-xl transition-all hover:-translate-y-1"
+        className="hidden md:flex fixed bottom-6 right-24 z-40 items-center gap-2 bg-gray-900 text-white px-4 py-3 rounded-full shadow-lg hover:bg-gray-800 hover:shadow-xl transition-all hover:-translate-y-1"
       >
         <Bot size={20} />
         <span className="font-semibold text-sm">Ask AI</span>

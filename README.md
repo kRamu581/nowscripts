@@ -106,6 +106,14 @@ To successfully launch our MVP, we prioritized the development of these systems 
 9. Feedback & Skill Badges
 10. Mobile Responsiveness
 
+#### Recent Updates & Bug Fixes
+- [x] Fixed mobile menu (X button and outside click to auto-close working consistently across all pages)
+- [x] Integrated floating AI Bot with auto-expand/collapse animations
+- [x] Fixed visibility of CSA and CAD certifications in the catalog
+- [x] Centered back navigation arrows across learning dashboard views
+- [x] Cleaned up redundant contextual AI buttons on exercises and projects
+- [x] Refined mobile view layout (Contents/TOC menu repositioned and resized)
+
 > **Next Steps (Phase 2):** After completing the August MVP, Phase 2 will focus on advanced AI personalization, Voice AI, AI interview preparation, job matching, and the freelance marketplace.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

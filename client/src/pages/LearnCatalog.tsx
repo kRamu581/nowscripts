@@ -10,7 +10,7 @@ export default function LearnCatalog() {
 
   // We can categorize tracks for filters.
   // We'll generate some categories based on available tracks.
-  const filters = ["All", "CSA/CAD", "ITOM", "Development", "App Engine", "UI Builder"];
+  const filters = ["All", "CSA", "CAD", "ITOM", "Development", "App Engine", "UI Builder"];
 
   // Helper to determine visuals for the track
   const getTrackVisuals = (slug: string, index: number) => {
@@ -35,7 +35,8 @@ export default function LearnCatalog() {
     : allTrackData.filter(track => {
         const title = track.title.toLowerCase();
         if (activeFilter === "Development" && (title.includes("dev") || title.includes("script") || title.includes("sdk"))) return true;
-        if (activeFilter === "CSA/CAD" && (title.includes("csa") || title.includes("cad"))) return true;
+        if (activeFilter === "CSA" && (title.includes("csa") || title.includes("administrator"))) return true;
+        if (activeFilter === "CAD" && (title.includes("cad") || title.includes("application developer"))) return true;
         if (activeFilter === "ITOM" && title.includes("itom")) return true;
         if (activeFilter === "App Engine" && title.includes("app engine")) return true;
         if (activeFilter === "UI Builder" && title.includes("ui builder")) return true;

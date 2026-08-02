@@ -123,7 +123,7 @@ export default function AISidebar() {
             ) : (
               <div className="w-6 h-6 rounded-full bg-gray-300"></div>
             )}
-            <span className="text-[13px] font-medium text-gray-800">{user?.name || "Amy Lokey"}</span>
+            <span className="text-[13px] font-medium text-gray-800">{user?.name || "Demo User"}</span>
           </div>
           <MoreVertical className="w-4 h-4 text-gray-400" />
         </div>

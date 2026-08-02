@@ -63,7 +63,7 @@ export default function AIChatBox({ messages, isLoading, onSendMessage, placehol
             {/* Content Column */}
             <div className="flex-1 max-w-[85%]">
               <div className="text-[14px] font-semibold text-gray-800 mb-1.5">
-                {msg.role === "user" ? (user?.name || "Amy Lokey") : "Otto"}
+                {msg.role === "user" ? (user?.name || "Demo User") : "Jumbo"}
               </div>
               
               <div className="text-[15px] text-gray-700 leading-relaxed">
@@ -90,7 +90,7 @@ export default function AIChatBox({ messages, isLoading, onSendMessage, placehol
               </div>
             </div>
             <div className="flex-1">
-              <div className="text-[14px] font-semibold text-gray-800 mb-1.5">Otto</div>
+              <div className="text-[14px] font-semibold text-gray-800 mb-1.5">Jumbo</div>
               <div className="flex flex-col gap-2 mt-3">
                 <div className="flex items-center gap-3 text-gray-800">
                   <div className="w-4 h-4 rounded-full border-[3px] border-black animate-spin border-t-transparent"></div>

@@ -14,6 +14,7 @@ import { useAuthModal } from "../contexts/AuthModalContext";
 import { getModuleTheme } from "../utils/themeUtils";
 import { CertificationPath } from "../components/learn/CertificationPath";
 import AskAIContextButton from "../components/ai/AskAIContextButton";
+import FloatingAIBotButton from "../components/FloatingAIBotButton";
 
 const REDIRECT_MAP: Record<string, { categorySlug: string, lessonSlug: string }> = {
   'administration/user-interface': { categorySlug: 'fundamentals', lessonSlug: 'navigation-user-interface' },
@@ -73,6 +74,7 @@ export default function LearnDashboard() {
  
  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
  const [tocMenuOpen, setTocMenuOpen] = useState(false);
+ const [activeTab, setActiveTab] = useState("tutorial");
  
  const [expandedLessons, setExpandedLessons] = useState<Record<string, boolean>>({
  [activeLesson?.id]: true
@@ -261,6 +263,7 @@ export default function LearnDashboard() {
 
  return (
  <div className="bg-white text-gray-900 font-sans flex flex-col w-full min-h-screen selection:bg-now-primary selection:text-black relative">
+
  
  <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-[70]">
  <div 
@@ -269,29 +272,48 @@ export default function LearnDashboard() {
  />
  </div>
  
-  <div className="sticky top-0 z-[60] border-b border-gray-200 bg-white flex-shrink-0 shadow-sm">
-    <div className="flex gap-8 overflow-x-auto px-6 lg:px-8 w-full pt-3 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-      {allTrackData.map(t => {
-        const title = t.slug.toUpperCase() === 'CSA' ? 'ITSM' : 
-                      ['itom', 'sdk'].includes(t.slug.toLowerCase()) ? t.slug.toUpperCase() :
-                      t.slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        return (
-        <button 
-          key={t.trackId}
-          onClick={() => {
-            setActiveTrack(t);
-            setActiveLesson(t.sections[0].lessons[0]);
-          }}
-          className={`text-[16px] pb-3 whitespace-nowrap transition-colors text-[#006699] hover:text-[#004d73] ${activeTrack.trackId === t.trackId ? 'font-medium' : 'font-normal'}`}
-        >
-          {title}
-        </button>
-      )})}
+  <div className="sticky top-0 z-[60] border-b border-gray-200 bg-white flex-shrink-0 shadow-sm overflow-x-auto">
+    <div className="flex px-4 sm:px-6 lg:px-8 w-full min-w-max pt-3 h-12 items-end relative justify-center">
+      
+      {/* Back Button positioned absolutely on the left */}
+      <button 
+        onClick={() => navigate('/learn')}
+        className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 mt-1.5 flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors"
+        title="Back to Catalog"
+      >
+        <ChevronLeft size={18} />
+        <span className="hidden sm:inline text-sm font-medium">Back</span>
+      </button>
+
+      {/* Centered Tabs */}
+      <div className="flex gap-2">
+        {[
+          { id: "tutorial", label: "Tutorial" },
+          { id: "exercises", label: "Exercises" },
+          { id: "projects", label: "Projects" },
+          { id: "quizzes", label: "Quizzes" },
+          { id: "interview", label: "Interview Questions" }
+        ].map(tab => (
+          <button 
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`text-[15px] pb-2.5 px-4 whitespace-nowrap transition-colors border-b-2 font-medium ${
+              activeTab === tab.id 
+                ? 'border-now-primary text-gray-900' 
+                : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-300'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
     </div>
   </div>
 
   <div className="flex flex-1 relative max-w-full">
  
+  {activeTab === "tutorial" ? (
+    <>
   {mobileMenuOpen && (
   <div 
   className="fixed inset-0 bg-gray-900/20 z-[70] lg:hidden"
@@ -510,10 +532,10 @@ export default function LearnDashboard() {
  <button 
  key={sub.id}
  onClick={() => { scrollToSubtopic(sub.id); setTocMenuOpen(false); }}
- className={`block text-left text-[13px] transition-all w-full border-l-2 pl-3 py-1.5 ${
+ className={`block text-left text-[13px] font-semibold transition-all w-full border-l-2 pl-3 py-1.5 ${
  activeSubtopicId === sub.id 
  ? "border-now-primary text-now-primary font-bold bg-now-primary/5" 
- : "border-gray-200 text-gray-500 hover:text-gray-900 hover:border-[#64748B]"
+ : "border-gray-200 text-gray-600 hover:text-gray-900 hover:border-[#64748B]"
  }`}
  >
  {sub.title}
@@ -521,22 +543,28 @@ export default function LearnDashboard() {
  ))}
  </div>
  </div>
+    </>
+  ) : (
+    <div className="w-full flex flex-col items-center justify-center py-32 text-gray-500">
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</h2>
+      <p>This section is currently under development.</p>
+    </div>
+  )}
+  </div>
 
- </div>
-
- {/* Bottom Floating Pill Navigation (Mobile) */}
- <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden flex bg-gray-900 text-white rounded-full shadow-xl overflow-hidden font-medium text-sm">
+  {/* Bottom Floating Pill Navigation (Mobile) */}
+ <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex bg-white/95 backdrop-blur-md text-gray-700 border border-gray-200/80 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-hidden font-medium text-[12px]">
  <button 
  onClick={() => { setMobileMenuOpen(true); setTocMenuOpen(false); }}
- className="px-6 py-3 hover:bg-gray-800 transition-colors border-r border-gray-700 flex items-center gap-2"
+ className="px-4 py-2 hover:bg-gray-50 transition-colors border-r border-gray-200 flex items-center gap-1.5"
  >
- <List size={16} /> Contents
+ <List size={13} /> Contents
  </button>
  <button 
  onClick={() => { setTocMenuOpen(true); setMobileMenuOpen(false); }}
- className="px-6 py-3 hover:bg-gray-800 transition-colors flex items-center gap-2"
+ className="px-4 py-2 hover:bg-gray-50 transition-colors flex items-center gap-1.5"
  >
- <List size={16} /> TOC
+ <List size={13} /> TOC
  </button>
  </div>
 
@@ -550,24 +578,19 @@ export default function LearnDashboard() {
  <ChevronLeft className="w-5 h-5 rotate-90" />
  </button>
 
- <AskAIContextButton 
-    lessonId={activeLesson.id || activeLesson.slug}
-    lessonTitle={activeLesson.title}
-  />
+  {activeTab === 'tutorial' && (
+    <AskAIContextButton 
+      lessonId={activeLesson.id || activeLesson.slug}
+      lessonTitle={activeLesson.title}
+    />
+  )}
 
   {/* Floating AI Bot Button */}
-  <Link
-    to="/ai"
-    className="fixed bottom-6 right-6 z-50 hover:scale-110 transition-transform duration-300 drop-shadow-lg"
-  >
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-14 h-14 text-[#4CD964]">
-      <path fillRule="evenodd" clipRule="evenodd" d="M50 0 C50 30 70 50 100 50 C70 50 50 70 50 100 C50 70 30 50 0 50 C30 50 50 30 50 0 Z M50 68 C59.9411 68 68 59.9411 68 50 C68 40.0589 59.9411 32 50 32 C40.0589 32 32 40.0589 32 50 C32 59.9411 40.0589 68 50 68 Z" fill="currentColor" />
-    </svg>
-  </Link>
+  <FloatingAIBotButton />
 
- <style>{`
- .custom-scrollbar::-webkit-scrollbar {
- width: 6px;
+  <style>{`
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
  }
  .custom-scrollbar::-webkit-scrollbar-track {
  background: transparent;

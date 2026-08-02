@@ -142,19 +142,18 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black z-[9998] md:hidden cursor-pointer"
-          />
-        )}
-        {isMobileMenuOpen && (
-          <motion.div
-            key="drawer"
-            initial={{ x: "-100%" }}
+          <>
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 bg-black z-[9998] md:hidden cursor-pointer"
+            />
+            <motion.div
+              key="drawer"
+              initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
@@ -162,7 +161,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
                 <BrandLogo textColor="text-slate-900" hideTextOnMobile={false} className="scale-90 origin-left" />
-                <button type="button" onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors">
+                <button type="button" onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors z-[10000]">
                   <X size={24} />
                 </button>
               </div>
@@ -176,8 +175,9 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
                 </nav>
               </div>
             </motion.div>
+          </>
         )}
-    </AnimatePresence>
+      </AnimatePresence>
     </>
   );
 }
