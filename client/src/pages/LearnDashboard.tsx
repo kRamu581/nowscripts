@@ -288,6 +288,7 @@ export default function LearnDashboard() {
       {/* Centered Tabs */}
       <div className="flex gap-2">
         {[
+          ...(activeTrack.slug === "virtual-agent" ? [{ id: "video", label: "Video" }] : []),
           { id: "tutorial", label: "Tutorial" },
           { id: "exercises", label: "Exercises" },
           { id: "projects", label: "Projects" },
@@ -312,7 +313,7 @@ export default function LearnDashboard() {
 
   <div className="flex flex-1 relative max-w-full">
  
-  {activeTab === "tutorial" ? (
+  {activeTab === "tutorial" || activeTab === "video" ? (
     <>
   {mobileMenuOpen && (
   <div 
@@ -417,7 +418,30 @@ export default function LearnDashboard() {
 
   <div id={activeLesson.id} className="mb-8">
     {activeLesson.type === 'topic' ? (
-      <MarkdownRenderer content={contentToRender} lessonData={activeLesson} />
+      <>
+        {activeTab === 'video' && (
+          activeLesson.videoUrl ? (
+            <div className="w-full max-w-[1280px] mx-auto mb-8 rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black aspect-video relative">
+              <iframe 
+                src={activeLesson.videoUrl} 
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ) : (
+            <div className="w-full py-24 flex flex-col items-center justify-center text-gray-500 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+              <Video className="w-12 h-12 mb-4 text-gray-400" />
+              <h3 className="text-lg font-medium text-gray-900 mb-1">No Video Available</h3>
+              <p>There is no video content for this lesson yet.</p>
+            </div>
+          )
+        )}
+        
+        {activeTab === 'tutorial' && (
+          <MarkdownRenderer content={contentToRender} lessonData={activeLesson} />
+        )}
+      </>
     ) : activeLesson.type === 'project' ? (
       <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
         <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-6">
@@ -520,29 +544,31 @@ export default function LearnDashboard() {
  onClick={() => setTocMenuOpen(false)}
  />
  )}
- <div className={`fixed right-0 top-0 xl:sticky xl:top-[48px] w-60 flex-shrink-0 border-l border-gray-200 bg-white flex flex-col z-[80] xl:z-[50] h-[100dvh] xl:h-[calc(100vh-48px)] overflow-hidden transition-transform duration-300 ${
- tocMenuOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
- }`}>
- <div className="p-4 pb-2 flex items-center justify-between border-b border-gray-100">
- <h3 className="font-bold text-gray-900 uppercase tracking-widest text-[11px]">On This Page</h3>
- <button onClick={() => setTocMenuOpen(false)} className="xl:hidden p-1 text-gray-500 hover:text-gray-900 "><X size={16} /></button>
- </div>
- <div className="flex-1 overflow-y-auto px-4 pt-3 pb-24 space-y-1 custom-scrollbar">
- {activeLesson.subtopics && activeLesson.subtopics.map(sub => (
- <button 
- key={sub.id}
- onClick={() => { scrollToSubtopic(sub.id); setTocMenuOpen(false); }}
- className={`block text-left text-[13px] font-semibold transition-all w-full border-l-2 pl-3 py-1.5 ${
- activeSubtopicId === sub.id 
- ? "border-now-primary text-now-primary font-bold bg-now-primary/5" 
- : "border-gray-200 text-gray-600 hover:text-gray-900 hover:border-[#64748B]"
- }`}
- >
- {sub.title}
- </button>
- ))}
- </div>
- </div>
+ {!activeLesson.videoUrl && (
+   <div className={`fixed right-0 top-0 xl:sticky xl:top-[48px] w-60 flex-shrink-0 border-l border-gray-200 bg-white flex flex-col z-[80] xl:z-[50] h-[100dvh] xl:h-[calc(100vh-48px)] overflow-hidden transition-transform duration-300 ${
+   tocMenuOpen ? "translate-x-0" : "translate-x-full xl:translate-x-0"
+   }`}>
+   <div className="p-4 pb-2 flex items-center justify-between border-b border-gray-100">
+   <h3 className="font-bold text-gray-900 uppercase tracking-widest text-[11px]">On This Page</h3>
+   <button onClick={() => setTocMenuOpen(false)} className="xl:hidden p-1 text-gray-500 hover:text-gray-900 "><X size={16} /></button>
+   </div>
+   <div className="flex-1 overflow-y-auto px-4 pt-3 pb-24 space-y-1 custom-scrollbar">
+   {activeLesson.subtopics && activeLesson.subtopics.map(sub => (
+   <button 
+   key={sub.id}
+   onClick={() => { scrollToSubtopic(sub.id); setTocMenuOpen(false); }}
+   className={`block text-left text-[13px] font-semibold transition-all w-full border-l-2 pl-3 py-1.5 ${
+   activeSubtopicId === sub.id 
+   ? "border-now-primary text-now-primary font-bold bg-now-primary/5" 
+   : "border-gray-200 text-gray-600 hover:text-gray-900 hover:border-[#64748B]"
+   }`}
+   >
+   {sub.title}
+   </button>
+   ))}
+   </div>
+   </div>
+ )}
     </>
   ) : (
     <div className="w-full flex flex-col items-center justify-center py-32 text-gray-500">
@@ -578,7 +604,7 @@ export default function LearnDashboard() {
  <ChevronLeft className="w-5 h-5 rotate-90" />
  </button>
 
-  {activeTab === 'tutorial' && (
+  {(activeTab === 'tutorial' || activeTab === 'video') && (
     <AskAIContextButton 
       lessonId={activeLesson.id || activeLesson.slug}
       lessonTitle={activeLesson.title}

@@ -468,7 +468,12 @@ const vaModules: Module[] = [
     color: "from-purple-500 to-purple-700",
     icon: "Mic",
     items: [
-      { type: "topic", id: "introduction", title: "Virtual Agent Basics" }
+      { type: "topic", id: "setup-virtual-agent", title: "Setup Basics" },
+      { type: "topic", id: "setup-virtual-agent-branding", title: "Branding & Greetings" },
+      { type: "topic", id: "setup-virtual-agent-topic", title: "Creating & Testing Topics" },
+      { type: "topic", id: "virtual-agent-setup-flows", title: "Flows & KnowledgeBase" },
+      { type: "topic", id: "create-incident-topic", title: "Incident Topic Block" },
+      { type: "topic", id: "nlu-intent-utterances", title: "NLU & Intents" }
     ]
   }
 ];
