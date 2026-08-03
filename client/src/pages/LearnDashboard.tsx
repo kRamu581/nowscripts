@@ -13,7 +13,6 @@ import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
 import { getModuleTheme } from "../utils/themeUtils";
 import { CertificationPath } from "../components/learn/CertificationPath";
-import AskAIContextButton from "../components/ai/AskAIContextButton";
 import FloatingAIBotButton from "../components/FloatingAIBotButton";
 
 const REDIRECT_MAP: Record<string, { categorySlug: string, lessonSlug: string }> = {
@@ -603,13 +602,6 @@ export default function LearnDashboard() {
  >
  <ChevronLeft className="w-5 h-5 rotate-90" />
  </button>
-
-  {(activeTab === 'tutorial' || activeTab === 'video') && (
-    <AskAIContextButton 
-      lessonId={activeLesson.id || activeLesson.slug}
-      lessonTitle={activeLesson.title}
-    />
-  )}
 
   {/* Floating AI Bot Button */}
   <FloatingAIBotButton />
