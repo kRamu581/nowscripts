@@ -39,12 +39,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
   };
 
   return (
-    <div className={`markdown-body w-full max-w-none mx-auto pb-24 ${className || ''}`}>
+    <div className={`w-full max-w-4xl mx-auto pb-24 ${className || ''}`}>
       
       {/* Premium Header if lessonData is provided */}
       {lessonData && theme && (
-        <div className="mb-6">
-          <h1 className="text-2xl sm:text-[28px] font-semibold text-[#0f2c4c] mb-2 leading-snug">
+        <div className="mb-8 px-4 sm:px-0">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#0f2c4c] mb-4 leading-tight font-sans">
             {lessonData.title}
           </h1>
           
@@ -59,8 +59,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
         </div>
       )}
 
-      {/* Markdown Content */}
-      <Markdown
+      {/* Markdown Content Card */}
+      <div className="bg-white rounded-[16px] border border-gray-200 shadow-sm sm:p-8 p-5 md:p-10 markdown-body">
+        <Markdown
         options={{
           forceBlock: true,
           wrapper: React.Fragment,
@@ -195,6 +196,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
       >
         {content}
       </Markdown>
+      </div>
     </div>
   );
 };

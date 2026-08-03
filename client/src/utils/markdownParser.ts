@@ -23,6 +23,7 @@ export type LessonData = {
   description?: string;
   lastUpdated?: string;
   author?: string;
+  videoUrl?: string;
   subtopics: Subtopic[];
   rawMarkdown: string; // The full markdown body used for rendering
 };
@@ -100,6 +101,7 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
           let rawMd = "";
           let subtopics: Subtopic[] = [];
           let readingTime = "5 min read";
+          let parsedVideoUrl: string | undefined;
           
           if (item.type === 'topic') {
             const expectedPath = `../content/learn/${mod.id}/${item.id}.md`;
@@ -118,6 +120,17 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
             }
             
             rawMd = typeof rawMd === 'string' ? rawMd : (rawMd as any).default;
+            
+            if (rawMd) {
+              try {
+                const parsed = matter(rawMd);
+                rawMd = parsed.content;
+                parsedVideoUrl = parsed.data.videoUrl;
+              } catch (e) {
+                // Ignore matter parsing errors
+              }
+            }
+            
             subtopics = extractSubtopics(rawMd);
             const wordCount = rawMd.split(/\s+/).length;
             const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
@@ -144,6 +157,7 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
             order: index,
             tags: [mod.title],
             description: item.description,
+            videoUrl: parsedVideoUrl,
             subtopics,
             rawMarkdown: rawMd
           });
@@ -205,6 +219,7 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
         description: frontmatter.description,
         lastUpdated: frontmatter.lastUpdated,
         author: frontmatter.author,
+        videoUrl: frontmatter.videoUrl,
         subtopics,
         rawMarkdown
       });

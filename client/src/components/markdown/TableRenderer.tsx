@@ -1,33 +1,32 @@
 import React from 'react';
 
 export const Table = ({ children, ...props }: any) => (
-  <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
-    <table style={{ width: '100%', borderCollapse: 'collapse' }} {...props}>
+  <div style={{ overflowX: 'auto', margin: '2rem 0', borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
+    <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#ffffff' }} {...props}>
       {children}
     </table>
   </div>
 );
 
 export const TableHead = ({ children, ...props }: any) => (
-  <thead style={{ backgroundColor: '#1e1e2e' }} {...props}>
+  <thead style={{ backgroundColor: '#f9fafb', borderBottom: '1px solid #e5e7eb' }} {...props}>
     {children}
   </thead>
 );
 
 export const TableRow = ({ children, ...props }: any) => (
-  <tr style={{ borderBottom: '1px solid #334155' }} {...props}>
+  <tr style={{ borderBottom: '1px solid #e5e7eb' }} {...props}>
     {children}
   </tr>
 );
 
 export const TableHeader = ({ children, ...props }: any) => (
   <th style={{
-    padding: '10px 14px',
+    padding: '14px 16px',
     textAlign: 'left',
     fontWeight: '600',
-    fontSize: '14px',
-    color: '#94a3b8',
-    borderBottom: '2px solid #334155',
+    fontSize: '15px',
+    color: '#374151',
     whiteSpace: 'nowrap',
   }} {...props}>
     {children}
@@ -36,10 +35,9 @@ export const TableHeader = ({ children, ...props }: any) => (
 
 export const TableCell = ({ children, ...props }: any) => (
   <td style={{
-    padding: '10px 14px',
+    padding: '14px 16px',
     fontSize: '15px',
-    color: '#e2e8f0',
-    borderBottom: '1px solid #1e293b',
+    color: '#4b5563',
   }} {...props}>
     {children}
   </td>
