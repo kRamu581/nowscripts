@@ -122,12 +122,21 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
             rawMd = typeof rawMd === 'string' ? rawMd : (rawMd as any).default;
             
             if (rawMd) {
+              // Fallback regex extraction in case gray-matter fails in production (Node polyfill issues)
+              const videoMatch = rawMd.match(/videoUrl:\s*["']([^"']+)["']/);
+              if (videoMatch) {
+                parsedVideoUrl = videoMatch[1];
+              }
+
               try {
                 const parsed = matter(rawMd);
                 rawMd = parsed.content;
-                parsedVideoUrl = parsed.data.videoUrl;
+                if (parsed.data.videoUrl) {
+                  parsedVideoUrl = parsed.data.videoUrl;
+                }
               } catch (e) {
-                // Ignore matter parsing errors
+                // Ignore matter parsing errors and manually strip frontmatter
+                rawMd = rawMd.replace(/^---[\s\S]+?---\n/, '');
               }
             }
             
