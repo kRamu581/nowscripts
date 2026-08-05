@@ -4,6 +4,8 @@ import { Search, ChevronDown, Check, SlidersHorizontal, BookOpen, Sparkles, Layo
 import { projectsData, projectTags, ProjectDifficulty } from "../data/projectsData";
 import { BrandIconOnly, BrandLogo } from "../components/BrandLogo";
 import FloatingAIBotButton from "../components/FloatingAIBotButton";
+import { SEO } from "../components/SEO";
+import { Breadcrumbs } from "../components/common/Breadcrumbs";
 
 const marqueeCategories = [
   { title: "Service Portal", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" },
@@ -39,11 +41,52 @@ export function Projects() {
     }
   };
 
+  const projectItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": projectsData.slice(0, 10).map((project, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "CreativeWork",
+        "name": project.title,
+        "description": project.shortDescription,
+        "url": `https://www.nowscripts.in/projects/${project.id}`
+      }
+    }))
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nowscripts.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Projects",
+        "item": "https://www.nowscripts.in/projects"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen bg-white pt-6 pb-24">
+    <div className="min-h-screen bg-white pt-24 pb-24">
+      <SEO 
+        title="ServiceNow Projects & Portfolio"
+        description="Build real-world ServiceNow projects to add to your portfolio. Explore tutorials and assignments on ITSM, CSM, App Engine, and more."
+        canonicalUrl="https://www.nowscripts.in/projects"
+        schema={[breadcrumbSchema, projectItemListSchema]}
+      />
       {/* Header Block (2-column layout like Dribbble) */}
-      <section className="max-w-[1400px] mx-auto px-6 lg:px-8 pt-8 lg:pt-12 pb-2">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <section className="max-w-[1400px] mx-auto px-6 lg:px-8 pb-2">
+        <Breadcrumbs />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mt-8">
           <div className="max-w-xl">
             {/* Pill Tabs in Header (Like "Hire Talent / Get Hired") */}
             <div className="inline-flex items-center bg-gray-50 rounded-full p-1 mb-8 border border-gray-100">

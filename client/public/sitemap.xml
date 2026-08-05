@@ -1,28 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nowscripts.com/</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://www.nowscripts.in/</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nowscripts.com/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nowscripts.com/roadmaps</loc>
+    <loc>https://www.nowscripts.in/learn</loc>
+    <lastmod>2023-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nowscripts.com/learn</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nowscripts.in/roadmaps</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nowscripts.com/interview-prep</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.nowscripts.in/projects</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nowscripts.in/interview-prep</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nowscripts.in/community</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nowscripts.in/about</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.nowscripts.in/contact</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.nowscripts.in/login</loc>
+    <lastmod>2023-11-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

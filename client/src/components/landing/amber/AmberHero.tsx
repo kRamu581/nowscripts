@@ -43,7 +43,7 @@ export function AmberHero() {
           <input
             type="text"
             placeholder="Search for ServiceNow courses, projects, or interview questions..."
-            className="w-full h-14 md:h-16 pl-6 pr-16 md:pr-20 rounded-full bg-white text-gray-800 text-sm md:text-base focus:outline-none shadow-2xl placeholder-gray-400"
+            className="w-full h-14 md:h-16 pl-6 pr-16 md:pr-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base focus:outline-none shadow-[0_8px_32px_rgba(0,0,0,0.3)] placeholder-white/70"
           />
           <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#FF5A5F] hover:bg-[#E82C45] transition-colors text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
             <Search className="w-5 h-5 md:w-6 md:h-6" />

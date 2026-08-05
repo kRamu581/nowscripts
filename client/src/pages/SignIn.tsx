@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useAppContext } from "../App";
 import SignInBox from "../components/SignInBox";
 import { useEffect } from "react";
+import { SEO } from "../components/SEO";
 
 const MESSAGE_MAP = new Map([
  ["in", { message: "Welcome again", typeOfLogin: "Sign in" }],
@@ -23,7 +24,13 @@ export default function SignIn() {
 
  const { tab } = useParams();
  return (
- <div
+ <>
+  <SEO 
+    title="Login | NowScripts"
+    description="Sign in to your NowScripts account to access ServiceNow courses, track your progress, and participate in the community."
+    canonicalUrl="https://www.nowscripts.in/login"
+  />
+  <div
  style={{
  display: "flex",
  alignItems: "center",
@@ -35,6 +42,7 @@ export default function SignIn() {
  message={MESSAGE_MAP.get(tab!)?.message}
  typeOfLogin={MESSAGE_MAP.get(tab!)?.typeOfLogin!}
  />
- </div>
+  </div>
+ </>
  );
 }

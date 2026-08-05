@@ -180,7 +180,7 @@ export default function Post() {
  <div className="flex items-center justify-between border-b border-gray-200 pb-6 mb-8">
  <div className="flex items-center gap-4">
  <Link to={`/profile/${authorData?._id}`}>
- <img src={authorData?.avatar} className="w-12 h-12 rounded-full border border-gray-200 object-cover" alt="" />
+ <img src={authorData?.avatar} className="w-12 h-12 rounded-full border border-gray-200 object-cover" alt={`${authorData?.name || 'Author'}'s avatar`} />
  </Link>
  <div>
  <Link to={`/profile/${authorData?._id}`} className="font-bold text-gray-900 hover:text-[#00C08B] transition-colors block text-lg">
@@ -291,7 +291,7 @@ export default function Post() {
  {/* Gamified Author Card */}
  {authorData && (
  <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm text-center">
- <img src={authorData.avatar} className="w-20 h-20 rounded-full mx-auto mb-4 border border-gray-200 object-cover" alt="" />
+ <img src={authorData.avatar} className="w-20 h-20 rounded-full mx-auto mb-4 border border-gray-200 object-cover" alt={`${authorData.name}'s avatar`} />
  <h3 className="font-extrabold text-lg text-gray-900 mb-1">{authorData.name}</h3>
  <p className="text-sm font-medium text-gray-500 mb-4">{authorData.role || "ServiceNow Expert"}</p>
  

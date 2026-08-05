@@ -217,9 +217,9 @@ export default function Post({
             </p>
          </div>
          {image && (
-            <div className="shrink-0">
-               <img src={image} className="w-full md:w-[180px] h-[120px] object-cover rounded-lg border border-[#E2E8F0]" alt="" />
-            </div>
+             <div className="relative group overflow-hidden rounded-lg mt-4 md:mt-0 flex-shrink-0">
+               <img src={image} className="w-full md:w-[180px] h-[120px] object-cover rounded-lg border border-[#E2E8F0]" alt={title || "Post thumbnail"} />
+             </div>
          )}
       </div>
 

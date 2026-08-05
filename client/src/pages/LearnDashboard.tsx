@@ -287,7 +287,7 @@ export default function LearnDashboard() {
       {/* Centered Tabs */}
       <div className="flex gap-2">
         {[
-          ...(activeTrack.slug === "virtual-agent" ? [{ id: "video", label: "Video" }] : []),
+          ...(activeLesson.videoUrl ? [{ id: "video", label: "Video" }] : []),
           { id: "tutorial", label: "Tutorial" },
           { id: "exercises", label: "Exercises" },
           { id: "projects", label: "Projects" },

@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { formatNumber } from "../utils/helper";
+import { SEO } from "../components/SEO";
+import { Breadcrumbs } from "../components/common/Breadcrumbs";
 
 const COMMUNITY_CATEGORIES = [
  { id: "all", label: "All Posts", icon: <Layers className="w-4 h-4" /> },
@@ -145,20 +147,48 @@ function HomeContainer({ tag }: { tag: string }) {
  setposts((prev) => prev.filter((item) => item.user._id !== userId));
  }
  
- const displayedPosts = posts.filter(item => {
- if (activeCategory !== "all") {
- const postType = item.post.postType || "Article";
- if (postType !== activeCategory && !item.post.tags.includes(activeCategory)) return false;
- }
- if (searchQuery) {
- return item.post.title.toLowerCase().includes(searchQuery.toLowerCase());
- }
- return true;
- });
+  const displayedPosts = posts.filter(item => {
+  if (activeCategory !== "all") {
+  const postType = item.post.postType || "Article";
+  if (postType !== activeCategory && !item.post.tags.includes(activeCategory)) return false;
+  }
+  if (searchQuery) {
+  return item.post.title.toLowerCase().includes(searchQuery.toLowerCase());
+  }
+  return true;
+  });
 
- return (
- <div className={`bg-gray-50 min-h-screen pt-6 pb-24 text-gray-900 font-sans selection:bg-now-primary selection:text-black ${!isAuthenticated ? "filter blur-[8px] pointer-events-none select-none h-screen overflow-hidden" : ""}`}>
- <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nowscripts.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Community",
+        "item": "https://www.nowscripts.in/community"
+      }
+    ]
+  };
+
+  return (
+  <div className={`bg-gray-50 min-h-screen pt-6 pb-24 text-gray-900 font-sans selection:bg-now-primary selection:text-black ${!isAuthenticated ? "filter blur-[8px] pointer-events-none select-none h-screen overflow-hidden" : ""}`}>
+  <SEO 
+    title="ServiceNow Community Hub | Discuss, Share, and Learn"
+    description="Join the NowScripts community. Discuss ServiceNow concepts, share projects, read interview experiences, and network with other developers."
+    canonicalUrl="https://www.nowscripts.in/community"
+    schema={[breadcrumbSchema]}
+  />
+  <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="mb-4">
+    <Breadcrumbs />
+  </div>
  
  {/* 3-COLUMN GRID */}
  <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr] xl:grid-cols-[240px_1fr_320px] gap-8">
@@ -267,7 +297,7 @@ function HomeContainer({ tag }: { tag: string }) {
  {item.post.title}
  </h3>
  <div className="flex items-center gap-2 text-xs text-gray-500 relative z-10">
- <img src={item.user.avatar} className="w-5 h-5 rounded-full" alt="" />
+ <img src={item.user.avatar} className="w-5 h-5 rounded-full" alt={`${item.user.name}'s avatar`} />
  <span className="truncate">{item.user.name}</span>
  </div>
  </Link>
@@ -389,7 +419,7 @@ function HomeContainer({ tag }: { tag: string }) {
  {activityFeed.length === 0 && <p className="text-xs text-gray-500 ">No recent activity yet...</p>}
  {activityFeed.map((activity, i) => (
  <div key={activity._id || i} className="flex gap-3 animate-fade-in">
- <img src={activity.userAvatar} className="w-8 h-8 rounded-full border border-gray-200 " alt="" />
+ <img src={activity.userAvatar} className="w-8 h-8 rounded-full border border-gray-200 " alt={`${activity.userName}'s avatar`} />
  <div className="flex-1 min-w-0 pt-0.5">
  <p className="text-sm text-gray-900 leading-snug">
  <span className="font-bold">{activity.userName}</span> {activity.message}
@@ -596,7 +626,7 @@ function HomeContainer({ tag }: { tag: string }) {
  {activityFeed.length === 0 && <p className="text-xs text-gray-500 ">No recent activity yet...</p>}
  {activityFeed.map((activity, i) => (
  <div key={activity._id || i} className="flex gap-3 animate-fade-in">
- <img src={activity.userAvatar} className="w-8 h-8 rounded-full border border-gray-200 " alt="" />
+ <img src={activity.userAvatar} className="w-8 h-8 rounded-full border border-gray-200 " alt={`${activity.userName}'s avatar`} />
  <div className="flex-1 min-w-0 pt-0.5">
  <p className="text-sm text-gray-900 leading-snug">
  <span className="font-bold">{activity.userName}</span> {activity.message}

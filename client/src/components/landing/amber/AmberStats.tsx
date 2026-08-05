@@ -4,13 +4,13 @@ export function AmberStats() {
   const stats = [
     {
       icon: <Users className="w-8 h-8 text-[#0B2538] relative z-10" strokeWidth={1.5} />,
-      title: "10,000+ Students",
-      desc: "Join a growing community of aspiring ServiceNow professionals."
+      title: "250+ Community Members",
+      desc: "Growing ServiceNow learner community."
     },
     {
       icon: <BookOpen className="w-8 h-8 text-[#0B2538] relative z-10" strokeWidth={1.5} />,
       title: "150+ Practice Labs",
-      desc: "Get hands-on experience with real-world enterprise scenarios."
+      desc: "Adding soon."
     },
     {
       icon: <Briefcase className="w-8 h-8 text-[#0B2538] relative z-10" strokeWidth={1.5} />,
@@ -38,24 +38,21 @@ export function AmberStats() {
             </div>
           ))}
 
-          {/* Course Ratings Section replacing Trustpilot */}
-          <div className="flex flex-col items-center text-center gap-2 md:gap-3">
-            <div className="flex items-center justify-center gap-1.5 mb-1 h-12">
-              <Star className="w-6 h-6 text-[#00B67A] fill-[#00B67A] stroke-[1.5]" />
-              <span className="font-bold text-[#0B2538] text-[18px] tracking-tight">Trustpilot</span>
+          {/* Course Ratings Section */}
+          <div className="flex flex-col items-center text-center gap-2 md:gap-3 mt-1">
+            <div className="flex items-center justify-center mb-1 h-12">
+              <span className="font-bold text-[#0B2538] text-[16px] md:text-[18px]">Trusted by Learners</span>
             </div>
             <div className="flex flex-col items-center gap-1.5">
                <div className="flex items-center gap-1">
                  {[1, 2, 3, 4, 5].map((star) => (
-                   <div key={star} className="w-7 h-7 bg-[#00B67A] flex items-center justify-center rounded-sm">
-                     <Star className="w-4 h-4 text-white fill-white" />
-                   </div>
+                   <Star key={star} className="w-5 h-5 text-[#FF5A5F] fill-[#FF5A5F]" />
                  ))}
                </div>
-               <div className="text-[14px] text-gray-800 mt-1">
-                 <span>TrustScore <b>4.9</b></span>
-                 <span className="mx-1.5 text-gray-400">|</span>
-                 <span className="hover:underline cursor-pointer"><b>2,145</b> reviews</span>
+               <div className="text-[13px] md:text-[14px] text-gray-800 mt-1">
+                 <span><b>4.7/5</b></span>
+                 <span className="mx-1.5 text-gray-400">•</span>
+                 <span><b>100+</b> Reviews</span>
                </div>
             </div>
           </div>

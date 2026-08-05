@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import * as LucideIcons from "lucide-react";
 import { mockRoadmaps } from "../mockRoadmapData";
 import FloatingAIBotButton from "../components/FloatingAIBotButton";
+import { SEO } from "../components/SEO";
+import { Breadcrumbs } from "../components/common/Breadcrumbs";
 
 const getIcon = (iconName: string) => {
   // @ts-ignore
@@ -47,14 +49,54 @@ const RoadmapNode = ({ roadmap, index }: { roadmap: any, index: number }) => {
 };
 
 export default function RoadmapDashboard() {
+  const courseSchemas = mockRoadmaps.map(roadmap => ({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": roadmap.title,
+    "description": `Structured learning roadmap for ${roadmap.title}`,
+    "provider": {
+      "@type": "Organization",
+      "name": "NowScripts",
+      "sameAs": "https://www.nowscripts.in/"
+    }
+  }));
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nowscripts.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Roadmaps",
+        "item": "https://www.nowscripts.in/roadmaps"
+      }
+    ]
+  };
+
   return (
     <div className="bg-[#fcfcfc] min-h-screen font-sans selection:bg-now-primary/20 selection:text-now-primary pb-32 pt-24">
+      <SEO 
+        title="ServiceNow Learning Roadmaps"
+        description="Structured ServiceNow learning roadmaps to guide you from beginner to expert. Follow step-by-step curriculum for CSA, CAD, and more."
+        canonicalUrl="https://www.nowscripts.in/roadmaps"
+        schema={[breadcrumbSchema, ...courseSchemas]}
+      />
+      
       {/* Header Section matching 2nd image style */}
       <div className="max-w-[1200px] mx-auto px-6 lg:px-8 mb-6">
+        <Breadcrumbs />
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
+          className="mt-4"
         >
           <h1 className="text-[28px] font-bold text-gray-900 tracking-tight mb-1">
             Learning Roadmaps

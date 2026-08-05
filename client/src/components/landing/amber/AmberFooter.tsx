@@ -9,23 +9,24 @@ export function AmberFooter() {
       links: [
         { name: "About Us", url: "/about" },
         { name: "Careers", url: "/careers" },
-        { name: "How it works", url: "/how-it-works" },
-        { name: "Contact", url: "/contact" }
+        { name: "Contact", url: "/contact" },
+        { name: "Login", url: "/login" }
       ]
     },
     {
       title: "Discover",
       links: [
+        { name: "Start Learning", url: "/learn" },
         { name: "Roadmaps", url: "/roadmaps" },
-        { name: "Interview Prep", url: "/interview-prep" },
         { name: "Projects", url: "/projects" },
-        { name: "Newsletter", url: "/newsletter" }
+        { name: "Interview Prep", url: "/interview-prep" }
       ]
     },
     {
-      title: "Support",
+      title: "Community & Support",
       links: [
-        { name: "Help Center", url: "/help" },
+        { name: "Community", url: "/community" },
+        { name: "Newsletter", url: "/newsletter" },
         { name: "Terms & Conditions", url: "/terms" },
         { name: "Privacy Policy", url: "/privacy" }
       ]

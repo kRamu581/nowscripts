@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useAuth } from '../contexts/Auth';
 import { useAppContext } from '../App';
+import { SEO } from '../components/SEO';
+import { Breadcrumbs } from '../components/common/Breadcrumbs';
 
 export default function AboutUs() {
   const { isAuthenticated } = useAuth();
@@ -10,12 +12,46 @@ export default function AboutUs() {
     document.title = "About Us - NowScripts";
   }, []);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nowscripts.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://www.nowscripts.in/about"
+      }
+    ]
+  };
+
   return (
     <div className="bg-white min-h-[calc(100vh-80px)] text-[#111928] font-sans selection:bg-now-primary/20 selection:text-now-primary w-full overflow-hidden">
-      
+      <SEO 
+        title="About NowScripts | The ServiceNow Learning Platform"
+        description="Learn about NowScripts, a platform designed by Kanam Ramu to make ServiceNow learning clear, practical, and understandable with real-world scenarios."
+        canonicalUrl="https://www.nowscripts.in/about"
+        schema={[
+          breadcrumbSchema,
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About NowScripts",
+            "description": "Making ServiceNow learning clear, practical, and actually understandable.",
+            "url": "https://www.nowscripts.in/about"
+          }
+        ]}
+      />
       {/* SECTION 1 - Statement Block */}
-      <section className="pt-16 pb-12 md:pt-24 md:pb-20 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="bg-[#FAFAFA] rounded-[1.5rem] p-8 md:p-12 lg:p-16 border border-gray-200/60 shadow-sm">
+      <section className="pt-8 pb-12 md:pt-16 md:pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <Breadcrumbs />
+        <div className="bg-[#FAFAFA] rounded-[1.5rem] p-8 md:p-12 lg:p-16 border border-gray-200/60 shadow-sm mt-8">
           <h1 className="text-3xl md:text-[44px] font-[800] text-black mb-12 md:mb-16 tracking-tight leading-[1.2] max-w-4xl mx-auto text-center">
             Making ServiceNow learning clear, practical, and actually understandable.
           </h1>

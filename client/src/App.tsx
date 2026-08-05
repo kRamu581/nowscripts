@@ -264,6 +264,7 @@ export default function App() {
 
             {/* Auth Pages (No layout) */}
             <Route path="/signin/:tab" element={<SignIn />} />
+            <Route path="/login" element={<Navigate to="/signin/signin" replace />} />
             <Route path="ai" element={<AIDashboard />} />
             <Route path="ai/companion" element={<AILearningCompanion />} />
             <Route path="ai/roadmap" element={<AIRoadmapBuilder />} />

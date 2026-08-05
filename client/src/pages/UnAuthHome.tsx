@@ -43,6 +43,32 @@ export default function UnAuthHome() {
       <SEO 
         title="Master ServiceNow with Real Interview Questions & Hands-on Practice"
         description="Join thousands of learners on NowScripts. Fast-track your career with structured roadmaps, 253+ real-world interview questions, and 100+ practice labs."
+        canonicalUrl="https://www.nowscripts.in/"
+        keywords="ServiceNow, ServiceNow training, ServiceNow interview questions, CSA, CAD, CIS, ServiceNow courses, ServiceNow developer"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "NowScripts",
+            "url": "https://www.nowscripts.in/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.nowscripts.in/search/all/{search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "NowScripts",
+            "url": "https://www.nowscripts.in/",
+            "logo": "https://www.nowscripts.in/favicon.ico",
+            "sameAs": [
+              "https://linkedin.com/company/nowscripts",
+              "https://github.com/kRamu81/nowscripts"
+            ]
+          }
+        ]}
       />
       
       {/* Batch 1 */}

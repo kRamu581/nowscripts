@@ -9,6 +9,8 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { SEO } from "../components/SEO";
+import { Breadcrumbs } from "../components/common/Breadcrumbs";
 
 // --- Types ---
 interface Category {
@@ -330,6 +332,44 @@ export default function InterviewPrepDashboard() {
  return (
  <div className="bg-white text-gray-900 font-sans flex flex-1 h-full min-h-screen overflow-hidden relative">
  
+  <SEO 
+    title={activeCategory ? `${activeCategory.title} | Interview Questions & Answers` : "ServiceNow Interview Questions & Preparation"}
+    description={activeCategory ? `Practice real-world ${activeCategory.title} interview questions with detailed explanations and answers.` : "Prepare for your ServiceNow interviews with our comprehensive database of real-world questions for CSA, CAD, ITSM, and more."}
+    canonicalUrl={`https://www.nowscripts.in/interview-prep${categoryId ? `/${categoryId}` : ''}`}
+    schema={[
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.nowscripts.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Interview Prep",
+            "item": "https://www.nowscripts.in/interview-prep"
+          }
+        ]
+      },
+      questionBank ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": questionBank.modules.flatMap(m => m.questions).slice(0, 10).map(q => ({
+          "@type": "Question",
+          "name": q.question_text,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": q.explanation || "Answer available on the platform."
+          }
+        }))
+      } : {}
+    ]}
+  />
+
  {/* Mobile Overlays */}
  {mobileMenuOpen && (
  <div 
@@ -352,9 +392,9 @@ export default function InterviewPrepDashboard() {
  className={`fixed inset-y-0 left-0 z-50 transform ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 lg:static lg:flex w-80 flex-shrink-0 border-r border-gray-200 bg-white flex-col h-full overflow-hidden transition-transform duration-300 ease-in-out`}
  >
  <div className="p-6 border-b border-gray-200 flex items-center justify-between">
- <h2 className="text-xl font-bold flex items-center gap-2 text-gray-900">
+ <h1 className="text-xl font-bold flex items-center gap-2 text-gray-900">
  <BookOpen className="text-now-primary w-5 h-5" /> Interview Prep
- </h2>
+ </h1>
  <button aria-label="Close menu" className="lg:hidden p-2 text-gray-500 hover:text-gray-900" onClick={() => setMobileMenuOpen(false)}>
  <X className="w-5 h-5" />
  </button>
@@ -520,6 +560,9 @@ export default function InterviewPrepDashboard() {
  </div>
  ) : questionBank ? (
  <>
+      <div className="px-4 lg:px-8 pt-4 pb-2 bg-gray-50/50">
+        <Breadcrumbs />
+      </div>
       {/* Top Stats Bar */}
       <div className="px-4 lg:px-8 py-2.5 border-b border-gray-200 flex items-center justify-between bg-gray-50/50 overflow-x-auto custom-scrollbar">
         <div className="flex items-center gap-4 lg:gap-6 min-w-max">

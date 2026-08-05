@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download, HeadphonesIcon, Heart, Search, Globe } from "lucide-react";
 import { NotificationIcon } from "../assets/icons";
@@ -13,11 +13,20 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
   const { openModal } = useAuthModal();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
   const isHome = location.pathname === '/';
   
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search/stories/${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
   const [isScrolled, setIsScrolled] = useState(!isHome);
 
@@ -62,16 +71,18 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
         {/* Middle: Search Bar (Visible when scrolled) */}
         <div className="hidden lg:flex items-center justify-center flex-1 mx-8 transition-opacity duration-300">
           {isScrolled && (
-            <div className="relative w-full max-w-[500px] flex items-center h-[46px] bg-[#F8F9FA] border border-gray-200 rounded-full overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <form onSubmit={handleSearch} className="relative w-full max-w-[500px] flex items-center h-[46px] bg-[#F8F9FA] border border-gray-200 rounded-full overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <input 
                 type="text" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="What kind of projects are you looking for?" 
                 className="w-full h-full bg-transparent pl-5 pr-14 text-[14px] text-gray-900 font-medium focus:outline-none focus-visible:outline-none placeholder:text-gray-400"
               />
-              <button className="absolute right-1 w-[38px] h-[38px] bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center transition-colors">
+              <button type="submit" className="absolute right-1 w-[38px] h-[38px] bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center transition-colors">
                 <Search size={18} strokeWidth={2.5} />
               </button>
-            </div>
+            </form>
           )}
         </div>
 
@@ -169,9 +180,12 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
                 <nav className="flex flex-col space-y-1 px-4">
                   <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Home</Link>
                   <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Learn</Link>
-                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Interview Prep</Link>
+                  <Link to="/roadmaps" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Roadmaps</Link>
                   <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Projects</Link>
+                  <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Interview Prep</Link>
+                  <Link to="/community" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Community</Link>
                   <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">About Us</Link>
+                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Contact</Link>
                 </nav>
               </div>
             </motion.div>

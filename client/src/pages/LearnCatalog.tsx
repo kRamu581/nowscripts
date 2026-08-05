@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { allTrackData } from "../utils/markdownParser";
 import { Star, PlayCircle, Clock, BookOpen, Activity, Code, Server, Settings, Cpu, Layout, Cloud } from "lucide-react";
 import { useAppContext } from "../App";
+import { SEO } from "../components/SEO";
+import { Breadcrumbs } from "../components/common/Breadcrumbs";
 
 export default function LearnCatalog() {
   const { hideNavbar } = useAppContext();
@@ -48,12 +50,52 @@ export default function LearnCatalog() {
     return track.sections.reduce((total, section) => total + section.lessons.length, 0);
   };
 
+  // Generate Course Schema for SEO
+  const courseSchemas = allTrackData.map(track => ({
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": track.title,
+    "description": `Master ${track.title} with hands-on practice labs and expert guidance.`,
+    "provider": {
+      "@type": "Organization",
+      "name": "NowScripts",
+      "sameAs": "https://www.nowscripts.in/"
+    }
+  }));
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nowscripts.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Learn",
+        "item": "https://www.nowscripts.in/learn"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 pt-24 pb-12 px-4 sm:px-6 lg:px-8 font-sans">
+      <SEO 
+        title="ServiceNow Courses & Learning Tracks"
+        description="Explore comprehensive ServiceNow courses. Master CSA, CAD, ITSM, App Engine and more with hands-on labs and tutorials."
+        canonicalUrl="https://www.nowscripts.in/learn"
+        schema={[breadcrumbSchema, ...courseSchemas]}
+      />
       <div className="max-w-7xl mx-auto">
         
+        <Breadcrumbs />
+
         {/* Header Section */}
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-12 animate-fade-in mt-4">
           <h1 className="text-3xl md:text-5xl font-bold mb-8 text-gray-900">
             Start Your Learning Today!
           </h1>
