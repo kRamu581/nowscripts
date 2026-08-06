@@ -1,0 +1,145 @@
+{
+  "title": "ServiceNow Scenarios (Courtesy of Md Afan Khan - LTM ServiceNow Developer)",
+  "modules": [
+    {
+      "name": "Client Script & UI Policy Scenarios",
+      "questions": [
+        {
+          "id": "cs-01",
+          "question_text": "What is the major difference between Client Script and Catalog Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Client Script is used on any table form (Incident, Change, Problem) and works with table fields (e.g., g_form.getValue('short_description')).\n\nCatalog Client Script is used only in the Service Catalog (Service Portal, Employee Center) and controls catalog variables, not table fields (e.g., g_form.getValue('employee_name')).\n\nReal-Time Scenario:\nClient Script: Make Assignment Group mandatory when Priority = Critical on an Incident.\nCatalog Client Script: Display the 'Apple ID' variable only when 'Laptop Type' is MacBook on a Laptop Request."
+        },
+        {
+          "id": "cs-02",
+          "question_text": "What is the use of the \"Isolate Script\" checkbox in Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "The Isolate Script checkbox controls whether your Client Script runs in an isolated JavaScript environment.\n\nChecked (Default): The script runs in an isolated/sandboxed environment. It cannot directly access global variables or custom JavaScript functions defined elsewhere.\nUnchecked: The script can access global JavaScript objects and functions defined by other scripts (like UI Scripts).\n\nReal-Time Scenario:\nIf you have a UI Script with reusable validation logic, you must uncheck 'Isolate Script' on the Client Scripts that need to call that validation function."
+        },
+        {
+          "id": "cs-03",
+          "question_text": "Scenario: A field is made non-mandatory using a Client Script, but the same field is made mandatory using a UI Policy. What will be the final behavior?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Final Result: The field will be mandatory.\n\nWhy?\nUI Policy takes precedence over Client Scripts for mandatory, visible, and read-only properties. Even if the Client Script runs first and sets it to non-mandatory, the UI Policy will evaluate afterward and override the Client Script setting."
+        },
+        {
+          "id": "cs-04",
+          "question_text": "How many ways can we call server-side data on the client side, and which is preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "There are 3 common ways:\n1. GlideAjax (Most Recommended)\n2. g_form.getReference()\n3. Display Business Rule + g_scratchpad\n\nGlideAjax is preferred because it is asynchronous, efficient, and retrieves only the required data from the server, resulting in much better performance compared to fetching the entire record with getReference()."
+        },
+        {
+          "id": "cs-05",
+          "question_text": "Scenario: Incident form has Caller and Location. How do you auto-populate Location based on Caller?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Best Approach: onChange Client Script + GlideAjax + Script Include.\n\nWhy?\nClient-side scripts should not query the database directly. GlideAjax securely fetches the Location from the sys_user table on the server and returns it to the client, which then sets the Location field using g_form.setValue()."
+        }
+      ]
+    },
+    {
+      "name": "ACLs & Security Scenarios",
+      "questions": [
+        {
+          "id": "acl-01",
+          "question_text": "Which role is required to configure ACLs, and why not just admin?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "The required role is `security_admin`.\n\nAn admin user has broad administrative privileges but must explicitly elevate to the `security_admin` role to create or edit ACLs because ACLs are highly sensitive security configurations."
+        },
+        {
+          "id": "acl-02",
+          "question_text": "What is the execution order of an ACL?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "ServiceNow evaluates ACLs from the most specific to the least specific.\n\nExecution Order:\n1. table.field (Most Specific)\n2. parent_table.field\n3. *.field\n4. table.*\n5. parent_table.*\n6. *.*\n\nThe sequence of checking within the ACL is: ROLES first, then CONDITION, then SCRIPT."
+        },
+        {
+          "id": "acl-03",
+          "question_text": "What are \"Allow If\" and \"Deny Unless\" in ServiceNow ACLs?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Allow If: Grants access when its condition is met. If it fails, ServiceNow continues evaluating other matching ACLs.\nDeny Unless: A mandatory security gate. It blocks access immediately unless its condition is satisfied. If it evaluates to false, access is denied and no other ACLs are checked.\n\nDeny Unless is best used for high-security restrictions, while Allow If is used for normal permission rules."
+        },
+        {
+          "id": "acl-04",
+          "question_text": "Scenario: One ACL is 'Allow If' with the itil role. Another ACL is 'Deny Unless' with the change_manager role. Which user can access the Change form?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "A user must have BOTH the `itil` and `change_manager` roles.\n\nThe user must first pass the mandatory security gate (Deny Unless = change_manager). Once they pass that, they must then satisfy the Allow If ACL (itil) to be granted access."
+        }
+      ]
+    },
+    {
+      "name": "Flow Designer Scenarios",
+      "questions": [
+        {
+          "id": "fd-01",
+          "question_text": "What are Flow Variables in Flow Designer and why use them?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Flow Variables are used to temporarily store and reuse data during the execution of a Flow.\n\nThey help avoid repeated data retrieval (like querying a manager's email twice), simplify flow design, and improve maintainability."
+        },
+        {
+          "id": "fd-02",
+          "question_text": "Scenario: Based on a selected 'Department' choice variable in a Catalog Item, assign the ticket to different Assignment Groups. Which approach will you follow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Decision Table + 'Make a Decision' Flow Action.\n\nInstead of writing multiple complex If/Else or Switch conditions in Flow Designer, you create a Decision Table where the input is the Department and the output is the Assignment Group. \n\nThis is much more scalable, easier to maintain, and business users can update the mappings without modifying the Flow itself."
+        }
+      ]
+    },
+    {
+      "name": "Integration & API Scenarios",
+      "questions": [
+        {
+          "id": "int-01",
+          "question_text": "What is the difference between Table API and Scripted REST API?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Table API is a standard built-in REST API used for simple CRUD operations directly on ServiceNow tables. No scripting is required.\n\nScripted REST API is a custom REST API developed using server-side JavaScript. It allows you to implement complex business logic, validate incoming data, interact with multiple tables, and return highly customized JSON responses."
+        },
+        {
+          "id": "int-02",
+          "question_text": "What is the difference between PUT and PATCH in REST APIs?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "PUT is used to completely replace the entire resource. If fields are omitted in the request, they may be overwritten or reset.\n\nPATCH is used to partially update a resource. Only the fields included in the request body are modified. In ServiceNow, PATCH is generally preferred because it sends less data and prevents accidentally overwriting other fields."
+        },
+        {
+          "id": "int-03",
+          "question_text": "What is the difference between an Access Token and a Refresh Token in OAuth 2.0?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Access Token: A short-lived temporary credential sent with every API request to authenticate and access protected resources.\n\nRefresh Token: A long-lived token used ONLY to obtain a new Access Token from the Authorization Server when the current Access Token expires, without requiring the user to log in again."
+        },
+        {
+          "id": "int-04",
+          "question_text": "What is the difference between IntegrationHub and MID Server?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "IntegrationHub runs in the ServiceNow cloud and uses Flow Designer actions (Spokes) to integrate with external cloud/SaaS applications.\n\nMID Server is a Java application installed inside the customer's secure on-premises network. It acts as a bridge to allow ServiceNow to securely communicate with internal resources (databases, internal servers) that are not exposed to the public internet."
+        }
+      ]
+    }
+  ]
+}

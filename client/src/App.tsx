@@ -246,6 +246,7 @@ export default function App() {
 
             {/* Admin Routes */}
             <Route element={<AdminGuard><AdminLayout notificationsCount={notificationsCount} /></AdminGuard>}>
+              <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
               <Route path="/admin/certificates" element={<AdminCertificates />} />
               <Route path="/admin/certificates/studio" element={<CertificateStudio />} />

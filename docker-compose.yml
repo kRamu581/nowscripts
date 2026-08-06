@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  nowscripts-api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: nowscripts-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+    restart: unless-stopped
+    networks:
+      - nowscripts-net
+
+  nowscripts-client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: nowscripts-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - nowscripts-api
+    restart: unless-stopped
+    networks:
+      - nowscripts-net
+
+networks:
+  nowscripts-net:
+    driver: bridge

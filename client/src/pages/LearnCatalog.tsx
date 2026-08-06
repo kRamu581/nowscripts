@@ -83,7 +83,7 @@ export default function LearnCatalog() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 pt-24 pb-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="min-h-screen bg-gray-50 text-gray-900 pt-8 pb-12 px-4 sm:px-6 lg:px-8 font-sans">
       <SEO 
         title="ServiceNow Courses & Learning Tracks"
         description="Explore comprehensive ServiceNow courses. Master CSA, CAD, ITSM, App Engine and more with hands-on labs and tutorials."

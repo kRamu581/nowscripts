@@ -26,7 +26,8 @@
     {
       "id": "scenario",
       "title": "Scenarios",
-      "status": "coming_soon"
+      "status": "active",
+      "dataFile": "/content/interview-prep/scenario/data.json"
     },
     {
       "id": "ai-interview",

@@ -20,12 +20,12 @@ const REDIRECT_MAP: Record<string, { categorySlug: string, lessonSlug: string }>
   'administration/tables-and-fields-and-columns': { categorySlug: 'fundamentals', lessonSlug: 'tables-and-records' },
   'administration/service-catalog': { categorySlug: 'fundamentals', lessonSlug: 'service-catalog' },
   'administration/user-administration': { categorySlug: 'fundamentals', lessonSlug: 'users-groups-roles' },
-  'itsm/incident-management': { categorySlug: 'itsm-module', lessonSlug: 'incident-management' },
-  'itsm/problem-management': { categorySlug: 'itsm-module', lessonSlug: 'problem-management' },
-  'itsm/change-management': { categorySlug: 'itsm-module', lessonSlug: 'change-management' },
-  'itsm/request-management': { categorySlug: 'itsm-module', lessonSlug: 'request-management' },
-  'itsm/cmdb-basics': { categorySlug: 'itsm-module', lessonSlug: 'cmdb-basics' },
-  'itsm/asset-management': { categorySlug: 'itsm-module', lessonSlug: 'asset-management' },
+  'itsm/incident-management': { categorySlug: 'it-basics', lessonSlug: 'incident' },
+  'itsm/problem-management': { categorySlug: 'it-basics', lessonSlug: 'problem' },
+  'itsm/change-management': { categorySlug: 'it-basics', lessonSlug: 'change' },
+  'itsm/request-management': { categorySlug: 'it-basics', lessonSlug: 'service-request' },
+  'itsm/cmdb-basics': { categorySlug: 'it-basics', lessonSlug: 'knowledge-base' },
+  'itsm/asset-management': { categorySlug: 'it-basics', lessonSlug: 'sla' },
   'administration/access-control-list': { categorySlug: 'administration', lessonSlug: 'access-control-rules' },
   'administration/email-notifications': { categorySlug: 'administration', lessonSlug: 'notifications' },
   'administration/ui-policy': { categorySlug: 'development', lessonSlug: 'ui-policies' },
@@ -405,7 +405,7 @@ export default function LearnDashboard() {
   ref={scrollContainerRef}
   className="flex-1 bg-white relative w-full min-w-0"
   >
- <div className="w-full max-w-[960px] px-4 lg:px-8 xl:px-12 py-8 xl:py-12 pb-48 overflow-x-hidden">
+ <div className="w-full max-w-[960px] px-4 lg:px-8 xl:px-12 pt-2 xl:pt-4 pb-48 overflow-x-hidden">
  <AnimatePresence mode="wait">
  <motion.div 
  key={activeLesson.id}

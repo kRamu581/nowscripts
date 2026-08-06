@@ -20,7 +20,7 @@ const extractText = (node: any): string => {
 };
 
 export const H1 = ({ children, ...props }: any) => (
-  <h1 className="text-3xl sm:text-[38px] font-extrabold mb-6 mt-4 tracking-tight text-[#0f2c4c] leading-[1.3] border-b border-gray-200 pb-4" style={{ fontWeight: 800 }} {...props}>
+  <h1 className="text-3xl sm:text-[38px] font-extrabold mb-4 mt-2 tracking-tight text-[#0f2c4c] leading-[1.3] border-b border-gray-200 pb-4" style={{ fontWeight: 800 }} {...props}>
     {children}
   </h1>
 );
@@ -30,7 +30,7 @@ export const H2 = ({ children, ...props }: any) => {
   const id = generateSlug(text);
 
   return (
-    <section id={id} className="scroll-mt-24 group relative mt-10 mb-4">
+    <section id={id} className="scroll-mt-24 group relative mt-6 mb-3">
       <div className="flex items-center -ml-8">
         <button
           onClick={() => copyToClipboard(id)}
@@ -52,7 +52,7 @@ export const H3 = ({ children, ...props }: any) => {
   const id = generateSlug(text);
 
   return (
-    <div id={id} className="scroll-mt-24 group relative mt-10 mb-4">
+    <div id={id} className="scroll-mt-24 group relative mt-5 mb-3">
       <div className="flex items-center -ml-8">
         <button
           onClick={() => copyToClipboard(id)}

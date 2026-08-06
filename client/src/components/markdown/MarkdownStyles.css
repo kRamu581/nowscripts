@@ -3,8 +3,14 @@
 .markdown-body {
   font-family: 'Lora', 'Merriweather', 'Georgia', serif;
   color: #374151;
-  line-height: 1.85;
-  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+  font-size: 1rem; /* 16px on mobile */
+}
+
+@media (min-width: 640px) {
+  .markdown-body {
+    font-size: 1.125rem; /* 18px on larger screens */
+  }
 }
 
 .markdown-body > :first-child {
@@ -12,7 +18,7 @@
 }
 
 .markdown-body p {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .markdown-body strong {
@@ -22,7 +28,7 @@
 
 .markdown-body ul, .markdown-body ol {
   padding-left: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .markdown-body ul {
@@ -128,7 +134,7 @@ code:not([class*="language-"]) {
   height: 1px;
   background-color: #e2e8f0;
   border: none;
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 
