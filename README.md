@@ -1,211 +1,124 @@
-<div align="center">
-  <a href="https://nowscripts.in" target="_blank">
-    <img src="client/public/logo.png" alt="NowScripts Logo" height="80">
-  </a>
+<p align="center">
+<a href="https://nowscripts.in" target="_blank" style="display: inline-flex; align-items: center; text-decoration: none; color: #1f2937; font-family: sans-serif;">
+  <img 
+    src="client/public/logo.png" 
+    alt="NowScripts Banner" 
+    style="width: 160px; margin-right: 12px;"
+  />
+</a>
+</p>
 
-  <h1 align="center">NowScripts</h1>
+<h1 align="center">AI-Powered Personalized ServiceNow Ecosystem</h1>
 
-  <p align="center">
-    <strong>The AI-Powered Personalized ServiceNow Ecosystem</strong><br>
-    <em>Learn → Practice → Build → Get Certified → Crack Interviews → Get Jobs → Freelance</em>
-  </p>
-
-  <p align="center">
-    <a href="https://github.com/kRamu81/nowscripts/commits/main">
-      <img src="https://img.shields.io/github/last-commit/kRamu81/nowscripts.svg?style=flat-square&color=0066cc" alt="Last Commit">
-    </a>
-    <a href="https://github.com/kRamu81/nowscripts/issues">
-      <img src="https://img.shields.io/github/issues/kRamu81/nowscripts.svg?style=flat-square&color=00cc66" alt="Issues">
-    </a>
-    <a href="https://github.com/kRamu81/nowscripts/pulls">
-      <img src="https://img.shields.io/github/issues-pr/kRamu81/nowscripts.svg?style=flat-square&color=ff9900" alt="Pull Requests">
-    </a>
-    <a href="https://github.com/kRamu81/nowscripts/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/kRamu81/nowscripts.svg?style=flat-square&color=ff3366" alt="License">
-    </a>
-    <a href="https://discord.gg/nowscripts">
-      <img src="https://img.shields.io/discord/1234567890?label=Discord&logo=discord&style=flat-square&color=5865F2" alt="Discord">
-    </a>
-  </p>
-
-  <p align="center">
-    <a href="https://nowscripts.in">Website</a>
-    ·
-    <a href="https://github.com/kRamu81/nowscripts/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/kRamu81/nowscripts/issues">Request Feature</a>
-    ·
-    <a href="https://discord.gg/nowscripts">Join Community</a>
-  </p>
-</div>
-
-<hr />
-
-## 🌟 Platform Overview
-
-**NowScripts** is not just another course website. It is an **AI-powered personalized ServiceNow ecosystem** designed for students, freshers, career switchers, IT professionals, and organizations.
-
-Our mission is to consolidate the entire ServiceNow professional journey into a single, cohesive platform. We provide industry-standard roadmaps, deep learning modules, realistic interview simulators, and enterprise-grade projects.
+<p align="center">
+  <strong>Learn → Practice → Build → Get Certified → Crack Interviews → Get Jobs → Freelance</strong>
+  <br />
+  <br />
+  <a href="https://nowscripts.in"><strong>Website</strong></a> ·
+  <a href="https://github.com/kRamu81/nowscripts/wiki"><strong>Documentation</strong></a> ·
+  <a href="https://discord.gg/nowscripts"><strong>Join our Discord Community</strong></a> ·
+  <a href="https://github.com/kRamu81/nowscripts/issues"><strong>Report a Bug</strong></a>
+</p>
 
 ---
 
-## 🎯 Why NowScripts?
+**NowScripts** is an open-source, AI-powered educational ecosystem designed exclusively for the ServiceNow platform. Move beyond static documentation and fragmented learning by utilizing our end-to-end interactive modules, simulators, and AI companions that guide you from beginner concepts to advanced architectural scripting.
 
-- **End-to-End Journey**: We guide users through learning the fundamentals, passing certifications, building real-world projects, preparing for interviews, and entering the freelance marketplace.
-- **AI-Native Experience**: Deep integration of cutting-edge AI systems designed exclusively for the ServiceNow ecosystem.
-- **Enterprise UI/UX**: A modern, premium, accessible SaaS experience that feels both professional and highly engaging.
+This repository contains the full source code for the NowScripts platform, allowing you to self-host, customize, and extend its capabilities. Whether you are an aspiring administrator, developer, or an enterprise looking to train your team, NowScripts provides the tools to do it efficiently.
 
----
+NowScripts is proudly developed by **Kanam Ramu** and the NowScripts Community.
 
-## 🧠 AI Systems Architecture
+## ✨ Core Features
 
-NowScripts leverages three distinct AI systems to supercharge the learning and preparation experience:
+- 📚 **End-to-End Structured Learning**: Step-by-step guides and industry roadmaps tailored for varying expertise levels (CSA, CAD, and advanced implementations).
+- 🧠 **NowScripts AI Copilot**: A highly specialized AI assistant integrated into the learning dashboard that answers technical questions, debugs scripts, and explains core ServiceNow APIs in real-time.
+- 💻 **Interactive Simulators**: Practice configurations, workflows, and UI Policies in safe, browser-based environments without needing a live Personal Developer Instance (PDI).
+- 🎙️ **AI Interview Platform (Upcoming)**: Prepare for rigorous technical interviews using our voice-conversational AI interviewer that asks dynamic scenario questions and evaluates your responses.
+- 🚀 **Real-World Projects**: Build agile sprint projects and large-scale architectural implementations to mimic real-world enterprise development cycles.
+- 🏆 **Certification Prep**: Over 1,000 curated mock questions simulating the ServiceNow CSA and CAD exams.
+- 🔌 **Containerized Architecture**: Fully Dockerized (Nginx/PM2) providing lightning-fast rendering and perfect environment isolation.
+- 🎨 **Premium UI/UX**: Built with React, Vite, Tailwind CSS, and Framer Motion to ensure an accessible, engaging, and premium SaaS experience.
 
-### 1. NowScripts Copilot
-*The Platform Assistant*
-- **Role**: Helps users navigate the platform, explains features, and guides their journey.
-- **Functionality**: Platform-specific Q&A and user onboarding.
+## 🚀 Quick Start (Docker)
 
-### 2. AI Learning Assistant
-*The ServiceNow Expert*
-- **Role**: A highly specialized AI for deep ServiceNow technical knowledge.
-- **Functionality**: Answers technical questions, explains core concepts, debugs scripts, details APIs, assists with CSA/CAD prep, generates quizzes, and provides personalized learning insights.
-
-### 3. AI Interview Platform (Coming Soon)
-*The Realistic Interview Simulator*
-- **Role**: Prepares users for rigorous technical and behavioral interviews.
-- **Functionality**: Uses webcam & microphone for voice conversations, features an AI interviewer, asks scenario and coding questions, discusses resumes, and generates actionable scorecards and feedback.
-
----
-
-## 🛠 Features (Phase 1)
-
-### 📚 Learn
-- **Structured Content**: Step-by-step guides tailored for varying expertise levels.
-- **Industry Roadmaps**: Clear paths for Administration (CSA), Development (CAD), and advanced implementations.
-- **Interactive Exercises**: Assignments and practical notes to cement knowledge.
-
-### 💻 Practice
-- **Certification Prep**: 500+ CSA questions and 500+ CAD questions.
-- **Real-World Scenarios**: Curated scenario questions sourced from industry experts.
-- **Mock Tests**: Simulated certification exams.
-
-### 🚀 Projects
-- **Sprint Projects**: Agile-based projects to mimic real-world development cycles.
-- **Enterprise Projects**: Large-scale architectural implementations.
-- **Open Source Collaboration**: Opportunities to contribute and build a portfolio.
-
-### 🌍 Community & Dashboard
-- **Discussions & Resources**: Notes, events, and collaborative learning.
-- **Analytics**: Progress tracking, certificates, and skill badges.
-
----
-
-## 💻 Tech Stack
-
-NowScripts is built with modern, scalable, and high-performance technologies:
-
-- **Frontend**: React (Vite), TypeScript, Tailwind CSS, Framer Motion
-- **Backend**: Node.js, Express, MongoDB
-- **AI Integration**: Custom LLM integration & prompt engineering
-- **SEO & Performance**: React Helmet Async, semantic HTML, modern asset delivery
-
----
-
-## 🚀 Getting Started
-
-Follow these instructions to set up the project locally.
+Get up and running in minutes using Docker for maximum performance and isolation.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/) (v18+)
-- [npm](https://www.npmjs.com/) (v9+)
-- MongoDB instance (local or Atlas)
+- [Docker](https://docker.com) & Docker Compose
+- [Git](https://git-scm.com)
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/kRamu81/nowscripts.git
-   cd nowscripts
-   ```
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/kRamu81/nowscripts.git
+    cd nowscripts
+    ```
 
-2. **Install Frontend Dependencies**
+2.  **Configure Environment Variables**
+    Before starting, you must create `.env` files in both the `client` and `server` directories.
+    ```bash
+    cp client/.env.example client/.env
+    cp server/.env.example server/.env
+    ```
+    Now, edit the `.env` files to add your necessary API keys (e.g., MongoDB URI, JWT secrets, and AI API keys).
+
+3.  **Start with Docker Compose**
+    ```bash
+    # Start all services in the background (Frontend Nginx & Backend Node PM2)
+    docker-compose up -d --build
+
+    # To view live logs from all services
+    docker-compose logs -f
+    ```
+
+4.  **Access the Application**
+    - **Frontend UI**: `http://localhost:80`
+    - **Backend API**: `http://localhost:5000`
+
+---
+
+## 🛠️ Local Development Setup (Without Docker)
+
+For manual development without Docker, you can run the services using Node.js directly.
+
+### Prerequisites
+- Node.js (v20+)
+- MongoDB Instance (local or Atlas)
+
+### Starting the Servers
+
+1. **Frontend**
    ```bash
    cd client
    npm install
+   npm run dev
    ```
 
-3. **Install Backend Dependencies**
+2. **Backend**
    ```bash
-   cd ../server
+   cd server
    npm install
+   npm run dev
    ```
-
-### Environment Variables
-
-You will need to set up `.env` files in both the `client` and `server` directories.
-*(Refer to `.env.example` in each respective folder for required keys).*
-
-### Running Locally
-
-To start the development servers, run the following in separate terminal windows:
-
-**Frontend**
-```bash
-cd client
-npm run dev
-```
-
-**Backend**
-```bash
-cd server
-npm run dev
-```
 
 ---
 
 ## 🗺 Roadmap
 
-- [x] **Phase 1**: Core learning platform, CSA/CAD prep, sprint projects, community, and dashboards.
-- [ ] **Phase 2**: AI Personalized Roadmaps, AI Voice Interviews, Resume & LinkedIn Profile Analysis.
-- [ ] **Phase 3**: Direct ServiceNow Integration, PDI Connection, AI Code Review, Lab Verification.
-- [ ] **Phase 4**: Complete AI Agent Ecosystem.
-- [ ] **Phase 5**: Full AI ServiceNow Development Assistant.
-
----
+- [x] **Phase 1**: Core learning platform, CSA/CAD prep, sprint projects, and Docker architecture.
+- [ ] **Phase 2**: AI Personalized Roadmaps, AI Voice Interviews, Resume Analysis.
+- [ ] **Phase 3**: Direct ServiceNow Integration, PDI Connection, AI Code Review.
+- [ ] **Phase 4**: Full AI ServiceNow Development Assistant.
 
 ## 🤝 Contributing
 
-We believe in the power of open source. Whether it's reporting a bug, suggesting a feature, or submitting a pull request, your contributions are always welcome!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: Add AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-*Please ensure all contributions align with our [Design Principles](#design-principles).*
-
-### Design Principles
-All contributions must adhere to our core principles:
-- **Premium SaaS UI**: Clean architecture, fast loading, modern animations.
-- **Enterprise Quality**: Modular, reusable components, responsive, and accessible.
-- **User-Centric**: Does it improve the learner experience? Is it scalable?
-
----
+We believe in the power of open source. Whether it's reporting a bug, suggesting a feature, or submitting a pull request, your contributions are always welcome! Ensure all contributions align with our core Design Principles: **Premium SaaS UI**, **Enterprise Quality**, and **User-Centric**.
 
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-## 📫 Connect With Us
-
-- **Website**: [nowscripts.in](https://nowscripts.in)
-- **Discord**: [Join the Community](https://discord.gg/nowscripts)
-- **LinkedIn**: [Follow Us](https://linkedin.com/company/nowscripts)
 
 <br/>
 <p align="center">
