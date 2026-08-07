@@ -20,7 +20,7 @@ const extractText = (node: any): string => {
 };
 
 export const H1 = ({ children, ...props }: any) => (
-  <h1 className="text-3xl sm:text-[38px] font-extrabold mb-4 mt-2 tracking-tight text-[#0f2c4c] leading-[1.3] border-b border-gray-200 pb-4" style={{ fontWeight: 800 }} {...props}>
+  <h1 className="text-[32px] sm:text-[32px] font-semibold mb-1 mt-2 text-[#0f2c4c] leading-tight font-sans" {...props}>
     {children}
   </h1>
 );

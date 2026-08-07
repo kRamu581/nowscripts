@@ -7,6 +7,9 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Open Sans"', 'system-ui', 'sans-serif'],
+      },
       colors: {
         now: {
           primary: '#FF5A5F', // Logo dot color (Amber/Pink-Red)

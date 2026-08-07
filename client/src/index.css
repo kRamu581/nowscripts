@@ -14,7 +14,7 @@
 
 body {
   overflow-y: scroll;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
   @apply bg-now-background text-now-text antialiased;
 }
 

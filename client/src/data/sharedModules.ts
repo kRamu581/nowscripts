@@ -36,10 +36,10 @@ const csaModules: Module[] = [
     icon: "LifeBuoy",
     items: [
       { type: "topic", id: "what-is-itsm", title: "What is ITSM?" },
-      { type: "topic", id: "incident", title: "Incident" },
-      { type: "topic", id: "problem", title: "Problem" },
-      { type: "topic", id: "change", title: "Change" },
-      { type: "topic", id: "sla", title: "SLA" },
+      { type: "topic", id: "incident", title: "Incident Management" },
+      { type: "topic", id: "problem", title: "Problem Management" },
+      { type: "topic", id: "change", title: "Change Management" },
+      { type: "topic", id: "sla", title: "SLA (Service Level Agreement)" },
       { type: "topic", id: "service-request", title: "Service Request" },
       { type: "topic", id: "knowledge-base", title: "Knowledge Base" }
     ]

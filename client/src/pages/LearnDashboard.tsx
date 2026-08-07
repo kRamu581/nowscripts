@@ -405,7 +405,7 @@ export default function LearnDashboard() {
   ref={scrollContainerRef}
   className="flex-1 bg-white relative w-full min-w-0"
   >
- <div className="w-full max-w-[960px] px-4 lg:px-8 xl:px-12 pt-2 xl:pt-4 pb-48 overflow-x-hidden">
+ <div className="w-full max-w-[960px] px-4 lg:px-8 xl:px-12 pt-2 xl:pt-4 pb-12 overflow-x-hidden">
  <AnimatePresence mode="wait">
  <motion.div 
  key={activeLesson.id}

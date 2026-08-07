@@ -62,12 +62,7 @@ User confirms the issue is fixed.
 **User reports:** "I cannot open Outlook."
 
 **Flow:**
-1. User reports issue
-2. Incident created
-3. Assigned to Email Support Team
-4. Issue fixed
-5. Resolved
-6. Closed
+**User reports issue** ➔ **Incident created** ➔ **Assigned to Email Support** ➔ **Issue fixed** ➔ **Resolved** ➔ **Closed**
 
 ---
 
