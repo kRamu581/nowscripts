@@ -87,7 +87,7 @@ User Query: "${query}"`;
     Here is context retrieved from our knowledge base that may help answer the query:
     ${context}`;
 
-    const tools = [{
+    const tools: any = [{
       functionDeclarations: [
         {
           name: "get_user_progress",
@@ -145,8 +145,10 @@ User Query: "${query}"`;
       let functionCallResult = null;
       
       for await (const chunk of result.stream) {
-        if (chunk.functionCalls && chunk.functionCalls.length > 0) {
-          const call = chunk.functionCalls[0];
+        const functionCalls = typeof chunk.functionCalls === 'function' ? chunk.functionCalls() : chunk.functionCalls;
+        
+        if (functionCalls && functionCalls.length > 0) {
+          const call = functionCalls[0];
           let functionResponse: any = {};
           
           if (call.name === "get_user_progress") {

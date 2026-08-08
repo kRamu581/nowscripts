@@ -6,7 +6,8 @@ import ReactMarkdown from "react-markdown";
 import { BrandIconOnly } from "../BrandLogo";
 
 export const CopilotWidget = () => {
-  const { isAuthenticated, AuthToken } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const AuthToken = localStorage.getItem("access_token");
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "model"; content: string }[]>([]);
   const [input, setInput] = useState("");
@@ -197,7 +198,9 @@ export const CopilotWidget = () => {
                   {msg.role === "user" ? <UserIcon size={16} className="text-gray-600" /> : <Bot size={16} />}
                 </div>
                 <div className={`px-4 py-3 rounded-2xl max-w-[80%] text-[15px] leading-relaxed shadow-sm ${msg.role === "user" ? "bg-now-primary text-white rounded-tr-sm" : "bg-white border border-gray-100 text-gray-800 rounded-tl-sm"}`}>
-                  <ReactMarkdown className="prose prose-sm max-w-none">{msg.content}</ReactMarkdown>
+                  <div className="prose prose-sm max-w-none">
+                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
             ))}

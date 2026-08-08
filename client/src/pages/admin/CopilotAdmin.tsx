@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "../../baseUrl";
-import { useAuth } from "../../contexts/Auth";
+
 import { BarChart3, MessageSquareWarning, Search, Bot } from "lucide-react";
 
 interface Log {
@@ -16,7 +16,7 @@ interface Log {
 }
 
 export default function CopilotAdmin() {
-  const { AuthToken } = useAuth();
+  const AuthToken = localStorage.getItem("access_token");
   const [logs, setLogs] = useState<Log[]>([]);
   const [metrics, setMetrics] = useState({ totalQueries: 0, outOfScopeAttempts: 0, outOfScopeRate: 0 });
   const [loading, setLoading] = useState(true);
