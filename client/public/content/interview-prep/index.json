@@ -1,18 +1,6 @@
 {
   "categories": [
     {
-      "id": "csa",
-      "title": "CSA Questions",
-      "status": "active",
-      "dataFile": "/content/interview-prep/csa/data.json"
-    },
-    {
-      "id": "cad",
-      "title": "CAD Questions",
-      "status": "active",
-      "dataFile": "/content/interview-prep/cad/data.json"
-    },
-    {
       "id": "mock",
       "title": "Mock Interviews",
       "status": "active",

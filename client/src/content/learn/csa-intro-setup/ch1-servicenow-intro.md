@@ -1,5 +1,8 @@
 
 ## What is ServiceNow?
+
+![ServiceNow Logo](/images/servicenow-logo.png)
+
 **ServiceNow** is a cloud-based IT Service Management (ITSM) platform that helps companies automate and manage their IT services — all accessible from anywhere via the internet.
 
 * **Cloud-Based ITSM Platform:** Supports IT Service Management and automates common business processes.
@@ -60,8 +63,12 @@ ServiceNow releases new versions every 10–12 months, each named after a world 
 | **Patch Release** | Minor bug fixes and security vulnerability fixes. |
 | **Hotfix** | Critical updates to address urgent issues immediately. |
 
+![ServiceNow Release Timeline](/images/release-timeline.png)
+
 ## Major Customers of ServiceNow
 ServiceNow serves a diverse range of major clients across various industries including technology, finance, healthcare, retail, and government. Notable ServiceNow customers include AT&T, Cisco, Walmart, Uber, Disney, Oracle, Boeing, and hundreds more.
+
+![Major Customers of ServiceNow](/images/major-customers.png)
 
 ## Benefits of ServiceNow
 
@@ -136,6 +143,9 @@ ServiceNow was founded in **2004 by Fred Luddy**, a former executive at BMC Soft
 > **NOTE:** Today ServiceNow is one of the leading providers of cloud-based enterprise software, expanded to cover ITOM, HR, CSM, and Security Operations, serving customers in virtually every industry worldwide.
 
 ## Founder & CEO of ServiceNow
+
+![Founder and CEO of ServiceNow](/images/founder.png)
+
 **Fred Luddy** (Founder) — served as CEO from 2004 until 2019. **Bill McDermott** is the current CEO, taking over in 2019.
 
 ## Key Features of ServiceNow

@@ -68,6 +68,8 @@ User confirms the issue is fixed.
 
 ## Incident Lifecycle in ServiceNow
 
+![Incident Lifecycle](/images/incident-lifecycle.png)
+
 **New** ➔ **Assigned** ➔ **In Progress** ➔ **Resolved** ➔ **Closed**
 
 *(Note: An incident can temporarily move from **In Progress** to **On Hold** while waiting for information, and back to **In Progress** once received).*

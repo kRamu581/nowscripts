@@ -54,7 +54,7 @@ export default function Navbar({
 
   return (
     <>
-      <nav className={`w-full h-14 ${positionClass} z-50 transition-all duration-300 ${bgColor}`}>
+      <nav id="main-navbar" className={`w-full h-14 ${positionClass} z-50 transition-all duration-300 ${bgColor}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-full">
           <div className="flex items-center gap-4 flex-shrink-0">
             <button

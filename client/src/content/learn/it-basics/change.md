@@ -71,6 +71,8 @@ Developer created a new feature.
 
 ## Change Lifecycle in ServiceNow
 
+![Change Lifecycle](/images/change-lifecycle.png)
+
 **New** ➔ **Assess** ➔ **Authorize** ➔ **Scheduled** ➔ **Implement** ➔ **Review** ➔ **Closed**
 
 ---

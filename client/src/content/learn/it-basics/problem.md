@@ -49,6 +49,8 @@ Team investigates:
 
 ## Problem Lifecycle in ServiceNow
 
+![Problem Ticket Lifecycle](/images/problem-lifecycle.png)
+
 **New** ➔ **Assess** ➔ **Root Cause Analysis** ➔ **Fix Applied** ➔ **Resolved** ➔ **Closed**
 
 ---

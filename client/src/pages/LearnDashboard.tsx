@@ -13,6 +13,7 @@ import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
 import { getModuleTheme } from "../utils/themeUtils";
 import { CertificationPath } from "../components/learn/CertificationPath";
+import { PracticeViewer } from "../components/learn/PracticeViewer";
 import FloatingAIBotButton from "../components/FloatingAIBotButton";
 
 const REDIRECT_MAP: Record<string, { categorySlug: string, lessonSlug: string }> = {
@@ -261,6 +262,16 @@ export default function LearnDashboard() {
  const contentToRender = activeLesson.rawMarkdown ? activeLesson.rawMarkdown.replace(/^---[\s\S]+?---/, '').trim() : "";
 
  return (
+ <>
+ {activeTab === 'practice' && (
+   <style>{`
+     @media (max-width: 1023px) {
+       #main-navbar, #landing-navbar {
+         display: none !important;
+       }
+     }
+   `}</style>
+ )}
  <div className="bg-white text-gray-900 font-sans flex flex-col w-full min-h-screen selection:bg-now-primary selection:text-black relative">
 
  
@@ -271,33 +282,31 @@ export default function LearnDashboard() {
  />
  </div>
  
-  <div className="sticky top-0 z-[60] border-b border-gray-200 bg-white flex-shrink-0 shadow-sm overflow-x-auto">
-    <div className="flex px-4 sm:px-6 lg:px-8 w-full min-w-max pt-3 h-12 items-end relative justify-center">
+  <div className="sticky top-0 z-20 border-b border-gray-200 bg-white flex-shrink-0 shadow-sm">
+    <div className="flex px-3 sm:px-6 lg:px-8 w-full pt-2 lg:pt-4 items-end justify-between gap-3 lg:gap-6">
       
-      {/* Back Button positioned absolutely on the left */}
+      {/* Back Button fixed on the left */}
       <button 
         onClick={() => navigate('/learn')}
-        className="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 mt-1.5 flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors"
+        className="flex items-center gap-1 text-gray-500 hover:text-gray-900 transition-colors pb-1.5 lg:pb-3 shrink-0"
         title="Back to Catalog"
       >
-        <ChevronLeft size={18} />
-        <span className="hidden sm:inline text-sm font-medium">Back</span>
+        <ChevronLeft className="-ml-1 w-4 h-4 lg:w-5 lg:h-5" />
+        <span className="hidden sm:inline text-[13px] lg:text-[15px] font-medium">Back</span>
       </button>
 
-      {/* Centered Tabs */}
-      <div className="flex gap-2">
+      {/* Scrollable Tabs Container */}
+      <div className="flex gap-3 lg:gap-6 flex-1 overflow-x-auto hide-scrollbar sm:justify-center">
         {[
-          ...(activeLesson.videoUrl ? [{ id: "video", label: "Video" }] : []),
+          { id: "video", label: "Video" },
           { id: "tutorial", label: "Tutorial" },
-          { id: "exercises", label: "Exercises" },
-          { id: "projects", label: "Projects" },
-          { id: "quizzes", label: "Quizzes" },
-          { id: "interview", label: "Interview Questions" }
+          { id: "exercise", label: "Exercise" },
+          { id: "practice", label: "Practice" }
         ].map(tab => (
           <button 
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`text-[15px] pb-2.5 px-4 whitespace-nowrap transition-colors border-b-2 font-medium ${
+            className={`text-[13px] lg:text-[15px] pb-1.5 lg:pb-3 px-1.5 lg:px-4 whitespace-nowrap transition-colors border-b-2 font-medium shrink-0 ${
               activeTab === tab.id 
                 ? 'border-now-primary text-gray-900' 
                 : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-300'
@@ -307,21 +316,28 @@ export default function LearnDashboard() {
           </button>
         ))}
       </div>
+      
+      {/* Spacer to keep tabs centered on large screens if needed, hidden on mobile */}
+      <div className="hidden sm:block w-[60px] shrink-0"></div>
     </div>
   </div>
 
   <div className="flex flex-1 relative max-w-full">
  
-  {activeTab === "tutorial" || activeTab === "video" ? (
+  {activeTab === "practice" && activeTrack.slug === "csa-certification" ? (
+    <PracticeViewer dataUrl="/content/interview-prep/csa/data.json" categoryId="csa" />
+  ) : activeTab === "practice" && activeTrack.slug === "cad-certification" ? (
+    <PracticeViewer dataUrl="/content/interview-prep/cad/data.json" categoryId="cad" />
+  ) : activeTab === "tutorial" || activeTab === "video" ? (
     <>
   {mobileMenuOpen && (
   <div 
-  className="fixed inset-0 bg-gray-900/20 z-[70] lg:hidden"
+  className="fixed inset-0 bg-gray-900/20 z-40 lg:hidden"
   onClick={() => setMobileMenuOpen(false)}
   />
   )}
 
-  <div className={`fixed lg:sticky lg:top-[48px] w-72 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col z-[80] lg:z-[50] h-[100dvh] lg:h-[calc(100vh-48px)] transition-transform duration-300 ${
+  <div className={`fixed lg:sticky lg:top-[42px] w-72 flex-shrink-0 border-r border-gray-200 bg-white flex flex-col z-50 lg:z-10 h-[100dvh] lg:h-[calc(100vh-42px)] transition-transform duration-300 ${
   mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
   }`}>
   <div className="lg:hidden p-4 border-b border-gray-200 flex justify-end">
@@ -578,6 +594,7 @@ export default function LearnDashboard() {
   </div>
 
   {/* Bottom Floating Pill Navigation (Mobile) */}
+ {activeTab !== 'practice' && (
  <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden flex bg-white/95 backdrop-blur-md text-gray-700 border border-gray-200/80 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-hidden font-medium text-[12px]">
  <button 
  onClick={() => { setMobileMenuOpen(true); setTocMenuOpen(false); }}
@@ -592,6 +609,7 @@ export default function LearnDashboard() {
  <List size={13} /> TOC
  </button>
  </div>
+ )}
 
  {/* Scroll to Top Button */}
  <button
@@ -604,11 +622,12 @@ export default function LearnDashboard() {
  </button>
 
   {/* Floating AI Bot Button */}
-  <FloatingAIBotButton />
+  {activeTab !== 'practice' && <FloatingAIBotButton />}
 
   <style>{`
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
+      height: 4px;
  }
  .custom-scrollbar::-webkit-scrollbar-track {
  background: transparent;
@@ -624,7 +643,16 @@ export default function LearnDashboard() {
  html {
  scroll-behavior: smooth;
  }
- `}</style>
- </div>
- );
+ 
+ .hide-scrollbar::-webkit-scrollbar {
+   display: none;
+ }
+ .hide-scrollbar {
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+ }
+  `}</style>
+  </div>
+  </>
+  );
 }

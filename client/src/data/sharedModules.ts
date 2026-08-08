@@ -669,6 +669,12 @@ const cadCertificationModules: Module[] = [
 
 export const tracks: Track[] = [
   {
+    id: "itsm-track",
+    slug: "it-basics",
+    title: "IT Basics",
+    modules: csaModules
+  },
+  {
     id: "csa-certification-track",
     slug: "csa-certification",
     title: "Certified System Administrator (CSA)",
@@ -681,10 +687,10 @@ export const tracks: Track[] = [
     modules: javascriptModules
   },
   {
-    id: "itsm-track",
-    slug: "it-basics",
-    title: "IT Basics",
-    modules: csaModules
+    id: "cad-certification-track",
+    slug: "cad-certification",
+    title: "Certified Application Developer (CAD)",
+    modules: cadCertificationModules
   },
   {
     id: "aes-track",
@@ -721,12 +727,6 @@ export const tracks: Track[] = [
     slug: "itom",
     title: "ITOM Specialist",
     modules: itomModules
-  },
-  {
-    id: "cad-certification-track",
-    slug: "cad-certification",
-    title: "Certified Application Developer (CAD)",
-    modules: cadCertificationModules
   }
 ];
 

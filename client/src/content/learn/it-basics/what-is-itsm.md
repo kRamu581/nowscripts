@@ -4,11 +4,15 @@ ITSM (IT Service Management) solutions help modernize service delivery and manag
 
 ### Key Benefits of ServiceNow ITSM:
 
+![Benefits of ServiceNow ITSM](/images/itsm-benefits.png)
+
 - **Automation**: Automates many ITSM processes.
 - **Reporting**: Provides robust reporting for capacity planning and performance tracking.
 - **Centralized Platform**: Manages all ITSM activities in one tool.
 
 ### ITSM Modules in ServiceNow (Focus Areas):
+
+![ITSM Modules](/images/itsm-modules.png)
 
 - **Incident Management**: Handling unplanned interruptions to IT services.
 - **Problem Management**: Identifying and resolving the root causes of incidents.

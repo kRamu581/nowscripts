@@ -52,7 +52,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
 
   return (
     <>
-    <nav className={`w-full ${positionClass} top-0 z-[100] transition-all duration-300 ${bgColor}`}>
+    <nav id="landing-navbar" className={`w-full ${positionClass} top-0 z-[100] transition-all duration-300 ${bgColor}`}>
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8 flex items-center justify-between h-[56px]">
         {/* Left Side: Logo */}
         <div className="flex items-center gap-3 flex-shrink-0">

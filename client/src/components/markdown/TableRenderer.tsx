@@ -1,44 +1,33 @@
 import React from 'react';
 
-export const Table = ({ children, ...props }: any) => (
-  <div style={{ overflowX: 'auto', margin: '2rem 0', borderRadius: '8px', border: '1px solid #e5e7eb', boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)' }}>
-    <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#ffffff' }} {...props}>
+export const Table = ({ children, className, ...props }: any) => (
+  <div className={`w-full overflow-x-auto my-8 font-sans ${className || ''}`}>
+    <table className="w-full border-collapse text-left text-sm border border-gray-300 shadow-sm bg-white" {...props}>
       {children}
     </table>
   </div>
 );
 
-export const TableHead = ({ children, ...props }: any) => (
-  <thead style={{ backgroundColor: '#f9fafb', borderBottom: '1px solid #e5e7eb' }} {...props}>
+export const TableHead = ({ children, className, ...props }: any) => (
+  <thead className={`bg-gray-50 border-b-2 border-gray-400 ${className || ''}`} {...props}>
     {children}
   </thead>
 );
 
-export const TableRow = ({ children, ...props }: any) => (
-  <tr style={{ borderBottom: '1px solid #e5e7eb' }} {...props}>
+export const TableRow = ({ children, className, ...props }: any) => (
+  <tr className={`border-b border-gray-200 hover:bg-gray-50/50 transition-colors ${className || ''}`} {...props}>
     {children}
   </tr>
 );
 
-export const TableHeader = ({ children, ...props }: any) => (
-  <th style={{
-    padding: '14px 16px',
-    textAlign: 'left',
-    fontWeight: '600',
-    fontSize: '15px',
-    color: '#374151',
-    whiteSpace: 'nowrap',
-  }} {...props}>
+export const TableHeader = ({ children, className, ...props }: any) => (
+  <th className={`px-6 py-4 font-bold text-gray-800 whitespace-nowrap bg-gray-50 border-r border-gray-200 last:border-r-0 ${className || ''}`} {...props}>
     {children}
   </th>
 );
 
-export const TableCell = ({ children, ...props }: any) => (
-  <td style={{
-    padding: '14px 16px',
-    fontSize: '15px',
-    color: '#4b5563',
-  }} {...props}>
+export const TableCell = ({ children, className, ...props }: any) => (
+  <td className={`px-6 py-4 text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0 ${className || ''}`} {...props}>
     {children}
   </td>
 );
