@@ -102,5 +102,6 @@
   },
   "ts-node": {
     "transpileOnly": true
-  }
+  },
+  "include": ["src/**/*"]
 }
