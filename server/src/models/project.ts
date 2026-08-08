@@ -8,5 +8,10 @@ const projectSchema = new Schema({
   solutionUrl: String,
 }, { timestamps: true });
 
+projectSchema.index(
+  { title: 'text', description: 'text', tasks: 'text' },
+  { weights: { title: 5, description: 2, tasks: 1 } }
+);
+
 type projectSchemaInferType = InferSchemaType<typeof projectSchema>;
 export default model<projectSchemaInferType>("projects", projectSchema);

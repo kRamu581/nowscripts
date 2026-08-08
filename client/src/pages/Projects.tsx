@@ -269,7 +269,7 @@ export function Projects() {
         </div>
         
         {/* Marquee Wrapper */}
-        <div className="relative w-full flex gap-6 animate-marquee whitespace-nowrap">
+        <div className="relative w-full flex gap-6 animate-marquee motion-reduce:animate-none hover:[animation-play-state:paused] whitespace-nowrap">
           {repeatedMarquee.map((cat, idx) => (
             <div key={idx} className="flex-shrink-0 w-[280px]">
                <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 bg-gray-100 hover:shadow-lg transition-shadow cursor-pointer">
@@ -353,6 +353,11 @@ export function Projects() {
         }
         .animate-marquee {
           animation: marquee 30s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation: none;
+          }
         }
       `}</style>
     </div>

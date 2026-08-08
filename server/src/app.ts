@@ -15,6 +15,8 @@ import certificateRouter from "./routes/certificateRoutes";
 import interviewPrepProgressRouter from "./routes/interviewPrepProgressRoutes";
 import interviewRouter from "./routers/interview";
 import feedbackRouter from "./routers/feedback";
+import copilotRouter from "./routes/copilot";
+import globalSearchRouter from "./routers/globalSearch";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
@@ -257,6 +259,8 @@ app.use("/certificate", certificateRouter);
 app.use("/progress/interview-prep", interviewPrepProgressRouter);
 app.use("/interviews", interviewRouter);
 app.use("/api/feedback", feedbackRouter);
+app.use("/api/copilot", copilotRouter);
+app.use("/api/global-search", globalSearchRouter);
 
 app.use(errorHandler);
 

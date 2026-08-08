@@ -41,6 +41,7 @@ const RoadmapViewer = lazy(() => import("./pages/RoadmapViewer"));
 const CertificationCenter = lazy(() => import("./pages/CertificationCenter"));
 const Newsletter = lazy(() => import("./pages/Newsletter"));
 const SearchResults = lazy(() => import("./pages/SearchResults"));
+const GlobalSearchResults = lazy(() => import("./pages/GlobalSearchResults"));
 const Suggestions = lazy(() => import("./pages/Suggestions"));
 const VerifyCertificate = lazy(() => import("./pages/VerifyCertificate"));
 const AdminCertificates = lazy(() => import("./pages/admin/AdminCertificates"));
@@ -56,6 +57,8 @@ const Projects = lazy(() => import("./pages/Projects").then(m => ({ default: m.P
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail").then(m => ({ default: m.ProjectDetail })));
 const AIInterviewWizard = lazy(() => import("./pages/ai-interview/AIInterviewWizard").then(m => ({ default: m.AIInterviewWizard })));
 const NotFound = lazy(() => import("./pages/NotFound"));
+import { CopilotWidget } from "./components/copilot/CopilotWidget";
+const CopilotAdmin = lazy(() => import("./pages/admin/CopilotAdmin"));
 
 // AI Module Pages
 const AIDashboard = lazy(() => import("./pages/ai/AIDashboard"));
@@ -217,6 +220,7 @@ export default function App() {
               <Route path="/projects/:id" element={<ProjectDetail />} />
               <Route path="/ai-interview" element={<AIInterviewWizard />} />
               <Route path="/suggestions" element={<Suggestions />} />
+              <Route path="/global-search" element={<GlobalSearchResults />} />
               <Route path="/search/:tab/:query" element={<SearchResults />} />
               <Route path="/blog/:id" element={<Post />} />
               
@@ -255,6 +259,7 @@ export default function App() {
               <Route path="/admin/analytics" element={<AdminPlaceholder title="Analytics" />} />
               <Route path="/admin/revenue" element={<AdminPlaceholder title="Revenue" />} />
               <Route path="/admin/learning" element={<AdminPlaceholder title="Learning Paths" />} />
+              <Route path="/admin/copilot" element={<CopilotAdmin />} />
               <Route path="/admin/interviews" element={<AdminPlaceholder title="Interview Prep" />} />
               <Route path="/admin/newsletter" element={<AdminPlaceholder title="Newsletter" />} />
               <Route path="/admin/notifications" element={<SystemNotifications />} />
@@ -279,6 +284,7 @@ export default function App() {
           </Routes>
         </Suspense>
         <AuthModal />
+        <CopilotWidget />
         </AuthModalProvider>
       </div>
     </Context.Provider>

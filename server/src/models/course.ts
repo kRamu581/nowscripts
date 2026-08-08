@@ -20,5 +20,10 @@ const courseSchema = new Schema({
   }
 }, { timestamps: true });
 
+courseSchema.index(
+  { title: 'text', description: 'text' },
+  { weights: { title: 5, description: 1 } }
+);
+
 type courseSchemaInferType = InferSchemaType<typeof courseSchema>;
 export default model<courseSchemaInferType>("courses", courseSchema);

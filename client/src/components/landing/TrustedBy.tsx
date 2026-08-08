@@ -33,12 +33,12 @@ export function TrustedBy() {
   ];
 
   return (
-    <section className="py-16 bg-white border-b border-gray-100 relative overflow-hidden">
+    <section className="pt-8 pb-10 md:pt-10 md:pb-12 bg-white border-b border-gray-100 relative overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-12 relative z-20">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-purple-600 font-semibold text-xs tracking-wider mb-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 text-purple-700 font-semibold text-xs tracking-wider mb-6">
             <Star className="w-3 h-3 fill-current" />
             TRUSTED BY LEADERS
           </div>
@@ -58,7 +58,7 @@ export function TrustedBy() {
           
           <div className="flex group-hover:[animation-play-state:paused]">
             {/* First Set */}
-            <div className="flex animate-marquee whitespace-nowrap items-center">
+            <div className="flex animate-marquee motion-reduce:animate-none whitespace-nowrap items-center">
               {logos.map((logo, index) => (
                 <div key={`set1-${index}`} className="flex items-center justify-center">
                   {logo}
@@ -66,7 +66,7 @@ export function TrustedBy() {
               ))}
             </div>
             {/* Second Set (Seamless Loop) */}
-            <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
+            <div className="flex animate-marquee motion-reduce:animate-none whitespace-nowrap items-center" aria-hidden="true">
               {logos.map((logo, index) => (
                 <div key={`set2-${index}`} className="flex items-center justify-center">
                   {logo}
@@ -74,7 +74,7 @@ export function TrustedBy() {
               ))}
             </div>
             {/* Third Set (Seamless Loop for extra wide screens) */}
-            <div className="flex animate-marquee whitespace-nowrap items-center" aria-hidden="true">
+            <div className="flex animate-marquee motion-reduce:animate-none whitespace-nowrap items-center" aria-hidden="true">
               {logos.map((logo, index) => (
                 <div key={`set3-${index}`} className="flex items-center justify-center">
                   {logo}
@@ -99,6 +99,8 @@ export function TrustedBy() {
               <img 
                 src="/sarvam-logo.png" 
                 alt="Sarvam Logo" 
+                width="200"
+                height="64"
                 className="h-16 w-auto mix-blend-multiply object-contain"
               />
               <div className="flex flex-col">

@@ -42,10 +42,10 @@ export function AmberResources() {
   const currentResources = resourcesData[activeFilter] || resourcesData["CSA"];
 
   return (
-    <section className="py-16 bg-white border-t border-gray-100">
+    <section className="pt-8 pb-10 md:pt-10 md:pb-12 bg-white border-t border-gray-100">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
         <h2 className="text-2xl md:text-[28px] font-black text-[#111928] mb-1.5 tracking-tight">Thousands of Resources Globally</h2>
-        <p className="text-gray-500 font-medium mb-8 text-[15px]">
+        <p className="text-gray-600 text-sm md:text-base font-medium max-w-xl mx-auto md:mx-0 mb-8">
           Practice with real-world scenarios and past interview questions.
         </p>
 
@@ -55,13 +55,13 @@ export function AmberResources() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2 rounded-full text-sm font-bold border flex items-center gap-2 transition-all ${
+              className={`px-5 py-2 rounded-full text-sm font-bold border flex items-center gap-2 transition-all focus:outline-none focus:ring-2 focus:ring-[#C22915] focus:ring-offset-2 ${
                 activeFilter === filter 
-                  ? "bg-[#FFF0ED] text-[#FF5A3C] border-[#FF5A3C]" 
+                  ? "bg-[#FFF0ED] text-[#C22915] border-[#C22915]" 
                   : "bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50"
               }`}
             >
-              {activeFilter === filter && <div className="w-2 h-2 rounded-full bg-[#FF5A3C]" />}
+              {activeFilter === filter && <div className="w-2 h-2 rounded-full bg-[#C22915]" />}
               {filter}
             </button>
           ))}
@@ -71,15 +71,17 @@ export function AmberResources() {
         <div className="relative group">
           {/* Nav Buttons */}
           <button 
+            aria-label="Scroll Left"
             onClick={() => scroll('left')}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0 focus:outline-none focus:ring-2 focus:ring-[#D91B42] focus:ring-offset-2"
           >
             <ChevronLeft className="w-5 h-5 text-gray-600" />
           </button>
           
           <button 
+            aria-label="Scroll Right"
             onClick={() => scroll('right')}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-[#D91B42] focus:ring-offset-2"
           >
             <ChevronRight className="w-5 h-5 text-gray-600" />
           </button>
@@ -104,10 +106,8 @@ export function AmberResources() {
                   <p className="text-[#4B5563] text-[13px] sm:text-[14px] leading-snug mb-6 pr-4 font-medium">
                     {res.meta} • {res.module} • ⭐ {res.rating}
                   </p>
-                  <Link to="/interview-prep">
-                    <button className="bg-[#EF4466] hover:bg-[#D93856] text-white text-[13px] font-bold py-2 px-5 rounded-[4px] shadow-sm transition-colors w-max">
-                      View Resource
-                    </button>
+                  <Link to="/interview-prep" className="inline-block bg-[#D91B42] hover:bg-[#BE123C] focus:outline-none focus:ring-2 focus:ring-[#D91B42] focus:ring-offset-2 text-white text-[13px] font-bold py-2 px-5 rounded-[4px] shadow-sm transition-colors w-max">
+                    View Resource
                   </Link>
                 </div>
 
@@ -115,6 +115,8 @@ export function AmberResources() {
                   <img 
                     src={res.image} 
                     alt={res.title}
+                    width="480"
+                    height="220"
                     className="w-full h-full object-cover object-left-bottom"
                     style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 30%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 30%)' }}
                   />

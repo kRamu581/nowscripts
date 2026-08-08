@@ -19,7 +19,7 @@ export function AmberSupportCards() {
   ];
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white pt-8 pb-10 md:pt-10 md:pb-12">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <h2 className="text-3xl font-black text-gray-900 mb-8">Need Help? Let's Connect</h2>
         

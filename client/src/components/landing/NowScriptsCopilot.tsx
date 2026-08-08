@@ -23,9 +23,9 @@ export const NowScriptsCopilot = () => {
   };
 
   const suggestions = [
-    { icon: <Search className="w-4 h-4 text-[#0B2538]" />, text: "I'm looking for a course" },
-    { icon: <BookOpen className="w-4 h-4 text-[#FF5A3C]" />, text: "Tell me about practice labs" },
-    { icon: <MessageSquare className="w-4 h-4 text-[#0B2538]" />, text: "I need interview prep help" }
+    { icon: <Search className="w-4 h-4 text-blue-500" />, text: "I'm looking for a course" },
+    { icon: <BookOpen className="w-4 h-4 text-emerald-500" />, text: "Tell me about practice labs" },
+    { icon: <MessageSquare className="w-4 h-4 text-gray-700" />, text: "I need interview prep help" }
   ];
 
   const handleSend = async (text: string) => {
@@ -84,7 +84,7 @@ export const NowScriptsCopilot = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 w-16 h-16 rounded-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.15)] flex items-center justify-center p-[2px] z-50 group hover:scale-105 transition-transform"
+            className="fixed bottom-4 right-4 md:bottom-8 md:right-8 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white shadow-[0_8px_30px_rgb(0,0,0,0.15)] flex items-center justify-center p-[2px] z-50 group hover:scale-105 transition-transform"
             style={{
               background: "linear-gradient(to right, #FFB800, #FF5A5F, #C92A8D)"
             }}
@@ -92,7 +92,7 @@ export const NowScriptsCopilot = () => {
             <div className="bg-white w-full h-full rounded-full flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity" />
               {/* Abstract bot icon to mimic the screenshot */}
-              <div className="grid grid-cols-2 gap-[2px] w-8 h-8 transform rotate-45 group-hover:rotate-90 transition-transform duration-500">
+              <div className="grid grid-cols-2 gap-[2px] w-6 h-6 md:w-7 md:h-7 transform rotate-45 group-hover:rotate-90 transition-transform duration-500">
                 <div className="bg-[#FFB800] rounded-tl-full rounded-bl-full" />
                 <div className="bg-[#FF5A5F] rounded-tr-full rounded-br-full" />
                 <div className="bg-[#FF5A5F] rounded-bl-full rounded-br-full" />
@@ -107,39 +107,39 @@ export const NowScriptsCopilot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 sm:inset-auto sm:bottom-6 sm:right-6 sm:w-[420px] h-[100dvh] sm:h-[650px] sm:max-h-[calc(100vh-80px)] w-full max-w-[100vw] sm:max-w-[calc(100vw-32px)] bg-white rounded-none sm:rounded-2xl shadow-none sm:shadow-[0_12px_40px_rgb(0,0,0,0.12)] flex flex-col z-[100] overflow-hidden"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed inset-0 sm:inset-auto sm:top-0 sm:right-0 sm:bottom-0 sm:w-[400px] w-full bg-white shadow-[-10px_0_40px_rgba(0,0,0,0.1)] flex flex-col z-[100]"
           >
             {/* Header */}
-            <div className="relative px-4 py-3 border-b border-gray-100 flex items-center justify-between bg-white">
+            <div className="relative px-4 py-4 border-b border-gray-100 flex items-center justify-between bg-white z-20">
               <button 
                 onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                className="p-1.5 -ml-1.5 hover:bg-gray-100 rounded-md transition-colors"
+                className="p-1 -ml-1 text-gray-700 hover:bg-gray-100 rounded transition-colors"
               >
-                <MoreHorizontal className="w-5 h-5 text-gray-700" />
+                <MoreHorizontal className="w-6 h-6" />
               </button>
               
               <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5">
-                <div className="grid grid-cols-2 gap-[1px] w-4 h-4 transform rotate-45">
+                <div className="grid grid-cols-2 gap-[1px] w-[18px] h-[18px] transform rotate-45">
                   <div className="bg-[#FFB800] rounded-tl-full rounded-bl-full" />
                   <div className="bg-[#FF5A5F] rounded-tr-full rounded-br-full" />
                   <div className="bg-[#FF5A5F] rounded-bl-full rounded-br-full" />
                   <div className="bg-[#C92A8D] rounded-tl-full rounded-tr-full" />
                 </div>
                 <span className="font-extrabold text-[15px] tracking-tight text-gray-900">
-                  nowscripts <span className="font-bold text-gray-800 uppercase text-[13px]">Copilot</span>
+                  nowscripts <span className="font-bold text-gray-800 uppercase text-[13px]">COPILOT</span>
                 </span>
               </div>
 
-              <div className="flex items-center gap-0.5 text-gray-500">
-                <button onClick={() => setIsOpen(false)} className="hover:bg-gray-100 p-1.5 rounded-md transition-colors hidden md:block">
-                  <Minus className="w-5 h-5" />
+              <div className="flex items-center gap-2 text-gray-500">
+                <button onClick={() => setIsOpen(false)} className="hover:bg-gray-100 p-1 rounded transition-colors hidden md:block">
+                  <Minus className="w-6 h-6" />
                 </button>
-                <button onClick={() => setIsOpen(false)} className="hover:bg-gray-100 p-1.5 rounded-md transition-colors">
-                  <X className="w-5 h-5" />
+                <button onClick={() => setIsOpen(false)} className="hover:bg-gray-100 p-1 rounded transition-colors">
+                  <X className="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -153,7 +153,7 @@ export const NowScriptsCopilot = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-14 left-4 bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl w-48 overflow-hidden z-50"
+                    className="absolute top-16 left-4 bg-white border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl w-48 overflow-hidden z-50"
                   >
                     <button 
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 text-gray-700 text-sm font-medium transition-colors text-left" 
@@ -175,31 +175,31 @@ export const NowScriptsCopilot = () => {
               style={{
                 backgroundImage: 'radial-gradient(#E5E7EB 1px, transparent 0)',
                 backgroundSize: '20px 20px',
-                backgroundColor: 'white'
+                backgroundColor: '#FAFAFA' // Slightly off-white background
               }}
             >
-              <div className="p-4 flex flex-col gap-4 relative z-10">
+              <div className="p-4 flex flex-col gap-4 relative z-10 min-h-full">
                 {messages.map((msg, idx) => (
                   <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                     <div 
-                      className={`max-w-[85%] px-0 py-1 text-[14px] ${
+                      className={`max-w-[90%] px-0 py-1 text-[14px] ${
                         msg.role === "user" 
-                          ? "bg-[#FF5A3C] text-white rounded-2xl rounded-tr-sm px-4 py-2.5" 
+                          ? "bg-[#FF5A3C] text-white rounded-2xl rounded-tr-sm px-4 py-2.5 shadow-sm" 
                           : "bg-transparent text-gray-800"
                       }`}
                     >
                       {msg.role === "bot" && idx === 0 && (
-                        <div className="flex items-center gap-1.5 mb-3">
-                          <div className="grid grid-cols-2 gap-[1px] w-3 h-3 transform rotate-45">
+                        <div className="flex items-center gap-1.5 mb-2">
+                          <div className="grid grid-cols-2 gap-[1px] w-3.5 h-3.5 transform rotate-45">
                             <div className="bg-[#FFB800] rounded-tl-full rounded-bl-full" />
                             <div className="bg-[#FF5A5F] rounded-tr-full rounded-br-full" />
                             <div className="bg-[#FF5A5F] rounded-bl-full rounded-br-full" />
                             <div className="bg-[#C92A8D] rounded-tl-full rounded-tr-full" />
                           </div>
-                          <span className="font-extrabold text-[13px] text-gray-900 tracking-tight">nowscripts <span className="uppercase font-bold">COPILOT</span></span>
+                          <span className="font-extrabold text-[14px] text-gray-900 tracking-tight">nowscripts <span className="uppercase font-bold">COPILOT</span></span>
                         </div>
                       )}
-                      <div className={msg.role === "bot" ? "leading-relaxed text-[14.5px]" : ""}>
+                      <div className={msg.role === "bot" ? "leading-relaxed text-[14px] text-gray-700" : ""}>
                         {msg.content}
                       </div>
                     </div>
@@ -207,25 +207,27 @@ export const NowScriptsCopilot = () => {
                 ))}
                 
                 {messages.length === 1 && (
-                  <div className="mt-4">
+                  <div className="mt-6 mb-4">
                     <div className="flex items-center justify-center gap-4 mb-4">
                       <div className="h-[1px] flex-1 bg-gray-200 border-dashed" />
-                      <span className="text-[10px] font-bold text-gray-400 tracking-wider">YOU MAY TRY ASKING</span>
+                      <span className="text-[11px] font-bold text-gray-400 tracking-widest">YOU MAY TRY ASKING</span>
                       <div className="h-[1px] flex-1 bg-gray-200 border-dashed" />
                     </div>
                     
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 px-2 sm:px-6">
                       {suggestions.map((suggestion, idx) => (
                         <button 
                           key={idx}
                           onClick={() => handleSend(suggestion.text)}
-                          className="flex items-center justify-between w-full bg-white border border-gray-200 rounded-[14px] p-3.5 hover:border-gray-300 hover:shadow-sm transition-all text-left group shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
+                          className="flex items-center justify-between w-full bg-white border border-gray-100 rounded-xl py-3 px-4 hover:border-gray-300 hover:shadow-sm transition-all text-left shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
                         >
                           <div className="flex items-center gap-3">
-                            {suggestion.icon}
+                            <div className="flex items-center justify-center">
+                                {suggestion.icon}
+                            </div>
                             <span className="text-[14px] font-medium text-gray-700">{suggestion.text}</span>
                           </div>
-                          <ArrowRightIcon className="w-4 h-4 text-gray-500 group-hover:text-gray-800 transition-colors" />
+                          <ArrowRightIcon className="w-4 h-4 text-gray-600" />
                         </button>
                       ))}
                     </div>
@@ -236,7 +238,7 @@ export const NowScriptsCopilot = () => {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-white">
+            <div className="p-4 bg-[#FAFAFA]">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(inputValue); }}
                 className="relative rounded-[20px] border border-[#FF5A5F]/40 overflow-hidden focus-within:border-[#FF5A5F] transition-colors bg-white shadow-sm"
@@ -251,19 +253,19 @@ export const NowScriptsCopilot = () => {
                     }
                   }}
                   placeholder="Ask Anything..."
-                  className="w-full py-4 pl-4 pr-12 text-[14px] text-gray-800 outline-none placeholder:text-gray-400 bg-transparent resize-none min-h-[80px]"
+                  className="w-full py-4 pl-4 pr-12 text-[14px] text-gray-800 outline-none placeholder:text-gray-400 bg-transparent resize-none min-h-[90px]"
                 />
                 <button
                   type="submit"
                   disabled={!inputValue.trim()}
-                  className={`absolute right-3 bottom-3 w-8 h-8 rounded-lg flex items-center justify-center transition-colors
+                  className={`absolute right-3 bottom-3 w-8 h-8 rounded-[10px] flex items-center justify-center transition-colors
                     ${inputValue.trim() 
-                      ? "bg-[#FF5A3C] text-white cursor-pointer hover:bg-[#E04B2F]" 
-                      : "bg-[#D1D5DB] text-white cursor-not-allowed"
+                      ? "bg-gray-800 text-white cursor-pointer hover:bg-black" 
+                      : "bg-[#CBD5E1] text-white cursor-not-allowed"
                     }
                   `}
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="19" x2="12" y2="5"></line>
                     <polyline points="5 12 12 5 19 12"></polyline>
                   </svg>

@@ -15,7 +15,7 @@ export function AmberTagCloud() {
   };
 
   return (
-    <section className="bg-gray-50 py-12 border-b border-gray-100">
+    <section className="bg-gray-50 pt-6 pb-8 md:pt-8 md:pb-10 border-b border-gray-100">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <h2 className="text-xl font-bold text-gray-900 mb-6">Popular Topics</h2>
         
@@ -27,7 +27,7 @@ export function AmberTagCloud() {
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-3 font-semibold text-sm border-b-2 transition-colors ${
                 activeTab === tab 
-                  ? "border-[#FF5A3C] text-[#FF5A3C]" 
+                  ? "border-[#D91B42] text-[#D91B42]" 
                   : "border-transparent text-gray-500 hover:text-gray-900"
               }`}
             >
@@ -42,7 +42,7 @@ export function AmberTagCloud() {
             <Link 
               key={tag}
               to="/roadmaps"
-              className="text-sm font-medium text-gray-600 hover:text-[#FF5A3C] hover:underline"
+              className="text-sm font-medium text-gray-600 hover:text-[#D91B42] hover:underline"
             >
               {tag}
             </Link>

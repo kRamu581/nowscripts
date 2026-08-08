@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export function AmberDualCTA() {
   // Panel 2 was omitted to ensure zero fabricated data points.
   return (
-    <section className="bg-white py-16 border-b border-gray-100">
+    <section className="bg-white pt-8 pb-10 md:pt-10 md:pb-12 border-b border-gray-100">
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <div className="bg-[#FFF0ED] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-[#FFE4DE] shadow-sm">
           

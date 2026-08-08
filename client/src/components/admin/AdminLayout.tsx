@@ -3,7 +3,7 @@ import { Link, useLocation, Outlet } from "react-router-dom";
 import { 
   LayoutDashboard, Users, Activity, BarChart2, BookOpen, Target, 
   Mail, MessageSquare, Award, Briefcase, DollarSign, Settings,
-  Menu, X, Server, Shield
+  Menu, X, Server, Shield, Bot
 } from "lucide-react";
 import { BrandIconOnly } from "../BrandLogo";
 import Navbar from "../Navbar";
@@ -36,6 +36,7 @@ const ADMIN_NAVIGATION = [
       { name: "Notifications", href: "/admin/notifications", icon: Bell },
       { name: "Search", href: "/admin/search", icon: SearchIcon },
       { name: "Settings", href: "/admin/settings", icon: Settings },
+      { name: "Copilot", href: "/admin/copilot", icon: Bot },
       { name: "Logs", href: "/admin/activity", icon: Shield },
     ]
   }

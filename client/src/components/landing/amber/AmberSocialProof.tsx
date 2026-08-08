@@ -38,7 +38,7 @@ export function AmberSocialProof() {
   };
 
   return (
-    <section className="py-16 bg-[#CEEFE0] relative overflow-hidden">
+    <section className="pt-8 pb-10 md:pt-10 md:pb-12 bg-[#CEEFE0] relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-black text-[#0B2538]">Trusted members</h2>
