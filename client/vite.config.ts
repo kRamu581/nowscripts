@@ -8,6 +8,7 @@ export default defineConfig({
     include: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'lucide-react', 'recharts']
   },
   build: {
+    target: 'es2018',
     rollupOptions: {
       output: {
         manualChunks: {

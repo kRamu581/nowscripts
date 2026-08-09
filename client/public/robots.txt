@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.nowscripts.in/sitemap.xml
+Sitemap: https://www.nowscripts.in/sitemap_index.xml
