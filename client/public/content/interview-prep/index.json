@@ -1,15 +1,16 @@
 {
   "categories": [
     {
-      "id": "mock",
-      "title": "Mock Interviews",
+      "id": "2026-guide",
+      "title": "2026 Guide",
       "status": "active",
       "dataFile": "/content/interview-prep/mock/data.json"
     },
     {
-      "id": "mock-tests",
-      "title": "Mock Tests",
-      "status": "coming_soon"
+      "id": "interview-questions",
+      "title": "Interview Questions",
+      "status": "active",
+      "dataFile": "/content/interview-prep/questions-only/data.json"
     },
     {
       "id": "scenario",
@@ -22,6 +23,12 @@
       "title": "Ai interview",
       "status": "active",
       "url": "/ai-interview"
+    },
+    {
+      "id": "references",
+      "title": "References",
+      "status": "active",
+      "dataFile": "/content/interview-prep/references/data.json"
     }
   ]
 }

@@ -26,6 +26,7 @@ import { BrandIconOnly } from "./components/BrandLogo";
 const UnAuthHome = lazy(() => import("./pages/UnAuthHome"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const CommunityFeed = lazy(() => import("./pages/Home"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 const AuthRedirect = lazy(() => import("./pages/AuthRedirect"));
 const Post = lazy(() => import("./pages/Post"));
 const Notifications = lazy(() => import("./pages/Notifications"));
@@ -198,7 +199,8 @@ export default function App() {
           <Routes>
             {/* Public Layout Routes (Accessible to all, but shows AvatarMenu if logged in) */}
             <Route element={<PublicLayout notificationsCount={notificationsCount} />}>
-              <Route path="/" element={<UnAuthHome />} />
+              <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <UnAuthHome />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/roadmaps" element={<RoadmapDashboard />} />
               <Route path="/roadmaps/:slug" element={<RoadmapViewer />} />
@@ -284,7 +286,7 @@ export default function App() {
           </Routes>
         </Suspense>
         <AuthModal />
-        <CopilotWidget />
+        {!isAuthenticated && <CopilotWidget />}
         </AuthModalProvider>
       </div>
     </Context.Provider>

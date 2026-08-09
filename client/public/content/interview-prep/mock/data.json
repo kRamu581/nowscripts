@@ -1,5 +1,5 @@
 {
-  "title": "Mock Interviews",
+  "title": "2026 Guide",
   "modules": [
     {
       "name": "Module 1 (Q1-Q52)",
@@ -38,7 +38,15 @@
         },
         {
           "id": "q5",
-          "question_text": "Explain cloud computing in ServiceNow. Cloud computing in ServiceNow means the software runs on remote servers managed by ServiceNow itself. You don’t install anything locally. You just log in through a web browser, and everything is ready to use. Updates happen automatically, and your data is stored securely in the cloud. Q6. What is ITIL, and how does it relate to ServiceNow?",
+          "question_text": "Explain cloud computing in ServiceNow.",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Cloud computing in ServiceNow means the software runs on remote servers managed by ServiceNow itself. You don’t install anything locally. You just log in through a web browser, and everything is ready to use. Updates happen automatically, and your data is stored securely in the cloud."
+        },
+        {
+          "id": "q6",
+          "question_text": "What is ITIL, and how does it relate to ServiceNow?",
           "question_type": "short_answer",
           "options": [],
           "correct_options": [],
@@ -118,7 +126,15 @@
         },
         {
           "id": "q16",
-          "question_text": "Explain reference qualifiers. Reference qualifiers filter the options shown in a reference field. For example, when assigning a ticket, you might want to show only users from a specific department. Reference qualifiers make that possible. Q17. What are dependent values?",
+          "question_text": "Explain reference qualifiers.",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": "Reference qualifiers filter the options shown in a reference field. For example, when assigning a ticket, you might want to show only users from a specific department. Reference qualifiers make that possible."
+        },
+        {
+          "id": "q17",
+          "question_text": "What are dependent values?",
           "question_type": "short_answer",
           "options": [],
           "correct_options": [],

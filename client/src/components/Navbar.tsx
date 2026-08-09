@@ -11,7 +11,7 @@ import {
 import { useAuth } from "../contexts/Auth";
 import { useAuthModal } from "../contexts/AuthModalContext";
 import AvatarMenu from "./AvatarMenu";
-import Search from "./Search";
+
 import { BrandLogo } from "./BrandLogo";
 
 export default function Navbar({
@@ -55,7 +55,7 @@ export default function Navbar({
   return (
     <>
       <nav id="main-navbar" className={`w-full h-14 ${positionClass} z-50 transition-all duration-300 ${bgColor}`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-full">
+        <div className="w-full px-4 lg:px-8 flex items-center justify-between h-full">
           <div className="flex items-center gap-4 flex-shrink-0">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
@@ -66,12 +66,10 @@ export default function Navbar({
             <Link to="/" className="block">
               <BrandLogo textColor={logoColor} dotColor={dotColor} hideTextOnMobile={true} />
             </Link>
-            <div className="hidden md:block">
-              <Search />
-            </div>
           </div>
           
           <div className="flex items-center gap-6 h-full">
+            <Link to="/dashboard" className={`hidden md:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Dashboard</Link>
             <Link to="/learn" className={`hidden md:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Learn</Link>
             <Link to="/projects" className={`hidden lg:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Projects</Link>
             <Link to="/interview-prep" className={`hidden md:block text-sm font-medium ${textColor} ${hoverColor} transition-colors`}>Interview Prep</Link>
@@ -123,6 +121,7 @@ export default function Navbar({
             <div className="flex-1 overflow-y-auto py-3">
               <nav className="flex flex-col space-y-1 px-3">
                 <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Home</Link>
+                <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Dashboard</Link>
                 <Link to="/learn" onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Learn</Link>
                 <Link to="/projects" onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Projects</Link>
                 <Link to="/interview-prep" onClick={() => setIsMobileMenuOpen(false)} className="px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md font-medium transition-colors">Interview Prep</Link>

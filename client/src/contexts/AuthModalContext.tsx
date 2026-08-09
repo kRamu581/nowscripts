@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from "react";
+import toast from "react-hot-toast";
+import { url } from "../baseUrl";
 
 type AuthView = "login" | "signup" | "forgot_password" | "verify_otp" | "reset_password";
 
@@ -22,7 +24,20 @@ export function AuthModalProvider({ children }: { children: ReactNode }) {
   const [onSuccessCallback, setOnSuccessCallback] = useState<(() => void) | null>(null);
   const [guestMessage, setGuestMessage] = useState<string | undefined>(undefined);
   
-  const openModal = (initialView: AuthView = "login", onSuccess?: () => void, message?: string) => {
+  const openModal = async (initialView: AuthView = "login", onSuccess?: () => void, message?: string) => {
+    try {
+      const res = await fetch(`${url}/api/settings/public`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.login_enabled === false) {
+          toast.error("we have low storage sorry");
+          return;
+        }
+      }
+    } catch (err) {
+      // Ignore errors and proceed
+    }
+
     setView(initialView);
     if (onSuccess) {
       setOnSuccessCallback(() => onSuccess);

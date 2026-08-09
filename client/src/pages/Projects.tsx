@@ -76,7 +76,7 @@ export function Projects() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-24">
+    <div className="min-h-screen bg-white pt-6 pb-24">
       <SEO 
         title="ServiceNow Projects & Portfolio"
         description="Build real-world ServiceNow projects to add to your portfolio. Explore tutorials and assignments on ITSM, CSM, App Engine, and more."

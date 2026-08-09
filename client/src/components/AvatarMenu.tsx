@@ -199,24 +199,24 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                     </div>
                     <a
                       href={`/user/${user?._id}`}
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                      className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 transition-colors group"
                     >
                       <User className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Profile</span>
+                      <span className="text-[13px] font-medium text-gray-700 group-hover:text-gray-900">Profile</span>
                     </a>
                     <a
                       href="/roadmaps"
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                      className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 transition-colors group"
                     >
                       <LayoutDashboard className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Dashboard</span>
+                      <span className="text-[13px] font-medium text-gray-700 group-hover:text-gray-900">Dashboard</span>
                     </a>
                     <a
                       href="/learn"
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                      className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 transition-colors group"
                     >
                       <Bookmark className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Bookmarked Resources</span>
+                      <span className="text-[13px] font-medium text-gray-700 group-hover:text-gray-900">Bookmarked Resources</span>
                     </a>
                   </div>
 
@@ -229,17 +229,17 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                     </div>
                     <a
                       href="/interviews/submit"
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                      className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 transition-colors group"
                     >
                       <MessageSquarePlus className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Submit an Interview</span>
+                      <span className="text-[13px] font-medium text-gray-700 group-hover:text-gray-900">Submit an Interview</span>
                     </a>
                     <a
                       href="/ai"
-                      className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                      className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 transition-colors group"
                     >
                       <Bot className="w-5 h-5 text-purple-400 group-hover:text-purple-600" />
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-purple-600">🤖 AI Assistant</span>
+                      <span className="text-[13px] font-medium text-gray-700 group-hover:text-purple-600">AI Assistant</span>
                     </a>
                   </div>
 
@@ -252,10 +252,10 @@ export default function AvatarMenu({ isScrolled = false }: { isScrolled?: boolea
                         </div>
                           <a
                             href="/admin"
-                            className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition-colors group"
+                            className="flex items-center gap-3 px-5 py-2 hover:bg-gray-50 transition-colors group"
                           >
                             <UserCircle className="w-5 h-5 text-gray-400 group-hover:text-now-primary" />
-                            <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">Admin Panel</span>
+                            <span className="text-[13px] font-medium text-gray-700 group-hover:text-gray-900">Admin Panel</span>
                           </a>
                       </div>
                     </>

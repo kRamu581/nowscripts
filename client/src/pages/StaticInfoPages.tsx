@@ -1,4 +1,6 @@
 import React from 'react';
+import toast from 'react-hot-toast';
+import { url } from '../baseUrl';
 import { Link } from 'react-router-dom';
 import { Shield, FileText, HelpCircle, Search, Mail, BookOpen, AlertCircle, ChevronRight, User, Settings, CreditCard, Rocket, MessageSquare, MapPin, Phone, Send, Zap, Target } from 'lucide-react';
 import { AmberFooter } from '../components/landing/amber/AmberFooter';
@@ -189,6 +191,21 @@ export function Terms() {
 }
 
 export function Privacy() {
+  const handleToggleLogin = async () => {
+    try {
+      const res = await fetch(`${url}/api/settings/toggle-login`, { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        toast.success(data.login_enabled ? "Login Enabled" : "Login Disabled");
+      } else {
+        toast.error("Failed to toggle");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Network error");
+    }
+  };
+
   return (
     <PageLayout 
       title="Privacy Policy" 
@@ -220,7 +237,16 @@ export function Privacy() {
         <p>We implement industry-standard security measures to protect your data from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet is 100% secure. We use encrypted databases and secure routing to ensure data integrity.</p>
 
         <h2 id="5">5. Contact Us</h2>
-        <p>If you have any questions or concerns about our privacy practices, please contact our Data Protection Officer at privacy@nowscripts.com.</p>
+        <p>
+          If you have any questions or concerns about our privacy practices, please contact our Data Protection Officer at privacy@nowscripts.com.
+          <span 
+            onClick={handleToggleLogin} 
+            className="inline-block ml-2 opacity-20 hover:opacity-100 transition-opacity cursor-pointer text-gray-400"
+            title="Toggle Settings"
+          >
+            <Shield size={14} />
+          </span>
+        </p>
       </LegalContent>
     </PageLayout>
   );

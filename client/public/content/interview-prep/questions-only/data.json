@@ -1,0 +1,2038 @@
+{
+  "id": "questions-only",
+  "title": "ServiceNow Interview Questions",
+  "author": "Author : Md Afan Khan (LTM servicenow developer)",
+  "description": "A comprehensive list of questions for ServiceNow interview preparation.",
+  "modules": [
+    {
+      "id": "mod1",
+      "title": "Questions",
+      "questions": [
+        {
+          "id": "q1",
+          "question_text": "What is the difference between Catalog Item and Record Producer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q2",
+          "question_text": "Can Record Producer create Incident?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q3",
+          "question_text": "Can Order Guide contain Record Producer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q4",
+          "question_text": "Which one supports approvals?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q5",
+          "question_text": "Can we use Flow Designer with all?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q6",
+          "question_text": "Can we attach Workflow or Flow in Record Producer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q7",
+          "question_text": "What is the difference between Async and After Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q8",
+          "question_text": "Can Async access previous object?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q9",
+          "question_text": "Can we use current and previous object in Async Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q10",
+          "question_text": "achieve this?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q11",
+          "question_text": "Best Approach → Before Query Business Rule OR ACL?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q12",
+          "question_text": "Why not only ACL?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q13",
+          "question_text": "What is onCellEdit Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q14",
+          "question_text": "Can we stop update in onCellEdit?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q15",
+          "question_text": "Can multiple records be edited together?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q16",
+          "question_text": "What are the ways to get data from Server Side to Client Side?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q17",
+          "question_text": "Best way to get server data to client?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q18",
+          "question_text": "Why use GlideAjax?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q19",
+          "question_text": "Why sysparm_name mandatory?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q20",
+          "question_text": "Why extend AbstractAjaxProcessor?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q21",
+          "question_text": "Why asynchronous?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q22",
+          "question_text": "What is the difference between getXML(), getXMLWait(), and getXMLAnswer()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q23",
+          "question_text": "Why Most Preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q24",
+          "question_text": "Which One Should You Use?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q25",
+          "question_text": "What is the difference between SLA and OLA?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q26",
+          "question_text": "What is Retroactive Start and Retroactive Pause?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q27",
+          "question_text": "Why Needed?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q28",
+          "question_text": "What are the ways to trigger a Notification?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q29",
+          "question_text": "Why Event-Based Preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q30",
+          "question_text": "Best Practice?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q31",
+          "question_text": "Which is best approach?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q32",
+          "question_text": "Why use events instead of direct notification?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q33",
+          "question_text": "What is Mail Script / Email Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q34",
+          "question_text": "How do you call Email Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q35",
+          "question_text": "Which method prints content?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q36",
+          "question_text": "Can we use GlideRecord in Mail Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q37",
+          "question_text": "What is the difference between REST and SOAP?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q38",
+          "question_text": "Which is more commonly used today?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q39",
+          "question_text": "When SOAP Still Used?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q40",
+          "question_text": "Which one does ServiceNow support?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q41",
+          "question_text": "Which one is preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q42",
+          "question_text": "Can we call REST Message from Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q43",
+          "question_text": "What is REST Message?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q44",
+          "question_text": "Why Call REST Message from Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q45",
+          "question_text": "What is the difference between setStringParameter() and setStringParameterNoEscape()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q46",
+          "question_text": "Why Use NoEscape?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q47",
+          "question_text": "What is the difference between GlideRecord and GlideRecordSecure?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q48",
+          "question_text": "What is the difference between GlideDate and GlideDateTime?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q49",
+          "question_text": "What is the difference between Variable and Variable Set?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q50",
+          "question_text": "What is your name?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q51",
+          "question_text": "What is the difference between SRVS and MRVS?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q52",
+          "question_text": "What is onForeignInsert?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q53",
+          "question_text": "How to avoid Foreign Insert? I don’t want to insert new record. How to stop insertion?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q54",
+          "question_text": "Why Avoid Foreign Insert?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q55",
+          "question_text": "How to copy attachments from Parent Incident to Child Incident?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q56",
+          "question_text": "Where to Write This?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q57",
+          "question_text": "Why Use After Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q58",
+          "question_text": "What is sys_attachment Table?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q59",
+          "question_text": "Why Use GlideRecord?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q60",
+          "question_text": "Which function is commonly used in GlideSysAttachment API?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q61",
+          "question_text": "Comments added in Parent Incident should copy to Child Incident. How?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q62",
+          "question_text": "Why getJournalEntry(1)?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q63",
+          "question_text": "How is Priority updated based on Impact and Urgency?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q64",
+          "question_text": "How many users/business services are affected?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q65",
+          "question_text": "How quickly issue must be resolved?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q66",
+          "question_text": "UI Action is Server Side or Client Side?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q67",
+          "question_text": "How to Identify?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q68",
+          "question_text": "UI Action should only be visible to Software Group. How?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q69",
+          "question_text": "What is the use of gsftSubmit()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q70",
+          "question_text": "Why Do We Need gsftSubmit()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q71",
+          "question_text": "What is gs.getUser().isMemberOf()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q72",
+          "question_text": "Why sys_id is Better?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q73",
+          "question_text": "What is the execution order of Client Script and UI Policy?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q74",
+          "question_text": "Can we use GlideRecord in Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q75",
+          "question_text": "Why GlideRecord Cannot Be Used Directly?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q76",
+          "question_text": "What Happens If We Try?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q77",
+          "question_text": "Why GlideAjax is Used?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q78",
+          "question_text": "GlideRecord Allowed in Some Client Contexts?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q79",
+          "question_text": "What Happens Internally?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q80",
+          "question_text": "Why Use Before Query BR?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q81",
+          "question_text": "Does logged-in user have admin role?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q82",
+          "question_text": "Why Before Query BR?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q83",
+          "question_text": "What is current.addQuery()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q84",
+          "question_text": "What is the meaning of * and None ACL?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q85",
+          "question_text": "Can user access Incident records at all?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q86",
+          "question_text": "Can user enter the house?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q87",
+          "question_text": "Which rooms inside house can user access?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q88",
+          "question_text": "Can user access record?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q89",
+          "question_text": "Can user access fields generally?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q90",
+          "question_text": "Any special rule for priority field?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q91",
+          "question_text": "Can user access records of this table?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q92",
+          "question_text": "Can user read incident records at all?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q93",
+          "question_text": "Can user enter the building?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q94",
+          "question_text": "Can user read all fields generally?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q95",
+          "question_text": "Now can user access all rooms?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q96",
+          "question_text": "Can user edit short_description?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q97",
+          "question_text": "Can patient enter hospital?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q98",
+          "question_text": "Can patient enter all departments?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q99",
+          "question_text": "Can patient enter ICU specifically?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q100",
+          "question_text": "Why Rarely Used?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q101",
+          "question_text": "Why Extremely Dangerous?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q102",
+          "question_text": "Can people enter any building in the city?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q103",
+          "question_text": "Can people access every room inside every building?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q104",
+          "question_text": "Why One Catalog Item?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q105",
+          "question_text": "What is the difference between Reports and Performance Analytics?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q106",
+          "question_text": "Why Reports Cannot Show Historical Data Properly?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q107",
+          "question_text": "Difference between Performance and Platform Analytics?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q108",
+          "question_text": "Which ServiceNow version are you currently working on?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q109",
+          "question_text": "What is the use of setWorkflow(false)?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q110",
+          "question_text": "Why Do We Use It?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q111",
+          "question_text": "What Happens Here?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q112",
+          "question_text": "What Are System Fields?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q113",
+          "question_text": "What is the difference between next(), hasNext(), _next()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q114",
+          "question_text": "Why _next() Exists?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q115",
+          "question_text": "Is there another page?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q116",
+          "question_text": "How to run a Client Script in a particular view?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q117",
+          "question_text": "When to Use Which?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q118",
+          "question_text": "How to call Script Include from Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q119",
+          "question_text": "Why Use Script Include?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q120",
+          "question_text": "When Client Callable Is Needed?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q121",
+          "question_text": "How to add recipients in Notification? How to send CC and BCC emails?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q122",
+          "question_text": "Where to Write This Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q123",
+          "question_text": "Type Visible to Others?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q124",
+          "question_text": "Can we explicitly call a Business Rule from somewhere?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q125",
+          "question_text": "So Can We Trigger BR Indirectly?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q126",
+          "question_text": "By to change. How will you achieve this?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q127",
+          "question_text": "you implement this validation?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q128",
+          "question_text": "Why onChange Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q129",
+          "question_text": "Why Not Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q130",
+          "question_text": "What in Cloning, Patching, and Upgrades?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q131",
+          "question_text": "What Gets Copied?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q132",
+          "question_text": "Why Cloning Is Done?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q133",
+          "question_text": "What Upgrade Includes?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q134",
+          "question_text": "Explain your project process and how stories are assigned to you. Who assigns stories/tasks to you?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q135",
+          "question_text": "How do you move changes from Dev to Test and Test to Prod?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q136",
+          "question_text": "Why Preview Is Important?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q137",
+          "question_text": "What Happens During Commit?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q138",
+          "question_text": "What Is NOT Captured in Update Set?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q139",
+          "question_text": "Why User Data Is Not Captured?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q140",
+          "question_text": "How to Move Non-Captured Items?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q141",
+          "question_text": "Why Credentials Are Not Captured?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q142",
+          "question_text": "Are Flow Designer flows captured?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q143",
+          "question_text": "available during Update Set Preview?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q144",
+          "question_text": "Are you using Change Management while moving changes from Test to Production?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q145",
+          "question_text": "Why Change Management Is Needed?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q146",
+          "question_text": "Why Rollback Plan Important?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q147",
+          "question_text": "Why CAB Needed?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q148",
+          "question_text": "Why Deploy During Maintenance Window?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q149",
+          "question_text": "What is Cascading Variables in an Order Guide?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q150",
+          "question_text": "How does cascading identify variables?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q151",
+          "question_text": "What if variable names differ?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q152",
+          "question_text": "Does cascading work for all variable types?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q153",
+          "question_text": "What is the use of the “Isolate Script” checkbox in Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q154",
+          "question_text": "What is Isolate Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q155",
+          "question_text": "What happens?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q156",
+          "question_text": "Why ServiceNow introduced Isolate Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q157",
+          "question_text": "What is the major difference between Client Script and Catalog Client Script?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q158",
+          "question_text": "What methods can we use to prevent form submission on client side and server side?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q159",
+          "question_text": "How can we make certain Catalog Items visible to specific users only?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q160",
+          "question_text": "user will see the catalog or not?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q161",
+          "question_text": "What is the execution order of ACL?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q162",
+          "question_text": "What are “Allow If” and “Deny Unless” in ACLs?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q163",
+          "question_text": "Dono Sath Me Ho Toh?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q164",
+          "question_text": "Toh final access kisko milega?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q165",
+          "question_text": "o Which user can access the Change form?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q166",
+          "question_text": "• Can user read?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q167",
+          "question_text": "• write?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q168",
+          "question_text": "• create?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q169",
+          "question_text": "• delete?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q170",
+          "question_text": "Which is More Secure?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q171",
+          "question_text": "What are trigger points in Flow Designer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q172",
+          "question_text": "By default, how many steps can be defined in a single Flow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q173",
+          "question_text": "What are Flow Variables?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q174",
+          "question_text": "o Which approach will you follow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q175",
+          "question_text": "Which Flow action will you use for this routing scenario?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q176",
+          "question_text": "What is the use of Decision Tables in flow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q177",
+          "question_text": "Table API and Scripted REST API are used for inbound or outbound integration?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q178",
+          "question_text": "What is it?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q179",
+          "question_text": "What is REST API based integrations?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q180",
+          "question_text": "What are HTTP methods used in REST APIs?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q181",
+          "question_text": "Can you explain in details between put and patch with example?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q182",
+          "question_text": "Which is Better?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q183",
+          "question_text": "What is OAuth 2.0?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q184",
+          "question_text": "Why OAuth is Used?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q185",
+          "question_text": "What is IntegrationHub or MID Server?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q186",
+          "question_text": "IntegrationHub Kya Hai?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q187",
+          "question_text": "Kaise Kaam Karta Hai?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q188",
+          "question_text": "Spokes Kya Hote Hain?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q189",
+          "question_text": "MID Server Kya Hai?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q190",
+          "question_text": "MID Server Ki Need Kyu Hoti Hai?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q191",
+          "question_text": "What is IntegrationHub?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q192",
+          "question_text": "What are Spokes?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q193",
+          "question_text": "What is MID Server?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q194",
+          "question_text": "Why MID Server Needed?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q195",
+          "question_text": "How many ways can we create HR Cases in HRSD?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q196",
+          "question_text": "What was your role/work in HRSD module?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q197",
+          "question_text": "Why getReference()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q198",
+          "question_text": "Why this is Best Practice?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q199",
+          "question_text": "Why use getReference()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q200",
+          "question_text": "Why addInfoMessage preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q201",
+          "question_text": "notification to approver?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q202",
+          "question_text": "How can we create approvals using Flow Designer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q203",
+          "question_text": "Why Flow Designer Preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q204",
+          "question_text": "Who will receive?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q205",
+          "question_text": "Why Notification Preferred?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q206",
+          "question_text": "retrieves messages from where?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q207",
+          "question_text": "How can we show error/info messages in different languages based on user language?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q208",
+          "question_text": "Why Use UI Messages?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q209",
+          "question_text": "• How will you achieve this?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q210",
+          "question_text": "Apart from Before Query Business Rule, can we restrict access another way?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q211",
+          "question_text": "Why ACL is Better?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q212",
+          "question_text": "Which type of ACL will you use there?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q213",
+          "question_text": "Why Record Read ACL?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q214",
+          "question_text": "When does it run?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q215",
+          "question_text": "Why Updating Current in After BR is Bad?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q216",
+          "question_text": "Can we use current.update() in Before or After Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q217",
+          "question_text": "Why Avoid?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q218",
+          "question_text": "How to Prevent Recursion?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q219",
+          "question_text": "What it does?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q220",
+          "question_text": "What happens if current.update() is used in After Business Rule?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q221",
+          "question_text": "How to Prevent It?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q222",
+          "question_text": "What is Workspace?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q223",
+          "question_text": "What is Service Portal? What work have you done on Portal side?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q224",
+          "question_text": "What Users Can Do in Portal?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q225",
+          "question_text": "Why sys_user_grmember table?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q226",
+          "question_text": "Why getRefRecord()?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q227",
+          "question_text": "What is a callback function?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q228",
+          "question_text": "Why Used?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q229",
+          "question_text": "How will you print the email of the first member from the returned result array?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q230",
+          "question_text": "What is the difference between Incident, Problem and Change management?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q231",
+          "question_text": "Types of Change?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q232",
+          "question_text": "What is Change Management?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q233",
+          "question_text": "Why Do We Use Change Management?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q234",
+          "question_text": "Why Pre-approved?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q235",
+          "question_text": "What is CAB?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q236",
+          "question_text": "CAB Approval Needed In?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q237",
+          "question_text": "What is ECAB?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q238",
+          "question_text": "Difference between workflow and flow designer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q239",
+          "question_text": "What is Workflow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q240",
+          "question_text": "What is Flow Designer?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q241",
+          "question_text": "Can Workflow and Flow Designer coexist?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q242",
+          "question_text": "When Would You Still See Workflow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q243",
+          "question_text": "Difference b/w Performance Analytics and Platform Analytics? Reports and Dashboard?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q244",
+          "question_text": "Reports Kya Hote Hain?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q245",
+          "question_text": "Aaj kitne P1 incidents open hain?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q246",
+          "question_text": "Dashboard Kya Hota Hai?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q247",
+          "question_text": "Kya Hota Hai?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q248",
+          "question_text": "Pichhle 6 months me incident count increase hua ya decrease?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q249",
+          "question_text": "What is BR and Types of BR?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q250",
+          "question_text": "What is Business Rule (BR) in ServiceNow?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q251",
+          "question_text": "When It Runs?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q252",
+          "question_text": "Why Async Better Here?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        },
+        {
+          "id": "q253",
+          "question_text": "Why Use After BR Here?",
+          "question_type": "short_answer",
+          "options": [],
+          "correct_options": [],
+          "explanation": ""
+        }
+      ]
+    }
+  ]
+}

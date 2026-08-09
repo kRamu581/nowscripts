@@ -1,0 +1,58 @@
+{
+  "id": "references",
+  "title": "References",
+  "description": "Useful web references, blogs, and articles for ServiceNow interview preparation.",
+  "modules": [
+    {
+      "id": "mod1",
+      "title": "Websites and Articles",
+      "questions": [
+        {
+          "id": "ref1",
+          "question_text": "MindMajix",
+          "explanation": "URL: https://mindmajix.com/servicenow-interview-questions\\nLast Updated: 23 Jun 2026"
+        },
+        {
+          "id": "ref2",
+          "question_text": "Foundit",
+          "explanation": "URL: https://www.foundit.in/career-advice/servicenow-interview-questions/\\nLast Updated: 27 May 2026"
+        },
+        {
+          "id": "ref3",
+          "question_text": "Croma Campus",
+          "explanation": "URL: https://www.cromacampus.com/blogs/top-servicenow-interview-questions-and-answers/\\nLast Updated: 28 Jan 2026"
+        },
+        {
+          "id": "ref4",
+          "question_text": "Simplilearn",
+          "explanation": "URL: https://www.simplilearn.com/servicenow-interview-questions-article\\nLast Updated: 9 Jul 2026"
+        },
+        {
+          "id": "ref5",
+          "question_text": "igmGuru",
+          "explanation": "URL: https://www.igmguru.com/blog/servicenow-interview-questions\\nLast Updated: 4 Aug 2026"
+        },
+        {
+          "id": "ref6",
+          "question_text": "TechPratham",
+          "explanation": "URL: https://www.techpratham.com/blog/general-blogs/top-50-servicenow-interview-questions-and-answers-for-2026\\nLast Updated: 4 Dec 2025 (published; no separate 'updated' label shown)"
+        },
+        {
+          "id": "ref7",
+          "question_text": "Multisoft Virtual Academy",
+          "explanation": "URL: https://www.multisoftvirtualacademy.com/interview-questions/servicenow-admin-interview-questions-answers\\nLast Updated: Not shown on page — no visible last-updated date"
+        },
+        {
+          "id": "ref8",
+          "question_text": "ServiceNow Community",
+          "explanation": "URL: https://www.servicenow.com/community/developer-blog/servicenow-developer-interview-questions/ba-p/3467441\\nLast Updated: 11 Mar 2026 (published 14 Jan 2026)"
+        },
+        {
+          "id": "ref9",
+          "question_text": "Additional Notes",
+          "explanation": "• TechPratham and Multisoft don't display a clear 'last updated' label the way the others do — best available date (published date) is given or noted it's missing.\\n• igmGuru (Aug 4, 2026) and Simplilearn (Jul 9, 2026) are the two most recently updated among these."
+        }
+      ]
+    }
+  ]
+}

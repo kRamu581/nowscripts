@@ -73,7 +73,7 @@ export function AuthModal() {
           clearCallback();
         } else {
           const isAdminUser = res.data.role === "admin" || res.data.role === "Admin" || res.data.role === "Super Admin";
-          const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+          const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/dashboard';
           const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
           localStorage.removeItem("redirect_after_login");
           if (window.location.pathname !== redirectPath) {
@@ -131,7 +131,7 @@ export function AuthModal() {
             clearCallback();
           } else {
             const isAdminUser = mockAdminUser.role === "admin" || mockAdminUser.role === "Admin" || mockAdminUser.role === "Super Admin";
-            const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+            const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/dashboard';
             const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
             localStorage.removeItem("redirect_after_login");
             if (window.location.pathname !== redirectPath) {
@@ -153,7 +153,7 @@ export function AuthModal() {
           clearCallback();
         } else {
           const isAdminUser = res.data.role === "admin" || res.data.role === "Admin" || res.data.role === "Super Admin";
-          const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/roadmaps';
+          const defaultRedirect = isAdminUser ? '/admin/dashboard' : '/dashboard';
           const redirectPath = localStorage.getItem("redirect_after_login") || defaultRedirect;
           localStorage.removeItem("redirect_after_login");
           if (window.location.pathname !== redirectPath) {
@@ -176,7 +176,7 @@ export function AuthModal() {
           onSuccessCallback();
           clearCallback();
         } else {
-          const redirectPath = localStorage.getItem("redirect_after_login") || "/roadmaps";
+          const redirectPath = localStorage.getItem("redirect_after_login") || "/dashboard";
           localStorage.removeItem("redirect_after_login");
           if (window.location.pathname !== redirectPath) {
             navigate(redirectPath);

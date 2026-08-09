@@ -71,14 +71,7 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
 
         {/* Middle: Desktop Navigation & Search */}
         <div className="hidden lg:flex flex-1 items-center justify-center mx-6 gap-6">
-          <nav className="flex items-center gap-5">
-            <Link to="/learn" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Learn</Link>
-            <Link to="/roadmaps" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Roadmaps</Link>
-            <Link to="/projects" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Projects</Link>
-            <Link to="/interview-prep" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Interview</Link>
-            <Link to="/community" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Community</Link>
-            <Link to="/about" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>About</Link>
-          </nav>
+
 
           {isScrolled && (
             <form onSubmit={handleSearch} className="relative w-full max-w-[250px] ml-4 flex items-center h-[36px] bg-[#F8F9FA] border border-gray-200 rounded-full overflow-hidden shadow-sm hover:shadow-md transition-shadow">

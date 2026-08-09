@@ -9,6 +9,7 @@ import en from "javascript-time-ago/locale/en.json";
 import ru from "javascript-time-ago/locale/ru.json";
 import Auth from "./contexts/Auth";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { StudyTimeProvider } from "./contexts/StudyTimeContext";
 import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient({
@@ -33,9 +34,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
             <Auth>
-              <ThemeProvider>
-                <App />
-              </ThemeProvider>
+              <StudyTimeProvider>
+                <ThemeProvider>
+                  <App />
+                </ThemeProvider>
+              </StudyTimeProvider>
             </Auth>
           </QueryClientProvider>
         </BrowserRouter>

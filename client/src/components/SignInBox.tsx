@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { emailIcon, googleIcon } from "../assets/icons";
 import { BrandIconOnly } from "./BrandLogo";
 
@@ -66,6 +67,33 @@ export default function SignInBox({ message, typeOfLogin }: SignInBoxType) {
     } else {
       openModal("signup");
     }
+  }
+
+  const [loginEnabled, setLoginEnabled] = useState(true);
+
+  useEffect(() => {
+    const checkSettings = async () => {
+      try {
+        const res = await axios.get(`${url}/api/settings/public`);
+        if (res.data.login_enabled === false) {
+          setLoginEnabled(false);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    checkSettings();
+  }, []);
+
+  if (!loginEnabled) {
+    return (
+      <div className="w-[95%] sm:w-full max-w-[420px] mx-auto flex flex-col items-center gap-4 py-12 md:py-16 bg-white rounded-2xl px-6" style={{ boxShadow: "0px 4px 24px rgba(0,0,0,0.06)" }}>
+        <BrandIconOnly className="mb-2 h-12 md:h-14" />
+        <p className="font-serif text-xl md:text-2xl mb-8 text-center text-red-500 font-medium">
+          we have low storage sorry
+        </p>
+      </div>
+    );
   }
 
   return (
