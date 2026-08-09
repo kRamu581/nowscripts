@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { 
- Search, ChevronRight, CheckCircle, Bookmark, Star, ArrowLeft, ArrowRight,
- Target, BarChart3, AlertCircle, PlayCircle, RefreshCw, BookOpen, Menu, X, List, Hash
+  Search, ChevronRight, CheckCircle, Bookmark, Star, ArrowLeft, ArrowRight,
+  Target, BarChart3, AlertCircle, PlayCircle, RefreshCw, BookOpen, Menu, X, List, Hash, ExternalLink
 } from "lucide-react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -417,13 +417,13 @@ export default function InterviewPrepDashboard() {
            </div>
 
             {activeCategory?.id === "references" ? (
-              <div className="overflow-x-auto mt-6">
+              <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse border border-gray-200 bg-white shadow-sm rounded-lg overflow-hidden">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                      <th className="p-3 lg:p-4 text-sm font-semibold text-gray-900 border-r border-gray-200">Website</th>
-                      <th className="p-3 lg:p-4 text-sm font-semibold text-gray-900 border-r border-gray-200">URL</th>
-                      <th className="p-3 lg:p-4 text-sm font-semibold text-gray-900">Last Updated</th>
+                      <th className="p-3 lg:p-4 text-sm font-semibold text-gray-900 border-r border-gray-200 min-w-24 md:min-w-32">Website</th>
+                      <th className="p-3 lg:p-4 text-sm font-semibold text-gray-900 border-r border-gray-200 min-w-16 md:min-w-64">URL</th>
+                      <th className="p-3 lg:p-4 text-sm font-semibold text-gray-900 min-w-24 md:min-w-32">Last Updated</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -438,18 +438,24 @@ export default function InterviewPrepDashboard() {
                           </tr>
                         );
                       }
-                      const urlMatch = q.explanation.match(/URL:\s*(http[^\n]+)/);
-                      const dateMatch = q.explanation.match(/Last Updated:\s*(.*)/);
-                      const url = urlMatch ? urlMatch[1] : '';
-                      const date = dateMatch ? dateMatch[1] : '';
+                      
+                      const parts = q.explanation.split(/\\n|\n/);
+                      const urlPart = parts.find(p => p.includes('URL:'));
+                      const datePart = parts.find(p => p.includes('Last Updated:'));
+                      
+                      const url = urlPart ? urlPart.replace('URL:', '').trim() : '';
+                      const date = datePart ? datePart.replace('Last Updated:', '').trim() : '';
                       
                       return (
                         <tr key={idx} className="hover:bg-gray-50 transition-colors">
                           <td className="p-3 lg:p-4 text-sm font-medium text-gray-900 border-r border-gray-200">{q.question_text}</td>
                           <td className="p-3 lg:p-4 text-sm border-r border-gray-200">
                             {url ? (
-                              <a href={url} target="_blank" rel="noopener noreferrer" className="text-now-primary hover:text-blue-700 hover:underline break-all">
-                                {url}
+                              <a href={url} target="_blank" rel="noopener noreferrer" className="text-now-primary hover:text-blue-700 hover:underline break-words block group" title={url}>
+                                <span className="hidden md:inline">{url}</span>
+                                <span className="md:hidden flex items-center justify-center sm:justify-start gap-1 p-1 bg-blue-50 text-blue-600 rounded w-fit border border-blue-100 group-hover:bg-blue-100 transition-colors">
+                                  <ExternalLink className="w-4 h-4" />
+                                </span>
                               </a>
                             ) : '-'}
                           </td>

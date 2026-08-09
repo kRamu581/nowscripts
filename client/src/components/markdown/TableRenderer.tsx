@@ -21,13 +21,13 @@ export const TableRow = ({ children, className, ...props }: any) => (
 );
 
 export const TableHeader = ({ children, className, ...props }: any) => (
-  <th className={`px-6 py-4 font-bold text-gray-800 whitespace-nowrap bg-gray-50 border-r border-gray-200 last:border-r-0 ${className || ''}`} {...props}>
+  <th className={`px-4 sm:px-6 py-4 font-bold text-gray-800 whitespace-nowrap bg-gray-50 border-r border-gray-200 last:border-r-0 ${className || ''}`} style={{ minWidth: '150px' }} {...props}>
     {children}
   </th>
 );
 
 export const TableCell = ({ children, className, ...props }: any) => (
-  <td className={`px-6 py-4 text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0 ${className || ''}`} {...props}>
+  <td className={`px-4 sm:px-6 py-4 text-gray-700 leading-relaxed border-r border-gray-200 last:border-r-0 break-words ${className || ''}`} style={{ minWidth: '150px' }} {...props}>
     {children}
   </td>
 );

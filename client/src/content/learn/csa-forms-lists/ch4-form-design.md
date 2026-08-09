@@ -107,3 +107,10 @@ On any form record, open the context menu:
 You can also open Form Builder from the Related Links section of any table record. Scroll to the bottom of a record -> Related Links -> click Form Builder.
 
 > **TIP:** Quick Comparison: Form Design = structure (sections/annotations). Form Layout = which fields appear. Form Builder = does ALL of the above + more, in one modern interface. Always prefer Form Builder for new configurations.
+
+> [!TIP]
+> **More Learning Resources:**
+> 1. Official Docs: [Read Document](https://www.servicenow.com/docs/bundle/zurich-application-development/page/administer/form-builder/concept/form-builder.html)
+> 2. Website: [Read Article](https://s2-labs.com/servicenow-admin/form-layout-design-builder/)
+> 3. YouTube (1st): [Watch Video](https://www.youtube.com/watch?v=QhJgPloTheo)
+> 4. YouTube (2nd): [Watch Video](https://www.youtube.com/watch?v=sU9cQqZULD4)

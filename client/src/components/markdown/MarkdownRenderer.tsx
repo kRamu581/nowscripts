@@ -2,7 +2,7 @@ import React from 'react';
 import Markdown from 'markdown-to-jsx';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Clock, BookOpen, Settings, Target, Calendar, User, MessageSquare, Edit2, MoreVertical } from 'lucide-react';
+import { Clock, BookOpen, Settings, Target, Calendar, User, MessageSquare, Edit2, MoreVertical, ExternalLink } from 'lucide-react';
 import { LessonData } from '../../utils/markdownParser';
 
 import { getModuleTheme } from '../../utils/themeUtils';
@@ -39,12 +39,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
   };
 
   return (
-    <div className={`w-full max-w-4xl mx-auto pb-24 ${className || ''}`}>
+    <div className={`w-full max-w-4xl mx-auto ${className || ''}`}>
       
       {/* Premium Header if lessonData is provided */}
       {lessonData && theme && (
         <div className="mb-6 px-4 sm:px-0">
-          <h1 className="text-[28px] sm:text-[32px] font-bold text-[#0f2c4c] mb-1 leading-tight tracking-tight font-sans">
+          <h1 className="text-[24px] sm:text-[28px] md:text-[32px] font-bold text-[#0f2c4c] mb-1 leading-tight tracking-tight font-sans">
             {lessonData.title}
           </h1>
           <p className="text-[14px] text-[#64748b] font-sans m-0">
@@ -54,7 +54,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
       )}
 
       {/* Markdown Content Card */}
-      <div className="bg-white rounded-[16px] border border-gray-200 shadow-sm sm:p-8 p-5 md:p-10 markdown-body">
+      <div className="bg-white rounded-[16px] border border-gray-200 shadow-sm p-5 sm:px-6 sm:py-8 md:px-6 md:py-10 markdown-body">
         <Markdown
         options={{
           forceBlock: true,
@@ -180,8 +180,14 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
             img: { component: ExpandableImage },
             a: {
               component: ({ children, ...props }: any) => (
-                <a className="text-now-primary hover:text-now-accent underline underline-offset-4 decoration-now-primary/30 hover:decoration-now-primary transition-all" {...props}>
+                <a 
+                  style={{ color: '#2563eb', textDecoration: 'underline', textUnderlineOffset: '4px', fontWeight: 500, display: 'inline' }}
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  {...props}
+                >
                   {children}
+                  <ExternalLink style={{ width: '14px', height: '14px', display: 'inline', marginBottom: '2px', marginLeft: '4px' }} />
                 </a>
               )
             }

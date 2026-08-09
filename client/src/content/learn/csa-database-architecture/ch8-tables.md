@@ -178,5 +178,11 @@ Because Incident, Problem, Change Request, and Knowledge all **extend** the Task
    * **Table:** select the child table (e.g. Asset Reclamation Request).
    * **Column name:** assignment_group (the field being overridden).
    * Check the boxes for what to override: reference qualifier, dependency, attributes, default value, calculations, etc.
-4. **Submit**
    Click Submit to save the override. The field now behaves differently in the selected child table only.
+
+> [!TIP]
+> **More Learning Resources:**
+> 1. Official Docs: [Read Document](https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateATable.html)
+> 2. Website: [Read Article](https://www.servicenow.com/community/developer-articles/understanding-tables-in-servicenow-a-complete-guide/ta-p/3422729)
+> 3. YouTube (1st): [Watch Video](https://www.youtube.com/watch?v=2L81rnJMUqk)
+> 4. YouTube (2nd): [Watch Video](https://www.youtube.com/watch?v=W6Wjn1N4Vc0)

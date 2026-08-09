@@ -75,3 +75,10 @@ The **Content Frame** is the main working area — the large panel on the right.
 | **Forms** | A detailed view of a single record with all its fields. You can view, edit, and update records here. | INC0010003 — shows full details of one incident. |
 
 > **TIP:** Remember: Application Navigator = WHERE you go. Content Frame = WHAT you see and work with.
+
+> [!TIP]
+> **More Learning Resources:**
+> 1. Official Docs: [Read Document](https://www.servicenow.com/docs/bundle/washingtondc-platform-user-interface/page/administer/navigation-and-ui/concept/c_UI16.html)
+> 2. Website: [Read Article](https://saaniyachugh.substack.com/p/the-servicenow-interface)
+> 3. YouTube (1st): [Watch Video](https://www.youtube.com/watch?v=ygXeZ2OEj-A)
+> 4. YouTube (2nd): [Watch Video](https://www.youtube.com/watch?v=HdhMweIjinc)

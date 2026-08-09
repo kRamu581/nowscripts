@@ -516,7 +516,7 @@ export default function LearnDashboard() {
  {currentIndex > 0 ? (
  <button 
  onClick={goToPrevLesson}
- className="group flex flex-col items-start p-4 bg-white border border-gray-200 rounded-xl hover:border-now-primary :border-now-primary transition-all text-left"
+ className="group flex flex-col items-start p-4 bg-white border border-gray-200 rounded-xl hover:border-now-primary transition-all text-left"
  >
  <span className="text-xs font-medium text-gray-500 flex items-center gap-1.5 mb-1">
  <ChevronLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" /> Previous Lesson
@@ -535,7 +535,7 @@ export default function LearnDashboard() {
  }
  goToNextLesson();
  }}
- className="group flex flex-col items-end p-4 bg-white border border-gray-200 rounded-xl hover:border-now-primary :border-now-primary transition-all text-right shadow-sm hover:shadow-md"
+ className="group flex flex-col items-end p-4 bg-white border border-gray-200 rounded-xl hover:border-now-primary transition-all text-right shadow-sm hover:shadow-md"
  >
  <span className="text-xs font-bold text-now-primary flex items-center gap-1.5 mb-1">
  Complete & Continue <IconNext className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
