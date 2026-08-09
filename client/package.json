@@ -13,7 +13,18 @@
     "sitemap": "node scripts/generate-sitemap.js"
   },
   "reactSnap": {
-    "source": "dist"
+    "source": "dist",
+    "crawl": false,
+    "include": [
+      "/",
+      "/about",
+      "/contact",
+      "/learn",
+      "/roadmaps",
+      "/projects",
+      "/interview-prep",
+      "/community"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
