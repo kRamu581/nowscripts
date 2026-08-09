@@ -69,18 +69,27 @@ export default function LandingNavbar({ notificationsCount = 0 }: { notification
           </Link>
         </div>
 
-        {/* Middle: Search Bar (Visible when scrolled) */}
-        <div className="hidden lg:flex items-center justify-center flex-1 mx-8 transition-opacity duration-300">
+        {/* Middle: Desktop Navigation & Search */}
+        <div className="hidden lg:flex flex-1 items-center justify-center mx-6 gap-6">
+          <nav className="flex items-center gap-5">
+            <Link to="/learn" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Learn</Link>
+            <Link to="/roadmaps" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Roadmaps</Link>
+            <Link to="/projects" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Projects</Link>
+            <Link to="/interview-prep" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Interview</Link>
+            <Link to="/community" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>Community</Link>
+            <Link to="/about" className={`text-[14px] font-semibold ${textColor} ${hoverColor} transition-colors`}>About</Link>
+          </nav>
+
           {isScrolled && (
-            <form onSubmit={handleSearch} className="relative w-full max-w-[400px] flex items-center h-[38px] bg-[#F8F9FA] border border-gray-200 rounded-full overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <form onSubmit={handleSearch} className="relative w-full max-w-[250px] ml-4 flex items-center h-[36px] bg-[#F8F9FA] border border-gray-200 rounded-full overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <input 
                 type="text" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="What kind of projects are you looking for?" 
-                className="w-full h-full bg-transparent pl-4 pr-12 text-[13px] text-gray-900 font-medium focus:outline-none focus-visible:outline-none placeholder:text-gray-400"
+                placeholder="Search..." 
+                className="w-full h-full bg-transparent pl-4 pr-10 text-[13px] text-gray-900 font-medium focus:outline-none focus-visible:outline-none placeholder:text-gray-400"
               />
-              <button type="submit" className="absolute right-1 w-[30px] h-[30px] bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center transition-colors">
+              <button type="submit" className="absolute right-1 w-[28px] h-[28px] bg-[#FF5A5F] hover:bg-[#E82C45] text-white rounded-full flex items-center justify-center transition-colors">
                 <Search size={14} strokeWidth={2.5} />
               </button>
             </form>

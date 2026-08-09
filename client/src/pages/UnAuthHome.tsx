@@ -67,6 +67,20 @@ export default function UnAuthHome() {
               "https://linkedin.com/company/nowscripts",
               "https://github.com/kRamu81/nowscripts"
             ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": ["Learn", "Roadmaps", "Projects", "Interview Prep", "Community", "About Us", "Contact"],
+            "url": [
+              "https://www.nowscripts.in/learn",
+              "https://www.nowscripts.in/roadmaps",
+              "https://www.nowscripts.in/projects",
+              "https://www.nowscripts.in/interview-prep",
+              "https://www.nowscripts.in/community",
+              "https://www.nowscripts.in/about",
+              "https://www.nowscripts.in/contact"
+            ]
           }
         ]}
       />
