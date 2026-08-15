@@ -203,7 +203,22 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
     const content = typeof rawMd === 'string' ? rawMd : (rawMd as any).default;
     
     try {
-      const { data: frontmatter, content: rawMarkdown } = matter(content);
+      let frontmatter: any = {};
+      let rawMarkdown = content;
+      
+      try {
+        const parsed = matter(content);
+        frontmatter = parsed.data || {};
+        rawMarkdown = parsed.content;
+      } catch (e) {
+        // Ignore matter parsing errors in browser (Node polyfill missing) and manually strip frontmatter
+        rawMarkdown = content.replace(/^---[\s\S]+?---\n/, '');
+        
+        // Try to manually extract some basic metadata if needed (e.g., title)
+        const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
+        if (titleMatch) frontmatter.title = titleMatch[1];
+      }
+
       const subtopics = extractSubtopics(rawMarkdown);
 
       const pathParts = filepath.split('/');
