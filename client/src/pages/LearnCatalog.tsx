@@ -12,7 +12,7 @@ export default function LearnCatalog() {
 
   // We can categorize tracks for filters.
   // We'll generate some categories based on available tracks.
-  const filters = ["All", "CSA", "CAD", "ITOM", "Development", "App Engine", "UI Builder"];
+  const filters = ["All", "CSA", "CAD", "ITOM", "Development", "CS Fundamentals"];
 
   // Helper to determine visuals for the track
   const getTrackVisuals = (slug: string, index: number) => {
@@ -26,7 +26,7 @@ export default function LearnCatalog() {
     ];
     // Map specific slugs to visuals, fallback to index based
     if (slug.includes('ai') || slug.includes('generative') || slug.includes('va')) return visuals[3];
-    if (slug.includes('dev') || slug.includes('sdk') || slug.includes('javascript')) return visuals[0];
+    if (slug.includes('dev') || slug.includes('sdk') || slug.includes('javascript') || slug.includes('cs-fundamentals')) return visuals[0];
     if (slug.includes('admin') || slug.includes('csa') || slug.includes('itom')) return visuals[2];
     
     return visuals[index % visuals.length];
@@ -40,8 +40,7 @@ export default function LearnCatalog() {
         if (activeFilter === "CSA" && (title.includes("csa") || title.includes("administrator"))) return true;
         if (activeFilter === "CAD" && (title.includes("cad") || title.includes("application developer"))) return true;
         if (activeFilter === "ITOM" && title.includes("itom")) return true;
-        if (activeFilter === "App Engine" && title.includes("app engine")) return true;
-        if (activeFilter === "UI Builder" && title.includes("ui builder")) return true;
+        if (activeFilter === "CS Fundamentals" && title.includes("cs fundamentals")) return true;
         return false;
       });
 

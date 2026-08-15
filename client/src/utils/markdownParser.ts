@@ -52,7 +52,7 @@ const INTERVIEW_FOLDER_TO_CATEGORY: Record<string, string> = {
   'cad': 'CAD Questions',
   'mock-interviews': 'Mock Interviews',
   'mock-tests': 'Mock Tests',
-  'scenarios': 'Scenarios',
+  'scenario-questions': 'Scenarios',
   'ai-interview': 'Ai interview'
 };
 
@@ -102,6 +102,7 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
           let subtopics: Subtopic[] = [];
           let readingTime = "5 min read";
           let parsedVideoUrl: string | undefined;
+          let parsedLastUpdated: string | undefined;
           
           if (item.type === 'topic') {
             const expectedPath = `../content/learn/${mod.id}/${item.id}.md`;
@@ -133,6 +134,9 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
                 rawMd = parsed.content;
                 if (parsed.data.videoUrl) {
                   parsedVideoUrl = parsed.data.videoUrl;
+                }
+                if (parsed.data.lastUpdated) {
+                  parsedLastUpdated = parsed.data.lastUpdated;
                 }
               } catch (e) {
                 // Ignore matter parsing errors and manually strip frontmatter
@@ -167,6 +171,7 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
             tags: [mod.title],
             description: item.description,
             videoUrl: parsedVideoUrl,
+            lastUpdated: parsedLastUpdated,
             subtopics,
             rawMarkdown: rawMd
           });

@@ -4,12 +4,12 @@
   font-family: 'Lora', 'Merriweather', 'Georgia', serif;
   color: #374151;
   line-height: 1.6;
-  font-size: 1rem; /* 16px on mobile */
+  font-size: 15px; /* 15px on mobile */
 }
 
 @media (min-width: 640px) {
   .markdown-body {
-    font-size: 1.125rem; /* 18px on larger screens */
+    font-size: 1rem; /* 16px on larger screens */
   }
 }
 

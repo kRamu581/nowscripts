@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Camera, Mic, Volume2, Wifi, Activity, CheckCircle2, AlertCircle, Play } from "lucide-react";
+import React from "react";
+import { Clock, Activity, Volume2, MessageSquare, PhoneCall, HelpCircle } from "lucide-react";
 
 interface HardwareCheckProps {
   config: any;
@@ -8,163 +8,85 @@ interface HardwareCheckProps {
 }
 
 export function HardwareCheck({ config, onNext, onBack }: HardwareCheckProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [stream, setStream] = useState<MediaStream | null>(null);
-  const [cameraStatus, setCameraStatus] = useState<"checking" | "ok" | "error">("checking");
-  const [micStatus, setMicStatus] = useState<"checking" | "ok" | "error">("checking");
-  const [networkStatus, setNetworkStatus] = useState<"checking" | "ok" | "error">("checking");
-
-  useEffect(() => {
-    let activeStream: MediaStream;
-
-    const setupMedia = async () => {
-      try {
-        activeStream = await navigator.mediaDevices.getUserMedia({ 
-          video: { width: 1280, height: 720 }, 
-          audio: true 
-        });
-        
-        setStream(activeStream);
-        if (videoRef.current) {
-          videoRef.current.srcObject = activeStream;
-        }
-        
-        setCameraStatus("ok");
-        setMicStatus("ok");
-      } catch (err) {
-        console.error("Error accessing media devices", err);
-        setCameraStatus("error");
-        setMicStatus("error");
-      }
-      
-      // Simulate network check
-      setTimeout(() => setNetworkStatus("ok"), 1000);
-    };
-
-    setupMedia();
-
-    return () => {
-      if (activeStream) {
-        activeStream.getTracks().forEach(track => track.stop());
-      }
-    };
-  }, []);
-
-  const StatusIcon = ({ status }: { status: string }) => {
-    if (status === "checking") return <Activity className="w-5 h-5 text-yellow-500 animate-pulse" />;
-    if (status === "ok") return <CheckCircle2 className="w-5 h-5 text-green-500" />;
-    return <AlertCircle className="w-5 h-5 text-red-500" />;
-  };
-
-  const allClear = cameraStatus === "ok" && micStatus === "ok" && networkStatus === "ok";
-
   return (
-    <div className="w-full max-w-5xl mx-auto py-12 px-6">
-      <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold mb-3 text-gray-900">System & Tech Check</h1>
-        <p className="text-gray-500">Please ensure your camera and microphone are working before we begin.</p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Video Preview */}
-        <div className="lg:col-span-2">
-          <div className="bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-sm relative aspect-video flex items-center justify-center">
-            {cameraStatus === "error" ? (
-              <div className="text-center text-gray-500">
-                <Camera className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                <p>Camera access denied or device not found.</p>
-                <p className="text-sm mt-2">Please allow camera access in your browser settings.</p>
-              </div>
-            ) : (
-              <video 
-                ref={videoRef}
-                autoPlay 
-                playsInline 
-                muted
-                className="w-full h-full object-cover"
-              />
-            )}
-            
-            {/* Overlay */}
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-              <div className="bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10 flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-                <span className="text-sm font-medium text-white">HD Preview</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Status Checklist */}
-        <div className="space-y-6">
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-6">
-            <h3 className="text-lg font-bold text-gray-900 border-b border-gray-200 pb-4">Checklist</h3>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <Camera className="w-5 h-5 text-blue-500" />
-                  <span className="font-medium">Camera</span>
-                </div>
-                <StatusIcon status={cameraStatus} />
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <Mic className="w-5 h-5 text-purple-500" />
-                  <span className="font-medium">Microphone</span>
-                </div>
-                <StatusIcon status={micStatus} />
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <Volume2 className="w-5 h-5 text-green-500" />
-                  <span className="font-medium">Speaker</span>
-                </div>
-                <StatusIcon status="ok" />
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3 text-gray-700">
-                  <Wifi className="w-5 h-5 text-yellow-500" />
-                  <span className="font-medium">Connection</span>
-                </div>
-                <StatusIcon status={networkStatus} />
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 text-sm text-blue-800">
-            <h4 className="font-bold text-blue-900 mb-2">Interview Details</h4>
-            <ul className="space-y-1 list-disc list-inside">
-              <li><strong>Role:</strong> {config.targetRole}</li>
-              <li><strong>Module:</strong> {config.module}</li>
-              <li><strong>Duration:</strong> {config.duration}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-between items-center mt-10">
+    <div className="w-full min-h-screen bg-now-background flex flex-col items-center justify-center py-4 px-3 sm:p-8 relative font-sans overflow-y-auto">
+      
+      <div className="w-full max-w-[500px] flex flex-col">
+        {/* Back button positioned in normal flow above the card */}
         <button 
           onClick={onBack}
-          className="text-gray-500 hover:text-gray-900 px-6 py-3 font-semibold transition-colors"
+          className="self-start mb-3 text-[#5b5e63] hover:text-[#191b1f] font-semibold text-[13px] bg-white px-3 py-1.5 rounded-[8px] shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex items-center gap-1.5 transition-all"
         >
-          Back to Setup
+          &larr; Back
         </button>
-        <button 
-          onClick={onNext}
-          disabled={!allClear}
-          className={`flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md ${
-            allClear 
-              ? "bg-green-600 hover:bg-green-500 text-white hover:shadow-green-500/25 cursor-pointer" 
-              : "bg-gray-200 text-gray-400 cursor-not-allowed"
-          }`}
-        >
-          <Play className="w-5 h-5" />
-          Start Interview Now
-        </button>
+
+        <div className="w-full bg-white rounded-[16px] p-5 sm:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-[#f0f0f0] relative">
+          {/* Header */}
+          <div className="flex justify-between items-start mb-5">
+            <div>
+              <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mb-1">Start your interview</h1>
+              <p className="text-sm text-gray-600">This interview requires you to be on video.</p>
+            </div>
+          <div className="text-now-primary">
+            <PhoneCall className="w-6 h-6 sm:w-8 sm:h-8" />
+          </div>
+        </div>
+
+        {/* Info Cards */}
+        <div className="flex flex-col gap-3 mb-6">
+          {/* Card 1 (Full width) */}
+          <div className="border border-gray-200 rounded-2xl p-3.5 flex gap-3 items-start">
+            <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 mt-0.5 shrink-0" />
+            <div>
+              <h3 className="font-semibold text-gray-900 text-sm sm:text-base">This won't take long</h3>
+              <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Your AI interviewer will lead you through the process.</p>
+            </div>
+          </div>
+
+          {/* Grid for Cards 2 and 3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {/* Card 2 */}
+            <div className="border border-gray-200 rounded-2xl p-3.5 flex gap-3 items-start">
+              <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 mt-0.5 shrink-0" />
+              <div>
+                <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Be natural</h3>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Speak as you normally would, the AI interviewer will understand.</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="border border-gray-200 rounded-2xl p-3.5 flex gap-3 items-start">
+              <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 mt-0.5 shrink-0" />
+              <div>
+                <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Quiet spot and strong wifi</h3>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Make sure your audio is crisp and clear upon review.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4 (Full width) */}
+          <div className="border border-gray-200 rounded-2xl p-3.5 flex gap-3 items-start">
+            <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 mt-0.5 shrink-0" />
+            <div>
+              <h3 className="font-semibold text-gray-900 text-sm sm:text-base">Reviewed by a human</h3>
+              <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Each call is reviewed by someone on our team.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Action Row */}
+        <div className="flex flex-col items-center gap-3 mt-4">
+          <button
+            onClick={onNext}
+            className="w-full bg-now-primary hover:bg-now-accent text-white font-bold py-3 rounded-full transition-all shadow-[0_4px_14px_0_rgba(255,90,95,0.39)] hover:shadow-[0_6px_20px_rgba(255,90,95,0.23)] text-[15px]"
+          >
+            Join interview
+          </button>
+          <div className="text-[11px] text-[#5b5e63] font-medium whitespace-nowrap mt-1">
+            Privacy Policy &nbsp;&middot;&nbsp; Terms
+          </div>
+        </div>
+        </div>
       </div>
     </div>
   );

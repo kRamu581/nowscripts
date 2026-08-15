@@ -45,12 +45,12 @@ function generatePageSitemap() {
   const routes = [
     { path: '/', file: 'src/pages/UnAuthHome.tsx', priority: '1.0', freq: 'daily' },
     { path: '/about', file: 'src/pages/AboutUs.tsx', priority: '0.8', freq: 'weekly' },
-    { path: '/contact', file: 'src/pages/StaticInfoPages.tsx', priority: '0.8', freq: 'weekly' },
-    { path: '/login', file: 'src/pages/Auth.tsx', priority: '0.8', freq: 'weekly' },
-    { path: '/terms', file: 'src/pages/StaticInfoPages.tsx', priority: '0.8', freq: 'weekly' },
-    { path: '/privacy', file: 'src/pages/StaticInfoPages.tsx', priority: '0.8', freq: 'weekly' },
-    { path: '/help', file: 'src/pages/StaticInfoPages.tsx', priority: '0.8', freq: 'weekly' },
-    { path: '/how-it-works', file: 'src/pages/StaticInfoPages.tsx', priority: '0.8', freq: 'weekly' },
+    { path: '/contact', file: 'src/pages/StaticInfoPages.tsx', priority: '0.5', freq: 'monthly' },
+    { path: '/login', file: 'src/pages/Auth.tsx', priority: '0.4', freq: 'monthly' },
+    { path: '/terms', file: 'src/pages/StaticInfoPages.tsx', priority: '0.1', freq: 'yearly' },
+    { path: '/privacy', file: 'src/pages/StaticInfoPages.tsx', priority: '0.1', freq: 'yearly' },
+    { path: '/help', file: 'src/pages/StaticInfoPages.tsx', priority: '0.3', freq: 'yearly' },
+    { path: '/how-it-works', file: 'src/pages/StaticInfoPages.tsx', priority: '0.7', freq: 'monthly' },
   ];
 
   const urls = routes.map(route => {

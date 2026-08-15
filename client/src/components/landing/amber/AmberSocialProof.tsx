@@ -1,33 +1,38 @@
 import { Star, ChevronRight } from "lucide-react";
 import { useRef } from "react";
+import senyoImg from "../../../assets/senyo.png";
 
 export function AmberSocialProof() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const testimonials = [
     { 
-      name: "Rahul Sharma", 
-      role: "Pune Institute of Computer Technology", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul&backgroundColor=ffdfbf", 
-      text: "Guided through NowScripts. They are really amazing. Helped me and my friend finds rooms so quickly and efficiently." 
+      name: "Prasanna Rao Tammana", 
+      role: "TCS — Software Engineer", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Prasanna&backgroundColor=ffdfbf", 
+      flag: "in",
+      text: "It’s a good one, keep it up." 
     },
     { 
-      name: "Sneha Desai", 
-      role: "BMS College of Engineering, Bangalore", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha&backgroundColor=ffdfbf", 
-      text: "NowScripts has been really sweet and supportive really liked the service." 
+      name: "Senyo A", 
+      role: "ServiceNow Developer", 
+      image: senyoImg, 
+      flag: "za",
+      text: "I checked your website and GitHub, which is impressive, but you need to focus all your energy on hands-on implementation content." 
     },
     { 
-      name: "Ananya Singh", 
-      role: "KJ Somaiya College, Mumbai", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Ananya&backgroundColor=ffdfbf", 
-      text: "The process was easy and the people involved were responsive and helpful." 
+      name: "Sonex Labs", 
+      role: "", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sonex&backgroundColor=ffdfbf", 
+      flag: "in",
+      text: "Cool. And I noticed you're giving it to students for free. That's really commendable." 
     },
     { 
-      name: "Rohan Patel", 
-      role: "Amity University", 
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rohan&backgroundColor=ffdfbf", 
-      text: "Man literally they did every perfect accommodation. Very friendly, would highly recommend." 
+      name: "Raghunath Dharani", 
+      role: "LinkedIn Assistant Manager", 
+      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Raghunath&backgroundColor=ffdfbf", 
+      flag: "in",
+      text: "The platform could be even more useful if it understood a user’s LinkedIn profile, resume, and experience to recommend courses tailored to their career goals." 
     }
   ];
 
@@ -72,8 +77,8 @@ export function AmberSocialProof() {
                       className="w-[42px] h-[42px] rounded-full object-cover bg-amber-100"
                     />
                     <img 
-                      src="https://flagcdn.com/w20/in.png" 
-                      alt="India"
+                      src={`https://flagcdn.com/w20/${test.flag || 'in'}.png`} 
+                      alt={test.flag === 'za' ? "South Africa" : "India"}
                       className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border border-white object-cover"
                     />
                   </div>

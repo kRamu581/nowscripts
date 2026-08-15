@@ -193,3 +193,62 @@ export const getRoadmaps = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const evaluateInterview = async (req: Request, res: Response) => {
+  try {
+    const userId = req.userId;
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    const { transcript, duration } = req.body;
+
+    if (!transcript || !Array.isArray(transcript)) {
+      return res.status(400).json({ success: false, message: "Valid transcript array is required." });
+    }
+
+    // Format the transcript for the LLM
+    const formattedTranscript = transcript.map((msg: any) => 
+      `${msg.sender.toUpperCase()}: ${msg.text}`
+    ).join("\n\n");
+
+    const prompt = `
+Interview Duration: ${duration || "Unknown"}
+Transcript:
+${formattedTranscript}
+    `;
+
+    const llmMessages = [
+      { role: "system", content: PROMPT_TEMPLATES.INTERVIEW_EVALUATOR_PROMPT },
+      { role: "user", content: prompt }
+    ];
+
+    const aiResponse = await llmProvider.generateChatCompletion(llmMessages as any, "gemini", 0.3);
+
+    if (!aiResponse.success) {
+      return res.status(500).json({ success: false, message: aiResponse.error });
+    }
+
+    let parsedData;
+    try {
+      let rawJson = aiResponse.content.trim();
+      if (rawJson.startsWith("\`\`\`json")) {
+        rawJson = rawJson.substring(7, rawJson.length - 3).trim();
+      } else if (rawJson.startsWith("\`\`\`")) {
+        rawJson = rawJson.substring(3, rawJson.length - 3).trim();
+      }
+      parsedData = JSON.parse(rawJson);
+    } catch (parseError) {
+      console.error("Error parsing JSON from LLM during evaluation:", aiResponse.content);
+      return res.status(500).json({ success: false, message: "Failed to parse evaluation data." });
+    }
+
+    res.status(200).json({
+      success: true,
+      evaluation: parsedData
+    });
+  } catch (error: any) {
+    console.error("Error in evaluateInterview:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

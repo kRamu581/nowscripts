@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { InterviewSetup } from "./InterviewSetup";
 import { HardwareCheck } from "./HardwareCheck";
+import { DeviceSetup } from "./DeviceSetup";
 import { LiveInterview } from "./LiveInterview";
 import { InterviewReport } from "./InterviewReport";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,9 +9,16 @@ import { BookOpen, Target, Menu, X, ChevronRight, ArrowLeft, ArrowRight, Sparkle
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export function AIInterviewWizard() {
-  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
   const navigate = useNavigate();
-  const [config, setConfig] = useState<any>(null);
+  const [config, setConfig] = useState<any>({
+    targetRole: "Developer",
+    experience: "Intermediate",
+    module: "ITSM",
+    difficulty: "Medium",
+    duration: "30 mins",
+    language: "English"
+  });
   const [results, setResults] = useState<any>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -21,7 +29,7 @@ export function AIInterviewWizard() {
   };
 
   const handleHardwareComplete = () => {
-    setStep(3);
+    setStep(5);
   };
 
   const handleInterviewComplete = (interviewResults: any) => {
@@ -38,33 +46,8 @@ export function AIInterviewWizard() {
   return (
     <div className="flex flex-1 h-full min-h-screen overflow-hidden relative bg-now-background text-now-text">
       
-      {/* Back Button */}
-      <button 
-        onClick={() => step === 0 ? navigate('/interview-prep') : setStep(prev => (prev - 1) as any)}
-        className="absolute top-6 left-6 z-50 p-2 rounded-full transition-colors flex items-center justify-center text-gray-600 hover:bg-gray-200"
-      >
-        <ArrowLeft className="w-6 h-6" />
-      </button>
-
       {/* Main Content Area */}
       <div className="flex-1 overflow-y-auto h-screen relative custom-scrollbar flex flex-col">
-
-      {/* Optional Progress Bar for Steps 1-2 */}
-      {step > 0 && step < 3 && (
-        <div className="w-full max-w-4xl mx-auto px-6 pt-4 pb-2">
-          <div className="flex items-center justify-between relative">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-gray-300 -z-10"></div>
-            <div className={`absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-now-primary transition-all duration-500 -z-10 ${step === 1 ? 'w-0' : 'w-full'}`}></div>
-            
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${step >= 1 ? 'bg-now-primary text-white shadow-[0_0_10px_rgba(255,90,95,0.4)]' : 'bg-white text-gray-500 border border-gray-300'}`}>1</div>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${step >= 2 ? 'bg-now-primary text-white shadow-[0_0_10px_rgba(255,90,95,0.4)]' : 'bg-white text-gray-500 border border-gray-300'}`}>2</div>
-          </div>
-          <div className="flex items-center justify-between mt-2 px-1 text-xs font-semibold text-gray-500">
-            <span>Setup</span>
-            <span>Tech Check</span>
-          </div>
-        </div>
-      )}
 
       <AnimatePresence mode="wait">
         {step === 0 && (
@@ -87,7 +70,7 @@ export function AIInterviewWizard() {
               
               <div className="pt-8">
                 <button 
-                  onClick={() => setStep(1)}
+                  onClick={() => setStep(2)}
                   className="inline-flex items-center justify-center gap-3 px-10 py-4 text-lg font-bold text-white bg-now-primary hover:bg-now-accent rounded-2xl transition-all duration-300 shadow-[0_4px_14px_0_rgba(255,90,95,0.39)] hover:shadow-[0_6px_20px_rgba(255,90,95,0.23)] hover:-translate-y-0.5"
                 >
                   Let's Start
@@ -105,7 +88,13 @@ export function AIInterviewWizard() {
         
         {step === 2 && (
           <motion.div key="step2" variants={variants} initial="initial" animate="animate" exit="exit" className="w-full">
-            <HardwareCheck config={config} onNext={handleHardwareComplete} onBack={() => setStep(1)} />
+            <HardwareCheck config={config} onNext={handleHardwareComplete} onBack={() => setStep(0)} />
+          </motion.div>
+        )}
+        
+        {step === 5 && (
+          <motion.div key="step5" variants={variants} initial="initial" animate="animate" exit="exit" className="w-full">
+            <DeviceSetup onNext={() => setStep(3)} onBack={() => setStep(2)} />
           </motion.div>
         )}
         

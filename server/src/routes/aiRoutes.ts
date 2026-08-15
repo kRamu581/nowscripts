@@ -4,7 +4,8 @@ import {
   generateRoadmap, 
   getChatHistory, 
   getChatSession, 
-  getRoadmaps 
+  getRoadmaps,
+  evaluateInterview
 } from "../controllers/aiController";
 // Assuming authMiddleware exists and is exported from middleware/auth or similar.
 import isAuthenticated from "../middlewares/auth"; 
@@ -21,5 +22,8 @@ router.get("/chat/session/:id", getChatSession);
 // Roadmap endpoints
 router.post("/roadmap/generate", generateRoadmap);
 router.get("/roadmap", getRoadmaps);
+
+// Interview endpoints
+router.post("/interview/evaluate", evaluateInterview);
 
 export default router;

@@ -149,7 +149,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, les
                 }
 
                 return (
-                  <p className="text-[17px] leading-[1.8] mb-5 text-[#1e293b]" {...props}>
+                  <p className="leading-[1.8] mb-5 text-[#1e293b]" {...props}>
                     {children}
                   </p>
                 );

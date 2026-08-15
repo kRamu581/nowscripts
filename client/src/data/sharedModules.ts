@@ -321,32 +321,225 @@ const vaModules: Module[] = [
 
 const aiModules: Module[] = [
   {
-    id: "servicenow-ai",
-    title: "ServiceNow AI",
+    id: "ai-essentials",
+    title: "1. AI Essentials",
     level: "Beginner",
-    description: "Learn the fundamentals of Artificial Intelligence and how it powers intelligent automation in ServiceNow.",
-    keyTakeaway: "Understand AI concepts and explore ServiceNow's AI capabilities.",
-    color: "from-pink-500 to-pink-700",
+    description: "Learn the foundational concepts of Artificial Intelligence, Machine Learning, and Large Language Models.",
+    keyTakeaway: "Master core AI terminology and architectures.",
+    color: "from-pink-600 to-pink-900",
+    icon: "BrainCircuit",
+    items: [
+      { type: "topic", id: "what-is-ai", title: "What is AI?" },
+      { type: "topic", id: "machine-learning", title: "Machine Learning" },
+      { type: "topic", id: "generative-ai", title: "Generative AI" },
+      { type: "topic", id: "llm-fundamentals", title: "LLM Fundamentals" },
+      { type: "topic", id: "prompt-engineering", title: "Prompt Engineering" },
+      { type: "topic", id: "rag", title: "RAG" },
+      { type: "topic", id: "ai-agents-intro", title: "AI Agents" }
+    ]
+  },
+  {
+    id: "servicenow-ai-platform",
+    title: "2. ServiceNow AI Platform",
+    level: "Beginner",
+    description: "Discover how ServiceNow integrates AI across its platform.",
+    keyTakeaway: "Understand the ServiceNow AI ecosystem.",
+    color: "from-purple-600 to-purple-900",
     icon: "Monitor",
     items: [
-      { type: "topic", id: "ai-essentials", title: "AI Essentials" },
-      { type: "topic", id: "ai-essentials-for-it-professionals", title: "AI Essentials for IT Professionals" },
-      { type: "topic", id: "ai-agents-and-automation", title: "AI Agents and Automation in Workflows" },
-      { type: "topic", id: "enterprise-ai-governance", title: "How do I Build an Enterprise AI Governance Plan" },
-      { type: "topic", id: "future-of-agentic-ai", title: "The Future of Agentic AI" },
-      { type: "topic", id: "gen-ai-power-intelligent-automation", title: "How does Generative AI Power Intelligent Automation" },
-      { type: "topic", id: "what-is-machine-learning", title: "What is Machine Learning" },
-      { type: "topic", id: "nlu-fundamentals", title: "Natural Language Understanding Fundamentals" },
-      { type: "topic", id: "what-is-ai", title: "What is Artificial Intelligence" },
-      { type: "topic", id: "what-is-servicenow-instance", title: "What is a ServiceNow Instance" },
-      { type: "topic", id: "what-is-servicenow-platform-workspace", title: "What is a ServiceNow Platform Workspace" },
-      { type: "topic", id: "what-is-servicenow-ai-platform-dashboard", title: "What is ServiceNow AI Platform Dashboard" },
-      { type: "topic", id: "what-is-a-chatbot", title: "What is a Chatbot" },
-      { type: "topic", id: "what-is-a-help-desk", title: "What is a Help Desk" },
-      { type: "topic", id: "servicenow-user-interface-overview", title: "ServiceNow User Interface Overview" },
-      { type: "topic", id: "platform-analytics-overview", title: "Platform Analytics Overview" },
-      { type: "topic", id: "get-started-with-predictive-intelligence", title: "Get Started with Predictive Intelligence" },
-      { type: "topic", id: "creator-studio-fundamentals", title: "Creator Studio Fundamentals" }
+      { type: "topic", id: "sn-ai-platform", title: "ServiceNow AI Platform" },
+      { type: "topic", id: "now-assist-intro", title: "Now Assist" },
+      { type: "topic", id: "ai-skills-intro", title: "AI Skills" },
+      { type: "topic", id: "sn-ai-agents", title: "AI Agents" },
+      { type: "topic", id: "agentic-workflows-intro", title: "Agentic Workflows" }
+    ]
+  },
+  {
+    id: "now-assist",
+    title: "3. Now Assist",
+    level: "Intermediate",
+    description: "Deep dive into Now Assist capabilities and configurations.",
+    keyTakeaway: "Configure and leverage Now Assist for daily operations.",
+    color: "from-blue-600 to-blue-900",
+    icon: "Bot",
+    items: [
+      { type: "topic", id: "now-assist-fundamentals", title: "Now Assist Fundamentals" },
+      { type: "topic", id: "now-assist-itsm", title: "Now Assist for ITSM" },
+      { type: "topic", id: "ai-search", title: "AI Search" },
+      { type: "topic", id: "now-assist-center", title: "Now Assist Center" }
+    ]
+  },
+  {
+    id: "generative-ai-deep-dive",
+    title: "4. Generative AI",
+    level: "Intermediate",
+    description: "Understand how Generative AI models operate and how to ground them.",
+    keyTakeaway: "Master prompt engineering and grounding techniques.",
+    color: "from-indigo-600 to-indigo-900",
+    icon: "Sparkles",
+    items: [
+      { type: "topic", id: "llms-deep-dive", title: "LLMs" },
+      { type: "topic", id: "prompting-techniques", title: "Prompting" },
+      { type: "topic", id: "grounding", title: "Grounding" },
+      { type: "topic", id: "summarization", title: "Summarization" },
+      { type: "topic", id: "gen-ai-skills", title: "AI Skills" }
+    ]
+  },
+  {
+    id: "gen-ai-controller",
+    title: "5. Generative AI Controller",
+    level: "Intermediate",
+    description: "Integrate and manage external LLMs using the Generative AI Controller.",
+    keyTakeaway: "Connect external AI models to ServiceNow workflows.",
+    color: "from-cyan-600 to-cyan-900",
+    icon: "Settings",
+    items: [
+      { type: "topic", id: "external-llms", title: "External LLMs" },
+      { type: "topic", id: "openai-integration", title: "OpenAI" },
+      { type: "topic", id: "azure-openai", title: "Azure OpenAI" },
+      { type: "topic", id: "google-ai", title: "Google AI" },
+      { type: "topic", id: "aws-bedrock", title: "Bedrock" },
+      { type: "topic", id: "genai-workflows", title: "GenAI + Workflows" }
+    ]
+  },
+  {
+    id: "ai-agents-deep-dive",
+    title: "6. AI Agents",
+    level: "Advanced",
+    description: "Explore the architecture and capabilities of autonomous AI Agents.",
+    keyTakeaway: "Understand the components that make an AI Agent autonomous.",
+    color: "from-teal-600 to-teal-900",
+    icon: "Cpu",
+    items: [
+      { type: "topic", id: "ai-agent-fundamentals", title: "AI Agent Fundamentals" },
+      { type: "topic", id: "agent-architecture", title: "Agent Architecture" },
+      { type: "topic", id: "agent-tools", title: "Tools" },
+      { type: "topic", id: "agent-skills", title: "Skills" },
+      { type: "topic", id: "agent-knowledge", title: "Knowledge" },
+      { type: "topic", id: "agent-security", title: "Security" }
+    ]
+  },
+  {
+    id: "ai-agent-studio",
+    title: "7. AI Agent Studio",
+    level: "Advanced",
+    description: "Build, configure, and test custom AI Agents using Agent Studio.",
+    keyTakeaway: "Create production-ready AI Agents.",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Wrench",
+    items: [
+      { type: "topic", id: "create-agent", title: "Create Agent" },
+      { type: "topic", id: "configure-agent", title: "Configure Agent" },
+      { type: "topic", id: "add-tools", title: "Add Tools" },
+      { type: "topic", id: "test-agent", title: "Test Agent" },
+      { type: "topic", id: "debug-agent", title: "Debug Agent" }
+    ]
+  },
+  {
+    id: "agentic-workflows",
+    title: "8. Agentic Workflows",
+    level: "Expert",
+    description: "Design multi-agent systems and complex agentic workflows.",
+    keyTakeaway: "Orchestrate multiple agents to solve complex business problems.",
+    color: "from-amber-600 to-amber-900",
+    icon: "Workflow",
+    items: [
+      { type: "topic", id: "agentic-workflow-fundamentals", title: "Fundamentals" },
+      { type: "topic", id: "build-workflow", title: "Build Workflow" },
+      { type: "topic", id: "multi-agent-orchestration", title: "Multi-Agent" },
+      { type: "topic", id: "human-in-the-loop", title: "Human Approval" },
+      { type: "topic", id: "workflow-monitoring", title: "Monitoring" }
+    ]
+  },
+  {
+    id: "ai-for-developers",
+    title: "9. AI for Developers",
+    level: "Advanced",
+    description: "Leverage AI to accelerate ServiceNow development and testing.",
+    keyTakeaway: "Write code and generate flows faster using AI.",
+    color: "from-orange-600 to-orange-900",
+    icon: "Code",
+    items: [
+      { type: "topic", id: "ai-code-generation", title: "AI Code Generation" },
+      { type: "topic", id: "ai-flow-generation", title: "AI Flow Generation" },
+      { type: "topic", id: "ai-ui-generation", title: "AI UI Generation" },
+      { type: "topic", id: "ai-testing", title: "AI Testing" }
+    ]
+  },
+  {
+    id: "ai-and-itsm",
+    title: "10. AI + ITSM",
+    level: "Advanced",
+    description: "Apply AI specifically to IT Service Management processes.",
+    keyTakeaway: "Automate incident, problem, and change management with AI.",
+    color: "from-red-600 to-red-900",
+    icon: "Briefcase",
+    items: [
+      { type: "topic", id: "ai-incident-management", title: "AI Incident Management" },
+      { type: "topic", id: "ai-problem-management", title: "AI Problem Management" },
+      { type: "topic", id: "ai-change-management", title: "AI Change Management" },
+      { type: "topic", id: "ai-knowledge-management", title: "AI Knowledge" }
+    ]
+  },
+  {
+    id: "ai-integrations",
+    title: "11. AI Integrations",
+    level: "Expert",
+    description: "Integrate external AI services using REST and IntegrationHub.",
+    keyTakeaway: "Build custom AI integrations securely.",
+    color: "from-rose-600 to-rose-900",
+    icon: "Link",
+    items: [
+      { type: "topic", id: "rest-ai", title: "REST + AI" },
+      { type: "topic", id: "integrationhub-ai", title: "IntegrationHub + AI" },
+      { type: "topic", id: "external-llm-apis", title: "External LLM APIs" },
+      { type: "topic", id: "ai-integration-security", title: "AI Security" }
+    ]
+  },
+  {
+    id: "enterprise-ai-governance",
+    title: "12. Enterprise AI Governance",
+    level: "Intermediate",
+    description: "Establish policies for responsible and secure AI usage.",
+    keyTakeaway: "Manage AI risk and ensure compliance.",
+    color: "from-slate-600 to-slate-900",
+    icon: "ShieldCheck",
+    items: [
+      { type: "topic", id: "responsible-ai", title: "Responsible AI" },
+      { type: "topic", id: "enterprise-ai-security", title: "AI Security" },
+      { type: "topic", id: "ai-privacy", title: "Privacy" },
+      { type: "topic", id: "ai-governance", title: "Governance" },
+      { type: "topic", id: "ai-risk-management", title: "Risk Management" }
+    ]
+  },
+  {
+    id: "ai-real-world-projects",
+    title: "13. Real-World Projects",
+    level: "Expert",
+    description: "Apply your knowledge to build end-to-end AI solutions.",
+    keyTakeaway: "Build production-ready AI applications.",
+    color: "from-yellow-600 to-yellow-900",
+    icon: "FolderGit2",
+    items: [
+      { type: "project", id: "project-ai-incident-agent", title: "AI Incident Agent", description: "Build an autonomous agent to resolve incoming incidents." },
+      { type: "project", id: "project-it-support-agent", title: "IT Support Agent", description: "Create a conversational support agent with tool access." },
+      { type: "project", id: "project-knowledge-agent", title: "Knowledge Agent", description: "Develop an agent that automatically drafts knowledge articles from resolved tickets." },
+      { type: "project", id: "project-multi-agent-itsm", title: "Multi-Agent ITSM", description: "Orchestrate multiple agents to handle an end-to-end IT service request." }
+    ]
+  },
+  {
+    id: "ai-interview-prep",
+    title: "14. AI Interview",
+    level: "Expert",
+    description: "Prepare for AI-specific ServiceNow roles and interviews.",
+    keyTakeaway: "Ace your next ServiceNow AI job interview.",
+    color: "from-fuchsia-600 to-fuchsia-900",
+    icon: "Users",
+    items: [
+      { type: "topic", id: "ai-interview-fundamentals", title: "Fundamentals" },
+      { type: "topic", id: "ai-scenario-questions", title: "Scenario Questions" },
+      { type: "topic", id: "ai-architecture-questions", title: "Architecture" },
+      { type: "mock-interview", id: "ai-mock-interview", title: "Mock Interview", description: "Practice a live technical interview focusing on AI Agents and Generative AI." }
     ]
   }
 ];
@@ -667,6 +860,147 @@ const cadCertificationModules: Module[] = [
   }
 ];
 
+const csFundamentalsModules: Module[] = [
+  {
+    id: "cs-basics",
+    title: "1. Computer Science Basics",
+    level: "Beginner",
+    description: "Learn the core concepts of computing, hardware, and software logic.",
+    keyTakeaway: "Understand how computers process and store information.",
+    color: "from-slate-600 to-slate-900",
+    icon: "Cpu",
+    items: [
+      { type: "topic", id: "introduction-to-computing", title: "Introduction to Computing" },
+      { type: "topic", id: "binary-and-logic-gates", title: "Binary & Logic Gates" }
+    ]
+  },
+  {
+    id: "oop",
+    title: "2. Object-Oriented Programming",
+    level: "Beginner",
+    description: "Master the four pillars of OOP: Encapsulation, Abstraction, Inheritance, and Polymorphism.",
+    keyTakeaway: "Design scalable applications using object-oriented principles.",
+    color: "from-blue-600 to-blue-900",
+    icon: "Box",
+    items: [
+      { type: "topic", id: "oop-fundamentals", title: "OOP Fundamentals" },
+      { type: "topic", id: "classes-and-objects", title: "Classes & Objects" },
+      { type: "topic", id: "four-pillars-of-oop", title: "The 4 Pillars of OOP" }
+    ]
+  },
+  {
+    id: "dsa",
+    title: "3. Data Structures & Algorithms",
+    level: "Intermediate",
+    description: "Learn how to organize data efficiently and write optimized algorithms.",
+    keyTakeaway: "Solve complex problems with optimal time and space complexity.",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Database",
+    items: [
+      { type: "topic", id: "introduction-to-dsa", title: "Introduction to DSA" },
+      { type: "topic", id: "arrays-and-strings", title: "Arrays & Strings" },
+      { type: "topic", id: "linked-lists-trees-graphs", title: "Linked Lists, Trees & Graphs" },
+      { type: "topic", id: "sorting-and-searching", title: "Sorting & Searching" }
+    ]
+  },
+  {
+    id: "operating-systems",
+    title: "4. Operating Systems",
+    level: "Intermediate",
+    description: "Understand process management, memory allocation, and OS architectures.",
+    keyTakeaway: "Learn how an OS bridges the gap between hardware and software.",
+    color: "from-purple-600 to-purple-900",
+    icon: "Monitor",
+    items: [
+      { type: "topic", id: "os-basics", title: "OS Basics" },
+      { type: "topic", id: "process-and-memory-management", title: "Process & Memory Management" },
+      { type: "topic", id: "linux-fundamentals", title: "Linux Fundamentals" }
+    ]
+  },
+  {
+    id: "computer-networks",
+    title: "5. Computer Networks",
+    level: "Intermediate",
+    description: "Learn the OSI model, TCP/IP, and how data moves across the internet.",
+    keyTakeaway: "Understand network topologies, protocols, and security basics.",
+    color: "from-cyan-600 to-cyan-900",
+    icon: "Server",
+    items: [
+      { type: "topic", id: "complete-notes", title: "Complete Notes" }
+    ]
+  },
+  {
+    id: "dbms",
+    title: "6. DBMS",
+    level: "Intermediate",
+    description: "Master database management systems, ACID properties, and relational design.",
+    keyTakeaway: "Design robust, normalized database schemas.",
+    color: "from-orange-600 to-orange-900",
+    icon: "Database",
+    items: [
+      { type: "topic", id: "dbms-fundamentals", title: "DBMS Fundamentals" },
+      { type: "topic", id: "acid-properties", title: "ACID Properties" },
+      { type: "topic", id: "normalization", title: "Normalization" }
+    ]
+  },
+  {
+    id: "sql",
+    title: "7. SQL",
+    level: "Beginner",
+    description: "Learn Structured Query Language to interact with relational databases.",
+    keyTakeaway: "Write queries to retrieve, insert, and analyze data.",
+    color: "from-yellow-600 to-yellow-900",
+    icon: "Code",
+    items: [
+      { type: "topic", id: "sql-basics", title: "SQL Basics" },
+      { type: "topic", id: "joins-and-subqueries", title: "Joins & Subqueries" },
+      { type: "topic", id: "advanced-sql", title: "Advanced SQL" }
+    ]
+  },
+  {
+    id: "software-engineering",
+    title: "8. Software Engineering",
+    level: "Beginner",
+    description: "Explore the SDLC, Agile methodologies, and software design patterns.",
+    keyTakeaway: "Understand the lifecycle of modern software development.",
+    color: "from-indigo-600 to-indigo-900",
+    icon: "Briefcase",
+    items: [
+      { type: "topic", id: "sdlc", title: "SDLC (Software Development Life Cycle)" },
+      { type: "topic", id: "agile-and-scrum", title: "Agile & Scrum" },
+      { type: "topic", id: "design-patterns", title: "Design Patterns" }
+    ]
+  },
+  {
+    id: "web-api-fundamentals",
+    title: "9. Web & API Fundamentals",
+    level: "Intermediate",
+    description: "Learn how the web works, HTTP methods, and RESTful APIs.",
+    keyTakeaway: "Build scalable web services using REST APIs.",
+    color: "from-rose-600 to-rose-900",
+    icon: "Globe",
+    items: [
+      { type: "topic", id: "how-the-web-works", title: "How the Web Works" },
+      { type: "topic", id: "http-and-rest", title: "HTTP & REST" },
+      { type: "topic", id: "api-integration", title: "API Integration" }
+    ]
+  },
+  {
+    id: "git-github",
+    title: "10. Git & GitHub",
+    level: "Beginner",
+    description: "Master version control, branching strategies, and collaborative coding.",
+    keyTakeaway: "Manage code securely and collaborate using Git.",
+    color: "from-gray-600 to-gray-900",
+    icon: "GitBranch",
+    items: [
+      { type: "topic", id: "git-basics", title: "Git Basics" },
+      { type: "topic", id: "branching-and-merging", title: "Branching & Merging" },
+      { type: "topic", id: "github-collaboration", title: "GitHub Collaboration" }
+    ]
+  }
+];
+
 export const tracks: Track[] = [
   {
     id: "itsm-track",
@@ -693,24 +1027,6 @@ export const tracks: Track[] = [
     modules: cadCertificationModules
   },
   {
-    id: "aes-track",
-    slug: "app-engine-studio",
-    title: "App Engine Studio",
-    modules: aesModules
-  },
-  {
-    id: "uibuilder-track",
-    slug: "ui-builder",
-    title: "UI Builder",
-    modules: uiBuilderModules
-  },
-  {
-    id: "va-track",
-    slug: "virtual-agent",
-    title: "Virtual Agent",
-    modules: vaModules
-  },
-  {
     id: "ai-track",
     slug: "servicenow-ai",
     title: "ServiceNow AI",
@@ -727,6 +1043,12 @@ export const tracks: Track[] = [
     slug: "itom",
     title: "ITOM Specialist",
     modules: itomModules
+  },
+  {
+    id: "cs-fundamentals-track",
+    slug: "cs-fundamentals",
+    title: "CS Fundamentals",
+    modules: csFundamentalsModules
   }
 ];
 
