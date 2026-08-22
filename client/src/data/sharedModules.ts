@@ -1,10 +1,11 @@
-export type TrackItemType = 'topic' | 'project' | 'mock-interview' | 'milestone';
+export type TrackItemType = 'topic' | 'project' | 'mock-interview' | 'milestone' | 'pdf';
 
-export type TrackItem = {
+export interface TrackItem {
   type: TrackItemType;
   id: string;
   title: string;
   description?: string;
+  pdfUrl?: string;
 };
 
 export type Module = {
@@ -870,8 +871,7 @@ const csFundamentalsModules: Module[] = [
     color: "from-slate-600 to-slate-900",
     icon: "Cpu",
     items: [
-      { type: "topic", id: "introduction-to-computing", title: "Introduction to Computing" },
-      { type: "topic", id: "binary-and-logic-gates", title: "Binary & Logic Gates" }
+      { type: "topic", id: "computer-science-basics", title: "Computer Science Basics" }
     ]
   },
   {
@@ -883,9 +883,7 @@ const csFundamentalsModules: Module[] = [
     color: "from-blue-600 to-blue-900",
     icon: "Box",
     items: [
-      { type: "topic", id: "oop-fundamentals", title: "OOP Fundamentals" },
-      { type: "topic", id: "classes-and-objects", title: "Classes & Objects" },
-      { type: "topic", id: "four-pillars-of-oop", title: "The 4 Pillars of OOP" }
+      { type: "topic", id: "java-oops-notes", title: "Java OOPs Notes" }
     ]
   },
   {
@@ -952,9 +950,7 @@ const csFundamentalsModules: Module[] = [
     color: "from-yellow-600 to-yellow-900",
     icon: "Code",
     items: [
-      { type: "topic", id: "sql-basics", title: "SQL Basics" },
-      { type: "topic", id: "joins-and-subqueries", title: "Joins & Subqueries" },
-      { type: "topic", id: "advanced-sql", title: "Advanced SQL" }
+      { type: "topic", id: "sql-interview-notes", title: "SQL Interview Notes" }
     ]
   },
   {

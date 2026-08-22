@@ -24,6 +24,7 @@ export type LessonData = {
   lastUpdated?: string;
   author?: string;
   videoUrl?: string;
+  pdfUrl?: string;
   subtopics: Subtopic[];
   rawMarkdown: string; // The full markdown body used for rendering
 };
@@ -171,6 +172,7 @@ export function getCourseData(type: 'learn' | 'interview' = 'learn'): TrackData[
             tags: [mod.title],
             description: item.description,
             videoUrl: parsedVideoUrl,
+            pdfUrl: item.pdfUrl,
             lastUpdated: parsedLastUpdated,
             subtopics,
             rawMarkdown: rawMd

@@ -457,6 +457,14 @@ export default function LearnDashboard() {
           <MarkdownRenderer content={contentToRender} lessonData={activeLesson} />
         )}
       </>
+    ) : activeLesson.type === 'pdf' ? (
+      <div className="bg-[#323639] border border-gray-200 rounded-2xl p-0 shadow-sm w-full h-[85vh] overflow-hidden">
+        <iframe 
+          src={`${activeLesson.pdfUrl}#navpanes=0&view=Fit&scrollbar=0`}
+          className="w-full h-full border-0"
+          title={activeLesson.title}
+        />
+      </div>
     ) : activeLesson.type === 'project' ? (
       <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
         <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-6">
