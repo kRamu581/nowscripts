@@ -4,6 +4,28 @@ import { contextEngine } from "../services/ai/contextEngine";
 import { PROMPT_TEMPLATES } from "../services/ai/promptTemplates";
 import AIChatSession from "../models/AIChatSession";
 import AIGeneratedRoadmap from "../models/AIGeneratedRoadmap";
+import { extractAndSummarizeUrl } from "../services/ai/urlSummarizer";
+
+export const summarizeUrl = async (req: Request, res: Response) => {
+  try {
+    const { url } = req.body;
+    
+    if (!url) {
+      return res.status(400).json({ success: false, message: "URL is required." });
+    }
+    
+    const result = await extractAndSummarizeUrl(url);
+    
+    if (!result.success) {
+      return res.status(400).json(result);
+    }
+    
+    res.status(200).json(result);
+  } catch (error: any) {
+    console.error("Error in summarizeUrl:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 export const chatWithAI = async (req: Request, res: Response) => {
   try {

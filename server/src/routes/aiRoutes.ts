@@ -5,7 +5,8 @@ import {
   getChatHistory, 
   getChatSession, 
   getRoadmaps,
-  evaluateInterview
+  evaluateInterview,
+  summarizeUrl
 } from "../controllers/aiController";
 // Assuming authMiddleware exists and is exported from middleware/auth or similar.
 import isAuthenticated from "../middlewares/auth"; 
@@ -25,5 +26,8 @@ router.get("/roadmap", getRoadmaps);
 
 // Interview endpoints
 router.post("/interview/evaluate", evaluateInterview);
+
+// Summarization endpoints
+router.post("/summarize-url", summarizeUrl);
 
 export default router;

@@ -28,21 +28,140 @@ export type Track = {
 
 const csaModules: Module[] = [
   {
-    id: "it-basics",
-    title: "IT Basics",
+    id: "itsm-foundation",
+    title: "1. Start with ITSM & ITIL",
     level: "Beginner",
-    description: "Understand basic IT concepts before touching ServiceNow. Written by Md Afan Khan. (Updated: August 6, 2026)",
-    keyTakeaway: "Written by Md Afan Khan",
+    description: "Understand why IT service management exists.",
+    keyTakeaway: "ITSM vs ITIL",
     color: "from-emerald-600 to-emerald-900",
-    icon: "LifeBuoy",
+    icon: "BookOpen",
     items: [
-      { type: "topic", id: "what-is-itsm", title: "What is ITSM?" },
-      { type: "topic", id: "incident", title: "Incident Management" },
-      { type: "topic", id: "problem", title: "Problem Management" },
-      { type: "topic", id: "change", title: "Change Management" },
-      { type: "topic", id: "sla", title: "SLA (Service Level Agreement)" },
-      { type: "topic", id: "service-request", title: "Service Request" },
-      { type: "topic", id: "knowledge-base", title: "Knowledge Base" }
+      { type: "topic", id: "what-is-itsm", title: "1. What is ITSM" },
+      { type: "topic", id: "why-companies-use-itsm", title: "2. Why companies use ITSM" },
+      { type: "topic", id: "what-is-itil", title: "3. What is ITIL" },
+      { type: "topic", id: "itsm-vs-itil", title: "4. ITSM vs ITIL" }
+    ]
+  },
+  {
+    id: "incident-management-basics",
+    title: "2. Incident Management",
+    level: "Beginner",
+    description: "Learn what happens when something breaks.",
+    keyTakeaway: "Incident Lifecycle & Escalation",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "AlertCircle",
+    items: [
+      { type: "topic", id: "what-is-incident", title: "5. What is Incident" },
+      { type: "topic", id: "incident-management", title: "6. Incident Management" },
+      { type: "topic", id: "incident-lifecycle", title: "7. Incident Lifecycle" },
+      { type: "topic", id: "incident-priority", title: "8. Incident Priority" },
+      { type: "topic", id: "escalation", title: "9. Escalation" },
+      { type: "topic", id: "functional-vs-hierarchical-escalation", title: "10. Functional vs Hierarchical Escalation" }
+    ]
+  },
+  {
+    id: "major-incident-management",
+    title: "3. Major Incident Management",
+    level: "Beginner",
+    description: "Learn critical incidents.",
+    keyTakeaway: "Normal vs Major Incident",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "AlertTriangle",
+    items: [
+      { type: "topic", id: "major-incident", title: "11. Major Incident" },
+      { type: "topic", id: "major-incident-management", title: "12. Major Incident Management" }
+    ]
+  },
+  {
+    id: "service-request-catalog",
+    title: "4. Service Request & Catalog",
+    level: "Beginner",
+    description: "The difference between something broken and someone asking for something.",
+    keyTakeaway: "Incident vs Service Request",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "FileText",
+    items: [
+      { type: "topic", id: "service-request", title: "13. Service Request" },
+      { type: "topic", id: "service-catalog", title: "14. Service Catalog" },
+      { type: "topic", id: "service-catalog-vs-service-request", title: "15. Service Catalog vs Service Request" },
+      { type: "topic", id: "incident-vs-service-request", title: "16. Incident vs Service Request" }
+    ]
+  },
+  {
+    id: "problem-management",
+    title: "5. Problem Management",
+    level: "Beginner",
+    description: "After resolving incidents, ask: Why did this happen?",
+    keyTakeaway: "RCA, Known Error & KEDB",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Search",
+    items: [
+      { type: "topic", id: "what-is-problem", title: "17. What is Problem" },
+      { type: "topic", id: "problem-management-process", title: "18. Problem Management Process" },
+      { type: "topic", id: "rca", title: "19. RCA" },
+      { type: "topic", id: "known-error", title: "20. Known Error" },
+      { type: "topic", id: "kedb", title: "21. KEDB" }
+    ]
+  },
+  {
+    id: "change-management-basics",
+    title: "6. Change Management",
+    level: "Beginner",
+    description: "You may need to change something to fix it.",
+    keyTakeaway: "Change Lifecycle & CAB",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "RefreshCw",
+    items: [
+      { type: "topic", id: "what-is-change", title: "22. What is Change" },
+      { type: "topic", id: "change-management", title: "23. Change Management" },
+      { type: "topic", id: "change-request", title: "24. Change Request" },
+      { type: "topic", id: "types-of-changes", title: "25. Types of Changes" },
+      { type: "topic", id: "change-lifecycle", title: "26. Change Lifecycle" },
+      { type: "topic", id: "cab", title: "27. CAB" },
+      { type: "topic", id: "role-of-cab", title: "28. Role of CAB" }
+    ]
+  },
+  {
+    id: "configuration-management",
+    title: "7. Configuration Management",
+    level: "Beginner",
+    description: "Why configuration data is important.",
+    keyTakeaway: "CI vs CMDB",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Database",
+    items: [
+      { type: "topic", id: "configuration-management", title: "29. Configuration Management" },
+      { type: "topic", id: "ci", title: "30. CI" },
+      { type: "topic", id: "cmdb", title: "31. CMDB" },
+      { type: "topic", id: "ci-vs-cmdb", title: "32. CI vs CMDB" }
+    ]
+  },
+  {
+    id: "asset-management-basics",
+    title: "8. Asset Management",
+    level: "Beginner",
+    description: "Financial vs Operational perspective.",
+    keyTakeaway: "Asset vs CI",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "DollarSign",
+    items: [
+      { type: "topic", id: "asset-management", title: "33. Asset Management" },
+      { type: "topic", id: "asset-vs-ci", title: "34. Asset vs CI" }
+    ]
+  },
+  {
+    id: "service-level-management",
+    title: "9. Service Level Management & SLA",
+    level: "Beginner",
+    description: "Agreements and measurements.",
+    keyTakeaway: "SLA vs OLA vs UC",
+    color: "from-emerald-600 to-emerald-900",
+    icon: "Clock",
+    items: [
+      { type: "topic", id: "service-level-management", title: "35. Service Level Management" },
+      { type: "topic", id: "sla", title: "36. SLA" },
+      { type: "topic", id: "how-sla-is-measured", title: "37. How SLA is measured" },
+      { type: "topic", id: "sla-vs-ola-vs-uc", title: "38. SLA vs OLA vs UC" }
     ]
   }
 ];
@@ -1001,7 +1120,7 @@ export const tracks: Track[] = [
   {
     id: "itsm-track",
     slug: "it-basics",
-    title: "IT Basics",
+    title: "ITSM Foundations",
     modules: csaModules
   },
   {

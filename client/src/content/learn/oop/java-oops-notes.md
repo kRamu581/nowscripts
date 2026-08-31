@@ -1,7 +1,7 @@
 ---
 title: "Java OOPs Notes"
 description: "Core CS fundamentals with Java code examples — OOP, data structures, memory, multithreading, and core language concepts commonly asked in interviews."
-lastUpdated: "2026-08-16"
+lastUpdated: "2026-08-26"
 ---
 
 # oops — Java  Notes
